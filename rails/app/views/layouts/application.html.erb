@@ -1,14 +1,64 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>AutoInteligente</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> --
+  --<![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Auto DF</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <%= stylesheet_link_tag    "application", media: "all",
+        "data-turbolinks-track" => true %>
+        <%= javascript_include_tag "application",
+        "data-turbolinks-track" => true %>
+        <%= csrf_meta_tags %>
 </head>
 <body>
+  <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> --
+    --browser. Please <a href="http://browsehappy.com/">upgrade your --
+    --browser</a> --
+    --or <a href="http://www.google.com/chromeframe/?redirect=true">activate --
+    --Google Chrome Frame</a> to improve your experience.</p>
+      <![endif]-->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle"
+        data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a id="navbar-brand" class="navbar-brand" href="<%= root_path
+        %>">Auto DF</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <% unless is_root? %>
+        <ul class="nav navbar-nav">
+          <li class="<%= is_active?('info') %>"><a id="navbar-info"
+          href="<%= root_path %>">Infórmate</a></li>
+          <li><a id="navbar-recordatorios"
+          href="#">Recordatorios</a></li>
+          <li><a id="navbar-respuestas" href="#">Respuestas</a></li>
+          <li><a id="navbar-inteligente" href="#">Uso
+          inteligente</a></li>
+          <li><a id="navbar-acerca" href="#">Acerca</a></li>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="container">
 
-<%= yield %>
+    <%= yield %>
 
+  <hr>  
+  <footer>
+    <p>&copy; Código para la Ciudad de México 2013</p>
+  </footer>
+  </div>  
 </body>
 </html>
