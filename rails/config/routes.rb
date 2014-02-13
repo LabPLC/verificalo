@@ -1,4 +1,6 @@
 AutoInteligente::Application.routes.draw do
+  get "info/home"
+  get "info/results"
   root "static_pages#home"
   get "static_pages/home"
   # The priority is based upon order of creation: first created -> highest priority.
