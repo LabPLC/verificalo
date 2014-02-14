@@ -1,3 +1,6 @@
 <h1>Info#home</h1>
 
-<%= debug(@vehicle) %>
+<% if @alert %>
+<p><%= @alert[:error] %> (<%= @alert[:plate] %>)</p>
+<%= debug(@alert) %>
+<% end %>
