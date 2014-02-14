@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <h1>Información 123ABC</h1>
+    <h1>Vehículo <%= @vehicle.plate %></h1>
     
     <h2>Verficacion</h2>
     <div class="alert alert-info"><strong>El periodo de verficicación
@@ -23,17 +23,41 @@
         circular &raquo;</a></p>
     
     <h2>Infracciones</h2>
-    <div class="alert alert-warning"><strong>Tienes una
-        infracción sin pagar:</strong> Recuerda realizar su pago
-      antes de acudir a la prueba de emisiones</div>
+    <% if @vehicle.unpaid_tickets > 0 %>
+    <div class="alert alert-warning">
+      <% if @vehicle.unpaid_tickets > 1 %>
+      <strong>Tienes <%= @vehicle.unpaid_tickets %> infracciones sin
+        pagar:</strong>
+      <% else %>
+      <strong>Tienes una infracción sin pagar:</strong> 
+      <% end %>
+      Recuerda realizar su pago antes de acudir a la prueba de
+      emisiones</div>
     <p><a href="#">Consulta las diferentes opciones para pagar
         tus infracciones &raquo;</a></p>
+    <% else %>
+    <div class="alert alert-success">Tu vehiculo no tiene
+      infracciones sin pagar</div>
+    <% end %>
     <p><a href="#">Ver historial de infracciones &raquo;</a></p>
-    
+
     <h2>Tenencia</h2>
+    <% if @vehicle.unpaid_taxes > 0 %>
+    <div class="alert alert-warning">
+      <% if @vehicle.unpaid_taxes > 1 %>
+      <strong>Tu vehiculo tiene adeudos por los años
+      <% else %>
+      <strong>Tu vehiculo tiene un adeudo por el año
+      <% end %>
+      <%= @vehicle.unpaid_taxes_sentence %>:</strong> Recuerda realizar
+      su pago antes de acudir a la prueba de emisiones</div>
+    <p><a href="#">Consulta las diferentes opciones para pagar
+        tus tenencias &raquo;</a></p>
+    <% else %>
     <div class="alert alert-success">Tu vehiculo no tiene adeudos
       de tenencia</div>
-    
+    <% end %>
+
     <h2>Recordatorios</h2>
     <p>Evita filas o mutas recibiendo avisos oportunos sobre tus
       obligaciones como automovilista particular del Distrito
@@ -58,3 +82,5 @@
 
   </div>
 </div>
+
+<%= debug(@vehicle) %>
