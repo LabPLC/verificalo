@@ -1,8 +1,10 @@
 AutoInteligente::Application.routes.draw do
-  get "info/home"
-  get "info/results"
   root "static_pages#home"
-  get "static_pages/home"
+  match '/acerca', to: 'static_pages#about', via: 'get'
+  match '/info', to: 'info#home', via: 'get'
+  match '/info', to: 'info#results', via: 'post'
+  match '/info/:plate', to: 'info#results', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
