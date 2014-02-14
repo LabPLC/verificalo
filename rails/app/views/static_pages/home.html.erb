@@ -5,18 +5,20 @@
       <h1>Infórmate</h1>
       <p>La información de tu auto particular sobre verificaciones,
         hoy no circula, tenecias e infracciones en un solo lugar</p>
-      <form id="form-info-home" class="form-inline" role="form">
-        <div class="row">
-          <div class="col-md-3 col-sm-4">
-            <input type="text" placeholder="Placa"
-                   class="form-control input-lg">
-          </div>
-          <div class="col-md-2 col-sm-4">
-            <button id="btn-info-home" type="button"
-                    class="btn btn-primary btn-lg">Consulta</button>
-          </div>
+      <%= form_tag({ controller: 'info', action: 'results' },
+          { method: 'post', class: 'form-inline',
+          id: 'form-info-home' }) do %>
+      <div class="row">
+        <div class="col-md-3 col-sm-4">
+          <input name="plate" type="text" placeholder="Placa"
+                 class="form-control input-lg">
         </div>
-      </form>
+        <div class="col-md-2 col-sm-4">
+          <button id="btn-info-home" type="submit"
+                  class="btn btn-primary btn-lg">Consulta</button>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
