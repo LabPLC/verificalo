@@ -6,7 +6,7 @@
     <title>Auto Inteligente</title>
     <meta name="description" content="Sitio web para automovilistas de la CDMX">
     <meta name="viewport" content="width=device-width">
-    <%= stylesheet_link_tag    "application", media: "all",
+    <%= stylesheet_link_tag "application", media: "all",
         "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application",
         "data-turbolinks-track" => true %>
@@ -31,8 +31,7 @@
           <% unless is_root? %>
           <ul class="nav navbar-nav">
             <li class="<%= is_active?('info') %>">
-              <a id="navbar-info"
-                 href="<%= root_path %>">Infórmate</a></li>
+              <a id="navbar-info" href="#">Infórmate</a></li>
             <li><a id="navbar-reminders"
                    href="#">Recordatorios</a></li>
             <li><a id="navbar-answers" href="#">Respuestas</a></li>
@@ -41,7 +40,9 @@
           </ul>
           <% end %>
           <ul class="nav navbar-nav navbar-right">
-            <li><a id="navbar-about" href="#">Acerca</a></li>
+            <li><a id="navbar-about"
+                   href="<%= url_for({ controller: 'static_pages',
+                         action: 'about' }) %>">Acerca</a></li>
           </ul>
         </div>
       </div>
