@@ -1,17 +1,20 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-12">
     <h1>Vehículo <%= @vehicle.plate %></h1>
-    
-    <h2>Verficacion</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Verficación</h2>
     <div class="alert alert-info"><strong>El periodo de verficicación
         de tu auto esta en curso:</strong> Tienes hasta el 31 de
-        Diciembre para verificar tu auto</div>
-
+      Diciembre para verificar tu auto</div>
     <p><a href="#">Consulta los verificentos donde puedes acudir a
         verificar tu auto &raquo;</a></p>
     <p><a href="#">Ver historial de pruebas de emisiones
         &raquo;</a></p>
-    
+
     <h2>Hoy no circula</h2>
     <p>De acuerdo a la placa y holograma de tu vehiculo no puede
       circular:</p>
@@ -21,7 +24,9 @@
     </ul>
     <p><a href="#">Consulta la lista de días que tu auto no puede
         circular &raquo;</a></p>
-    
+  </div>
+
+  <div class="col-md-6">
     <h2>Infracciones</h2>
     <% if @vehicle.unpaid_tickets > 0 %>
     <div class="alert alert-warning">
@@ -57,29 +62,32 @@
     <div class="alert alert-success">Tu vehiculo no tiene adeudos
       de tenencia</div>
     <% end %>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-md-6">
     <h2>Recordatorios</h2>
     <p>Evita filas o mutas recibiendo avisos oportunos sobre tus
       obligaciones como automovilista particular del Distrito
       Federal</p>
     <p><a id="btn-recordatorios" href="#">Date de alta &raquo;</a></p>          
-    
     <h2>Respuestas</h2>
     <p>Encuentra las respuestas a tus preguntas sobre tramites de
       automoviles particulares del Distrito Federal</p>
     <p><a id="btn-respuestas" href="#">Pregunta &raquo;</a></p>
-    
+  </div>
+  
+  <div class="col-md-6">
     <h2>Uso inteligente</h2>
     <p>Utilizar racionalmente tu auto te puede ahorrar tiempo y
       dinero además de cuidar el medio ambiente de la Ciudad de
       México</p>
     <p><a id="btn-inteligente" href="#">Conoce más &raquo;</a></p>
-
     <h2>Importante</h2>
     <p>La información mostrada tiene caracter informativo y
       aunque hacemos nuestro mejor esfuerzo para mantenerla
       actualizada no es oficial</p>
-
   </div>
 </div>
 
