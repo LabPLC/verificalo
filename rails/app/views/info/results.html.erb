@@ -7,6 +7,8 @@
 <div class="row">
   <div class="col-md-6">
     <h2>Verficación</h2>
+    <% if @vehicle.emissions_found %>
+    <%= debug(@vehicle.emissions_vigency) %>
     <div class="alert alert-info"><strong>El periodo de verficicación
         de tu auto esta en curso:</strong> Tienes hasta el 31 de
       Diciembre para verificar tu auto</div>
@@ -14,9 +16,13 @@
         verificar tu auto &raquo;</a></p>
     <p><a href="#">Ver historial de pruebas de emisiones
         &raquo;</a></p>
+    <% else %>
+    <div class="alert alert-warning"><strong>Tu auto no ha sido
+        verificado</strong></div>
+    <% end %>
 
     <h2>Hoy no circula</h2>
-    <p>De acuerdo a la placa y holograma de tu vehiculo no puede
+    <p>De acuerdo a la placa y holograma de tu auto no puede
       circular:</p>
     <ul>
       <li>Todos los viernes del año</li>
@@ -36,13 +42,13 @@
       <% else %>
       <strong>Tienes una infracción sin pagar:</strong> 
       <% end %>
-      Recuerda realizar su pago antes de acudir a la prueba de
+      Debes realizar su pago antes de acudir a la prueba de
       emisiones</div>
     <p><a href="#">Consulta las diferentes opciones para pagar
-        tus infracciones &raquo;</a></p>
+        infracciones &raquo;</a></p>
     <% else %>
-    <div class="alert alert-success">Tu vehiculo no tiene
-      infracciones sin pagar</div>
+    <div class="alert alert-success">Tu auto no tiene infracciones sin
+      pagar</div>
     <% end %>
     <p><a href="#">Ver historial de infracciones &raquo;</a></p>
 
@@ -50,16 +56,16 @@
     <% if @vehicle.unpaid_taxes > 0 %>
     <div class="alert alert-warning">
       <% if @vehicle.unpaid_taxes > 1 %>
-      <strong>Tu vehiculo tiene adeudos por los años
+      <strong>Tu auto tiene adeudos por los años
       <% else %>
-      <strong>Tu vehiculo tiene un adeudo por el año
+      <strong>Tu auto tiene un adeudo por el año
       <% end %>
-      <%= @vehicle.unpaid_taxes_sentence %>:</strong> Recuerda realizar
+      <%= @vehicle.unpaid_taxes_sentence %>:</strong> Debes realizar
       su pago antes de acudir a la prueba de emisiones</div>
     <p><a href="#">Consulta las diferentes opciones para pagar
-        tus tenencias &raquo;</a></p>
+        la tenencia &raquo;</a></p>
     <% else %>
-    <div class="alert alert-success">Tu vehiculo no tiene adeudos
+    <div class="alert alert-success">Tu auto no tiene adeudos
       de tenencia</div>
     <% end %>
   </div>
@@ -85,9 +91,10 @@
       México</p>
     <p><a id="btn-inteligente" href="#">Conoce más &raquo;</a></p>
     <h2>Importante</h2>
-    <p>La información mostrada tiene caracter informativo y
-      aunque hacemos nuestro mejor esfuerzo para mantenerla
-      actualizada no es oficial</p>
+    <p>La información mostrada tiene caracter informativo y no puede
+      ser utilizada como un documento oficial. Conserva tu último
+      certificado de verificación y pagos de tenencías e infracciones
+      para cualquier aclaración.</p>
   </div>
 </div>
 
