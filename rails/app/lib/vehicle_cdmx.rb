@@ -5,6 +5,8 @@ module VehicleCDMX
 
   class VehicleCDMX
 
+    # constructor de clase
+
     def initialize(p)
       if p !~ /^[a-zA-Z0-9]{1,14}$/
         @status = 'invalidPlate'
@@ -12,7 +14,7 @@ module VehicleCDMX
       end
       @plate = p.upcase
       begin
-        url = 'http://dev.datos.labplc.mx/movilidad/vehiculos/' + @plate + '.json'
+        url = 'http://datos.labplc.mx/movilidad/vehiculos/' + @plate + '.json'
         res = HTTParty.get(url);
       rescue
         @status = 'apiGetError'
@@ -32,6 +34,8 @@ module VehicleCDMX
       @status = 'ok'
     end
 
+    # accesores basicos
+
     def error
       if (@status == 'ok')
         return false
@@ -42,6 +46,45 @@ module VehicleCDMX
     def plate
       @plate
     end
+
+    # verificaciones
+    
+    def emissions_found
+      if @api['verificaciones'] == 'placa_no_localizada'
+        return false
+      end
+      true
+    end
+
+    def emissions_valid
+      unless @api['verificaciones'].respond_to?(:each)
+        return false
+      end
+      @api['verificaciones'].collect { |i| 
+        i if i['cancelado'] == 'NO'
+      }.compact
+    end
+    
+    def emissions_vigency
+      valid = self.emissions_valid
+      unless valid.respond_to?(:each) && valid.count > 0
+        return false
+      end
+      sorted = valid.sort { |a, b| 
+        _a = Date.strptime(a['vigencia'], "%Y-%m-%d")
+        _b = Date.strptime(b['vigencia'], "%Y-%m-%d")
+        _b <=> _a
+      }
+      return sorted
+    end
+
+    # infracciones
+
+    def unpaid_tickets
+      @api['infracciones'].count { |i| i['situacion'] != 'Pagada' }
+    end
+
+    # tenencias
 
     def unpaid_taxes
       if @api['tenencias']['tieneadeudos'] == '1'
@@ -62,14 +105,8 @@ module VehicleCDMX
       end
     end
     
-    def tickets
-      @api['infracciones'].count
-    end
-    
-    def unpaid_tickets
-      @api['infracciones'].count{ |i| i['situacion'] != 'Pagada' }
-    end
-    
+    # test
+
     def test
       return
     end
