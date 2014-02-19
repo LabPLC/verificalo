@@ -1,4 +1,9 @@
 AutoInteligente::Application.routes.draw do
+  get "alerts/home"
+  get "alerts/email"
+  get "alerts/sms"
+  get "alerts/phone"
+  get "alerts/success"
   root "static_pages#home"
   match '/acerca', to: 'static_pages#about', via: 'get'
   match '/info', to: 'info#home', via: 'get'
