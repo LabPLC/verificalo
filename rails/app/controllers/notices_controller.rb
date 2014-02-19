@@ -1,4 +1,4 @@
-class AlertsController < ApplicationController
+class NoticesController < ApplicationController
   def home
   end
 
