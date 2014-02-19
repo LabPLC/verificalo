@@ -11,6 +11,5 @@ class InfoController < ApplicationController
       redirect_to({ action: 'home' }, 
                   { alert: { error: @vehicle.error, plate: params[:plate] }})
     end
-    @test = @vehicle.test
   end
 end
