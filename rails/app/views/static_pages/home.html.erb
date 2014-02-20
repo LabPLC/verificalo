@@ -3,8 +3,8 @@
   <div class="col-md-12">
     <div class="jumbotron">
       <h1>Infórmese</h1>
-      <p>Sobre verificaciones, hoy no circula, infracciones y tenecias
-        de su auto particular</p>
+      <p>Conozca sus obligaciones como automovilista
+        particular de la Ciudad de México</p>
       <%= form_tag({ controller: 'info', action: 'results' },
           { method: 'post', class: 'form-inline',
           id: 'form-info-home' }) do %>
@@ -18,6 +18,9 @@
                   class="btn btn-primary btn-lg">Consulta</button>
         </div>
       </div>
+      <p class="help-block">Ingrese la placa de su auto y consulte
+        el estado de su verificacion, hoy no circula, infracciones y
+        tenecias</p>
       <% end %>
     </div>
   </div>

@@ -1,5 +1,5 @@
 .jumbotron {
-    padding: 36px 60px 48px 60px;
+    padding: 36px 60px 24px 60px;
 }
 
 .jumbotron h1 {
@@ -7,11 +7,12 @@
 }
 
 .jumbotron p {
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
 }
 
-#form-info-home {
-    margin-bottom: 5px;
+.jumbotron p.help-block {
+    font-size: 15px;
+    margin: 15px 0 0 0;
 }
 
 #btn-info-home {
