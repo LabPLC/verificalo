@@ -1,2 +1,93 @@
-<h1>Notices#email</h1>
-<p>Find me in app/views/notices/email.html.erb</p>
+<h1>Avisos</h1>
+<form role="form">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="lead">¿Cual es la placa de su auto y a qué dirección de
+        correo electrónico debemos enviar los avisos?</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="input-notices-plate">Placa</label>
+        <div class="row">
+          <div class="col-xs-6">
+            <input type="text" class="form-control"
+                   id="input-notices-plate"
+                   placeholder="Placa de su auto">
+          </div>
+        </div>
+        <span class="help-block">Los avisos solo funcionan con autos de
+          la Ciudad de México</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="input-notices-email">Correo electrónico</label>
+        <div class="row">
+          <div class="col-xs-12">
+            <input type="email" class="form-control"
+                   id="input-notices-email"
+                   placeholder="Su correo electrónico">
+          </div>
+        </div>
+        <span class="help-block">En esta dirección recibira sus
+          avisos y en cualquier momento puede cancelarlos</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="lead">¿Qué avisos desea recibir sobre su auto?</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Verificación</label>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="">
+          Dos semanas antes y cuando inicie el periodo para verificar
+          mi auto
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="">
+          Cada dos semanas hasta que verifique mi auto
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="">
+          Cuando mi auto este verificado
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Infracciones y tenencias</label>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="">
+          Cuando mi auto tenga nuevos adeudos
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="">
+          Cuando pague mis adeudos
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button id="btn-notices-back" type="submit"
+              class="btn btn-default btn-notices-cfg">Regresar</button>
+    </div>
+    <div class="col-md-6">
+      <button id="btn-notices-ok" type="submit"
+              class="btn btn-primary btn-notices-cfg">Continuar</button>
+    </div>
+  </div>  
+</form>
