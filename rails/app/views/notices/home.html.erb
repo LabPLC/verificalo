@@ -1,3 +1,4 @@
+<!-- notices -->
 <h1>Avisos</h1>
 
 <div class="row">
@@ -24,3 +25,13 @@
       telefónica</button>
   </div>
 </div>
+
+<div id="notices-form" style="display: none;"></div>
+
+<script>
+var btn_forms = { 
+'btn-notices-home-email' : '<%= url_for({ controller: 'notices', action: 'email' }) %>',
+'btn-notices-home-sms' : '<%= url_for({ controller: 'notices', action: 'sms' }) %>',
+'btn-notices-home-phone' : '<%= url_for({ controller: 'notices', action: 'phone' }) %>',
+};
+</script>
