@@ -1,35 +1,122 @@
 <!-- notices -->
 <h1>Avisos</h1>
 
-<div class="row">
-  <div class="col-md-12">
-    <p class="lead">¿Por qué medio desea recibir los avisos sobre su
-      auto?</p>
+<%= form_tag({ controller: 'notices', action: 'home' },
+    { method: 'post', id: 'form-notices-home' }) do %>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="lead">¿Cual es la placa de su auto?</p>
+    </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="text" class="form-control"
+                   id="input-notices-plate"
+                   placeholder="Placa de su auto">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <span class="help-block">Los avisos solo funcionan con autos de
+        la Ciudad de México</span>
+    </div>
+  </div>
 
-<div class="row">
-  <div class="col-md-3 col-md-offset-1">
-    <button id="btn-notices-home-email" type="submit"
-            class="btn btn-primary btn-notices-home">Correo
-            electrónico</button>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="lead">¿Qué avisos desea recibir sobre su auto?</p>
+    </div>
   </div>
-  <div class="col-md-4">
-    <button id="btn-notices-home-sms" type="submit"
-            class="btn btn-primary btn-notices-home">Mensaje de
-            texto</button>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Verificación</label>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked="true">
+          Dos semanas antes y cuando inicie el periodo para verificar
+          su auto
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked="true">
+          Cada dos semanas hasta que verifique su auto
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked="true">
+          Cuando su auto este verificado
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Hoy no circula</label>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox">
+          Un día antes de que su auto no pueda circular de lunes a viernes
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked="true">
+          Un día antes de que su auto no pueda circular en sabado
+        </label>
+      </div>
+    </div>
   </div>
-  <div class="col-md-3">
-    <button id="btn-notices-home-phone" type="submit"
-            class="btn btn-primary btn-notices-home">Llamada
-      telefónica</button>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Infracciones y tenencias</label>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked="true">
+          Cuando su auto tenga nuevos adeudos
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" checked="true">
+          Cuando pague sus adeudos
+        </label>
+      </div>
+    </div>
   </div>
-</div>
 
-<div id="notices-form" style="display: none;"></div>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="lead">¿Por qué medio desea recibir sus avisos?</p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 col-md-offset-1">
+      <button id="btn-notices-home-email"
+              class="btn btn-primary btn-notices-home"
+              type="submit">Correo electrónico</button>
+    </div>
+    <div class="col-md-4">
+      <button id="btn-notices-home-sms" 
+              class="btn btn-primary btn-notices-home" 
+              type="submit">Mensaje de texto</button>
+    </div>
+    <div class="col-md-3">
+      <button id="btn-notices-home-phone"
+              class="btn btn-primary btn-notices-home"
+              type="submit">Llamada telefónica</button>
+    </div>
+  </div>
+  
+  <div id="notices-subform" style="display: none;"></div>
+<% end %>
 
 <script>
-var btn_forms = { 
+var btn_subforms = { 
 'btn-notices-home-email' : '<%= url_for({ controller: 'notices', action: 'email' }) %>',
 'btn-notices-home-sms' : '<%= url_for({ controller: 'notices', action: 'sms' }) %>',
 'btn-notices-home-phone' : '<%= url_for({ controller: 'notices', action: 'phone' }) %>',
