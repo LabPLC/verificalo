@@ -31,9 +31,11 @@
           <% unless is_root? %>
           <ul class="nav navbar-nav">
             <li class="<%= is_active?('info') %>">
-              <a id="navbar-info" href="#">Infórmese</a></li>
+              <a href="<%= url_for({ controller: 'info', action: 'home' })%>"
+                 id="navbar-info">Infórmese</a></li>
             <li class="<%= is_active?('notices') %>">
-              <a id="navbar-notices" href="#">Avisos</a></li>
+              <a href="<%= url_for({ controller: 'notices', action: 'home' })%>"
+                 id="navbar-notices">Avisos</a></li>
             <li><a id="navbar-answers" href="#">Respuestas</a></li>
             <li><a id="navbar-inteligent"
                    href="#">Uso inteligente</a></li>
@@ -48,14 +50,17 @@
       </div>
     </nav>
 
+    <!-- container -->
     <div class="container">      
       <%= yield %>
-      
-      <!-- footer -->
-      <hr>  
-      <footer>
+    </div>
+
+    <!-- footer -->
+    <footer class="navbar navbar-fixed-bottom" role="navigation">
+      <div class="container">
+        <hr>
         <p>&copy; Código para la Ciudad de México 2013</p>
-      </footer>
-    </div>  
+      </div>
+    </footer>
   </body>
 </html>
