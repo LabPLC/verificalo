@@ -1,7 +1,7 @@
 <!-- notices -->
 <h1>Avisos</h1>
 
-<%= form_tag({ controller: 'notices', action: 'home' },
+<%= form_tag({ controller: 'notices', action: 'results' },
     { method: 'post', id: 'form-notices-home' }) do %>
   <div class="row">
     <div class="col-md-12">
@@ -14,7 +14,7 @@
         <div class="row">
           <div class="col-sm-6">
             <input type="text" class="form-control"
-                   id="input-notices-plate"
+                   id="input-notices-plate" name="plate"
                    placeholder="Placa de su auto">
           </div>
         </div>
@@ -36,20 +36,23 @@
       <label>Verificación</label>
       <div class="checkbox">
         <label>
-          <input type="checkbox" checked="true">
+          <input type="checkbox" checked="true"
+                 name="verification_before">
           Dos semanas antes y cuando inicie el periodo para verificar
           su auto
         </label>
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox" checked="true">
+          <input type="checkbox" checked="true"
+                 name="verificacion_during">
           Cada dos semanas hasta que verifique su auto
         </label>
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox" checked="true">
+          <input type="checkbox" checked="true"
+                 name="verificacion_after">
           Cuando su auto este verificado
         </label>
       </div>
@@ -58,13 +61,14 @@
       <label>Hoy no circula</label>
       <div class="checkbox">
         <label>
-          <input type="checkbox">
+          <input type="checkbox" name="no_circula_weekdays">
           Un día antes de que su auto no pueda circular de lunes a viernes
         </label>
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox" checked="true">
+          <input type="checkbox" checked="true"
+                 name="no_circula_weekends">
           Un día antes de que su auto no pueda circular en sabado
         </label>
       </div>
@@ -75,13 +79,13 @@
       <label>Infracciones y tenencias</label>
       <div class="checkbox">
         <label>
-          <input type="checkbox" checked="true">
+          <input type="checkbox" checked="true" name="adeudos_new">
           Cuando su auto tenga nuevos adeudos
         </label>
       </div>
       <div class="checkbox">
         <label>
-          <input type="checkbox" checked="true">
+          <input type="checkbox" checked="true" name="adeudos_ok">
           Cuando pague sus adeudos
         </label>
       </div>
