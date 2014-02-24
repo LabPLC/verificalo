@@ -1,12 +1,27 @@
+<!-- notices#email -->
 <input type="hidden" name="type" value="email">
 
 <div class="row">
   <div class="col-md-12">
-    <p class="lead">¿A qué dirección de correo electrónico debemos
-      enviar los avisos?</p>
+    <p class="lead">¿Cual es la placa de su auto y su dirección de
+      correo electrónico?</p>
   </div>
 </div>
+
 <div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-6">
+          <input type="text" class="form-control"
+                 id="input-notices-plate" name="plate"
+                 placeholder="Placa de su auto">
+        </div>
+      </div>
+      <span class="help-block">Los avisos solo funcionan con autos de
+        la Ciudad de México</span>
+    </div>
+  </div>
   <div class="col-md-6">
     <div class="form-group">
       <div class="row">
@@ -17,15 +32,80 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-6">
     <span class="help-block">No compartiremos su dirección personal
       con nadie</span>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p class="lead">¿Qué avisos desea recibir sobre su auto?</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <label>Verificación</label>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked="true"
+               name="verification_before">
+        Dos semanas antes y cuando inicie el periodo para verificar
+        su auto
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked="true"
+               name="verificacion_during">
+        Cada dos semanas hasta que verifique su auto
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked="true"
+               name="verificacion_after">
+        Cuando su auto este verificado
+      </label>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label>Hoy no circula</label>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="no_circula_weekdays">
+        Un día antes de que su auto no pueda circular de lunes a viernes
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked="true"
+               name="no_circula_weekends">
+        Un día antes de que su auto no pueda circular en sabado
+      </label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <label>Infracciones y tenencias</label>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked="true" name="adeudos_new">
+        Cuando su auto tenga nuevos adeudos
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" checked="true" name="adeudos_ok">
+        Cuando pague sus adeudos
+      </label>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-12">
     <button id="btn-notices-ok" type="submit"
             class="btn btn-primary btn-notices-form">Continuar</button>
   </div>
-</div>  
+</div>
