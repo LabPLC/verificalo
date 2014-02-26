@@ -8,7 +8,7 @@ module VehicleCDMX
     # constructor de clase
 
     def initialize(p)
-      if p !~ /^[a-zA-Z0-9]{1,14}$/
+      if p !~ /\A[a-z0-9]{1,14}\z/i
         @status = 'invalidPlate'
         return
       end
