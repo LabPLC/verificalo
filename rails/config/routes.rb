@@ -4,6 +4,7 @@ AutoInteligente::Application.routes.draw do
   match '/info', to: 'info#home', via: 'get'
   match '/info', to: 'info#results', via: 'post'
   match '/info/:plate', to: 'info#results', via: 'get'
+  match '/info/:plate/verificaciones', to: 'info#verificaciones', via: 'get'
   match '/avisos', to: 'notices#home', via: 'get'
   match '/avisos/email', to: 'notices#email', via: 'get'
   match '/avisos/sms', to: 'notices#sms', via: 'get'

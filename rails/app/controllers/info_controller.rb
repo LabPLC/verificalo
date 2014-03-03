@@ -12,4 +12,8 @@ class InfoController < ApplicationController
                   { alert: { error: @vehicle.error, plate: params[:plate] }})
     end
   end
+
+  def verificaciones
+    @vehicle = VehicleCDMX.new(params[:plate]);
+  end
 end

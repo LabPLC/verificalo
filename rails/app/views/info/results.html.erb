@@ -47,7 +47,9 @@
     
     <p><a href="#">Localize los verificentos donde puede llevar su
         auto a verificar &raquo;</a></p>
-    <p><a href="#">Ver el historial de verificaciones de su auto
+    <p>
+      <a href="<%= url_for({ controller: 'info', action: 'verificaciones', plate: @vehicle.plate })%>">
+        Ver el historial de verificaciones de su auto
         &raquo;</a></p>
   </div>
 
@@ -168,5 +170,5 @@
   </div>
 </div>
 
-<%= debug(@vehicle._verificacion_current) if Rails.env.development? %>
+<%= debug(@vehicle.verificacion_current) if Rails.env.development? %>
 <%= debug(@vehicle) if Rails.env.development? %>

@@ -1,0 +1,98 @@
+<!-- info#verificaciones -->
+<div class="row">
+  <div class="col-md-12">
+    <h1>Auto <%= @vehicle.plate %></h1>
+  </div>
+</div>
+
+<% if @vehicle.verificaciones_sorted %>
+
+<% if @vehicle.verificacion_current %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Información</h2>
+  </div>
+</div>
+
+<table class="table table-condensed table-responsive">
+  <thead>
+    <tr>
+      <th>Marca</th>
+      <th>Submarca</th>
+      <th>Modelo</th>
+      <th>VIN</th>
+      <th>Combustible</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @vehicle.verificacion_current_brand_str %></td>
+      <td><%= @vehicle.verificacion_current_model_str %></td>
+      <td><%= @vehicle.verificacion_current_year_str %></td>
+      <td><%= @vehicle.verificacion_current_vin_str %></td>
+      <td><%= @vehicle.verificacion_current_fuel_str %></td>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Verificaciones</h2>
+  </div>
+</div>
+
+<table class="table table-condensed table-responsive">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Verificentro</th>
+      <th>Linea</th>
+      <th>Certificado</th>
+      <th>Vigencia</th>
+      <th>Resultado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vehicle.verificaciones_sorted.each do |v| %>
+    <tr>
+    <td><%= v.date %></td>
+    <td><%= v.time %></td>
+    <td><%= v.verificentro %></td>
+    <td><%= v.line %></td>
+    <td><%= v.cert %></td>
+    <td><%= v.vigency %></td>
+    <td><%= v.result %></td>
+    <td>
+      <% if v.cancel == true %>
+      CERTIFICADO CANCELADO
+      <% end %>
+      <% if v.cancel == true && v.result == 'RECHAZO' %>
+      <br/>
+      <% end %>
+      <% if v.result == 'RECHAZO' %>
+      <small><%= v.reject %></small>
+      <% end %>
+    </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% else %>
+
+<div class="alert alert-info"><strong>Su auto nunca ha sido
+    verificado</strong></div>
+
+<% end %>
+
+<p><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
+    Regresar &raquo;</a></p>
+
+<%= debug(@vehicle.verificacion_current) if Rails.env.development? %>
+<%= debug(@vehicle.verificaciones_sorted) if Rails.env.development? %>
+<%= debug(@vehicle) if Rails.env.development? %>
