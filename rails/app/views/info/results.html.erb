@@ -47,10 +47,8 @@
     
     <p><a href="#">Localize los verificentos donde puede llevar su
         auto a verificar &raquo;</a></p>
-    <p>
-      <a href="<%= url_for({ controller: 'info', action: 'verificaciones', plate: @vehicle.plate })%>">
-        Ver el historial de verificaciones de su auto
-        &raquo;</a></p>
+    <p><a href="<%= url_for({ controller: 'info', action: 'verificaciones', plate: @vehicle.plate })%>">
+        Ver el historial de verificaciones de su auto &raquo;</a></p>
   </div>
 
   <!-- hoy no circula -->
@@ -117,8 +115,8 @@
     <div class="alert alert-success">Su auto no tiene infracciones sin
       pagar.</div>
     <% end %>
-    <p><a href="#">Ver el historial de infracciones de su
-        auto &raquo;</a></p>
+    <a href="<%= url_for({ controller: 'info', action: 'infracciones', plate: @vehicle.plate })%>">
+      Ver el historial de infracciones de su auto &raquo;</a></p>
   </div>
 
   <!-- tenencia -->

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'httparty'
 require 'json'
+require 'htmlentities'
 
 module VehicleCDMX
   class VehicleCDMX
@@ -187,7 +188,7 @@ module VehicleCDMX
         _b <=> _a
       }
       sorted.collect { |v|
-        r = OpenStruct.new()
+        r = OpenStruct.new
         r.date = I18n.localize(Date.parse(v['fecha_verificacion']), :format => :default);
         r.time = v['hora_verificacion'].gsub(/:\d\d$/, '');
         r.verificentro = v['verificentro']
@@ -228,6 +229,28 @@ module VehicleCDMX
     def infracciones_unpaid
       @api['infracciones'].count { |i| i['situacion'] != 'Pagada' }
     end
+
+    def infracciones_sorted
+      unless @api['verificaciones'].respond_to?(:each) && @api['infracciones'].count > 0
+        return false
+      end
+      sorted = @api['infracciones'].sort { |a, b| 
+        _a = Date.strptime(a['fecha'], "%Y-%m-%d")
+        _b = Date.strptime(b['fecha'], "%Y-%m-%d")
+        _b <=> _a
+      }
+      sorted.collect { |i|
+        coder = HTMLEntities.new
+        r = OpenStruct.new
+        r.date = I18n.localize(Date.parse(i['fecha']), :format => :default);
+        r.id = i['folio']
+        r.cause = coder.decode(i['motivo'])
+        r.basis = coder.decode(i['fundamento'])
+        r.sanction = coder.decode(i['sancion'])
+        r.status = coder.decode(i['situacion'])
+        r
+      }
+    end    
 
     # tenencias
 

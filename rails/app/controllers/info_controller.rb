@@ -16,4 +16,9 @@ class InfoController < ApplicationController
   def verificaciones
     @vehicle = VehicleCDMX.new(params[:plate]);
   end
+
+  def infracciones
+    @vehicle = VehicleCDMX.new(params[:plate]);
+  end
+
 end

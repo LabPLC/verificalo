@@ -1,0 +1,50 @@
+<!-- info#infracciones -->
+<div class="row">
+  <div class="col-md-12">
+    <h1>Auto <%= @vehicle.plate %></h1>
+  </div>
+</div>
+
+<% if @vehicle.infracciones_sorted %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Infracciones</h2>
+  </div>
+</div>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Folio</th>
+      <th>Motivo y fundamento</th>
+      <th>Sanción</th>
+      <th>Situación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vehicle.infracciones_sorted.each do |i| %>
+    <tr>
+      <td><%= i.date %></td>
+      <td><%= i.id %></td>
+      <td><%= i.cause %><br/><small><%= i.basis %></small></td>
+      <td><%= i.sanction %></td>
+      <td><%= i.status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% else %>
+
+<div class="alert alert-info"><strong>Su auto nunca ha sido
+    infraccionado</strong></div>
+
+<% end %>
+
+<p><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
+    Regresar &raquo;</a></p>
+
+<%= debug(@vehicle.infracciones_sorted) if Rails.env.development? %>
+<%= debug(@vehicle) if Rails.env.development? %>
