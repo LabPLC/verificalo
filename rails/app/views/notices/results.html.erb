@@ -12,11 +12,10 @@
       <strong><%= @error %></strong></div>
     <% else %>
     <% if @user.via == 'EMAIL' %>    
-    <div class="alert alert-info">Para activar su suscripción a los
-      avisos del automovil con placa
+    <div class="alert alert-info">Para activar la suscripción a los
+      avisos de su automovil con placa
       <strong><%= @user.plate %></strong> debe visitar la dirección que
-      le enviamos por correo electrónico
-      a <strong><%= @user.destination %></strong></div>
+      le enviamos a su correo electrónico.</div>
     <% elsif @user.via == 'PHONE' %>
     <div class="alert alert-info">PHONE</div>
     <% end %>
