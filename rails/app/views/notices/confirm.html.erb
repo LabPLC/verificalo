@@ -1,0 +1,22 @@
+<!-- notices#success -->
+<div class="row">
+  <div class="col-md-12">
+    <h1>Avisos</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <% if @error %>
+    <div class="alert alert-warning">
+      <strong><%= @error %></strong></div>
+    <% else %>
+    <div class="alert alert-success">Su suscripción a los avisos del
+      automovil con placa <strong>120UTJ</strong> al correo
+      electrónico <strong>manuel@rabade.net</strong> ha sido
+      activada.</div>
+    <% end %>
+  </div>
+</div>
+
+<%= debug(@user) if Rails.env.development? %>
