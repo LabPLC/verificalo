@@ -1,0 +1,13 @@
+<h1>Active su suscripción</h1>
+
+<p>Para confirmar que desea recibir los avisos de su automovil con
+  placa <strong><%= @user.plate %></strong> en su buzón de correo
+  electrónico visite la siguiente dirección:</p>
+
+<a href="<%= url_for(controller: 'notices', action: 'confirm', user: @user.id, only_path: false) %>">
+  <%= url_for(controller: 'notices', action: 'confirm', user: @user.id, only_path: false) %></a>
+
+<p>Recuerde que una vez activada su suscripción en cualquier momento
+  puede darse de baja en la misma dirección.</p>
+
+<p>Gracias y saludos.</p>
