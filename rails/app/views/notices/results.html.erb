@@ -1,4 +1,28 @@
-<h1>Notices#results</h1>
-<p>Find me in app/views/notices/success.html.erb</p>
-<%= debug(@params) %>
-<%= debug(@vehicle) %>
+<!-- notices#results -->
+<div class="row">
+  <div class="col-md-12">
+    <h1>Avisos</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <% if @error %>
+    <div class="alert alert-warning">
+      <strong><%= @error %></strong></div>
+    <% else %>
+    <% if @user.via == 'EMAIL' %>    
+    <div class="alert alert-info">Para activar su suscripción a los
+      avisos del automovil con placa
+      <strong><%= @user.plate %></strong> debe visitar la dirección que
+      le enviamos por correo electrónico
+      a <strong><%= @user.destination %></strong></div>
+    <% elsif @user.via == 'PHONE' %>
+    <div class="alert alert-info">PHONE</div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= debug(@user) if Rails.env.development? %>
+<%= debug(@settings) if Rails.env.development? %>
