@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<table class="table table-condensed table-responsive">
+<table class="table table-responsive">
   <thead>
     <tr>
       <th>Marca</th>
@@ -44,7 +44,7 @@
   </div>
 </div>
 
-<table class="table table-condensed table-responsive">
+<table class="table table-responsive">
   <thead>
     <tr>
       <th>Fecha</th>
@@ -60,24 +60,24 @@
   <tbody>
     <% @vehicle.verificaciones_sorted.each do |v| %>
     <tr>
-    <td><%= v.date %></td>
-    <td><%= v.time %></td>
-    <td><%= v.verificentro %></td>
-    <td><%= v.line %></td>
-    <td><%= v.cert %></td>
-    <td><%= v.vigency %></td>
-    <td><%= v.result %></td>
-    <td>
-      <% if v.cancel == true %>
-      CERTIFICADO CANCELADO
-      <% end %>
-      <% if v.cancel == true && v.result == 'RECHAZO' %>
-      <br/>
-      <% end %>
-      <% if v.result == 'RECHAZO' %>
-      <small><%= v.reject %></small>
-      <% end %>
-    </td>
+      <td><%= v.date %></td>
+      <td><%= v.time %></td>
+      <td><%= v.verificentro %></td>
+      <td><%= v.line %></td>
+      <td><%= v.cert %></td>
+      <td><%= v.vigency %></td>
+      <td><%= v.result %></td>
+      <td>
+        <% if v.cancel == true %>
+        CERTIFICADO CANCELADO
+        <% end %>
+        <% if v.cancel == true && v.result == 'RECHAZO' %>
+        <br/>
+        <% end %>
+        <% if v.result == 'RECHAZO' %>
+        <small><%= v.reject %></small>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>
