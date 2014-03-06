@@ -41,7 +41,6 @@ class NoticesController < ApplicationController
   end
   
   def confirm
-    @debug = params
     begin
       @user = User.find(params[:user])
     rescue
