@@ -1,4 +1,4 @@
-AutoInteligente::Application.configure do
+Verificalo::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -81,5 +81,5 @@ AutoInteligente::Application.configure do
   # Action Mailer
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "http://dev.codigo.labplc.mx/auto_inteligente" }
+  config.action_mailer.default_url_options = { host: "http://dev.codigo.labplc.mx/verificalo" }
 end

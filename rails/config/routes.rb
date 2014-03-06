@@ -1,4 +1,4 @@
-AutoInteligente::Application.routes.draw do
+Verificalo::Application.routes.draw do
   root "static_pages#home"
   match '/acerca', to: 'static_pages#about', via: 'get'
   match '/info', to: 'info#home', via: 'get'

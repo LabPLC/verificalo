@@ -1,7 +1,7 @@
 class Notifier < ActionMailer::Base
   include VehicleCDMX
   
-  default from: "Auto Inteligente <auto_inteligente@dev.codigo.labplc.mx>"
+  default from: "Verificalo <verificalo@dev.codigo.labplc.mx>"
 
   def confirm(user)
     @user = user

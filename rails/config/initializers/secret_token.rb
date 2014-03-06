@@ -24,4 +24,4 @@ def secure_token
   end
 end
 
-AutoInteligente::Application.config.secret_key_base = secure_token
+Verificalo::Application.config.secret_key_base = secure_token
