@@ -1,5 +1,6 @@
-Auto Inteligente
-================
+Verificalo
+==========
 
-Sitio web para ayudarle a cumplir con sus obligaciones a los
-automovilistas de la CDMX e incentivar el uso inteligente del automovil
+Aplicación para ayudar a los automovilistas de la CDMX a cumplir con
+sus responsabilidades ante la ley e incentivar el uso inteligente del
+automóvil
