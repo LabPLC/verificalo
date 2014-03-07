@@ -8,11 +8,11 @@ class NoticesController < ApplicationController
     render layout: false
   end
 
-  def sms
+  def phone
     render layout: false
   end
 
-  def phone
+  def twitter
     render layout: false
   end
 

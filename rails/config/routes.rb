@@ -8,8 +8,8 @@ Verificalo::Application.routes.draw do
   match '/info/:plate/infracciones', to: 'info#infracciones', via: 'get'
   match '/avisos', to: 'notices#home', via: 'get'
   match '/avisos/email', to: 'notices#email', via: 'get'
-  match '/avisos/sms', to: 'notices#sms', via: 'get'
   match '/avisos/phone', to: 'notices#phone', via: 'get'
+  match '/avisos/twitter', to: 'notices#twitter', via: 'get'
   match '/avisos', to: 'notices#results', via: 'post'
   match '/avisos/:user', to: 'notices#confirm', via: 'get'
 
