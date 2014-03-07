@@ -9,8 +9,9 @@ module VehicleCDMX
     # constructor de clase
 
     def initialize(p)
+      p.gsub!(/[^0-9a-z ]/i, '')
       if p !~ /\A[a-z0-9]{1,14}\z/i
-        @status = 'invalidPlate'
+        @status = 'INVALID_PLATE'
         return
       end
       @plate = p.upcase
@@ -18,27 +19,27 @@ module VehicleCDMX
         url = 'http://datos.labplc.mx/movilidad/vehiculos/' + @plate + '.json'
         res = HTTParty.get(url);
       rescue
-        @status = 'apiGetError'
+        @status = 'API_GET_ERROR'
         return
       end
       if res.code != 200
-        @status = 'apiHttpError'
+        @status = 'API_HTTP_ERROR'
         return
       end
       begin
         res = JSON.parse(res.body)
         @api = res['consulta']
       rescue
-        @status = 'apiJsonError'
+        @status = 'API_JSON_ERROR'
         return
       end
-      @status = 'ok'
+      @status = 'OK'
     end
 
     # accesores basicos
 
     def error
-      if (@status == 'ok')
+      if (@status == 'OK')
         return false
       end
       @status
