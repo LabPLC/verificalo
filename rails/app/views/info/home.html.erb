@@ -1,6 +1,46 @@
-<h1>Info#home</h1>
+<!-- info#results -->
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 text-center">
+    <h1>Información</h1>
+  </div>
+</div>
 
-<% if @alert %>
-<p><%= @alert[:error] %> (<%= @alert[:plate] %>)</p>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <% if @alert %>
+    <% if @alert[:error] == 'INVALID_PLATE' %>
+    <div class="alert alert-warning"><strong>La placa que ingreso no es
+      valida:</strong> Debe contener máximo 14 números y letras.</div>
+    <% else %>
+    <div class="alert alert-warning">
+      <strong><%= @alert[:error] %></strong></div>
+    <% end %>
+    <% else %>
+    <p id="txt-info-home" class="text-center">Ingrese la placa de su
+      auto y consulte el estado de su verificacion, hoy no circula,
+      infracciones y tenecias.</p>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 text-center">
+    <div class="form-group">
+      <div class="row">
+        <%= form_tag({ controller: 'info', action: 'results' },
+            { method: 'post', class: 'form-inline',
+            id: 'form-info-home' }) do %>
+        <div class="col-sm-offset-3 col-sm-4">
+          <input id="input-info-plate" name="plate" type="text"
+                 placeholder="Placa de su auto" class="form-control">
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary">Consulta</button>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= debug(@alert) %>
-<% end %>

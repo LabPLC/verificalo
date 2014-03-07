@@ -9,7 +9,7 @@ class InfoController < ApplicationController
     @vehicle = VehicleCDMX.new(params[:plate]);
     if @vehicle.error
       redirect_to({ action: 'home' }, 
-                  { alert: { error: @vehicle.error, plate: params[:plate] }})
+                  { alert: { error: @vehicle.error }})
     end
   end
 
