@@ -7,14 +7,14 @@
         particular de la Ciudad de México</p>
       <%= form_tag({ controller: 'info', action: 'results' },
           { method: 'post', class: 'form-inline',
-          id: 'form-info-home' }) do %>
+          id: 'form-home' }) do %>
       <div class="row">
         <div class="col-md-3 col-sm-4">
           <input name="plate" type="text" placeholder="Placa"
                  class="form-control input-lg">
         </div>
         <div class="col-md-2 col-sm-4">
-          <button id="btn-info-home" type="submit"
+          <button id="btn-home" type="submit"
                   class="btn btn-primary btn-lg">Consulta</button>
         </div>
       </div>
