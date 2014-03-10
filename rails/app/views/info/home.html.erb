@@ -23,24 +23,23 @@
   </div>
 </div>
 
+<%= form_tag({ controller: 'info', action: 'query' },
+    { method: 'post', class: 'form-inline',
+    id: 'form-info-home' }) do %>
+
 <div class="row">
-  <div class="col-md-offset-2 col-md-8 text-center">
-    <div class="form-group">
-      <div class="row">
-        <%= form_tag({ controller: 'info', action: 'query' },
-            { method: 'post', class: 'form-inline',
-            id: 'form-info-home' }) do %>
-        <div class="col-sm-offset-3 col-sm-4">
-          <input id="input-info-plate" name="plate" type="text"
-                 placeholder="Placa de su auto" class="form-control">
-        </div>
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-primary">Consulta</button>
-        </div>
-        <% end %>
-      </div>
-    </div>
+  <div class="col-md-offset-5 col-md-2 col-sm-offset-4 col-sm-4">
+    <input id="input-info-plate" name="plate" type="text"
+           placeholder="Placa" class="form-control">
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 text-center">
+    <button type="submit" class="btn btn-primary">Continuar</button>    
+  </div>
+</div>
+
+<% end %>
 
 <%= debug(@alert) if Rails.env.development? %>
