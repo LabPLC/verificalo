@@ -6,7 +6,7 @@ class InfoController < ApplicationController
   end
 
   def results
-    @vehicle = VehicleCDMX.new(params[:plate]);
+    @vehicle = VehicleCDMX.new(info_params);
     if @vehicle.error
       redirect_to({ action: 'home' }, 
                   { alert: { error: @vehicle.error }})
@@ -14,11 +14,17 @@ class InfoController < ApplicationController
   end
 
   def verificaciones
-    @vehicle = VehicleCDMX.new(params[:plate]);
+    @vehicle = VehicleCDMX.new(info_params);
   end
 
   def infracciones
-    @vehicle = VehicleCDMX.new(params[:plate]);
+    @vehicle = VehicleCDMX.new(info_params);
   end
 
+  private
+
+  def info_params
+    params.permit(:plate)    
+  end
+  
 end

@@ -8,13 +8,13 @@ module VehicleCDMX
 
     # constructor de clase
 
-    def initialize(p)
-      p.gsub!(/[^0-9a-z ]/i, '')
-      if p !~ /\A[a-z0-9]{1,14}\z/i
+    def initialize (params)
+      params['plate'].gsub!(/[^0-9a-z ]/i, '')
+      if params['plate'] !~ /\A[a-z0-9]{1,14}\z/i
         @status = 'INVALID_PLATE'
         return
       end
-      @plate = p.upcase
+      @plate = params['plate'].upcase
       begin
         url = 'http://datos.labplc.mx/movilidad/vehiculos/' + @plate + '.json'
         res = HTTParty.get(url);
