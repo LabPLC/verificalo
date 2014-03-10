@@ -63,11 +63,18 @@ module VehicleCDMX
 
     # verificaciones
 
-    def verificaciones_valid
+    def verificaciones?
       if @api['verificaciones'] == 'placa_no_localizada'
         return false
       end
       unless @api['verificaciones'].respond_to?(:each)
+        return false
+      end
+      true
+    end
+
+    def verificaciones_valid
+      unless self.verificaciones?
         return false
       end
       @api['verificaciones'].collect { |i| 
@@ -172,10 +179,7 @@ module VehicleCDMX
     # detalle de verificaciones
 
     def verificaciones_sorted
-      if @api['verificaciones'] == 'placa_no_localizada'
-        return false
-      end
-      unless @api['verificaciones'].respond_to?(:each)
+      unless self.verificaciones?
         return false
       end
       sorted = @api['verificaciones'].sort { |a, b| 
@@ -232,7 +236,8 @@ module VehicleCDMX
     end
 
     def infracciones_sorted
-      unless @api['verificaciones'].respond_to?(:each) && @api['infracciones'].count > 0
+      unless @api['infracciones'].respond_to?(:each) && 
+          @api['infracciones'].count > 0
         return false
       end
       sorted = @api['infracciones'].sort { |a, b| 
