@@ -1,0 +1,60 @@
+<!-- info#vin -->
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 text-center">
+    <h1>Auto <%= @vehicle.plate %></h1>
+  </div>
+</div>
+
+<!-- forma -->
+<%= form_tag({ controller: 'info', action: 'results', plate: @vehicle.plate },
+    { method: 'post', class: 'form-inline', id: 'form-info-vin' }) do %>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <% if request.post? && !@vehicle.user_vin_valid? %>
+    <div class="alert alert-warning"><strong>El número de serie que
+        ingreso no es valido:</strong> Hay mas de un auto verificado
+      con esa placa y para brindarle información precisa necesitamos
+      conocer el número de serie o VIN de su auto. Puede consultarlo en
+      su tarjeta de circulación, factura o chasis de su auto.</div>
+    <% else %>
+    <div class="alert alert-info"><strong>Hay más de un auto verificado
+        con esa placa:</strong> Para brindarle información
+      precisa necesitamos conocer el número de serie o VIN de su auto,
+      puede consultarlo en su tarjeta de circulación, factura o chasis
+      de su auto.</div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
+        <input id="input-info-vin" name="vin" type="text"
+               placeholder="VIN" class="form-control">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 text-center">
+    <button type="submit" class="btn btn-primary">Continuar</button>    
+  </div>
+</div>
+
+<% end %>
+
+<!-- debug -->
+<% if Rails.env.development? %>
+<h2>Debug</h2>
+<h3>@params</h3>
+<%= debug(@params) %>
+<h3>@session</h3>
+<%= debug(@session) %>
+<h3>@vehicle.verificaciones_vins</h3>
+<%= debug(@vehicle.verificaciones_vins) %>
+<h3>@vehicle</h3>
+<%= debug(@vehicle) %>
+<% end %>
