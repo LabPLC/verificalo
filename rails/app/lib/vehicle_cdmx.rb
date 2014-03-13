@@ -9,7 +9,15 @@ module VehicleCDMX
     # constructor de clase
 
     def initialize (params)
+      unless params['plate']
+        @status = 'MISSING_PLATE'
+        return
+      end
       params['plate'].gsub!(/[^0-9a-z ]/i, '')
+      if params['plate'] == ''
+        @status = 'MISSING_PLATE'
+        return
+      end
       if params['plate'] !~ /\A[a-z0-9]{1,14}\z/i
         @status = 'INVALID_PLATE'
         return
@@ -32,6 +40,15 @@ module VehicleCDMX
       rescue
         @status = 'API_JSON_ERROR'
         return
+      end
+      if params['vin']
+        @vin = params['vin'].upcase
+      end
+      if params['registration']
+        @registration = OpenStruct.new
+        @registration.y = params['registration']['year']
+        @registration.m = params['registration']['month']
+        @registration.d = params['registration']['day']
       end
       @status = 'OK'
     end
@@ -61,8 +78,66 @@ module VehicleCDMX
       return plate_ending_str[self.plate_ending]
     end
 
-    # verificaciones
+    # accesores vin
 
+    def user_vin
+      @vin
+    end
+
+    def user_vin= (v)
+      @vin = v.upcase
+    end
+
+    def user_vin?
+      return true if @vin
+      false
+    end
+        
+    def user_vin_valid?
+      return false unless self.user_vin?
+      if self.user_vin =~ /\A[a-z0-9]+\z/i
+        return true
+      end
+      false
+    end
+
+    # accesores fecha de registro
+
+    def registration_date
+      if @registration
+        begin
+          return Date.new(@registration.y.to_i,
+                          @registration.m.to_i,
+                          @registration.d.to_i)
+        rescue
+          return false
+        end
+      end
+      false
+    end
+
+    def registration_date= (s)
+      date = Date.iso8601(s)
+      @registration = OpenStruct.new
+      @registration.y = date.year
+      @registration.m = date.month
+      @registration.d = date.day
+    end
+
+    def registration_date?
+      return true if @registration
+      false
+    end
+
+    def registration_date_valid?
+      return false unless self.registration_date?
+      return false unless self.registration_date
+      return false if self.registration_date > Date.today
+      true
+    end
+
+    # verificaciones
+    
     def verificaciones?
       if @api['verificaciones'] == 'placa_no_localizada'
         return false
@@ -73,13 +148,43 @@ module VehicleCDMX
       true
     end
 
+    def verificaciones
+      unless self.verificaciones?
+        return false
+      end
+      if self.user_vin_valid?
+        @api['verificaciones'].collect { |i| 
+          i if i['vin'].upcase == self.user_vin
+        }.compact
+      else
+        @api['verificaciones']
+      end
+    end
+    
+    def verificaciones_vins
+      unless self.verificaciones?
+        return false
+      end
+      if self.user_vin_valid?
+        return [ self.user_vin ]
+      else
+        return @api['verificaciones'].collect { |i| i['vin'] }.compact.uniq
+      end
+    end
+
+    def verificaciones_vins?
+      return false unless self.verificaciones_vins
+      return true if self.verificaciones_vins.count > 1
+      false
+    end
+    
     def verificaciones_valid
       unless self.verificaciones?
         return false
       end
-      @api['verificaciones'].collect { |i| 
+      self.verificaciones.collect { |i|
         i if i['cancelado'] == 'NO'
-      }.compact      
+      }.compact
     end
 
     def verificacion_current
@@ -106,6 +211,11 @@ module VehicleCDMX
 
     def verificacion_current_period
       (self.verificacion_current_vigency.clone << 2) + 1
+    end
+
+    def verificacion_current?
+      return false unless self.verificacion_current
+      true
     end
 
     def verificacion_never?
@@ -182,7 +292,7 @@ module VehicleCDMX
       unless self.verificaciones?
         return false
       end
-      sorted = @api['verificaciones'].sort { |a, b| 
+      sorted = self.verificaciones.sort { |a, b| 
         if a == b
           _a = a['hora_verificacion']
           _b = b['hora_verificacion']
@@ -205,6 +315,31 @@ module VehicleCDMX
         r.reject = v['casua_rechazo']
         r
       }
+    end
+
+    # accesores primera verificacion
+
+    def verificacion_first_period_end
+      return false unless self.registration_date_valid? 
+      self.registration_date + 180
+    end
+
+    def verificacion_first_period_ok?
+      return false unless self.registration_date_valid?
+      if verificacion_first_period_end > Date.today
+        return true
+      end
+      false
+    end
+    
+    def verificacion_first_period_expired?
+      return false unless self.registration_date_valid?
+      return true unless self.verificacion_first_period_ok?
+      false
+    end
+
+    def verificacion_first_period_end_str
+      I18n.localize(self.verificacion_first_period_end, :format => :long);
     end
 
     # hoy no circula
