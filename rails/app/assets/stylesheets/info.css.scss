@@ -1,7 +1,27 @@
+/* info#home */
+
 #txt-info-home {
     margin-top: 10px;
 }
 
 #txt-info-welcome {
+    margin-bottom: 20px;
+}
+
+#form-info-home input, #form-info-home button {
+    margin-bottom: 20px;
+}
+
+/* info#vin */
+
+#form-info-vin input, #form-info-vin button {
+    margin-bottom: 20px;
+}
+
+/* info#registration */
+
+#form-info-registration input,
+#form-info-registration select, 
+#form-info-registration button {
     margin-bottom: 20px;
 }
