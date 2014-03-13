@@ -6,15 +6,15 @@
 </div>
 
 <% if @vehicle.verificaciones_sorted %>
+<!-- si hay verificaciones -->
 
-<% if @vehicle.verificacion_current %>
-
+<% if @vehicle.verificacion_current? %>
+<!-- si hay verificacion actual -->
 <div class="row">
   <div class="col-md-12">
     <h2>Información</h2>
   </div>
 </div>
-
 <table class="table table-responsive">
   <thead>
     <tr>
@@ -35,7 +35,6 @@
     </tr>
   </tbody>
 </table>
-
 <% end %>
 
 <div class="row">
@@ -43,7 +42,6 @@
     <h2>Verificaciones</h2>
   </div>
 </div>
-
 <table class="table table-responsive">
   <thead>
     <tr>
@@ -82,17 +80,25 @@
     <% end %>
   </tbody>
 </table>
-
 <% else %>
-
+<!-- si no hay verificaciones -->
 <div class="alert alert-info"><strong>Su auto nunca ha sido
     verificado</strong></div>
-
 <% end %>
 
+<!-- regresar -->
 <p><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
     Regresar &raquo;</a></p>
 
-<%= debug(@vehicle.verificacion_current) if Rails.env.development? %>
-<%= debug(@vehicle.verificaciones_sorted) if Rails.env.development? %>
-<%= debug(@vehicle) if Rails.env.development? %>
+<!-- debug -->
+<% if Rails.env.development? %>
+<h2>Debug</h2>
+<h3>@params</h3>
+<%= debug(@params) %>
+<h3>@session</h3>
+<%= debug(@session) %>
+<h3>@vehicle.verificaciones_sorted</h3>
+<%= debug(@vehicle.verificaciones_sorted) %>
+<h3>@vehicle</h3>
+<%= debug(@vehicle) %>
+<% end %>
