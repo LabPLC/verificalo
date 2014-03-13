@@ -1,21 +1,27 @@
-<!-- info#results -->
+<!-- info#home -->
 <div class="row">
   <div class="col-md-offset-2 col-md-8 text-center">
     <h1>Información</h1>
   </div>
 </div>
 
+<!-- bienvenida -->
 <div id="txt-info-home" class="row">
   <div class="col-md-offset-2 col-md-8">
-    <% if @alert %>
-    <% if @alert[:error] == 'INVALID_PLATE' %>
+    <% if @error %>
+    <!-- si hay error -->
+    <% if @error == 'MISSING_PLATE' %>
     <div class="alert alert-warning"><strong>La placa que ingreso no es
-      valida:</strong> Debe contener máximo 14 números y letras.</div>
+        valida:</strong> Debe contener números y letras.</div>
+    <% elsif @error == 'INVALID_PLATE' %>
+    <div class="alert alert-warning"><strong>La placa que ingreso no es
+        valida:</strong> Debe contener máximo 14 números y letras.</div>
     <% else %>
     <div class="alert alert-warning">
-      <strong><%= @alert[:error] %></strong></div>
+      <strong><%= @error %></strong></div>
     <% end %>
     <% else %>
+    <!-- si no hay error -->
     <p id="txt-info-welcome" class="text-center">Ingrese la placa de su
       auto y consulte el estado de su verificacion, hoy no circula,
       infracciones y tenecias.</p>
@@ -23,9 +29,9 @@
   </div>
 </div>
 
-<%= form_tag({ controller: 'info', action: 'query' },
-    { method: 'post', class: 'form-inline',
-    id: 'form-info-home' }) do %>
+<!-- forma -->
+<%= form_tag({ controller: 'info', action: 'home' },
+    { method: 'post', class: 'form-inline', id: 'form-info-home' }) do %>
 
 <div class="row">
   <div class="col-md-offset-5 col-md-2 col-sm-offset-4 col-sm-4">
@@ -42,4 +48,11 @@
 
 <% end %>
 
-<%= debug(@alert) if Rails.env.development? %>
+<!-- debug -->
+<% if Rails.env.development? %>
+<h2>Debug</h2>
+<h3>@error</h3>
+<%= debug(@error) %>
+<h3>@vehicle</h3>
+<%= debug(@vehicle) %>
+<% end %>
