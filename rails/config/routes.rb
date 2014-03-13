@@ -1,9 +1,8 @@
 Verificalo::Application.routes.draw do
   root "static_pages#home"
   match '/acerca', to: 'static_pages#about', via: 'get'
-  match '/info', to: 'info#home', via: 'get'
-  match '/info', to: 'info#query', via: 'post'
-  match '/info/:plate', to: 'info#results', via: 'get'
+  match '/info', to: 'info#home', via: [ 'get', 'post' ]
+  match '/info/:plate', to: 'info#results', via: [ 'get', 'post' ]
   match '/info/:plate/verificaciones', to: 'info#verificaciones', via: 'get'
   match '/info/:plate/infracciones', to: 'info#infracciones', via: 'get'
   match '/avisos', to: 'notices#home', via: 'get'
