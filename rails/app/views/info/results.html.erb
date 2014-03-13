@@ -6,45 +6,59 @@
 </div>
 
 <div class="row">
-
-  <!-- verificación -->
+  <!-- verificacion -->
   <div class="col-md-6">
-    <h2>Verficaciónes</h2>
+    <h2>Verficaciones</h2>
+
     <% if @vehicle.verificacion_ok? %>
+    <!-- verificacion vigente -->
     <div class="alert alert-success">El próximo periodo para
       verificar su auto inicia el
       <%= @vehicle.verificacion_current_period_str %> y termina el 
       <%= @vehicle.verificacion_current_vigency_str %>.
     </div>
     <% end %>
+
     <% if @vehicle.verificacion_period? %>   
-    <div class="alert alert-info"><strong>Debes llevar su auto a
-        verificar antes del
+    <!-- en periodo para verificar -->
+    <div class="alert alert-info"><strong>Su auto debe aprobar la
+        verificación antes del 
         <%= @vehicle.verificacion_current_vigency_str %>.</strong></div>
     <% end %>
+
     <% if @vehicle.verificacion_expired? %>
+    <!-- verificacion vencida -->
     <div class="alert alert-warning"><strong>La verificación de su auto
         expiro el 
         <%= @vehicle.verificacion_current_vigency_str %>:</strong>
       Debe pagar una multa por verificación extemporanea antes de
-      llevarlo a verificar.</div>
+      llevar su auto a verificar.</div>
     <p><a href="#">Obtenga la linea de captura de su multa y consulte
         las opciones para pagarla &raquo;</a></p>
     <% end %>
-    <% if @vehicle.verificacion_never? %>
-    <div class="alert alert-info"><strong>Su auto nunca ha aprobado
-        la verificación:</strong> Si recientemente registro su auto
-      tiene 180 días naturales a partir de la fecha de alta en su
-      tarjeta de circulación para que apruebe su primera
-      verificación.</div>
-    <div class="alert alert-warning"><strong>Si ya pasaron 180 días
-        naturales a partir de la fecha de alta:</strong> Debe pagar
-      una multa por verificación extemporanea antes de llevarlo a
-      verificar por primera vez.</div>
+    
+    <% if @vehicle.verificacion_first_period_ok? %>
+    <!-- en periodo para 1a verificacion -->
+    <div class="alert alert-info"><strong>Su auto debe aprobar la
+        verificación antes del 
+        <%= @vehicle.verificacion_first_period_end_str %>:</strong>
+      Nunca ha verificado su auto por lo que tiene 180 días naturales a
+      partir de la fecha de alta para que apruebe la verificación por
+      primera vez.</div>
+    <% end %>
+
+    <% if @vehicle.verificacion_first_period_expired? %>
+    <!-- fuera de periodo para 1a verificacion -->
+    <div class="alert alert-warning"><strong>El periodo para verificar
+      su auto por primera vez termino el 
+        <%= @vehicle.verificacion_first_period_end_str %>:</strong>
+      Debe pagar una multa por verificación extemporanea antes de
+      llevar a verificar su auto por primera vez.</div>
     <p><a href="#">Obtenga la linea de captura de su multa y consulte las
         opciones para pagarla &raquo;</a></p>
     <% end %>
-    
+
+    <!-- links sobre verificacion -->    
     <p><a href="#">Localize los verificentos donde puede llevar su
         auto a verificar &raquo;</a></p>
     <p><a href="<%= url_for({ controller: 'info', action: 'verificaciones', plate: @vehicle.plate })%>">
@@ -54,8 +68,11 @@
   <!-- hoy no circula -->
   <div class="col-md-6">    
     <h2>Hoy no circula</h2>
+
     <% if @vehicle.verificacion_valid? %>
+    <!-- verificados -->
     <% if @vehicle.verificacion_result == 'dos' %>
+    <!-- calcomania 2 -->
     <p>Debido a que su auto obtuvo el
       holograma <strong><%= @vehicle.verificacion_result %></strong>
       en su última verificación y su placa termina en
@@ -66,24 +83,16 @@
       <li>El <%= @vehicle.no_circula_weekend %> de cada mes.</li>
     </ul>
     <% else %>
+    <!-- calcomania 0 o 00 -->
     <p>Debido a que su auto obtuvo el
       holograma <strong><%= @vehicle.verificacion_result %></strong> en
       su última verificación <strong>puede circular todos los
         días.</strong></p> 
     <% end %>
-    <p><a href="#">Consulte la lista de días que su auto no puede
-        circular &raquo;</a></p>
     <% end %>
-    
-    <% if @vehicle.verificacion_expired? %>
-    <div class="alert alert-warning"><strong>Su auto no puede
-        circular:</strong> Debe llevar a verificar su auto.</div>
-    <% end %>
-    
-    <% if @vehicle.verificacion_never? %>
-    <div class="alert alert-warning"><strong>Si ya pasaron 180 días
-        naturales a partir de la fecha de alta:</strong> Su auto no
-      puede circular.</div>
+
+    <% if @vehicle.verificacion_first_period_ok? %>
+    <!-- en periodo para la 1a verificacion -->
     <p>Debido a que nunca ha verificado su auto y su placa termina
       en <strong><%= @vehicle.plate_ending_str %></strong>, no puede
       circular:</p>
@@ -92,6 +101,17 @@
       <li>El <%= @vehicle.no_circula_weekend %> de cada mes.</li>
     </ul>
     <% end %>
+
+    <% if @vehicle.verificacion_expired? || 
+       @vehicle.verificacion_first_period_expired? %>
+    <!-- sin verificacion o fuera de periodo para la 1a verificacion -->
+    <div class="alert alert-warning"><strong>Su auto no puede
+        circular:</strong> Debe llevar a verificar su auto.</div>
+    <% else %>
+    <!-- con verificacion o en periodo para la 1a verificacion -->
+    <p><a href="#">Consulte la lista de días que su auto no puede
+        circular &raquo;</a></p>
+    <% end %>    
   </div>
 </div>
 
@@ -99,7 +119,9 @@
   <!-- infracciones -->
   <div class="col-md-6">
     <h2>Infracciones</h2>
+
     <% if @vehicle.infracciones_unpaid > 0 %>
+    <!-- con adeudos de infracciones -->
     <div class="alert alert-warning">
       <% if @vehicle.infracciones_unpaid > 1 %>
       <strong>Su auto tiene <%= @vehicle.infracciones_unpaid %>
@@ -112,9 +134,12 @@
     <p><a href="#">Consulte las opciones para pagar las infracciones de
         su auto &raquo;</a></p>
     <% else %>
+    <!-- sin adeudos de infracciones -->
     <div class="alert alert-success">Su auto no tiene infracciones sin
       pagar.</div>
     <% end %>
+
+    <!-- links sobre infracciones -->    
     <a href="<%= url_for({ controller: 'info', action: 'infracciones', plate: @vehicle.plate })%>">
       Ver el historial de infracciones de su auto &raquo;</a></p>
   </div>
@@ -122,7 +147,9 @@
   <!-- tenencia -->
   <div class="col-md-6">
     <h2>Tenencia</h2>
+
     <% if @vehicle.tenencias_unpaid > 0 %>
+    <!-- con adeudos de tenencia -->
     <div class="alert alert-warning">
       <% if @vehicle.tenencias_unpaid > 1 %>
       <strong>Su auto tiene adeudos por los años
@@ -134,6 +161,7 @@
     <p><a href="#">Consulte las opciones para pagar la tenencia de su
         auto &raquo;</a></p>
     <% else %>
+    <!-- sin adeudos de tenencia -->
     <div class="alert alert-success">Su auto no tiene adeudos
       de tenencia.</div>
     <% end %>
@@ -168,5 +196,19 @@
   </div>
 </div>
 
-<%= debug(@vehicle.verificacion_current) if Rails.env.development? %>
-<%= debug(@vehicle) if Rails.env.development? %>
+<% if Rails.env.development? %>
+<!-- debug -->
+<h2>Debug</h2>
+<h3>@params</h3>
+<%= debug(@params) %>
+<h3>@session</h3>
+<%= debug(@session) %>
+<h3>@vehicle.verificacion_current</h3>
+<%= debug(@vehicle.verificacion_current) %>
+<h3>@vehicle.verificaciones</h3>
+<%= debug(@vehicle.verificaciones) %>
+<h3>@vehicle.registration_date</h3>
+<%= debug(@vehicle.registration_date) %>
+<h3>@vehicle</h3>
+<%= debug(@vehicle) %>
+<% end %>
