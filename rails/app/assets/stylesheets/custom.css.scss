@@ -4,7 +4,7 @@
 
 body {
     padding-top: 50px;
-    padding-bottom: 55px;
+    padding-bottom: 50px;
 }
 
 .navbar > .container .navbar-brand {
@@ -12,9 +12,10 @@ body {
 }
 
 footer {
-    background-color: #fff;
+    background-color: #E6E6E6;
 }
 
-footer hr {
-    margin-top: 0;
+footer p {
+    line-height: 49px;
+    margin-bottom: 0;
 }
