@@ -3,14 +3,15 @@ class Notifier < ActionMailer::Base
   
   default from: "Verificalo <verificalo@dev.codigo.labplc.mx>"
 
-  def confirm(user)
+  def confirm (user)
     @user = user
     mail(to: user.destination, subject: "Active su suscripcion")
   end
   
-  def welcome(user)
+  def welcome (user)
     @user = user
-    @vehicle = VehicleCDMX.new(@user.plate)
+    params = ActionController::Parameters.new({ plate: @user.plate })
+    @vehicle = VehicleCDMX.new(params)
     mail(to: user.destination, subject: "Bienvenido")
   end
 end
