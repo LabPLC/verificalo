@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :destination, format: { with: VALID_PHONE_REGEX }, if: lambda { self.via == 'PHONE' }
 
   before_validation {
-    self.plate = self.plate.strip if self.plate
+    self.plate = self.plate.gsub(/[^0-9a-z ]/i, '').strip if self.plate
     if self.destination
       self.destination = self.destination.strip if self.via == 'EMAIL'
       self.destination = self.destination.gsub(/[^0-9]/, "") if self.via == 'PHONE'
