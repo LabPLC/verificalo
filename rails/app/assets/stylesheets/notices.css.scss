@@ -1,3 +1,5 @@
+/* notices#home */
+
 .lead {
     margin-top: 21px;
 }
@@ -7,7 +9,12 @@
     margin: 10px auto;
 }
 
-.btn-notices-form {
-    display: block;
-    margin: 10px auto;
+#btn-notices-ok {
+    margin: 10px 0 20px 0;
+}
+
+/* notices#results */
+
+#btn-notices-error {
+    margin-bottom: 20px;
 }

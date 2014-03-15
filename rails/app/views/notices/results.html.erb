@@ -5,13 +5,34 @@
   </div>
 </div>
 
+<% if @error %>
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
-    <% if @error %>
+    <% if @error == 'INVALID_PLATE' %>
+    <div class="alert alert-warning"><strong>La placa que ingreso
+        no es valida.</strong></div>
+    <% elsif @error == 'INVALID_EMAIL' %>
+    <div class="alert alert-warning"><strong>El correo electrónico que
+        ingreso no es valido.</strong></div>
+    <% elsif @error == 'INVALID_SETTINGS_COUNT' %>
+    <div class="alert alert-warning"><strong>Debe seleccionar al menos
+        un aviso.</strong></div>
+    <% else %>
     <div class="alert alert-warning">
       <strong><%= @error %></strong></div>
-    <% else %>
-    <% if @user.via == 'EMAIL' %>    
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 text-center">
+    <a href="<%= url_for({ controller: 'notices', action: 'home' })%>"
+       id="btn-notices-error" class="btn btn-primary">Regresar</a>
+  </div>
+</div>
+<% else %>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <% if @user.via == 'EMAIL' %>
     <div class="alert alert-info">Para activar la suscripción a los
       avisos de su automovil con placa
       <strong><%= @user.plate %></strong> debe visitar la dirección que
@@ -19,9 +40,9 @@
     <% elsif @user.via == 'PHONE' %>
     <div class="alert alert-info">PHONE</div>
     <% end %>
-    <% end %>
   </div>
 </div>
+<% end %>
 
 <%= debug(@user) if Rails.env.development? %>
 <%= debug(@settings) if Rails.env.development? %>

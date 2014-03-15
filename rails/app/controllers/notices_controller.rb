@@ -18,8 +18,15 @@ class NoticesController < ApplicationController
 
   def results
     @user = User.new(user_params)
+    @debug = @user.errors
     if !@user.save
-      @error = 'USER_PARAMS_ERROR'
+      if @user.errors[:plate].count > 0
+        @error = 'INVALID_PLATE'
+      elsif @user.errors[:destination].count > 0
+        @error = 'INVALID_EMAIL'
+      else
+        @error = 'USER_SAVE_ERROR'
+      end
       return
     end
     begin      
@@ -29,10 +36,10 @@ class NoticesController < ApplicationController
         setting
       }
     rescue ActionController::ParameterMissing
-      @error = 'SETTINGS_COUNT_ERROR'
+      @error = 'INVALID_SETTINGS_COUNT'
       @user.destroy
     rescue
-      @error = 'SETTINGS_PARAMS_ERROR'
+      @error = 'INVALID_SETTING'
       @user.destroy
     else
       @settings.each{ |s| s.save }
