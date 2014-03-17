@@ -9,7 +9,8 @@ $(document).ready(function() {
                      $('#notices-subform').fadeOut('slow', function() {
                          $('#notices-subform').html(data);
                          $("#notices-subform").fadeIn('slow', function () {
-                             var y = $('#notices-subform').offset().top - $('html').offset().top + $('html').scrollTop();
+                             var y = $('#notices-subform').offset().top - 
+                                 parseInt($('body').css('padding-top').replace("px", ""), 10);
                              $('html').animate({ scrollTop: y }, 'slow');
                          });
                      });
