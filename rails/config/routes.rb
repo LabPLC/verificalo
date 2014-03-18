@@ -5,11 +5,10 @@ Verificalo::Application.routes.draw do
   match '/info/:plate', to: 'info#results', via: [ 'get', 'post' ]
   match '/info/:plate/verificaciones', to: 'info#verificaciones', via: 'get'
   match '/info/:plate/infracciones', to: 'info#infracciones', via: 'get'
-  match '/avisos', to: 'notices#home', via: 'get'
+  match '/avisos', to: 'notices#home', via: [ 'get', 'post' ]
   match '/avisos/email', to: 'notices#email', via: 'get'
-  match '/avisos/phone', to: 'notices#phone', via: 'get'
+  match '/avisos/telefono', to: 'notices#phone', via: 'get'
   match '/avisos/twitter', to: 'notices#twitter', via: 'get'
-  match '/avisos', to: 'notices#results', via: 'post'
   match '/avisos/:user', to: 'notices#confirm', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
