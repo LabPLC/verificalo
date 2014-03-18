@@ -90,8 +90,8 @@
 <p><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
     Regresar &raquo;</a></p>
 
-<!-- debug -->
 <% if Rails.env.development? %>
+<!-- debug -->
 <h2>Debug</h2>
 <h3>@params</h3>
 <%= debug(@params) %>
