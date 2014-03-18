@@ -1,3 +1,4 @@
+<!-- notifier#welcome -->
 <h1>Bienvenido</h1>
 
 <p>La suscripción a los avisos de su auto con
@@ -5,26 +6,30 @@
   en su correo electrónico los siguientes avisos sobre su auto:</p>
 
 <ul>
-  <% if @settings['VERIFICACION_BEFORE'] %>
-  <li>Dos semanas antes y cuando inicie el periodo para verificar su auto</li>
+  <% if @settings['VERIFICACION'] %>
+  <li style="margin: 15px"><strong>Periodo para verificar su
+      auto</strong><br/>Recibira un aviso cuando inicie el periodo para
+    verificar su auto, recordatorios quincenales hasta que su auto
+    apruebe la verificación y una confirmación de que su auto aprobo la
+    verificación.<br/></li>
   <% end %>
-  <% if @settings['VERIFICACION_DURING'] %>
-  <li>Cada dos semanas hasta que verifique su auto</li>
+
+  <% if @settings['ADEUDOS'] %>
+  <li style="margin: 15px"><strong>Adeudos de tenencias e
+      infracciones</strong><br/>Recibira un aviso cuando su auto
+    presente nuevos adeudos, recordatorios mensuales para liquidar sus
+    adeudos y una confirmación cuando su auto no tenga
+    adeudos<br/></li>
   <% end %>
-  <% if @settings['VERIFICACION_AFTER'] %>
-  <li>Cuando su auto este verificado</li>
-  <% end %>
-  <% if @settings['ADEUDOS_NEW'] %>
-  <li>Cuando su auto tenga nuevos adeudos de infracciones o tenencias</li>
-  <% end %>
-  <% if @settings['ADEUDOS_AFTER'] %>
-  <li>Cuando pague sus adeudos de infracciones o tenencias</li>
-  <% end %>
+  
   <% if @settings['NO_CIRCULA_WEEKDAY'] %>
-  <li>Un día antes de que su auto no pueda circular de lunes a viernes</li>
+  <li style="margin: 15px"><strong>Un día antes de que su auto no pueda
+      circular de lunes a viernes</strong><br/></li>
   <% end %>
+
   <% if @settings['NO_CIRCULA_WEEKEND'] %>
-  <li>Un día antes de que su auto no pueda circular en sábado</li>
+  <li style="margin: 15px"><strong>Un día antes de que su auto no pueda
+      circular en sábado</strong><br/></li>
   <% end %>
 </ul>
 

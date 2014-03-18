@@ -88,35 +88,18 @@
 
 <div class="row">
   <div class="col-md-6">
-    <label>Verificación</label>
     <div class="checkbox">
       <label>
         <input type="checkbox"
-               <%= setting_checked('VERIFICACION_BEFORE', true) %>
-               name="settings[VERIFICACION_BEFORE]">        
-        Dos semanas antes y cuando inicie el periodo para verificar
-        su auto
+               <%= setting_checked('VERIFICACION', true) %>
+               name="settings[VERIFICACION]">        
+        Periodo para verificarlo
       </label>
+      <span class="help-block">Recibira un aviso cuando inicie el
+        periodo para verificar su auto, recordatorios quincenales
+        hasta que su auto apruebe la verificación y una confirmación
+        de que su auto aprobo la verificación.</span>
     </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"
-               <%= setting_checked('VERIFICACION_DURING', true) %>
-               name="settings[VERIFICACION_DURING]">
-        Cada dos semanas hasta que verifique su auto
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"
-               <%= setting_checked('VERIFICACION_AFTER', true) %>
-               name="settings[VERIFICACION_AFTER]">
-        Cuando su auto este verificado
-      </label>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label>Hoy no circula</label>
     <div class="checkbox">
       <label>
         <input type="checkbox" 
@@ -131,29 +114,22 @@
         <input type="checkbox"
                <%= setting_checked('NO_CIRCULA_WEEKEND', true) %>
                name="settings[NO_CIRCULA_WEEKEND]">
-        Un día antes de que su auto no pueda circular en sabado
+        Un día antes de que su auto no pueda circular en sábado
       </label>
     </div>
   </div>
-</div>
-<div class="row">
   <div class="col-md-6">
-    <label>Infracciones y tenencias</label>
     <div class="checkbox">
       <label>
         <input type="checkbox"
-               <%= setting_checked('ADEUDOS_NEW', true) %>
-               name="settings[ADEUDOS_NEW]">
-        Cuando su auto tenga nuevos adeudos
+               <%= setting_checked('ADEUDOS', true) %>
+               name="settings[ADEUDOS]">
+        Adeudos de tenencias e infracciones
       </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"
-               <%= setting_checked('ADEUDOS_AFTER', true) %>
-               name="settings[ADEUDOS_AFTER]">
-        Cuando pague sus adeudos
-      </label>
+      <span class="help-block">Recibira un aviso cuando su auto
+        presente nuevos adeudos, recordatorios mensuales para liquidar
+        sus adeudos y una confirmación cuando su auto no tenga
+        adeudos.</span>
     </div>
   </div>
 </div>
