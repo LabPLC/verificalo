@@ -1,25 +1,34 @@
 <h1>Bienvenido</h1>
 
-<p>La información actual de su auto con placa 
-  <strong><%= @user.plate %></strong> es:</p>
+<%= debug(@settings) %>
 
-<h2>Verficacion</h2>
+<p>La suscripción a los avisos de su auto con
+  placa <strong><%= @user.plate %></strong> ha sido activada. Recibira
+  en su correo electrónico los siguientes avisos sobre su auto:</p>
 
-<%= render 'info/verificacion' %>
-
-<h2>Hoy no circula</h2>
-
-<%= render 'info/no_circula' %>
-
-<h2>Infracciones</h2>
-
-<%= render 'info/infracciones' %>
-
-<h2>Tenencia</h2>
-
-<%= render 'info/tenencia' %>
-
-<h2>Avisos</h2>
+<ul>
+  <% if @settings['VERIFICACION_BEFORE'] %>
+  <li>Dos semanas antes y cuando inicie el periodo para verificar su auto</li>
+  <% end %>
+  <% if @settings['VERIFICACION_DURING'] %>
+  <li>Cada dos semanas hasta que verifique su auto</li>
+  <% end %>
+  <% if @settings['VERIFICACION_AFTER'] %>
+  <li>Cuando su auto este verificado</li>
+  <% end %>
+  <% if @settings['ADEUDOS_NEW'] %>
+  <li>Cuando su auto tenga nuevos adeudos de infracciones o tenencias</li>
+  <% end %>
+  <% if @settings['ADEUDOS_AFTER'] %>
+  <li>Cuando pague sus adeudos de infracciones o tenencias</li>
+  <% end %>
+  <% if @settings['NO_CIRCULA_WEEKDAY'] %>
+  <li>Un día antes de que su auto no pueda circular de lunes a viernes</li>
+  <% end %>
+  <% if @settings['NO_CIRCULA_WEEKEND'] %>
+  <li>Un día antes de que su auto no pueda circular en sábado</li>
+  <% end %>
+</ul>
 
 <p>Recuerde que en cualquier momento puede modificar su suscripción o
   cancelarla en la siguiente dirección:</p>

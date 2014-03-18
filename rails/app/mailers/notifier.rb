@@ -10,8 +10,10 @@ class Notifier < ActionMailer::Base
   
   def welcome (user)
     @user = user
-    params = ActionController::Parameters.new({ plate: @user.plate })
-    @vehicle = VehicleCDMX.new(params)
+    @settings = Hash.new
+    @user.settings.each { |s|
+      @settings[s.setting] = true;
+    }
     mail(to: user.destination, subject: "Bienvenido")
   end
 end
