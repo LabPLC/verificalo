@@ -1,0 +1,22 @@
+<% if @vehicle.infracciones_unpaid > 0 %>
+<!-- con adeudos de infracciones -->
+<div class="alert alert-warning">
+  <% if @vehicle.infracciones_unpaid > 1 %>
+  <strong>Su auto tiene <%= @vehicle.infracciones_unpaid %>
+    infracciones
+    <% else %>
+    <strong>Su auto tiene una infracción
+      <% end %>
+      sin pagar:</strong> Recuerde que debe realizar su pago antes de
+    llevar su auto a verificar.</div>
+<p><a href="#">Consulte las opciones para pagar las infracciones de
+    su auto &raquo;</a></p>
+<% else %>
+<!-- sin adeudos de infracciones -->
+<div class="alert alert-success">Su auto no tiene infracciones sin
+  pagar.</div>
+<% end %>
+
+<!-- links sobre infracciones -->    
+<p><a href="<%= url_for({ controller: 'info', action: 'infracciones', plate: @vehicle.plate })%>">
+  Ver el historial de infracciones de su auto &raquo;</a></p>
