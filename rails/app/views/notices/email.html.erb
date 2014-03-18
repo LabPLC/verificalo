@@ -8,6 +8,34 @@
   </div>
 </div>
 
+<% if request.post? && (@errors[:INVALID_PLATE] || @errors[:INVALID_EMAIL]) %>
+<div class="row">
+  <% if @errors[:INVALID_PLATE] && @errors[:INVALID_EMAIL] %>
+  <div class="col-md-6">
+    <div class="alert alert-warning">
+      <strong>La placa que ingreso no es valida.</strong>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="alert alert-warning">
+      <strong>El correo electrónico que ingreso no es valido.</strong>
+    </div>
+  </div>
+  <% else %>
+  <div class="col-md-12">
+    <div class="alert alert-warning">
+      <% if @errors[:INVALID_PLATE] %>
+      <strong>La placa que ingreso no es valida.</strong>
+      <% end %>
+      <% if @errors[:INVALID_EMAIL] %>
+      <strong>El correo electrónico que ingreso no es valido.</strong>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>
+
 <div class="row">
   <div class="col-md-6">
     <div class="form-group">
@@ -15,6 +43,9 @@
         <div class="col-sm-6">
           <input type="text" class="form-control"
                  id="input-notices-plate" name="user[plate]"
+                 <% if request.post? && !@errors[:INVALID_PLATE] %>
+                 value="<%= @user[:plate] %>"
+                 <% end %>
                  placeholder="Placa de su auto">
         </div>
       </div>
@@ -28,12 +59,15 @@
         <div class="col-sm-10">
           <input type="email" class="form-control"
                  id="input-notices-email" name="user[destination]"
+                 <% if request.post? && !@errors[:INVALID_EMAIL] %>
+                 value="<%= @user[:destination] %>"
+                 <% end %>
                  placeholder="Su correo electrónico">
         </div>
       </div>
+      <span class="help-block">No compartiremos su dirección personal
+        con nadie</span>
     </div>
-    <span class="help-block">No compartiremos su dirección personal
-      con nadie</span>
   </div>
 </div>
 
@@ -42,27 +76,40 @@
     <p class="lead">¿Qué avisos desea recibir sobre su auto?</p>
   </div>
 </div>
+
+<% if request.post? && @errors[:INVALID_SETTINGS_COUNT] %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-warning"><strong>Debe seleccionar por lo
+        menos un aviso.</strong></div>
+  </div>
+</div>
+<% end %>
+
 <div class="row">
   <div class="col-md-6">
     <label>Verificación</label>
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="true"
-               name="settings[VERIFICACION_BEFORE]">
+        <input type="checkbox"
+               <%= setting_checked('VERIFICACION_BEFORE', true) %>
+               name="settings[VERIFICACION_BEFORE]">        
         Dos semanas antes y cuando inicie el periodo para verificar
         su auto
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="true"
+        <input type="checkbox"
+               <%= setting_checked('VERIFICACION_DURING', true) %>
                name="settings[VERIFICACION_DURING]">
         Cada dos semanas hasta que verifique su auto
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="true"
+        <input type="checkbox"
+               <%= setting_checked('VERIFICACION_AFTER', true) %>
                name="settings[VERIFICACION_AFTER]">
         Cuando su auto este verificado
       </label>
@@ -72,14 +119,17 @@
     <label>Hoy no circula</label>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="settings[NO_CIRCULA_WEEKDAY]">
+        <input type="checkbox" 
+               <%= setting_checked('NO_CIRCULA_WEEKDAY', false) %>
+               name="settings[NO_CIRCULA_WEEKDAY]">
         Un día antes de que su auto no pueda circular de lunes a
         viernes
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="true"
+        <input type="checkbox"
+               <%= setting_checked('NO_CIRCULA_WEEKEND', true) %>
                name="settings[NO_CIRCULA_WEEKEND]">
         Un día antes de que su auto no pueda circular en sabado
       </label>
@@ -91,14 +141,16 @@
     <label>Infracciones y tenencias</label>
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="true"
+        <input type="checkbox"
+               <%= setting_checked('ADEUDOS_NEW', true) %>
                name="settings[ADEUDOS_NEW]">
         Cuando su auto tenga nuevos adeudos
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" checked="true"
+        <input type="checkbox"
+               <%= setting_checked('ADEUDOS_AFTER', true) %>
                name="settings[ADEUDOS_AFTER]">
         Cuando pague sus adeudos
       </label>

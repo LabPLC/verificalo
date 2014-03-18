@@ -2,6 +2,44 @@ class NoticesController < ApplicationController
   include VehicleCDMX
 
   def home
+    @params = params
+    unless request.post?
+      return
+    end
+    @errors = Hash.new
+    @user = User.new(user_params)
+    @debug = @user.errors
+    if !@user.save
+      if @user.errors[:plate].count > 0
+        @errors[:INVALID_PLATE] = true
+      end
+      if @user.errors[:destination].count > 0
+        @errors[:INVALID_EMAIL] = true
+      end
+      unless @errors[:INVALID_PLATE] || @errors[:INVALID_EMAIL]
+        render 'error'
+        return
+      end
+      return
+    end
+    begin      
+      @settings = settings_params.collect{ |x|
+        setting = Setting.new(x)
+        raise if setting.invalid?
+        setting
+      }
+    rescue ActionController::ParameterMissing
+      @user.destroy
+      @errors[:INVALID_SETTINGS_COUNT] = true
+    rescue
+      @user.destroy
+      render 'error'
+      return
+    else
+      @settings.each{ |s| s.save }
+      Notifier.confirm(@user).deliver
+      render 'results'
+    end
   end
 
   def email
@@ -17,34 +55,7 @@ class NoticesController < ApplicationController
   end
 
   def results
-    @user = User.new(user_params)
-    @debug = @user.errors
-    if !@user.save
-      if @user.errors[:plate].count > 0
-        @error = 'INVALID_PLATE'
-      elsif @user.errors[:destination].count > 0
-        @error = 'INVALID_EMAIL'
-      else
-        @error = 'USER_SAVE_ERROR'
-      end
-      return
-    end
-    begin      
-      @settings = settings_params.collect{ |x|
-        setting = Setting.new(x)
-        raise if setting.invalid?
-        setting
-      }
-    rescue ActionController::ParameterMissing
-      @error = 'INVALID_SETTINGS_COUNT'
-      @user.destroy
-    rescue
-      @error = 'INVALID_SETTING'
-      @user.destroy
-    else
-      @settings.each{ |s| s.save }
-      Notifier.confirm(@user).deliver
-    end
+    
   end
   
   def confirm

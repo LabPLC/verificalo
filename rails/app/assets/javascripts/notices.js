@@ -9,11 +9,20 @@ $(document).ready(function() {
                      $('#notices-subform').fadeOut('slow', function() {
                          $('#notices-subform').html(data);
                          $("#notices-subform").fadeIn('slow', function () {
-                             var y = $('#notices-subform').offset().top - 
-                                 parseInt($('body').css('padding-top').replace("px", ""), 10);
-                             $('html').animate({ scrollTop: y }, 'slow');
+                             scroll_subform();
                          });
                      });
                  }});
     });
+    if (btn_active) {
+        $(btn_active).addClass('btn-default');
+        $(btn_active).removeClass('btn-primary');        
+        scroll_subform();
+    }
 });
+
+function scroll_subform () {
+    var y = $('#notices-subform').offset().top - 
+        parseInt($('body').css('padding-top').replace("px", ""), 10);
+    $('html').animate({ scrollTop: y }, 'slow');
+}
