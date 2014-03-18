@@ -6,11 +6,12 @@ module ApplicationHelper
       false
     end
   end
+
   def is_active?(controller)
     if params[:controller] == controller
-      "active"
+      'active'
     else
-      ""
+      ''
     end
   end
 end
