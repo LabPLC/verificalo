@@ -7,29 +7,29 @@
 
 <ul>
   <% if @settings['VERIFICACION'] %>
-  <li style="margin: 15px"><strong>Periodo para verificar su
-      auto</strong><br/>Recibira un aviso cuando inicie el periodo para
-    verificar su auto, recordatorios quincenales hasta que su auto
-    apruebe la verificación y una confirmación de que su auto aprobo la
-    verificación.<br/></li>
+  <li style="margin: 15px"><strong>Verificación</strong><br/>Recibira
+    un aviso cuando inicie el periodo para verificar su auto,
+    recordatorios quincenales hasta que su auto apruebe la verificación
+    y una confirmación cuando su auto apruebe la verificación.</li>
   <% end %>
 
   <% if @settings['ADEUDOS'] %>
   <li style="margin: 15px"><strong>Adeudos de tenencias e
       infracciones</strong><br/>Recibira un aviso cuando su auto
     presente nuevos adeudos, recordatorios mensuales para liquidar sus
-    adeudos y una confirmación cuando su auto no tenga
-    adeudos<br/></li>
+    adeudos y una confirmación cuando su auto no tenga adeudos.</li>
   <% end %>
   
   <% if @settings['NO_CIRCULA_WEEKDAY'] %>
-  <li style="margin: 15px"><strong>Un día antes de que su auto no pueda
-      circular de lunes a viernes</strong><br/></li>
+  <li style="margin: 15px"><strong>Hoy no circula de lunes a
+      viernes</strong><br/>Recibira avisos un día antes de que su
+    auto no pueda circular entre lunes y viernes.</li>
   <% end %>
 
   <% if @settings['NO_CIRCULA_WEEKEND'] %>
-  <li style="margin: 15px"><strong>Un día antes de que su auto no pueda
-      circular en sábado</strong><br/></li>
+  <li style="margin: 15px"><strong>Hoy no circula
+      sabatino</strong><br/>Recibira avisos un día antes de que su
+    auto no pueda circular en sábado.</li>
   <% end %>
 </ul>
 

@@ -93,32 +93,13 @@
         <input type="checkbox"
                <%= setting_checked('VERIFICACION', true) %>
                name="settings[VERIFICACION]">        
-        Periodo para verificarlo
+        Verificación
       </label>
       <span class="help-block">Recibira un aviso cuando inicie el
         periodo para verificar su auto, recordatorios quincenales
         hasta que su auto apruebe la verificación y una confirmación
-        de que su auto aprobo la verificación.</span>
+        cuando su auto apruebe la verificación.</span>
     </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" 
-               <%= setting_checked('NO_CIRCULA_WEEKDAY', false) %>
-               name="settings[NO_CIRCULA_WEEKDAY]">
-        Un día antes de que su auto no pueda circular de lunes a
-        viernes
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"
-               <%= setting_checked('NO_CIRCULA_WEEKEND', true) %>
-               name="settings[NO_CIRCULA_WEEKEND]">
-        Un día antes de que su auto no pueda circular en sábado
-      </label>
-    </div>
-  </div>
-  <div class="col-md-6">
     <div class="checkbox">
       <label>
         <input type="checkbox"
@@ -130,6 +111,28 @@
         presente nuevos adeudos, recordatorios mensuales para liquidar
         sus adeudos y una confirmación cuando su auto no tenga
         adeudos.</span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" 
+               <%= setting_checked('NO_CIRCULA_WEEKDAY', false) %>
+               name="settings[NO_CIRCULA_WEEKDAY]">
+        Hoy no circula de lunes a viernes
+      </label>
+      <span class="help-block">Recibira avisos un día antes de que su
+        auto no pueda circular entre lunes y viernes.</span>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"
+               <%= setting_checked('NO_CIRCULA_WEEKEND', true) %>
+               name="settings[NO_CIRCULA_WEEKEND]">
+        Hoy no circula sabatino
+      </label>
+      <span class="help-block">Recibira avisos un día antes de que su
+        auto no pueda circular en sábado.</span>
     </div>
   </div>
 </div>
