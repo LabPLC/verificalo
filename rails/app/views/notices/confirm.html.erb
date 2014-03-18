@@ -1,10 +1,11 @@
-<!-- notices#success -->
+<!-- notices#confirm -->
 <div class="row">
   <div class="col-md-offset-2 col-md-8 text-center">
     <h1>Avisos</h1>
   </div>
 </div>
 
+<!-- confirmacion -->
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
     <% if @error %>
@@ -18,4 +19,13 @@
   </div>
 </div>
 
-<%= debug(@user) if Rails.env.development? %>
+<% if Rails.env.development? %>
+<!-- debug -->
+<h2>Debug</h2>
+<h3>@params</h3>
+<%= debug(@params) %>
+<h3>@error</h3>
+<%= debug(@error) %>
+<h3>@user</h3>
+<%= debug(@user) %>
+<% end %>
