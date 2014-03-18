@@ -21,8 +21,8 @@
     <%= @vehicle.verificacion_current_vigency_str %>:</strong>
   Debe pagar una multa por verificación extemporanea antes de
   llevar su auto a verificar.</div>
-<p><a href="#">Obtenga la linea de captura de su multa y consulte
-    las opciones para pagarla &raquo;</a></p>
+<!-- <p><a href="#">Obtenga la linea de captura de su multa y consulte
+    las opciones para pagarla &raquo;</a></p> -->
 <% end %>
 
 <% if @vehicle.verificacion_first_period_ok? %>
@@ -42,12 +42,12 @@
     <%= @vehicle.verificacion_first_period_end_str %>:</strong>
   Debe pagar una multa por verificación extemporanea antes de
   llevar a verificar su auto por primera vez.</div>
-<p><a href="#">Obtenga la linea de captura de su multa y consulte las
-        opciones para pagarla &raquo;</a></p>
+<!-- <p><a href="#">Obtenga la linea de captura de su multa y consulte las
+        opciones para pagarla &raquo;</a></p> -->
 <% end %>
 
 <!-- links sobre verificacion -->    
-<p><a href="#">Localize los verificentos donde puede llevar su
-    auto a verificar &raquo;</a></p>
+<!-- <p><a href="#">Localize los verificentos donde puede llevar su
+    auto a verificar &raquo;</a></p> -->
 <p><a href="<%= url_for({ controller: 'info', action: 'verificaciones', plate: @vehicle.plate })%>">
     Ver el historial de verificaciones de su auto &raquo;</a></p>
