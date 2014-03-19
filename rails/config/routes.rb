@@ -1,10 +1,16 @@
 Verificalo::Application.routes.draw do
+
+  # paginas estaticas
   root "static_pages#home"
   match '/acerca', to: 'static_pages#about', via: 'get'
+
+  # informacion
   match '/info', to: 'info#home', via: [ 'get', 'post' ]
   match '/info/:plate', to: 'info#results', via: [ 'get', 'post' ]
   match '/info/:plate/verificaciones', to: 'info#verificaciones', via: 'get'
   match '/info/:plate/infracciones', to: 'info#infracciones', via: 'get'
+
+  # avisos
   match '/avisos', to: 'notices#home', via: [ 'get', 'post' ]
   match '/avisos/email', to: 'notices#email', via: 'get'
   match '/avisos/telefono', to: 'notices#phone', via: 'get'
