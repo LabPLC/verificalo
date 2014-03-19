@@ -17,6 +17,9 @@ Verificalo::Application.routes.draw do
   match '/avisos/twitter', to: 'notices#twitter', via: 'get'
   match '/avisos/:user', to: 'notices#confirm', via: 'get'
 
+  # respuestas
+  match '/respuestas', to: 'answers#home', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
