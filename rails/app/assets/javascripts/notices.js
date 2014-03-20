@@ -14,7 +14,7 @@ $(document).ready(function() {
                      });
                  }});
     });
-    if (btn_active) {
+    if (typeof btn_active != "undefined") {
         $(btn_active).addClass('btn-default');
         $(btn_active).removeClass('btn-primary');        
         scroll_subform();
