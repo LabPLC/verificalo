@@ -1,6 +1,17 @@
+var btn_label = {
+  'btn-notices-home-email' : 'notices-home-email',
+  'btn-notices-home-phone' : 'notices-home-phone',
+  'btn-notices-home-twitter' : 'notices-home-twitter'
+};
+
 $(document).ready(function() {
     $('.btn-notices-home').click(function (e) {
         e.preventDefault();
+        ga('send', {
+            'hitType': 'event',
+            'eventCategory': 'button',
+            'eventAction': 'click',
+            'eventLabel': btn_label[this.id] });
         $('.btn-notices-home').addClass('btn-primary');
         $(this).addClass('btn-default');
         $(this).removeClass('btn-primary');

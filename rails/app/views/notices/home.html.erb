@@ -49,7 +49,7 @@
   var btn_subforms = { 
   'btn-notices-home-email' : '<%= url_for({ controller: 'notices', action: 'email' }) %>',
   'btn-notices-home-phone' : '<%= url_for({ controller: 'notices', action: 'phone' }) %>',
-  'btn-notices-home-twitter' : '<%= url_for({ controller: 'notices', action: 'twitter' }) %>',
+  'btn-notices-home-twitter' : '<%= url_for({ controller: 'notices', action: 'twitter' }) %>'
   };
   <% if request.post? %>
   <% if params[:user][:via] == 'EMAIL' %>
@@ -60,6 +60,13 @@
   var btn_active = $('#btn-notices-home-twitter');
   <% end %>
   <% end %>
+</script>
+
+<!-- analytics -->
+<script>
+  ga('set', 'page', '/notices/home');
+  ga('set', 'title', 'Notices - Home');
+  ga('send', 'pageview');
 </script>
 
 <% if Rails.env.development? %>
