@@ -41,6 +41,18 @@ module VehicleCDMX
         @status = 'API_JSON_ERROR'
         return
       end
+      unless @api['verificaciones'].is_a?(Array)
+        @status = 'VERIFICACIONES_ERROR'
+        return
+      end
+      unless @api['infracciones'].is_a?(Array)
+        @status = 'INFRACCIONES_ERROR'
+        return
+      end
+      unless @api['tenencias'].is_a?(Hash)
+        @status = 'TENENCIAS_ERROR'
+        return
+      end
       if params['vin']
         @vin = params['vin'].upcase
       end
@@ -56,21 +68,22 @@ module VehicleCDMX
     # accesores basicos
 
     def error
-      if (@status == 'OK')
-        return false
-      end
+      return false if @status == 'OK'
       @status
     end
 
     def plate
+      return false if self.error
       @plate
     end
-
+    
     def plate_ending
+      return false if self.error
       /\d(?!.*\d)/.match(@plate)[0]
     end
 
     def plate_ending_str
+      return false if self.error
       plate_ending_str = { 
         '1' => 'uno', '2' => 'dos', '3' => 'tres', '4' => 'cuatro', 
         '5' => 'cinco', '6' => 'seis', '7' => 'siete', '8' => 'ocho',
@@ -80,19 +93,20 @@ module VehicleCDMX
 
     # accesores vin
 
+    def user_vin?
+      return true if @vin
+      false
+    end
+
     def user_vin
+      return false unless self.user_vin?
       @vin
     end
 
     def user_vin= (v)
       @vin = v.upcase
     end
-
-    def user_vin?
-      return true if @vin
-      false
-    end
-        
+    
     def user_vin_valid?
       return false unless self.user_vin?
       if self.user_vin =~ /\A[a-z0-9]+\z/i
@@ -103,15 +117,19 @@ module VehicleCDMX
 
     # accesores fecha de registro
 
+    def registration_date?
+      return true if @registration
+      false
+    end
+
     def registration_date
-      if @registration
-        begin
-          return Date.new(@registration.y.to_i,
-                          @registration.m.to_i,
-                          @registration.d.to_i)
-        rescue
-          return false
-        end
+      return false unless self.registration_date?
+      begin
+        return Date.new(@registration.y.to_i,
+                        @registration.m.to_i,
+                        @registration.d.to_i)
+      rescue
+        return false
       end
       false
     end
@@ -124,11 +142,6 @@ module VehicleCDMX
       @registration.d = date.day
     end
 
-    def registration_date?
-      return true if @registration
-      false
-    end
-
     def registration_date_valid?
       return false unless self.registration_date?
       return false unless self.registration_date
@@ -139,19 +152,14 @@ module VehicleCDMX
     # verificaciones
     
     def verificaciones?
-      if @api['verificaciones'] == 'placa_no_localizada'
-        return false
-      end
-      unless @api['verificaciones'].respond_to?(:each)
+      unless @api['verificaciones'].is_a?(Array)
         return false
       end
       true
     end
 
     def verificaciones
-      unless self.verificaciones?
-        return false
-      end
+      return false unless self.verificaciones?
       if self.user_vin_valid?
         @api['verificaciones'].collect { |i| 
           i if i['vin'].upcase == self.user_vin
@@ -162,9 +170,7 @@ module VehicleCDMX
     end
     
     def verificaciones_vins
-      unless self.verificaciones?
-        return false
-      end
+      return false unless self.verificaciones?
       if self.user_vin_valid?
         return [ self.user_vin ]
       else
@@ -179,18 +185,23 @@ module VehicleCDMX
     end
     
     def verificaciones_valid
-      unless self.verificaciones?
-        return false
-      end
+      return false unless self.verificaciones?
       self.verificaciones.collect { |i|
         i if i['cancelado'] == 'NO'
       }.compact
     end
 
-    def verificacion_current
-      unless self.verificaciones_valid
-        return false
+    def verificaciones_valid?
+      return false unless self.verificaciones?
+      return false unless self.verificaciones_valid
+      if self.verificaciones_valid.count > 0
+        return true
       end
+      false
+    end
+
+    def verificacion_current
+      return false unless self.verificaciones_valid?
       ok = self.verificaciones_valid.collect { |i|
         i if i['resultado'] != 'RECHAZO'
       }.compact
@@ -204,14 +215,6 @@ module VehicleCDMX
       }
       return sorted[0]
     end
-    
-    def verificacion_current_vigency
-      Date.parse(self.verificacion_current['vigencia'])
-    end
-
-    def verificacion_current_period
-      (self.verificacion_current_vigency.clone << 2) + 1
-    end
 
     def verificacion_current?
       return false unless self.verificacion_current
@@ -221,6 +224,16 @@ module VehicleCDMX
     def verificacion_never?
       return true unless self.verificacion_current
       false
+    end
+    
+    def verificacion_current_vigency
+      return false if self.verificacion_never?
+      Date.parse(self.verificacion_current['vigencia'])
+    end
+
+    def verificacion_current_period
+      return false if self.verificacion_never?
+      (self.verificacion_current_vigency.clone << 2) + 1
     end
     
     def verificacion_expired?
@@ -254,10 +267,12 @@ module VehicleCDMX
     # accesores verificacion vigente
 
     def verificacion_current_vigency_str
+      return false if self.verificacion_never?
       I18n.localize(self.verificacion_current_vigency, :format => :long);
     end
 
     def verificacion_current_period_str
+      return false if self.verificacion_never?
       I18n.localize(self.verificacion_current_period, :format => :long);
     end
 
@@ -267,31 +282,34 @@ module VehicleCDMX
     end
 
     def verificacion_current_brand_str
+      return false if self.verificacion_never?
       self.verificacion_current['marca'].gsub(/_/, ' ')
     end
 
     def verificacion_current_model_str
+      return false if self.verificacion_never?
       self.verificacion_current['submarca'].gsub(/_/, ' ')
     end
 
     def verificacion_current_year_str
+      return false if self.verificacion_never?
       self.verificacion_current['modelo']
     end
 
     def verificacion_current_vin_str
+      return false if self.verificacion_never?
       self.verificacion_current['vin']
     end
 
     def verificacion_current_fuel_str
+      return false if self.verificacion_never?
       self.verificacion_current['combustible'].capitalize
     end
 
     # detalle de verificaciones
 
     def verificaciones_sorted
-      unless self.verificaciones?
-        return false
-      end
+      return false unless self.verificaciones?
       sorted = self.verificaciones.sort { |a, b| 
         if a == b
           _a = a['hora_verificacion']
@@ -339,12 +357,14 @@ module VehicleCDMX
     end
 
     def verificacion_first_period_end_str
+      return false unless self.registration_date_valid?
       I18n.localize(self.verificacion_first_period_end, :format => :long);
     end
 
     # hoy no circula
 
     def no_circula_weekday
+      return false if self.error
       plate_no_circula_weekday = { 
         '1' => 'jueves', '2' => 'jueves',
         '3' => 'miércoles', '4' => 'miércoles',
@@ -355,6 +375,7 @@ module VehicleCDMX
     end
 
     def no_circula_weekend
+      return false if self.error
       plate_no_circula_weekend = { 
         '1' => 'cuarto', '2' => 'cuarto',
         '3' => 'tercer', '4' => 'tercer',
@@ -366,13 +387,21 @@ module VehicleCDMX
 
     # infracciones
 
+    def infracciones?
+      unless @api['infracciones'].is_a?(Array)
+        return false
+      end
+      true
+    end
+
     def infracciones_unpaid
+      return false unless self.infracciones?
       @api['infracciones'].count { |i| i['situacion'] != 'Pagada' }
     end
 
     def infracciones_sorted
-      unless @api['infracciones'].respond_to?(:each) && 
-          @api['infracciones'].count > 0
+      return false unless self.infracciones?
+      unless @api['infracciones'].count > 0
         return false
       end
       sorted = @api['infracciones'].sort { |a, b| 
@@ -395,7 +424,15 @@ module VehicleCDMX
 
     # tenencias
 
+    def tenencias?
+      unless @api['tenencias'].is_a?(Hash)
+        return false
+      end
+      true
+    end
+
     def tenencias_unpaid
+      return false unless self.tenencias?
       if @api['tenencias']['tieneadeudos'] == '1'
         return @api['tenencias']['adeudos'].split(/,/).count
       end
@@ -403,6 +440,7 @@ module VehicleCDMX
     end
     
     def tenencias_unpaid_str
+      return false unless self.tenencias?
       unpaid = @api['tenencias']['adeudos'].split(/,/)
       if unpaid.count < 1
         return false
