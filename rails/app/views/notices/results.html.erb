@@ -9,10 +9,10 @@
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
     <% if @user.via == 'EMAIL' %>
-    <div class="alert alert-info">Para activar la suscripción a los
-      avisos de su automovil con placa
-      <strong><%= @user.plate %></strong> debe visitar la dirección que
-      le enviamos a su correo electrónico.</div>
+    <div class="alert alert-info">Debe confirmar su suscripción a los
+      avisos de su auto con placa <strong><%= @user.plate %></strong>
+      visitando la dirección que le enviamos a su correo
+      electrónico.</div>
     <% elsif @user.via == 'PHONE' %>
     <div class="alert alert-info">PHONE</div>
     <% elsif @user.via == 'TWITTER' %>

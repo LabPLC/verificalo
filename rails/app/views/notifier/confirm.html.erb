@@ -1,9 +1,9 @@
 <!-- notifier#confirm -->
-<h1>Active su suscripción</h1>
+<h1>Confirme su suscripción</h1>
 
 <p>Para confirmar que desea recibir en su correo electrónico los avisos
-  de su automovil con placa <strong><%= @user.plate %></strong>
-  visite la siguiente dirección:</p>
+  de su auto con placa <strong><%= @user.plate %></strong> visite la
+  siguiente dirección:</p>
 
 <a href="<%= url_for(controller: 'notices', action: 'confirm', user: @user.id, only_path: false) %>">
   <%= url_for(controller: 'notices', action: 'confirm', user: @user.id, only_path: false) %></a>

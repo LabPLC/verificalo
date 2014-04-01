@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Notifier < ActionMailer::Base
   include VehicleCDMX
   
@@ -5,7 +6,9 @@ class Notifier < ActionMailer::Base
 
   def confirm (user)
     @user = user
-    mail(to: user.destination, subject: "Active su suscripcion")
+    subject = "Confirme los avisos de su auto "
+    subject += user.plate
+    mail(to: user.destination, subject: subject)
   end
   
   def welcome (user)
@@ -14,6 +17,9 @@ class Notifier < ActionMailer::Base
     @user.settings.each { |s|
       @settings[s.setting] = true;
     }
-    mail(to: user.destination, subject: "Bienvenido")
+    subject = "Los avisos de su auto "
+    subject += user.plate
+    subject += " estan confirmados"
+    mail(to: user.destination, subject: subject)
   end
 end
