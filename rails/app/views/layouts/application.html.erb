@@ -45,8 +45,10 @@
             <li class="<%= is_active?('notices') %>">
               <a href="<%= url_for({ controller: 'notices', action: 'home' })%>"
                  id="navbar-notices">Avisos</a></li>
-            <!-- <li><a id="navbar-answers" href="#">Respuestas</a></li>
-            <li><a id="navbar-inteligent"
+            <li class="<%= is_active?('answers') %>">
+              <a href="<%= url_for({ controller: 'answers', action: 'home' })%>"
+                 id="navbar-answers" href="#">Respuestas</a></li>
+            <!-- <li><a id="navbar-inteligent"
                    href="#">Uso inteligente</a></li> -->
           </ul>
           <% end %>
