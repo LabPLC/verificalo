@@ -1,0 +1,46 @@
+<!-- answers#verificentros -->
+<div class="row">
+  <div class="col-md-12">
+    <h1>Respuestas</h1>
+  </div>
+</div>
+
+<div class="row answer">
+  <div class="col-md-8">
+    <h2>¿Donde puedo llevar mi auto a verificar?</h2>
+    <hr>
+
+    <p>Existen 82 verificentros en la Ciudad de México donde puede
+      llevar su auto a verificar y puede localizarlos de dos
+      maneras:<p>
+
+    <p class="section"><strong>1. Busque los verificentros más
+        cercanos:</strong></p>
+
+    <%= form_tag({ controller: 'answers', action: 'verificentros' },
+        { method: 'post', class: 'form-inline', id: 'form-verificentros' }) do %>
+    <div class="row">
+      <div class="col-md-6 col-sm-8">
+        <input name="plate" type="text" placeholder="Colonia o código postal"
+               class="form-control input">
+      </div>
+      <div class="col-md-2 col-sm-4">
+        <button id="btn-verificentros-search" type="submit"
+                class="btn btn-primary btn">Buscar</button>
+      </div>
+    </div>
+    <p class="help-block">Ingrese su colonia o código postal y haga
+      click en el botón buscar.</p>
+    <% end %>
+
+    <p class="section"><strong>2. Consulte los verificentros por
+        delegación:</strong></a>
+
+  </div>
+  <div class="col-md-4 answers-related">
+    <h2>Respuestas relacionadas</h2>
+    <p><a href="#">Uno</a></p>
+    <p><a href="#">Dos</a></p>
+    <p><a href="#">Tres</a></p>
+  </div>
+</div>
