@@ -17,4 +17,5 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'delegacion', 'delegaciones'
+  inflect.irregular 'verificentro', 'verificentros'
 end
