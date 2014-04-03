@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403184932) do
+ActiveRecord::Schema.define(version: 20140403225152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+  enable_extension "unaccent"
 
   create_table "delegaciones", force: true do |t|
     t.string   "url",        null: false
@@ -38,6 +39,18 @@ ActiveRecord::Schema.define(version: 20140403184932) do
     t.string   "destination",             null: false
     t.datetime "confirmed_at"
     t.datetime "declined_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "verificentros", force: true do |t|
+    t.integer  "number",        null: false
+    t.string   "name",          null: false
+    t.text     "address",       null: false
+    t.integer  "delegacion_id", null: false
+    t.string   "phone"
+    t.float    "lat",           null: false
+    t.float    "lon",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
