@@ -1,21 +1,17 @@
 <!-- answers#verificentros -->
 <div class="row">
   <div class="col-md-12">
-    <h1>Respuestas</h1>
+    <h1 class="question">¿Donde debo llevar mi auto a verificar?</h1>
   </div>
 </div>
 
-<div class="row answer">
-  <div class="col-md-8">
-    <h2>¿Donde puedo llevar mi auto a verificar?</h2>
-    <hr>
+<div class="row">
+  <div class="col-md-9">
+    <p class="answer">Existen <%= @verificentros_count %> verificentros
+      en la Ciudad de México donde puede llevar su auto a
+      verificar.</p>
 
-    <p>Existen 82 verificentros en la Ciudad de México donde puede
-      llevar su auto a verificar y puede localizarlos de dos
-      maneras:<p>
-
-    <p class="section"><strong>1. Busque los verificentros más
-        cercanos:</strong></p>
+    <h2 class="answer">Encuentre los verificentros más cercanos</h2>
 
     <%= form_tag({ controller: 'answers', action: 'verificentros' },
         { method: 'post', class: 'form-inline', id: 'form-verificentros' }) do %>
@@ -32,15 +28,44 @@
     <p class="help-block">Ingrese su colonia o código postal y haga
       click en el botón buscar.</p>
     <% end %>
+    
+    <h2 class="answer">Consulte verificentros por delegación</h2>
 
-    <p class="section"><strong>2. Consulte los verificentros por
-        delegación:</strong></a>
-
+    <% @delegaciones.in_groups_of((@delegaciones.count/2).ceil) do |g| %>
+    <div class="col-md-6">
+      <ul id="list-delegaciones">
+        <% g.each do |d| %>
+        <li>
+          <% if d.verificentros.count > 0 %>        
+          <a href="<%= url_for({ controller: 'answers', action:
+                   'verificentros_query', delegacion: d.url })%>">
+            <%= d.name %></a><br/>
+          <% if d.verificentros.count > 1 %>        
+          <small><%= d.verificentros.count %> verificentros</small>
+          <% else %>
+          <small>1 verificentro</small>
+          <% end %>
+          <% else %>
+          <%= d.name %><br/><small>0 verificentros</small>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
   </div>
-  <div class="col-md-4 answers-related">
+
+  <div class="col-md-3 answer-sidebar">
+    <h2>Para más información</h2>
+    <p>Contacte a la SEDEMA</p>
+    <p>Telefono: 55 1234 5678 de 9 a 5 pm</p>
+    <p>Correo: <a href="#">info@sedema.df.gob.mx</a></p>
+
     <h2>Respuestas relacionadas</h2>
-    <p><a href="#">Uno</a></p>
-    <p><a href="#">Dos</a></p>
-    <p><a href="#">Tres</a></p>
+    <p><a href="#">¿Cuando debo verificar mi auto?</a></p>
+    <p><a href="#">¿Por que es obligatoria la verificación
+        vehicular?</a></p>
+    <p><a href="#">¿Si mi auto tiene placas de otro estado debo
+        verificarlo?</a></p>
   </div>
 </div>
