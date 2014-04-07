@@ -1,0 +1,15 @@
+<%= form_tag({ controller: 'answers', action: 'verificentros' },
+    { method: 'post', class: 'form-inline', id: 'form-verificentros' }) do %>
+<div class="row">
+  <div class="col-md-6 col-sm-8">
+    <input name="plate" type="text" placeholder="Colonia o código postal"
+           class="form-control input">
+  </div>
+  <div class="col-md-2 col-sm-4">
+    <button id="btn-verificentros-search" type="submit"
+            class="btn btn-primary btn">Buscar</button>
+  </div>
+</div>
+<p class="help-block">Ingrese su colonia o código postal y haga
+  click en el botón buscar.</p>
+<% end %>

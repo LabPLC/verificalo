@@ -12,60 +12,11 @@
       verificar.</p>
 
     <h2 class="answer">Encuentre los verificentros más cercanos</h2>
-
-    <%= form_tag({ controller: 'answers', action: 'verificentros' },
-        { method: 'post', class: 'form-inline', id: 'form-verificentros' }) do %>
-    <div class="row">
-      <div class="col-md-6 col-sm-8">
-        <input name="plate" type="text" placeholder="Colonia o código postal"
-               class="form-control input">
-      </div>
-      <div class="col-md-2 col-sm-4">
-        <button id="btn-verificentros-search" type="submit"
-                class="btn btn-primary btn">Buscar</button>
-      </div>
-    </div>
-    <p class="help-block">Ingrese su colonia o código postal y haga
-      click en el botón buscar.</p>
-    <% end %>
+    <%= render 'verificentros_query_form' %>
     
     <h2 class="answer">Consulte verificentros por delegación</h2>
-
-    <% @delegaciones.in_groups_of((@delegaciones.count/2).ceil) do |g| %>
-    <div class="col-md-6">
-      <ul id="list-delegaciones">
-        <% g.each do |d| %>
-        <li>
-          <% if d.verificentros.count > 0 %>        
-          <a href="<%= url_for({ controller: 'answers', action:
-                   'verificentros_query', delegacion: d.url })%>">
-            <%= d.name %></a><br/>
-          <% if d.verificentros.count > 1 %>        
-          <small><%= d.verificentros.count %> verificentros</small>
-          <% else %>
-          <small>1 verificentro</small>
-          <% end %>
-          <% else %>
-          <%= d.name %><br/><small>0 verificentros</small>
-          <% end %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
+    <%= render 'verificentros_delegaciones' %>
   </div>
 
-  <div class="col-md-3 answer-sidebar">
-    <h2>Para más información</h2>
-    <p>Contacte a la SEDEMA</p>
-    <p>Telefono: 55 1234 5678 de 9 a 5 pm</p>
-    <p>Correo: <a href="#">info@sedema.df.gob.mx</a></p>
-
-    <h2>Respuestas relacionadas</h2>
-    <p><a href="#">¿Cuando debo verificar mi auto?</a></p>
-    <p><a href="#">¿Por que es obligatoria la verificación
-        vehicular?</a></p>
-    <p><a href="#">¿Si mi auto tiene placas de otro estado debo
-        verificarlo?</a></p>
-  </div>
+  <%= render 'sidebar' %>
 </div>
