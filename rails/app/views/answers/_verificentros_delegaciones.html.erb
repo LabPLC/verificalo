@@ -5,7 +5,7 @@
     <li>
       <% if d.verificentros.count > 0 %>        
       <a href="<%= url_for({ controller: 'answers', action:
-               'verificentros_query', delegacion: d.url })%>">
+               'verificentros_delegacion', delegacion: d.url })%>">
         <%= d.name %></a><br/>
       <% if d.verificentros.count > 1 %>        
       <small><%= d.verificentros.count %> verificentros</small>
