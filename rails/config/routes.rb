@@ -20,6 +20,9 @@ Verificalo::Application.routes.draw do
   # respuestas
   match '/respuestas', to: 'answers#home', via: 'get'
   match '/respuestas/verificentros', to: 'answers#verificentros', via: 'get'
+  match '/respuestas/verificentros/cercanos', to: 'answers#verificentros_query', via: [ 'get', 'post' ]
+  match '/respuestas/verificentros/delegaciones', to: 'answers#verificentros_delegaciones', via: 'get'
+  match '/respuestas/verificentros/:delegacion', to: 'answers#verificentros_delegacion', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
