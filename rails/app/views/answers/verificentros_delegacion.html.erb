@@ -1,0 +1,17 @@
+<!-- answers#verificentros_delegacion -->
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="question">Verificentros en <%= @delegacion.name %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+    <% @verificentros.each_slice(2) do |r| %>
+    <div class="row">
+      <%= render partial: 'verificentro', collection: r %>
+    </div>
+    <% end %>
+  </div>
+  <%= render 'sidebar' %>
+</div>
