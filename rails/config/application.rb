@@ -11,6 +11,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+# http://quickleft.com/blog/simple-rails-app-configuration-settings
+ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue { }
+
 module Verificalo
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
