@@ -2,11 +2,12 @@
 
 h1.question {
     font-size: 30px;
+    margin: 20px 0 10px 0;
 }
 
 h2.answer {
     font-size: 22px;
-    margin: 30px 0 20px 0;
+    margin: 20px 0 10px 0;
 }
 
 p.answer {
@@ -23,6 +24,14 @@ p.answer {
 }
 
 /* answers#verificientros */
+
+#form-verificentros {
+    margin-top: 20px;
+}
+
+#list-delegaciones {
+    margin: 10px 0 20px 0;
+}
 
 #list-delegaciones > li {
     margin-bottom: 10px;
