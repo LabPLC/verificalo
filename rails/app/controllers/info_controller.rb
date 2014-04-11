@@ -6,9 +6,7 @@ class InfoController < ApplicationController
       @error = flash[:error]
       return
     end
-    unless plate_param?
-      return
-    end
+    return unless plate_param?
     @vehicle = VehicleCDMX.new(plate_param)
     if @vehicle.error
       @error = @vehicle.error
