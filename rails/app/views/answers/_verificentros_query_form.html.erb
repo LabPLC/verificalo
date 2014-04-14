@@ -2,7 +2,11 @@
     { method: 'post', class: 'form-inline', id: 'form-verificentros' }) do %>
 <div class="row">
   <div class="col-md-6 col-sm-8">
-    <input name="plate" type="text" placeholder="Colonia o código postal"
+    <input name="query" type="text" 
+           placeholder="Colonia o código postal"
+           <% if request.post? and @query_value %>
+           value="<%= @query_value %>"
+           <% end %>
            class="form-control input">
   </div>
   <div class="col-md-2 col-sm-4">

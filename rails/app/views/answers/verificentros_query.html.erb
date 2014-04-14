@@ -1,10 +1,30 @@
 <!-- answers#verificentros_query -->
 <div class="row">
   <div class="col-md-12">
-    <% if @delegacion %>
-    <h1 class="question">Verificentros en <%= @delegacion.name %></h1>
+    <h1 class="question">Verificentros más cercanos</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+    <% if @verificentros && @verificentros.count < 1 %>
+    <div id="warning-verificentros" class="alert alert-warning">
+      <strong>No hay resultados:</strong> Verifique
+      la colonia o código postal que ingreso.
+    </div>
     <% else %>
-    <h1 class="question">Verificentros más cercanos a usted</h1>
+    <div class="alert alert-warning"><strong>Intente más
+        tarde:</strong> Tenemos problemas técnicos para
+      consultar las fuentes de datos sobre geolocalización.</div>
+    <% end %>
+    <%= render 'verificentros_query_form' %>
+    <% if @verificentros %>
+    <% @verificentros.each_slice(2) do |r| %>
+    <div class="row">
+      <%= render partial: 'verificentro', collection: r %>
+    </div>
+    <% end %>
     <% end %>
   </div>
+  <%= render 'sidebar' %>
 </div>
