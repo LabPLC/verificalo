@@ -1,7 +1,7 @@
 var btn_label = {
-  'btn-notices-home-email' : 'notices-home-email',
-  'btn-notices-home-phone' : 'notices-home-phone',
-  'btn-notices-home-twitter' : 'notices-home-twitter'
+    'btn-notices-home-email' : 'notices-home-email',
+    'btn-notices-home-phone' : 'notices-home-phone',
+    'btn-notices-home-twitter' : 'notices-home-twitter'
 };
 
 $(document).ready(function() {
