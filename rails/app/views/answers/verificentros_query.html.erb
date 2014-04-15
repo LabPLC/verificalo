@@ -7,17 +7,16 @@
 
 <div class="row">
   <div class="col-md-9">
-    <% unless @verificentros %>
+    <% if @query_value && !@verificentros %>
     <div class="alert alert-warning"><strong>Intente más
         tarde:</strong> Tenemos problemas técnicos para
-      consultar las fuentes de datos sobre geolocalización.</div>
-    <% else %>
-    <% if @verificentros.count < 1 %>
+      consultar las fuentes de datos sobre ubicaciones.</div>
+    <% end %>
+    <% if @verificentros && @verificentros.count < 1 %>
     <div id="warning-verificentros" class="alert alert-warning">
       <strong>No hay resultados:</strong> Verifique
       la colonia o código postal que ingreso.
     </div>
-    <% end %>
     <% end %>
     <%= render 'verificentros_query_form' %>
     <% if @verificentros %>
