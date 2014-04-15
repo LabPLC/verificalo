@@ -35,5 +35,5 @@ $(document).ready(function() {
 function scroll_subform () {
     var y = $('#notices-subform').offset().top - 
         parseInt($('body').css('padding-top').replace("px", ""), 10);
-    $('html').animate({ scrollTop: y }, 'slow');
+    $('html,body').animate({ scrollTop: y }, 'slow');
 }
