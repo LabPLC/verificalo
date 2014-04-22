@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
 
   def home
+    
   end
 
   def verificentros
@@ -15,8 +16,7 @@ class AnswersController < ApplicationController
       query = verificentros_query_value
       query += ', Ciudad de Mexico'
     else
-      query = 'Colonia '
-      query += verificentros_query_value
+      query = verificentros_query_value
       query += ', Ciudad de Mexico'
     end
     begin
@@ -64,7 +64,7 @@ class AnswersController < ApplicationController
     return false unless verificentros_query_param?
     verificentros_query_param[:query].gsub(/[^0-9a-z ]/i, '')
   end
-  
+
   def verificentros_delegacion_param
     params.permit(:delegacion)
   end
