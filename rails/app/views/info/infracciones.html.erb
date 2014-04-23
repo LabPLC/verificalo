@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<% if @vehicle.infracciones_sorted %>
+<% if @vehicle.infracciones_all %>
 <!-- si hay infracciones -->
 <div class="row">
   <div class="col-md-12">
@@ -23,7 +23,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @vehicle.infracciones_sorted.each do |i| %>
+    <% @vehicle.infracciones_all.each do |i| %>
     <tr>
       <td><%= i.date %></td>
       <td><%= i.id %></td>
@@ -58,8 +58,8 @@
 <%= debug(@params) %>
 <h3>@session</h3>
 <%= debug(@session) %>
-<h3>@vehicle.infracciones_sorted</h3>
-<%= debug(@vehicle.infracciones_sorted) %>
+<h3>@vehicle.infracciones_all</h3>
+<%= debug(@vehicle.infracciones_all) %>
 <h3>@vehicle</h3>
 <%= debug(@vehicle) %>
 <% end %>

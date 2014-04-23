@@ -5,7 +5,7 @@
   </div>
 </div>
 
-<% if @vehicle.verificaciones_sorted %>
+<% if @vehicle.verificaciones_all %>
 <!-- si hay verificaciones -->
 
 <% if @vehicle.verificacion_current? %>
@@ -56,7 +56,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @vehicle.verificaciones_sorted.each do |v| %>
+    <% @vehicle.verificaciones_all.each do |v| %>
     <tr>
       <td><%= v.date %></td>
       <td><%= v.time %></td>
@@ -104,8 +104,8 @@
 <%= debug(@params) %>
 <h3>@session</h3>
 <%= debug(@session) %>
-<h3>@vehicle.verificaciones_sorted</h3>
-<%= debug(@vehicle.verificaciones_sorted) %>
+<h3>@vehicle.verificaciones_all</h3>
+<%= debug(@vehicle.verificaciones_all) %>
 <h3>@vehicle</h3>
 <%= debug(@vehicle) %>
 <% end %>
