@@ -10,11 +10,6 @@
 
 <% if @vehicle.verificacion_current? %>
 <!-- si hay verificacion actual -->
-<div class="row">
-  <div class="col-md-12">
-    <h2>Información</h2>
-  </div>
-</div>
 <table class="table table-responsive">
   <thead>
     <tr>
@@ -40,6 +35,8 @@
 <div class="row">
   <div class="col-md-12">
     <h2>Verificaciones</h2>
+    <p class="regresar-info"><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
+        Regresar &raquo;</a></p>
   </div>
 </div>
 <table class="table table-responsive">
@@ -87,8 +84,12 @@
 <% end %>
 
 <!-- regresar -->
-<p><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
-    Regresar &raquo;</a></p>
+<div class="row">
+  <div class="col-md-12">
+    <p><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
+        Regresar &raquo;</a></p>
+    </div>
+</div>
 
 <!-- analytics -->
 <script>
