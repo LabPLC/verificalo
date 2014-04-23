@@ -161,12 +161,22 @@ module VehicleCDMX
     def verificaciones
       return false unless self.verificaciones?
       if self.user_vin_valid?
-        @api['verificaciones'].collect { |i| 
+        v = @api['verificaciones'].collect { |i| 
           i if i['vin'].upcase == self.user_vin
         }.compact
       else
-        @api['verificaciones']
+        v = @api['verificaciones']
       end
+      v.sort { |a, b| 
+        if a == b
+          _a = a['hora_verificacion']
+          _b = b['hora_verificacion']
+        else
+          _a = Date.strptime(a['fecha_verificacion'], "%Y-%m-%d")
+          _b = Date.strptime(b['fecha_verificacion'], "%Y-%m-%d")
+        end
+        _b <=> _a
+      }
     end
     
     def verificaciones_vins
@@ -202,18 +212,7 @@ module VehicleCDMX
 
     def verificacion_current
       return false unless self.verificaciones_valid?
-      ok = self.verificaciones_valid.collect { |i|
-        i if i['resultado'] != 'RECHAZO'
-      }.compact
-      unless ok.count > 0 
-        return false
-      end
-      sorted = ok.sort { |a, b| 
-        _a = Date.strptime(a['vigencia'], "%Y-%m-%d")
-        _b = Date.strptime(b['vigencia'], "%Y-%m-%d")
-        _b <=> _a
-      }
-      return sorted[0]
+      return self.verificaciones_valid[0]
     end
 
     def verificacion_current?
@@ -308,19 +307,9 @@ module VehicleCDMX
 
     # detalle de verificaciones
 
-    def verificaciones_sorted
+    def verificaciones_all
       return false unless self.verificaciones?
-      sorted = self.verificaciones.sort { |a, b| 
-        if a == b
-          _a = a['hora_verificacion']
-          _b = b['hora_verificacion']
-        else
-          _a = Date.strptime(a['fecha_verificacion'], "%Y-%m-%d")
-          _b = Date.strptime(b['fecha_verificacion'], "%Y-%m-%d")
-        end
-        _b <=> _a
-      }
-      sorted.collect { |v|
+      self.verificaciones.collect { |v|
         r = OpenStruct.new
         r.date = I18n.localize(Date.parse(v['fecha_verificacion']), :format => :default);
         r.time = v['hora_verificacion'].gsub(/:\d\d$/, '');
@@ -399,7 +388,7 @@ module VehicleCDMX
       @api['infracciones'].count { |i| i['situacion'] != 'Pagada' }
     end
 
-    def infracciones_sorted
+    def infracciones_all
       return false unless self.infracciones?
       unless @api['infracciones'].count > 0
         return false
