@@ -7,36 +7,40 @@
 
 <!-- forma -->
 <%= form_tag({ controller: 'info', action: 'results', plate: @vehicle.plate },
-    { method: 'post', class: 'form-inline', id: 'form-info-vin' }) do %>
+    { method: 'post', id: 'form-info-vin' }) do %>
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
     <% if request.post? && !@vehicle.user_vin_valid? %>
-    <div class="alert alert-warning"><strong>El número de serie que
-        ingreso no es valido:</strong> Hay mas de un auto verificado
+    <div class="alert alert-warning"><strong>No selecciono un número de
+        serie:</strong> Hay mas de un auto verificado
       con esa placa y para brindarle información precisa necesitamos
-      conocer el número de serie o VIN de su auto. Puede consultarlo en
+      seleccione el número de serie o VIN de su auto. Puede consultarlo en
       su tarjeta de circulación, factura o chasis de su auto.</div>
     <% else %>
     <div class="alert alert-info"><strong>Hay más de un auto verificado
         con esa placa:</strong> Para brindarle información
-      precisa necesitamos conocer el número de serie o VIN de su auto,
+      precisa necesitamos seleccione el número de serie o VIN de su auto,
       puede consultarlo en su tarjeta de circulación, factura o chasis
       de su auto.</div>
     <% end %>
   </div>
 </div>
 
+<% @vehicle.verificaciones_vins.each do |v| %>
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
-    <div class="row">
-      <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
-        <input id="input-info-vin" name="vin" type="text"
-               placeholder="VIN" class="form-control">
+    <div class="col-md-offset-4 col-md-4">
+      <div class="radio">
+        <label>
+          <input type="radio" name="vin" value="<%= v %>">
+          <%= v %>
+        </label>
       </div>
     </div>
   </div>
 </div>
+<% end %>
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8 text-center">
