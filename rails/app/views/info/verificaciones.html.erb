@@ -10,7 +10,7 @@
 
 <% if @vehicle.verificacion_current? %>
 <!-- si hay verificacion actual -->
-<table class="table table-responsive">
+<table class="table">
   <thead>
     <tr>
       <th>Marca</th>
@@ -39,44 +39,46 @@
         Regresar &raquo;</a></p>
   </div>
 </div>
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th>Fecha</th>
-      <th>Hora</th>
-      <th>Verificentro</th>
-      <th>Linea</th>
-      <th>Certificado</th>
-      <th>Vigencia</th>
-      <th>Resultado</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @vehicle.verificaciones_all.each do |v| %>
-    <tr>
-      <td><%= v.date %></td>
-      <td><%= v.time %></td>
-      <td><%= v.verificentro %></td>
-      <td><%= v.line %></td>
-      <td><%= v.cert %></td>
-      <td><%= v.vigency %></td>
-      <td><%= v.result %></td>
-      <td>
-        <% if v.cancel == true %>
-        CERTIFICADO CANCELADO
-        <% end %>
-        <% if v.cancel == true && v.result == 'RECHAZO' %>
-        <br/>
-        <% end %>
-        <% if v.result == 'RECHAZO' %>
-        <small><%= v.reject %></small>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Verificentro</th>
+        <th>Linea</th>
+        <th>Certificado</th>
+        <th>Vigencia</th>
+        <th>Resultado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @vehicle.verificaciones_all.each do |v| %>
+      <tr>
+        <td><%= v.date %></td>
+        <td><%= v.time %></td>
+        <td><%= v.verificentro %></td>
+        <td><%= v.line %></td>
+        <td><%= v.cert %></td>
+        <td><%= v.vigency %></td>
+        <td><%= v.result %></td>
+        <td>
+          <% if v.cancel == true %>
+          CERTIFICADO CANCELADO
+          <% end %>
+          <% if v.cancel == true && v.result == 'RECHAZO' %>
+          <br/>
+          <% end %>
+          <% if v.result == 'RECHAZO' %>
+          <small><%= v.reject %></small>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <% else %>
 <!-- si no hay verificaciones -->
 <div id="alert-verificaciones" class="alert alert-warning"><strong>Su

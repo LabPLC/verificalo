@@ -14,28 +14,30 @@
         Regresar &raquo;</a></p>
   </div>
 </div>
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th>Fecha</th>
-      <th>Folio</th>
-      <th>Motivo y fundamento</th>
-      <th>Sanción</th>
-      <th>Situación</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @vehicle.infracciones_all.each do |i| %>
-    <tr>
-      <td><%= i.date %></td>
-      <td><%= i.id %></td>
-      <td><%= i.cause %><br/><small><%= i.basis %></small></td>
-      <td><%= i.sanction %></td>
-      <td><%= i.status %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Folio</th>
+        <th>Motivo y fundamento</th>
+        <th>Sanción</th>
+        <th>Situación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @vehicle.infracciones_all.each do |i| %>
+      <tr>
+        <td><%= i.date %></td>
+        <td><%= i.id %></td>
+        <td><%= i.cause %><br/><small><%= i.basis %></small></td>
+        <td><%= i.sanction %></td>
+        <td><%= i.status %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <% else %>
 <!-- si no hay infracciones -->
 <div id="alert-infracciones" class="alert alert-info">Su auto nunca ha
