@@ -149,6 +149,11 @@ module VehicleCDMX
       true
     end
 
+    def registration_date_str
+      return false unless self.registration_date?
+      I18n.localize(self.registration_date, :format => :long);
+    end
+
     # verificaciones
     
     def verificaciones?
