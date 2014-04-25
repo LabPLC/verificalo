@@ -7,6 +7,9 @@ describe 'Static pages' do
   describe 'Home page' do
     before { visit root_path }
     it { should have_title('Verifícalo') }
+    it { should have_link('Información', href: info_path) }
+    it { should have_link('Avisos', href: avisos_path) }
+    it { should have_link('Respuestas', href: respuestas_path) }
     it { should have_content('Conozca sus obligaciones como automovilista particular de la Ciudad de México') }
     it { should have_field('plate') }
     it { should have_button('Consulta') }
