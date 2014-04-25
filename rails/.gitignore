@@ -8,3 +8,4 @@
 /log/*.log
 /tmp
 /public/assets
+.ruby-version
