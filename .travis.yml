@@ -11,3 +11,4 @@ notifications:
   email:
     recipients:
       - manuel@rabade.net
+script: cd rails && rake
