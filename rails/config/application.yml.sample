@@ -1,0 +1,5 @@
+development:
+  mapid: codigocdmx.example
+
+production:
+  mapid: codigocdmx.example

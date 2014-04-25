@@ -1,0 +1,15 @@
+development:
+  authentication: plain
+  address: smtp.example.com
+  port: 587
+  domain: example.com
+  user_name: postmaster@example.com
+  password: secret
+
+production:
+  authentication: plain
+  address: smtp.example.com
+  port: 587
+  domain: example.com
+  user_name: postmaster@dev.codigo.labplc.mx
+  password: secret
