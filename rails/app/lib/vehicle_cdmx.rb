@@ -155,6 +155,9 @@ module VehicleCDMX
       unless @api['verificaciones'].is_a?(Array)
         return false
       end
+      unless @api['verificaciones'].count > 0
+        return false
+      end
       true
     end
 
@@ -380,11 +383,14 @@ module VehicleCDMX
       unless @api['infracciones'].is_a?(Array)
         return false
       end
+      unless @api['infracciones'].count > 0
+        return false
+      end
       true
     end
 
     def infracciones_unpaid
-      return false unless self.infracciones?
+      return 0 unless self.infracciones?
       @api['infracciones'].count { |i| i['situacion'] != 'Pagada' }
     end
 
