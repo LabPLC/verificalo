@@ -3,6 +3,8 @@ rvm:
   - 2.0.0
   - 2.1.0
   - ruby-head
+addons:
+  postgresql: 9.3
 matrix:
   allow_failures:
     - rvm: ruby-head
@@ -12,4 +14,7 @@ notifications:
     recipients:
       - manuel@rabade.net
 gemfile: rails/Gemfile
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
 script: cd rails && bundle exec rake
