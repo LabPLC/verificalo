@@ -81,5 +81,16 @@ Verificalo::Application.configure do
   # Action Mailer
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "http://dev.codigo.labplc.mx/verificalo" }
+  config.action_mailer.default_url_options = { 
+    host: ENV['VERIFICALO_SMTP_URL_HOST']
+  }
+  config.action_mailer.smtp_settings = {
+    authentication: ENV['VERIFICALO_SMTP_AUTH'],
+    address: ENV['VERIFICALO_SMTP_ADDR'],
+    port: ENV['VERIFICALO_SMTP_PORT'].to_i,
+    domain: ENV['VERIFICALO_SMTP_DOMAIN'],
+    user_name: ENV['VERIFICALO_SMTP_USER'],
+    password: ENV['VERIFICALO_SMTP_PWD']
+  }
+
 end

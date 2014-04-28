@@ -1,5 +1,5 @@
-<% map = 'http://api.tiles.mapbox.com/v3/' + ENV['mapid'] + '/'
-   map += 'pin-m-car+007FFF(' 
+<% map = 'http://api.tiles.mapbox.com/v3/' + ENV['VERIFICALO_MAPBOX_ID']
+   map += '/pin-m-car+007FFF(' 
    map += verificentro.lon.to_s + ',' + verificentro.lat.to_s + ')/'
    map += verificentro.lon.to_s + ',' + verificentro.lat.to_s + ',15'
    map += '/394x222.png'

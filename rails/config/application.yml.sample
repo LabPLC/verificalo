@@ -1,5 +1,11 @@
-development:
-  mapid: codigocdmx.example
+# smtp
+smtp_url_host: example.com
+smtp_auth: plain
+smtp_addr: smtp.example.com
+smtp_port: 587
+smtp_domain: example.com
+smtp_user: postmaster@example.com
+smtp_pwd: secret
 
-production:
-  mapid: codigocdmx.example
+# mapxbox
+mabpbox_id: codigocdmx.example
