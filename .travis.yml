@@ -16,5 +16,5 @@ notifications:
 gemfile: rails/Gemfile
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+  - cp rails/config/database.yml.travis rails/config/database.yml
 script: cd rails && bundle exec rake
