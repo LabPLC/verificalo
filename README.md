@@ -60,7 +60,7 @@ Capturas de pantalla
 ### Consulta por placa
 ![Consulta por placa](/doc/img/screenshoot-2.jpg?raw=true "Consulta por placa")
 ### Suscripción a notificaciones
-![Suscripción a avisos](/doc/img/screenshoot-3.jpg?raw=true "Suscripción a avisos")
+![Suscripción a notificaciones](/doc/img/screenshoot-3.jpg?raw=true "Suscripción a notificaciones")
 ### Respuestas
 ![Donde llevar su auto a verificar](/doc/img/screenshoot-4.jpg?raw=true "Donde llevar su auto a verificar")
 ### Busqueda de verificentros
