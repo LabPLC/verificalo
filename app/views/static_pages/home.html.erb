@@ -6,7 +6,7 @@
       <p>Conozca sus obligaciones como automovilista
         particular de la Ciudad de México</p>
       <%= form_tag({ controller: 'info', action: 'home' },
-          { method: 'post', class: 'form-inline', id: 'form-home' }) do %>
+          { method: 'post', id: 'form-home' }) do %>
       <div class="row">
         <div class="col-md-3 col-sm-4">
           <input name="plate" type="text" placeholder="Placa"

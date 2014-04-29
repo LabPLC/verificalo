@@ -1,7 +1,7 @@
 <%= form_tag({ controller: 'answers', action: 'verificentros_query' },
-    { method: 'post', class: 'form-inline', id: 'form-verificentros' }) do %>
+    { method: 'post', id: 'form-verificentros' }) do %>
 <div class="row">
-  <div class="col-md-6 col-sm-8">
+  <div class="col-md-6 col-sm-6">
     <input name="query" type="text" 
            placeholder="Colonia o código postal"
            <% if request.post? and @query_value %>
