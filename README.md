@@ -55,8 +55,13 @@ Características
 Capturas de pantalla
 --------------------
 
+### Página de inicio
 ![Página de inicio](/doc/img/screenshoot-1.jpg?raw=true "Página de inicio")
+### Consulta por placa
 ![Consulta por placa](/doc/img/screenshoot-2.jpg?raw=true "Consulta por placa")
+### Suscripción a notificaciones
 ![Suscripción a avisos](/doc/img/screenshoot-3.jpg?raw=true "Suscripción a avisos")
+### Respuestas
 ![Donde llevar su auto a verificar](/doc/img/screenshoot-4.jpg?raw=true "Donde llevar su auto a verificar")
+### Verificentros más cercanos
 ![Verificentros más cercanos](/doc/img/screenshoot-5.jpg?raw=true "Verificentros más cercanos")
