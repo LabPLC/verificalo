@@ -18,7 +18,7 @@ describe "Notices" do
 
       describe 'post with invalid params' do
         before { 
-          fill_in('user[plate]', with: 'abdefghijklmnopqrstuvwxyz')
+          fill_in('user[plate]', with: 'abcdefghijklmnopqrstuvwxyz')
           fill_in('user[destination]', with: 'none@none')
           uncheck('settings[VERIFICACION]')
           uncheck('settings[ADEUDOS]')

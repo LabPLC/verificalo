@@ -22,7 +22,7 @@ describe 'Info' do
 
     describe 'post with a long plate' do
       before { 
-        fill_in('plate', with: 'abdefghijklmnopqrstuvwxyz')
+        fill_in('plate', with: 'abcdefghijklmnopqrstuvwxyz')
         find_button('Continuar').click 
       }
       it { should have_content('La placa que ingreso no es valida: Debe contener máximo 14 números y letras.') }
