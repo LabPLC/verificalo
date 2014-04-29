@@ -37,19 +37,16 @@ Características
 
 - Consulta por placa de auto:
   - Vigencia de verificación
-  - Próximo periodo para verificar su auto
-  - Adeudos e histórico de infracciones
+  - Próximo periodo para verificar
+  - Adeudos de infracciones
   - Adeudos de tenencias
-  - Cuando no puede circular su auto de acuerdo a su última
-    verificación (programa Hoy no circula)
+  - Hoy no circula
 
 - Notificaciones por correo electrónico o llamada telefónica:
-  - Recordatorio antes y durante el periodo para verificar su auto
-  - Aviso de nuevos adeudos por infracciones o tenencias de su
-    auto
-  - Recordatorio mensual de adeudos pendientes de infracciones y
-    tenencias
-  - Recordatorio del hoy no circula de lunes a viernes o sabatino
+  - Recordatorio antes y durante el periodo para verificar
+  - Aviso de nuevos adeudos por infracciones o tenencias
+  - Recordatorio mensual de adeudos pendientes
+  - Recordatorio del hoy no circula semanal o sabatino
 
 - Información 
   - Verificentros por delegación
