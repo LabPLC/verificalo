@@ -26,4 +26,5 @@ group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'coveralls'
+  gem 'shoulda'
 end
