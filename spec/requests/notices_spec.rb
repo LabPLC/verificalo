@@ -17,34 +17,32 @@ describe "Notices" do
       it { should have_button('Continuar') }
       
       describe 'post without user and plate' do
-        before { 
-          click_button('Continuar')
-        }
+        before { click_button('Continuar') }
         it { should have_content('La placa que ingreso no es valida.') }
         it { should have_content('El correo electrónico que ingreso no es valido.') }
         it { should have_button('Continuar') }        
       end
       
       describe 'post without settings' do
-        before { 
-          fill_in('user[plate]', with: '436per')
+        before do
+          fill_in('user[plate]', with: '123abc')
           fill_in('user[destination]', with: 'example@example.com')
           uncheck('settings[VERIFICACION]')
           uncheck('settings[ADEUDOS]')
           uncheck('settings[NO_CIRCULA_WEEKDAY]')
           uncheck('settings[NO_CIRCULA_WEEKEND]')
           click_button('Continuar') 
-        }
+        end
         it { should have_content('Debe seleccionar por lo menos un aviso.') }
         it { should have_button('Continuar') }
       end
       
       describe 'post' do
-        before { 
-          fill_in('user[plate]', with: '436per')
+        before do
+          fill_in('user[plate]', with: '123abc')
           fill_in('user[destination]', with: 'example@example.com')
           click_button('Continuar') 
-        }
+        end
         it { should have_content('Debe confirmar su suscripción a los avisos de su auto') }
       end
     end

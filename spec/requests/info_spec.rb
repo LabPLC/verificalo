@@ -21,10 +21,10 @@ describe 'Info' do
     end
 
     describe 'post invalid plate' do
-      before { 
+      before do
         fill_in('plate', with: 'abcdefghijklmnopqrstuvwxyz')
         find_button('Continuar').click 
-      }
+      end
       it { should have_content('La placa que ingreso no es valida: Debe contener máximo 14 números y letras.') }
       it { should have_field('plate') }
       it { should have_button('Continuar') }    
