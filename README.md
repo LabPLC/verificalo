@@ -48,7 +48,7 @@ Características
   - Recordatorio mensual de adeudos pendientes
   - Recordatorio del hoy no circula semanal o sabatino
 
-- Información 
+- Respuestas:
   - Verificentros por delegación
   - Verificentros mas cercanos por colonia o código postal
 
