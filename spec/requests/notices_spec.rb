@@ -16,10 +16,8 @@ describe "Notices" do
       it { should have_content('¿Qué avisos desea recibir sobre su auto?') }
       it { should have_button('Continuar') }
 
-      describe 'post with invalid params' do
+      describe 'post without params' do
         before { 
-          fill_in('user[plate]', with: 'abcdefghijklmnopqrstuvwxyz')
-          fill_in('user[destination]', with: 'none@none')
           uncheck('settings[VERIFICACION]')
           uncheck('settings[ADEUDOS]')
           uncheck('settings[NO_CIRCULA_WEEKDAY]')
@@ -32,9 +30,8 @@ describe "Notices" do
         it { should have_button('Continuar') }        
       end
       
-      describe 'post with invlaid plate' do
+      describe 'post without plate' do
         before { 
-          fill_in('user[plate]', with: 'abdefghijklmnopqrstuvwxyz')
           fill_in('user[destination]', with: 'none@none.com')
           click_button('Continuar') 
         }
@@ -44,10 +41,9 @@ describe "Notices" do
         it { should have_button('Continuar') }        
       end
       
-      describe 'post with invlaid email' do
+      describe 'post without email' do
         before { 
           fill_in('user[plate]', with: '436per')
-          fill_in('user[destination]', with: 'none@none')
           click_button('Continuar') 
         }
         it { should_not have_content('La placa que ingreso no es valida.') }

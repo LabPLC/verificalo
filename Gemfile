@@ -15,7 +15,7 @@ gem 'htmlentities', '~>4.3.1'
 gem 'geocoder', '~>1.2.0'
 
 group :development, :test do
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -23,7 +23,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '2.1.0'
-  gem 'poltergeist', '1.5.0'
+  gem 'capybara'
+  gem 'poltergeist'
   gem 'coveralls'
 end
