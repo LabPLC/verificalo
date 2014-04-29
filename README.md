@@ -63,5 +63,5 @@ Capturas de pantalla
 ![Suscripción a avisos](/doc/img/screenshoot-3.jpg?raw=true "Suscripción a avisos")
 ### Respuestas
 ![Donde llevar su auto a verificar](/doc/img/screenshoot-4.jpg?raw=true "Donde llevar su auto a verificar")
-### Verificentros más cercanos
+### Busqueda de verificentros
 ![Verificentros más cercanos](/doc/img/screenshoot-5.jpg?raw=true "Verificentros más cercanos")
