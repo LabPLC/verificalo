@@ -3,12 +3,12 @@ require 'spec_helper'
 
 describe 'Static pages' do
   subject { page }
-
+  
   describe 'home' do
     before { visit root_path }
-
+    
     it { should have_title('Verifícalo') }
-
+    
     describe 'navbar' do
       it { should have_link('Información', href: info_path) }
       it { should have_link('Avisos', href: avisos_path) }
@@ -20,11 +20,11 @@ describe 'Static pages' do
       it { should have_field('plate') }
       it { should have_button('Consulta') }
     end
-
+    
     describe 'grid' do
       it { should have_link('Suscribirse', href: avisos_path) }
       it { should have_link('Preguntar', href: respuestas_path) }
     end
   end
-
+  
 end

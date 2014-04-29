@@ -20,6 +20,12 @@ Coveralls.wear!
 # Use phantomjs via poltergeist
 Capybara.javascript_driver = :poltergeist
 
+# Travis CI
+Capybara.default_wait_time = 60
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, timeout: 60)
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #

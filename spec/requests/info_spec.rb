@@ -20,7 +20,7 @@ describe 'Info' do
       it { should have_button('Continuar') }    
     end
 
-    describe 'post with a long plate' do
+    describe 'post invalid plate' do
       before { 
         fill_in('plate', with: 'abcdefghijklmnopqrstuvwxyz')
         find_button('Continuar').click 
