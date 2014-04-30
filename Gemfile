@@ -27,4 +27,5 @@ group :test do
   gem 'poltergeist'
   gem 'coveralls'
   gem 'shoulda'
+  gem 'factory_girl_rails'
 end
