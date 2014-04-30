@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe Delegacion do
   before do
-    @delegacion = Delegacion.new(url: 'example-borough', 
-                                 name: 'Example Borough')
+    @delegacion = FactoryGirl.build(:delegacion)
   end
 
   subject { @delegacion }

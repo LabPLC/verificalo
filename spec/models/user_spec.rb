@@ -15,7 +15,7 @@ shared_examples_for User do
     before { @user.plate = '' }
     it { should_not be_valid }
   end
-  
+
   describe 'with invalid plate' do
     before { @user.plate = 'abcdefghijklmnopqrstuvwxyz' }
     it { should_not be_valid }
@@ -25,28 +25,26 @@ end
 describe User do
   describe 'via email' do
     before do
-      @user = User.new(plate: '123abc', via: 'EMAIL', 
-                       destination: 'example@example.com')
+      @user = FactoryGirl.build(:user_email)
     end
-    
+
     subject { @user }
     it_behaves_like User  
-    
+
     describe 'without email' do
       before { @user.destination = '' }
       it { should_not be_valid }  
     end
-    
+
     describe 'with invalid email' do
-      before { @user.destination = 'example@example' }
+      before { @user.destination = 'invalid@example' }
       it { should_not be_valid }      
     end    
   end
 
   describe 'via phone' do
     before do 
-      @user = User.new(plate: '123abc', via: 'PHONE', 
-                       destination: '1234567890')
+      @user = FactoryGirl.build(:user_phone)
     end
 
     subject { @user }
@@ -56,7 +54,7 @@ describe User do
       before { @user.destination = '' }
       it { should_not be_valid }  
     end
-    
+
     describe 'with invalid phone' do
       before { @user.destination = '12345678901234567890' }
       it { should_not be_valid }

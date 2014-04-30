@@ -2,16 +2,9 @@ require 'spec_helper'
 
 describe Verificentro do
   before do
-    delegacion = Delegacion.create(url: 'example-borough', 
-                                   name: 'Example Borough')
-    @verificentro = Verificentro.new(number: 123,
-                                     name: 'Example Inc',
-                                     address: 'Fake street 123',
-                                     delegacion_id: delegacion.id,
-                                     phone: '1234567890',
-                                     lat: 19.43, lon: -99.14)
+    @verificentro = FactoryGirl.build(:verificentro)
   end
-
+  
   subject { @verificentro }
 
   it { should belong_to(:delegacion) }

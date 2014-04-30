@@ -17,8 +17,7 @@ end
 
 describe Setting do
   before do
-    user = User.create(plate: '123abc', via: 'EMAIL',
-                       destination: 'example@example.com')
+    user = FactoryGirl.create(:user_email)
     @setting = Setting.new(user_id: user.id)
   end
 
