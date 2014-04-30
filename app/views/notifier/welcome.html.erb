@@ -7,28 +7,32 @@
 
 <ul>
   <% if @settings['VERIFICACION'] %>
-  <li style="margin: 15px"><strong>Verificación</strong><br/>Recibira
+  <li id="setting-verificacion" 
+      style="margin: 15px"><strong>Verificación</strong><br/>Recibira
     un aviso antes de que inicie el periodo para verificar su auto y
     recordatorios cada dos semanas para que no olvide la verificación
     de su auto.</li>
   <% end %>
 
   <% if @settings['ADEUDOS'] %>
-  <li style="margin: 15px"><strong>Pago de tenencias e
-      infracciones</strong><br/>Recibira un aviso cuando tenga nuevos
+  <li style="margin: 15px">
+    <strong>Pago de tenencias e infracciones</strong><br/>
+    Recibira un aviso cuando tenga nuevos
     pagos pendientes y recordatorios para que aproveche los beneficios
     de pagar a tiempo la tenencia e infracciones.</li>
   <% end %>
   
   <% if @settings['NO_CIRCULA_WEEKDAY'] %>
-  <li style="margin: 15px"><strong>Hoy no circula de lunes a
-      viernes</strong><br/>Recibira avisos un día antes de que su
+  <li style="margin: 15px">
+    <strong>Hoy no circula de lunes a viernes</strong><br/>
+    Recibira avisos un día antes de que su
     auto no pueda circular entre lunes y viernes.</li>
   <% end %>
   
   <% if @settings['NO_CIRCULA_WEEKEND'] %>
-  <li style="margin: 15px"><strong>Hoy no circula
-      sabatino</strong><br/>Recibira avisos un día antes de que su
+  <li style="margin: 15px">
+    <strong>Hoy no circula sabatino</strong><br/>
+    Recibira avisos un día antes de que su
     auto no pueda circular en sábado.</li>
   <% end %>
 </ul>
