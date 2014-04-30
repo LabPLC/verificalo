@@ -25,8 +25,8 @@ describe "Notices" do
       
       describe 'post without settings' do
         before do
-          fill_in('user[plate]', with: '123abc')
-          fill_in('user[destination]', with: 'example@example.com')
+          fill_in('user[plate]', with: FactoryGirl.generate(:plate))
+          fill_in('user[destination]', with: FactoryGirl.generate(:email))
           uncheck('settings[VERIFICACION]')
           uncheck('settings[ADEUDOS]')
           uncheck('settings[NO_CIRCULA_WEEKDAY]')
@@ -39,13 +39,21 @@ describe "Notices" do
       
       describe 'post' do
         before do
-          fill_in('user[plate]', with: '123abc')
-          fill_in('user[destination]', with: 'example@example.com')
+          fill_in('user[plate]', with: FactoryGirl.generate(:plate))
+          fill_in('user[destination]', with: FactoryGirl.generate(:email))
           click_button('Continuar') 
         end
         it { should have_content('Debe confirmar su suscripción a los avisos de su auto') }
       end
-    end
 
+    end
+  end
+
+  describe 'confirm user email' do
+    before do
+      @user = FactoryGirl.create(:user_email)
+      visit aviso_path(@user.id)
+    end
+    it { should have_content('La suscripción a los avisos de su auto con placa ' + @user.plate + ' esta confirmada.') }
   end
 end
