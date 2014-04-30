@@ -32,7 +32,6 @@ describe InfoController do
     describe "a valid plate" do
       subject { post :home, { plate: '123abc' } }
       it "should redirect to plate info" do
-        response.should be_success
         # TODO
       end
     end
