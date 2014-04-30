@@ -16,35 +16,34 @@ shared_examples_for Setting do
 end
 
 describe Setting do
-  before do
-    user = FactoryGirl.create(:user_email)
-    @setting = Setting.new(user_id: user.id)
-  end
-
   subject { @setting }
   
   describe 'verificacion' do
-    before { @setting.setting = 'VERIFICACION' }
+    before { @setting = FactoryGirl.build(:setting_verificacion) }
     it_behaves_like Setting
   end
   
   describe 'adeudos' do
-    before { @setting.setting = 'ADEUDOS' }
+    before { @setting = FactoryGirl.build(:setting_adeudos) }
     it_behaves_like Setting
   end
 
   describe 'hoy no circula weekday' do
-    before { @setting.setting = 'NO_CIRCULA_WEEKDAY' }
+    before { @setting = FactoryGirl.build(:setting_no_circula_weekday) }
     it_behaves_like Setting
   end
 
   describe 'hoy no circula weekend' do
-    before { @setting.setting = 'NO_CIRCULA_WEEKEND' }
+    before { @setting = FactoryGirl.build(:setting_no_circula_weekend) }
     it_behaves_like Setting
   end
-
+  
   describe 'invalid' do
-    before { @setting.setting = 'OTHER' }
+    before do
+      user = FactoryGirl.create(:user_email)
+      @setting = Setting.new(user_id: user.id)
+      @setting.setting = 'INVALID'
+    end
     it { should_not be_valid }    
   end
 end

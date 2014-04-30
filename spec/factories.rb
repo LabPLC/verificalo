@@ -17,11 +17,39 @@ FactoryGirl.define do
     factory :user_email do
       via 'EMAIL'
       destination { generate(:email) }
+
+      factory :user_email_default_settings do
+        after(:create) do |user|
+          create(:setting_verificacion, user: user)
+          create(:setting_adeudos, user: user)
+          create(:setting_no_circula_weekend, user: user)
+        end
+      end
     end
 
     factory :user_phone do
       via 'PHONE'
       destination { generate(:phone) }
+    end
+  end
+
+  factory :setting do
+    user { create(:user_email) }
+    
+    factory :setting_verificacion do
+      setting 'VERIFICACION'
+    end
+    
+    factory :setting_adeudos do
+      setting 'ADEUDOS'
+    end
+    
+    factory :setting_no_circula_weekday do
+      setting 'NO_CIRCULA_WEEKDAY'
+    end
+    
+    factory :setting_no_circula_weekend do
+      setting 'NO_CIRCULA_WEEKEND'
     end
   end
 
