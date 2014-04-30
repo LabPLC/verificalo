@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe 'visit home' do
+describe 'visit homepage' do
   before { visit root_path }
   
   subject { page }
