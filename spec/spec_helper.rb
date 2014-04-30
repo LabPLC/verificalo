@@ -21,9 +21,9 @@ Coveralls.wear!
 Capybara.javascript_driver = :poltergeist
 
 # Travis CI
-Capybara.default_wait_time = 360
+Capybara.default_wait_time = 3600
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, timeout: 360)
+  Capybara::Poltergeist::Driver.new(app, timeout: 3600)
 end
 
 RSpec.configure do |config|
