@@ -10,7 +10,8 @@
   <div class="col-md-offset-2 col-md-8">
     <% if @error %>
     <div class="alert alert-warning">
-      <strong><%= @error %></strong></div>
+      <strong>Error al confirmar la suscripción:</strong>
+      La dirección no es valida.</div>
     <% else %>
     <div class="alert alert-success">La suscripción a los avisos de su
       auto con placa <strong><%= @user.plate %></strong> esta
