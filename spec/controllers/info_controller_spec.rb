@@ -11,6 +11,15 @@ describe InfoController do
   end
 
   describe "POST home" do
+    describe "without params" do
+      subject { post :home }
+      it "should return without errors" do
+        response.should be_success
+        should render_template('home')
+        assigns(:error).should be_nil
+      end
+    end
+
     describe "an empty plate" do
       subject { post :home, plate: '' }
       it "should return MISSING_PLATE error" do
