@@ -7,7 +7,11 @@ class NoticesController < ApplicationController
       return
     end
     @errors = Hash.new
-    @user = User.new(user_params)
+    begin
+      @user = User.new(user_params)
+    rescue
+      return
+    end
     @debug = @user.errors
     if !@user.save
       if @user.errors[:plate].count > 0
