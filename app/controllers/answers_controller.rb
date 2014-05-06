@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
 
   def verificentros
     @verificentros_count = Verificentro.count
-    @delegaciones = Delegacion.find(:all, :order => "name")
+    @delegaciones = Delegacion.order('name')
   end
 
   def verificentros_query
@@ -28,7 +28,7 @@ class AnswersController < ApplicationController
   end
 
   def verificentros_delegaciones
-    @delegaciones = Delegacion.find(:all, :order => "name")
+    @delegaciones = Delegacion.order('name')
   end
 
   def verificentros_delegacion

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   sequence :plate do |n|
-    n.to_s.rjust(3, "0") + 'aaa'
+    n.to_s.rjust(3, '0') + 'aaa'
   end
   
   sequence :email do |n|
@@ -8,7 +8,7 @@ FactoryGirl.define do
   end
 
   sequence :phone do |n|
-    n.to_s.ljust(10, "0")
+    n.to_s.ljust(10, '0')
   end
 
   factory :user do
@@ -54,14 +54,25 @@ FactoryGirl.define do
   end
 
   factory :delegacion do
-    url 'example-borough'
-    name 'Example Borough'
-  end
+    sequence(:url) { |n| "example-borough-#{n}" }
+    sequence(:name) { |n| "Example Borough #{n}" }
 
+    factory :delegacion_verificentros do
+      ignore do
+        verificentros_count 3
+      end
+      after(:create) do |delegacion, evaluator|
+        create_list(:verificentro, 
+                    evaluator.verificentros_count,
+                    delegacion: delegacion)
+      end
+    end
+  end
+  
   factory :verificentro do
     delegacion
-    sequence(:number) { |n| n.to_s.rjust(4, "0") }
-    name 'Example Inc'
+    sequence(:number) { |n| n.to_s.rjust(4, '0') }
+    sequence(:name) { |n| "Example #{n} Inc" }
     address 'Fake street 123'
     phone
     lat 19.43
