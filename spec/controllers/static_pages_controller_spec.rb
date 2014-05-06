@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe StaticPagesController do
-  describe "GET home" do
-    subject { get :home }
-    it { response.should be_success }
-    it { should render_template('home') }
+  describe 'GET home' do
+    it 'should render home' do
+      get :home
+      response.should be_success
+      should render_template('home')
+    end
   end
 end
