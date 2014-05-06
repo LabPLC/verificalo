@@ -74,6 +74,11 @@ Datos](http://datos.labplc.mx), especificamente:
 - [API de Vehículos](http://datos.labplc.mx/movilidad/vehiculos.info)
 - [Datos de Verificentros](http://datos.labplc.mx/datasets/view/verificentros)
 
+Agradecemos a la [Secretaria de Medio
+Ambiente](http://www.sedema.df.gob.mx) y en especial a la *Dirección de
+Programas de Transporte Sustentable y Fuente Móviles* por su
+colaboración en la apertura de datos que hacen posible a este proyecto.
+
 Desarrollo
 ----------
 
@@ -88,7 +93,7 @@ Rails](http://rubyonrails.org/) y utiliza la base de datos
 - Servidor de correo SMTP (por ejemplo [mailgun](http://www.mailgun.com/))
 - Cuenta de [Mapbox](http://www.mapbox.com/)
 
-### Instalación para ambiente de desarrollo
+### Instalación del ambiente de desarrollo
 
 **Crear el usuario y base de datos para el ambiente de desarrollo**
 
