@@ -125,12 +125,12 @@ Rails](http://rubyonrails.org/) y utiliza la base de datos
     $ cd verificalo
     $ bundle install
 
-**Configurar la aplicación**
-
-Copiar los ejemplos de configuración:
+**Copiar la configuración de ejemplo**
 
     $ cp config/application.yml.sample config/application.yml
     $ cp config/database.yml.sample config/database.yml
+
+**Configurar la aplicación**
 
 Ingresar en la seccion `development` de `config/database.yml` el
 usuario y base de datos de PostgreSQL.
@@ -157,9 +157,6 @@ Acerca
 ------
 
 Verificalo fue escrito durante el programa de [Codigo Ciudad de
-México](http://codigo.labplc.mx) principalmente por [Manuel
-Rabade](mailto:manuel@rabade.net).
-
-Codigo Ciudad de México es un proyecto del [Laboratorio para la
+México](http://codigo.labplc.mx) del [Laboratorio para la
 Ciudad](http://labplc.mx) en asociación con [Code for
 America](http://codeforamerica.org/).
