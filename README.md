@@ -75,8 +75,8 @@ Datos](http://datos.labplc.mx), especificamente:
 - [Datos de Verificentros](http://datos.labplc.mx/datasets/view/verificentros)
 
 Agradecemos a la [Secretaria de Medio
-Ambiente](http://www.sedema.df.gob.mx) y en especial a la *Dirección de
-Programas de Transporte Sustentable y Fuente Móviles* por su
+Ambiente](http://www.sedema.df.gob.mx) y en especial a la **Dirección de
+Programas de Transporte Sustentable y Fuente Móviles** por su
 colaboración en la apertura de datos que hacen posible a este proyecto.
 
 Desarrollo
@@ -143,8 +143,8 @@ Contibuye
 ---------
 
 Verificalo es [Software
-Libre](http://es.wikipedia.org/wiki/Software_libre) y todos estan
-invitados a mejorar el proyecto.
+Libre](http://es.wikipedia.org/wiki/Software_libre) y cualquiera esta
+invitado a mejorar el proyecto.
 
 Puedes utilizar nuestro [Issue
 Tracker](https://github.com/LabPLC/verificalo/issues) para reportar
@@ -159,6 +159,9 @@ más información de esta modalidad de colaboración puedes consultar:
 - [Contributing to Open Source on GitHub](https://guides.github.com/activities/contributing-to-open-source/)
 - [Fork A repo](https://help.github.com/articles/fork-a-repo)
 - [Creating a pull request](https://help.github.com/articles/creating-a-pull-request)
+
+Si tienes dudas o problemas sobre la metodología no dudes en
+contactarnos.
 
 Acerca
 ------
