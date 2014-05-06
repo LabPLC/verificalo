@@ -52,16 +52,112 @@ Características
   - Verificentros por delegación
   - Verificentros mas cercanos por colonia o código postal
 
-Capturas de pantalla
---------------------
+### Capturas de pantalla
 
-### Página de inicio
+#### Página de inicio
 ![Página de inicio](/doc/img/screenshoot-1.jpg?raw=true "Página de inicio")
-### Consulta por placa
+#### Consulta por placa
 ![Consulta por placa](/doc/img/screenshoot-2.jpg?raw=true "Consulta por placa")
-### Suscripción a notificaciones
+#### Suscripción a notificaciones
 ![Suscripción a notificaciones](/doc/img/screenshoot-3.jpg?raw=true "Suscripción a notificaciones")
-### Respuestas
+#### Respuestas
 ![Donde llevar su auto a verificar](/doc/img/screenshoot-4.jpg?raw=true "Donde llevar su auto a verificar")
-### Busqueda de verificentros
+#### Busqueda de verificentros
 ![Verificentros más cercanos](/doc/img/screenshoot-5.jpg?raw=true "Verificentros más cercanos")
+
+Datos Abiertos
+--------------
+
+Verificalo es posible gracias a los datos y API del [Laboratorio de
+Datos](http://datos.labplc.mx), especificamente:
+
+- [API de Vehículos](http://datos.labplc.mx/movilidad/vehiculos.info)
+- [Datos de Verificentros](http://datos.labplc.mx/datasets/view/verificentros)
+
+Contibuye
+---------
+
+Verificalo es [Software
+Libre](http://es.wikipedia.org/wiki/Software_libre) y todos estan
+invitados a mejorar el proyecto.
+
+Puedes utilizar nuestro [Issue
+tracker](https://github.com/LabPLC/verificalo/issues) para reportar
+errores o problemas que encuentres con la aplicación así como proponer
+nuevas funcionalidades.
+
+Si deseas colaborar en el desarrollo de la aplicación nos encantaría
+trabajaras en un nuevo branch sobre un fork de nuestro deposito y
+solicitaras un pull request con tus cambios para integrarlos. Para más
+información de esta modalidad de colaboración puedes consultar:
+
+[Contributing to Open Source on GitHub](https://guides.github.com/activities/contributing-to-open-source/)
+[Fork A repo](https://help.github.com/articles/fork-a-repo)
+[Creating a pull request](https://help.github.com/articles/creating-a-pull-request)
+
+Desarrollo
+----------
+
+Verificalo esta construido con el framework [Ruby on
+Rails](http://rubyonrails.org/) y utiliza la base de datos
+[PostgreSQL](http://www.postgresql.org/)
+
+### Requisitos
+
+- PostgreSQL 9.3
+- Ruby 2.0.0
+- Servidor de correo SMTP (por ejemplo [mailgun](http://www.mailgun.com/))
+- Cuenta de [Mapbox](http://www.mapbox.com/)
+
+### Instalación para desarrolladores
+
+1. Crear el usuario y base de datos para el ambiente de desarrollo:
+
+   $ createuser -U postgres -s verificalo_dev
+   $ createdb -U postgres verificalo_dev
+
+2. Clonar el deposito:
+
+   $ git clone https://github.com/LabPLC/verificalo
+
+3. Instalar sus dependencias:
+
+   $ cd verificalo
+   $ bundle install
+
+4. Copiar la configuracion de ejemplo:
+
+   $ cp config/application.yml.sample config/application.yml
+   $ cp config/database.yml.sample config/database.yml
+
+5. Ingresar en la seccion `development` de `config/database.yml' el
+   usuario y base de datos de PostgreSQL
+
+6. Ingresar en `config/application.yml' la configuración del servidor
+   STMP y el id de la cuenta de Mapbox
+
+7. Ejecutar el servidor de rails:
+  
+   $ rails server
+
+### Pruebas automatizadas
+
+1. Crear el usuarios y base de datos para el ambiente de pruebas:
+
+   $ createuser -U postgres -s verificalo_test
+   $ createdb -U postgres verificalo_test
+
+2. Ejecutar las pruebas:
+
+   $ rspec -fd
+
+Acerca
+------
+
+Verificalo fue escrito durante el programa de [Codigo Ciudad de
+México](http://codigo.labplc.mx) principalmente por [Manuel
+Rabade](mailto:manuel@rabade.net).
+
+Codigo Ciudad de México es un proyecto del [Laboratorio para la
+Ciudad](http://labplc.mx) en asociación con [Code for
+America](http://codeforamerica.org/).
