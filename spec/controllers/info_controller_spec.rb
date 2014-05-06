@@ -37,13 +37,13 @@ describe InfoController do
         should render_template('home')
       end
     end
-    
-    describe 'a valid plate' do
-      it 'should redirect to plate info' do
-        # post :home, plate: '123abc'
-        # TODO
-      end
-    end
+
+    # TODO    
+    # describe 'a valid plate' do
+    #   it 'should redirect to plate info' do
+    #     # post :home, plate: '123abc'
+    #   end
+    # end
 
   end
 end

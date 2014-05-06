@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe AnswersController do
-  before(:all) do
+  before :all do
     FactoryGirl.create(:delegacion_verificentros, 
                        verificentros_count: 3)
     FactoryGirl.create(:delegacion_verificentros, 
@@ -9,7 +9,7 @@ describe AnswersController do
     FactoryGirl.create(:delegacion_verificentros, 
                        verificentros_count: 9)
   end
-  
+
   describe 'GET home' do
     it 'should render home' do
       get :home
@@ -17,7 +17,7 @@ describe AnswersController do
       should render_template('home')
     end
   end
-  
+
   describe 'GET verificentros' do
     before do
       @verificentros_count = Verificentro.all.count
@@ -31,7 +31,7 @@ describe AnswersController do
       assigns(:delegaciones).count.should eq(@delegaciones_count)
     end
   end
-  
+
   describe 'GET verificentros_query' do
     it 'should render form' do
       get :verificentros_query
@@ -39,7 +39,7 @@ describe AnswersController do
       should render_template('verificentros_query')
     end
   end
-  
+
   describe 'POST verificentros_query' do
     describe 'without params' do
       it 'should render form without response' do
@@ -50,12 +50,12 @@ describe AnswersController do
         assigns(:verificentros).should be_nil        
       end
     end
-    
-    describe 'with query' do
-      # TODO
-    end
+
+    # TODO
+    # describe 'with query' do
+    # end
   end
-  
+
   describe 'GET verificentros_delegaciones' do
     before do
       @delegaciones_count = Delegacion.all.count
@@ -67,7 +67,7 @@ describe AnswersController do
       assigns(:delegaciones).count.should eq(@delegaciones_count)
     end
   end
-  
+
   describe 'GET verificentros_delegacion' do
     describe 'with invalid delegacion' do
       it 'should redirect to verificentros' do
@@ -75,10 +75,10 @@ describe AnswersController do
         response.should redirect_to({ action: 'verificentros' })
       end      
     end
-    
+
     describe 'with valid delegacion' do
       before do 
-        @delegacion = Delegacion.first
+        @delegacion = Delegacion.order('RANDOM()').first
         @verificentros_count = @delegacion.verificentros.count
       end
       it 'should return verificentros' do

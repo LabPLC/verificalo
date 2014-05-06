@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe "notices sign up" do
+describe 'notices sign up' do
   subject { page }
   
   describe 'home' do
