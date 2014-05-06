@@ -111,43 +111,45 @@ Rails](http://rubyonrails.org/) y utiliza la base de datos
 
 ### Instalación para desarrolladores
 
-1. Crear el usuario y base de datos para el ambiente de desarrollo:
+**Crear el usuario y base de datos para el ambiente de desarrollo**
 
     $ createuser -U postgres -s verificalo_dev
     $ createdb -U postgres verificalo_dev
 
-2. Clonar el deposito:
+**Clonar el deposito**
 
     $ git clone https://github.com/LabPLC/verificalo
 
-3. Instalar sus dependencias:
+**Instalar dependencias**
 
     $ cd verificalo
     $ bundle install
 
-4. Copiar la configuracion de ejemplo:
+**Configurar la aplicación**
+
+Copiar los ejemplos de configuración:
 
     $ cp config/application.yml.sample config/application.yml
     $ cp config/database.yml.sample config/database.yml
 
-5. Ingresar en la seccion `development` de `config/database.yml' el
-   usuario y base de datos de PostgreSQL
+Ingresar en la seccion `development` de `config/database.yml' el
+usuario y base de datos de PostgreSQL.
 
-6. Ingresar en `config/application.yml' la configuración del servidor
-   STMP y el id de la cuenta de Mapbox
+Ingresar en `config/application.yml' la configuración del servidor STMP
+y el id de la cuenta de Mapbox.
 
-7. Ejecutar el servidor de rails:
+**Ejecutar el servidor de rails**
   
     $ rails server
 
 ### Pruebas automatizadas
 
-1. Crear el usuarios y base de datos para el ambiente de pruebas:
+**Crear el usuario y base de datos para el ambiente de pruebas**
 
     $ createuser -U postgres -s verificalo_test
     $ createdb -U postgres verificalo_test
 
-2. Ejecutar las pruebas:
+**Ejecutar las pruebas**
 
     $ rspec -fd
 
