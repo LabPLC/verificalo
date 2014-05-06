@@ -82,18 +82,18 @@ Libre](http://es.wikipedia.org/wiki/Software_libre) y todos estan
 invitados a mejorar el proyecto.
 
 Puedes utilizar nuestro [Issue
-tracker](https://github.com/LabPLC/verificalo/issues) para reportar
+Tracker](https://github.com/LabPLC/verificalo/issues) para reportar
 errores o problemas que encuentres con la aplicación así como proponer
 nuevas funcionalidades.
 
 Si deseas colaborar en el desarrollo de la aplicación nos encantaría
-trabajaras en un nuevo branch sobre un fork de nuestro deposito y
-solicitaras un pull request con tus cambios para integrarlos. Para más
-información de esta modalidad de colaboración puedes consultar:
+trabajaras sobre un nuevo branch dentro de un fork de nuestro deposito
+y solicitaras un pull request con tus cambios para integrarlos. Para
+más información de esta modalidad de colaboración puedes consultar:
 
-[Contributing to Open Source on GitHub](https://guides.github.com/activities/contributing-to-open-source/)
-[Fork A repo](https://help.github.com/articles/fork-a-repo)
-[Creating a pull request](https://help.github.com/articles/creating-a-pull-request)
+- [Contributing to Open Source on GitHub](https://guides.github.com/activities/contributing-to-open-source/)
+- [Fork A repo](https://help.github.com/articles/fork-a-repo)
+- [Creating a pull request](https://help.github.com/articles/creating-a-pull-request)
 
 Desarrollo
 ----------
@@ -113,22 +113,22 @@ Rails](http://rubyonrails.org/) y utiliza la base de datos
 
 1. Crear el usuario y base de datos para el ambiente de desarrollo:
 
-   $ createuser -U postgres -s verificalo_dev
-   $ createdb -U postgres verificalo_dev
+    $ createuser -U postgres -s verificalo_dev
+    $ createdb -U postgres verificalo_dev
 
 2. Clonar el deposito:
 
-   $ git clone https://github.com/LabPLC/verificalo
+    $ git clone https://github.com/LabPLC/verificalo
 
 3. Instalar sus dependencias:
 
-   $ cd verificalo
-   $ bundle install
+    $ cd verificalo
+    $ bundle install
 
 4. Copiar la configuracion de ejemplo:
 
-   $ cp config/application.yml.sample config/application.yml
-   $ cp config/database.yml.sample config/database.yml
+    $ cp config/application.yml.sample config/application.yml
+    $ cp config/database.yml.sample config/database.yml
 
 5. Ingresar en la seccion `development` de `config/database.yml' el
    usuario y base de datos de PostgreSQL
@@ -138,18 +138,18 @@ Rails](http://rubyonrails.org/) y utiliza la base de datos
 
 7. Ejecutar el servidor de rails:
   
-   $ rails server
+    $ rails server
 
 ### Pruebas automatizadas
 
 1. Crear el usuarios y base de datos para el ambiente de pruebas:
 
-   $ createuser -U postgres -s verificalo_test
-   $ createdb -U postgres verificalo_test
+    $ createuser -U postgres -s verificalo_test
+    $ createdb -U postgres verificalo_test
 
 2. Ejecutar las pruebas:
 
-   $ rspec -fd
+    $ rspec -fd
 
 Acerca
 ------
