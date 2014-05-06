@@ -8,4 +8,4 @@ smtp_user: postmaster@example.com
 smtp_pwd: secret
 
 # mapxbox
-mabpbox_id: codigocdmx.example
+mapbox_id: codigocdmx.example
