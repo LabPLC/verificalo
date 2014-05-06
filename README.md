@@ -74,27 +74,6 @@ Datos](http://datos.labplc.mx), especificamente:
 - [API de Vehículos](http://datos.labplc.mx/movilidad/vehiculos.info)
 - [Datos de Verificentros](http://datos.labplc.mx/datasets/view/verificentros)
 
-Contibuye
----------
-
-Verificalo es [Software
-Libre](http://es.wikipedia.org/wiki/Software_libre) y todos estan
-invitados a mejorar el proyecto.
-
-Puedes utilizar nuestro [Issue
-Tracker](https://github.com/LabPLC/verificalo/issues) para reportar
-errores o problemas que encuentres con la aplicación así como proponer
-nuevas funcionalidades.
-
-Si deseas colaborar en el desarrollo de la aplicación nos encantaría
-trabajaras sobre un nuevo branch dentro de un fork de nuestro deposito
-y solicitaras un pull request con tus cambios para integrarlos. Para
-más información de esta modalidad de colaboración puedes consultar:
-
-- [Contributing to Open Source on GitHub](https://guides.github.com/activities/contributing-to-open-source/)
-- [Fork A repo](https://help.github.com/articles/fork-a-repo)
-- [Creating a pull request](https://help.github.com/articles/creating-a-pull-request)
-
 Desarrollo
 ----------
 
@@ -109,7 +88,7 @@ Rails](http://rubyonrails.org/) y utiliza la base de datos
 - Servidor de correo SMTP (por ejemplo [mailgun](http://www.mailgun.com/))
 - Cuenta de [Mapbox](http://www.mapbox.com/)
 
-### Instalación para desarrolladores
+### Instalación para ambiente de desarrollo
 
 **Crear el usuario y base de datos para el ambiente de desarrollo**
 
@@ -144,6 +123,8 @@ y el id de la cuenta de Mapbox.
 
 ### Pruebas automatizadas
 
+Se necesita un ambiente de desarrollo funcional y después:
+
 **Crear el usuario y base de datos para el ambiente de pruebas**
 
     $ createuser -U postgres -s verificalo_test
@@ -153,6 +134,27 @@ y el id de la cuenta de Mapbox.
 
     $ rspec -fd
 
+Contibuye
+---------
+
+Verificalo es [Software
+Libre](http://es.wikipedia.org/wiki/Software_libre) y todos estan
+invitados a mejorar el proyecto.
+
+Puedes utilizar nuestro [Issue
+Tracker](https://github.com/LabPLC/verificalo/issues) para reportar
+errores o problemas que encuentres con la aplicación así como proponer
+nuevas funcionalidades.
+
+Si deseas colaborar en el desarrollo de la aplicación nos encantaría
+trabajaras sobre un nuevo branch dentro de un fork de nuestro deposito
+y solicitaras un pull request con tus cambios para integrarlos. Para
+más información de esta modalidad de colaboración puedes consultar:
+
+- [Contributing to Open Source on GitHub](https://guides.github.com/activities/contributing-to-open-source/)
+- [Fork A repo](https://help.github.com/articles/fork-a-repo)
+- [Creating a pull request](https://help.github.com/articles/creating-a-pull-request)
+
 Acerca
 ------
 
@@ -160,3 +162,11 @@ Verificalo fue escrito durante el programa de [Codigo Ciudad de
 México](http://codigo.labplc.mx) del [Laboratorio para la
 Ciudad](http://labplc.mx) en asociación con [Code for
 America](http://codeforamerica.org/).
+
+Contacto
+--------
+
+Para dudas, comentarios o cualquier asunto relacionado con Verificalo
+puedes contactar a Manuel Rábade del equipo de Codigo Ciudad de México en
+[manuel.rabade@codigo.labplc.mx](mailto:manuel.rabade@codigo.labplc.mx)
+o [manuel@rabade.net](mailto:manuel@rabade.net).
