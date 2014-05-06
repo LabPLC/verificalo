@@ -14,18 +14,16 @@ gem 'rails-i18n', '~>4.0.1'
 gem 'htmlentities', '~>4.3.1'
 gem 'geocoder', '~>1.2.0'
 
-group :development, :test do
-  gem 'rspec-rails'
-end
-
 group :development do
   gem 'pry-rails'
 end
 
 group :test do
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
   gem 'coveralls'
   gem 'shoulda'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
