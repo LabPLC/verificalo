@@ -132,10 +132,10 @@ Copiar los ejemplos de configuración:
     $ cp config/application.yml.sample config/application.yml
     $ cp config/database.yml.sample config/database.yml
 
-Ingresar en la seccion `development` de `config/database.yml' el
+Ingresar en la seccion `development` de `config/database.yml` el
 usuario y base de datos de PostgreSQL.
 
-Ingresar en `config/application.yml' la configuración del servidor STMP
+Ingresar en `config/application.yml` la configuración del servidor STMP
 y el id de la cuenta de Mapbox.
 
 **Ejecutar el servidor de rails**
