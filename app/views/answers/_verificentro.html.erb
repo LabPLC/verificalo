@@ -1,4 +1,5 @@
-<% map = 'http://api.tiles.mapbox.com/v3/' + ENV['VERIFICALO_MAPBOX_ID']
+<% map = 'http://api.tiles.mapbox.com/v3/'
+   map += ENV['VERIFICALO_MAPBOX_ID'] || 'xxxxxxxx.xxxxxxxx'
    map += '/pin-m-car+007FFF(' 
    map += verificentro.lon.to_s + ',' + verificentro.lat.to_s + ')/'
    map += verificentro.lon.to_s + ',' + verificentro.lat.to_s + ',15'
