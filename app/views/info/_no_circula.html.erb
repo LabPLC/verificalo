@@ -5,7 +5,7 @@
 <p>Debido a que su auto obtuvo el
   holograma <strong><%= @vehicle.verificacion_result %></strong>
   en su última verificación y su placa termina en
-  <strong><%= @vehicle.plate_ending_str %></strong>, no puede
+  <strong><%= @vehicle.plate_last_digit_str %></strong>, no puede
   circular:</p>
 <ul>
   <li>Todos los <%= @vehicle.no_circula_weekday %> del año.</li>
@@ -23,7 +23,7 @@
 <% if @vehicle.verificacion_first_period_ok? %>
 <!-- en periodo para la 1a verificacion -->
 <p>Debido a que nunca ha verificado su auto y su placa termina
-  en <strong><%= @vehicle.plate_ending_str %></strong>, no puede
+  en <strong><%= @vehicle.plate_last_digit_str %></strong>, no puede
   circular:</p>
 <ul>
   <li>Todos los <%= @vehicle.no_circula_weekday %> del año.</li>
