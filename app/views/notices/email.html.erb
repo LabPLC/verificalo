@@ -12,14 +12,12 @@
 <div class="row">
   <% if @errors[:INVALID_PLATE] && @errors[:INVALID_EMAIL] %>
   <div class="col-md-6">
-    <div class="alert alert-warning">
-      <strong>La placa que ingreso no es valida.</strong>
-    </div>
+    <div class="alert alert-warning"><strong>La placa que ingreso no es
+        de un auto particular de la Ciudad de México.</strong></div>
   </div>
   <div class="col-md-6">
-    <div class="alert alert-warning">
-      <strong>El correo electrónico que ingreso no es valido.</strong>
-    </div>
+    <div class="alert alert-warning"><strong>El correo electrónico que
+        ingreso no es valido.</strong></div>
   </div>
   <% else %>
   <div class="col-md-12">

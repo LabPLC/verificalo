@@ -7,17 +7,9 @@
         particular de la Ciudad de México</p>
       <% if @error %>
       <!-- si hay error -->      
-      <% if @error == 'MISSING_PLATE' %>
+      <% if @error == 'INVALID_PLATE' %>
       <div class="alert alert-warning"><strong>La placa que ingreso no es
-          valida:</strong> Debe contener números y letras.</div>
-      <% elsif @error == 'INVALID_PLATE' %>
-      <div class="alert alert-warning"><strong>La placa que ingreso no es
-          valida:</strong> Debe contener máximo 14 números y
-        letras.</div>
-      <% elsif @error == 'FOREIGN_PLATE' %>
-      <div class="alert alert-warning"><strong>La placa que ingreso no es
-          de un auto particular de la Ciudad de México:</strong> Debe
-        estar en el rango de 100AAA a 999ZZZ.</div>
+          de un auto particular de la Ciudad de México.</strong></div>
       <% else %>
       <div class="alert alert-warning"><strong>Intente más
           tarde:</strong> Tenemos problemas técnicos para

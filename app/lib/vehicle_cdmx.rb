@@ -9,31 +9,30 @@ module VehicleCDMX
     # constructor de clase
 
     def initialize (params)
-      return unless self.validate(params)
-      self.api
+      if self.validate(params) && self.extra(params)
+        self.api
+      end
     end
 
     # validacion de parametros
 
     def validate (params)
       unless params['plate']
-        @status = 'MISSING_PLATE'
-        return false
-      end
-      params['plate'].gsub!(/[^0-9a-z ]/i, '')
-      if params['plate'] == ''
-        @status = 'MISSING_PLATE'
-        return false
-      end
-      if params['plate'] !~ /\A[a-z0-9]{1,14}\z/i
         @status = 'INVALID_PLATE'
         return false
       end
+      params['plate'].gsub!(/[^0-9a-z ]/i, '')
       if params['plate'] !~ /\A[1-9][0-9][0-9][a-z][a-z][a-z]\z/i
-        @status = 'FOREIGN_PLATE'
+        @status = 'INVALID_PLATE'
         return false
       end
       @plate = params['plate'].upcase
+      true
+    end
+
+    # parametros extra
+
+    def extra (params)
       if params['vin']
         @vin = params['vin'].upcase
       end
