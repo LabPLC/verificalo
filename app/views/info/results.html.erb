@@ -10,13 +10,13 @@
 <div class="row">
   <!-- verificacion -->
   <div class="col-md-6">
-    <h2>Verificaciones</h2>
+    <h2 class="section-info">Verificaciones</h2>
     <%= render 'verificacion' %>
   </div>
 
   <!-- hoy no circula -->
   <div class="col-md-6">    
-    <h2>Hoy no circula</h2>
+    <h2 class="section-info">Hoy no circula</h2>
     <%= render 'no_circula' %>
   </div>
 </div>
@@ -24,13 +24,13 @@
 <div class="row">
   <!-- infracciones -->
   <div class="col-md-6">
-    <h2>Infracciones</h2>
+    <h2 class="section-info">Infracciones</h2>
     <%= render 'infracciones' %>
   </div>
   
   <!-- tenencia -->
   <div class="col-md-6">
-    <h2>Tenencia</h2>
+    <h2 class="section-info">Tenencia</h2>
     <%= render 'tenencia' %>
   </div>
 </div>
@@ -38,25 +38,25 @@
 <!-- llamados a otras secciones -->
 <div class="row">
   <div class="col-md-6">
-    <h2>Avisos</h2>
+    <h2 class="section-info">Avisos</h2>
     <p>Evite filas o multas recibiendo avisos oportunos sobre sus
       obligaciones como automovilista particular del Distrito
       Federal.</p>
     <p><a href="<%= url_for({ controller: 'notices', action: 'home' })%>"
           id="btn-notices">Suscribirse &raquo;</a></p>          
-    <h2>Respuestas</h2>
+    <h2 class="section-info">Respuestas</h2>
     <p>Encuentre las respuestas a sus preguntas sobre tramites de
       automoviles particulares del Distrito Federal.</p>
     <p><a href="<%= url_for({ controller: 'answers', action: 'home' })%>"
           id="btn-answers">Preguntar &raquo;</a></p>
   </div>
   <div class="col-md-6">
-    <!-- <h2>Uso inteligente</h2>
+    <!-- <h2 class="section-info">Uso inteligente</h2>
     <p>Utilizar racionalmente su auto le puede ahorrar tiempo y
       dinero además de cuidar el medio ambiente de la Ciudad de
       México.</p>
     <p><a id="btn-inteligent" href="#">Conozca más &raquo;</a></p> -->
-    <h2>Importante</h2>
+    <h2 class="section-info">Importante</h2>
     <p>La información mostrada tiene caracter informativo y no puede
       ser utilizada como un documento oficial. Conserve el último
       certificado de verificación de su auto y los pagos de tenencías e
