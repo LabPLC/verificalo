@@ -18,7 +18,8 @@
       <td><%= @vehicle.verificacion_current_year_str %></td>
       <td><%= @vehicle.verificacion_current_vin_str %></td>
       <% if @vehicle.user_vin? %>
-      <td><a href="#">Seleccionar otro VIN &raquo;</a></td>
+      <td><a href="<%= url_for({ action: 'reset', plate: @vehicle.plate,
+                   item: 'vin' }) %>">Seleccionar otro VIN &raquo;</a></td>
       <% end %>
       </td>
     </tr>
@@ -35,7 +36,9 @@
     <p><%= @vehicle.user_vin %></p>
   </div>
   <div class="col-md-4 col-sm-4">      
-    <p><a href="#">Seleccionar otro VIN &raquo;</a></p>
+    <p><a href="<%= url_for({ action: 'reset', plate: @vehicle.plate,
+                item: 'vin' }) %>">
+        Seleccionar otro VIN &raquo;</a></p>
   </div>
 </div>
 <% end %>
@@ -49,7 +52,9 @@
     <p><%= @vehicle.registration_date_str %></p>
   </div>
   <div class="col-md-4 col-sm-4">
-    <p><a href="#">Cambiar fecha de alta &raquo;</a></p>
+    <p><a href="<%= url_for({ action: 'reset', plate: @vehicle.plate,
+                item: 'alta' }) %>">
+        Cambiar fecha de alta &raquo;</a></p>
   </div>
 </div>
 <% end %>

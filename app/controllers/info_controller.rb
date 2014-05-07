@@ -74,6 +74,18 @@ class InfoController < ApplicationController
     @vehicle = VehicleCDMX.new(plate_param)
   end
   
+  def reset
+    @params = params
+    @session = session.to_hash
+    redirect_to({ action: 'home' }) unless plate_param? || reset_param?
+    if session.has_key?(:vin) && reset_vin?
+      session.delete(:vin)
+    elsif params[:item] == 'alta' && reset_registration_date?
+      session.delete(:registration_date)
+    end
+    redirect_to({ action: 'results', plate: plate_param[:plate] })
+  end
+
   private
     
   def plate_param
@@ -88,4 +100,19 @@ class InfoController < ApplicationController
   def info_params
     params.permit(:plate, :vin, registration: [:day, :month, :year])
   end
+
+  def reset_params
+    params.permit(:item)
+  end
+
+  def reset_vin?
+    return true if reset_params[:item] == 'vin'
+    false
+  end
+
+  def reset_registration_date?
+    return true if reset_params[:item] == 'alta'
+    false
+  end
+
 end

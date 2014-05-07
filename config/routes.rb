@@ -5,6 +5,7 @@ Verificalo::Application.routes.draw do
   match '/info/:plate', to: 'info#results', via: [ 'get', 'post' ]
   match '/info/:plate/verificaciones', to: 'info#verificaciones', via: 'get'
   match '/info/:plate/infracciones', to: 'info#infracciones', via: 'get'
+  match '/info/:plate/reset/:item', to: 'info#reset', via: 'get'
 
   # avisos
   match '/avisos', to: 'notices#home', via: [ 'get', 'post' ]
