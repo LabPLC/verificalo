@@ -1,6 +1,6 @@
 <% if @vehicle.tenencias_unpaid > 0 %>
 <!-- con adeudos de tenencia -->
-<div class="alert alert-warning">
+<div class="alert alert-warning status-info">
   <% if @vehicle.tenencias_unpaid > 1 %>
   <strong>Su auto tiene adeudos por los años
     <% else %>
@@ -12,6 +12,6 @@
     auto &raquo;</a></p> -->
 <% else %>
 <!-- sin adeudos de tenencia -->
-<div class="alert alert-success">Su auto no tiene adeudos
+<div class="alert alert-success status-info">Su auto no tiene adeudos
   de tenencia.</div>
 <% end %>

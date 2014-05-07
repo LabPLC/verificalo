@@ -1,6 +1,6 @@
 <% if @vehicle.infracciones_unpaid > 0 %>
 <!-- con adeudos de infracciones -->
-<div class="alert alert-warning">
+<div class="alert alert-warning status-info">
   <% if @vehicle.infracciones_unpaid > 1 %>
   <strong>Su auto tiene <%= @vehicle.infracciones_unpaid %>
     infracciones
@@ -13,8 +13,8 @@
     su auto &raquo;</a></p> -->
 <% else %>
 <!-- sin adeudos de infracciones -->
-<div class="alert alert-success">Su auto no tiene infracciones sin
-  pagar.</div>
+<div class="alert alert-success status-info">Su auto no tiene
+  infracciones sin pagar.</div>
 <% end %>
 
 <!-- links sobre infracciones -->    

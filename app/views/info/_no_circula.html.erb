@@ -34,7 +34,7 @@
 <% if @vehicle.verificacion_expired? || 
    @vehicle.verificacion_first_period_expired? %>
 <!-- sin verificacion o fuera de periodo para la 1a verificacion -->
-<div class="alert alert-warning"><strong>Su auto no puede
+<div class="alert alert-warning status-info"><strong>Su auto no puede
     circular:</strong> Debe llevar a verificar su auto.</div>
 <% else %>
 <!-- con verificacion o en periodo para la 1a verificacion -->
