@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe InfoController do
   describe 'GET home' do
-    it 'should return without errors' do
+    it 'should render home' do
       get :home
       response.should be_success
       assigns(:error).should be_nil

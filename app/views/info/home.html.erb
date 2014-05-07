@@ -1,58 +1,74 @@
 <!-- info#home -->
 <div class="row">
-  <div class="col-md-offset-2 col-md-8 text-center">
-    <h1>Información</h1>
+  <div class="col-md-12">
+    <div class="jumbotron">
+      <h1>Información</h1>
+      <p>Conozca sus obligaciones como automovilista
+        particular de la Ciudad de México</p>
+      <% if @error %>
+      <!-- si hay error -->      
+      <% if @error == 'MISSING_PLATE' %>
+      <div class="alert alert-warning"><strong>La placa que ingreso no es
+          valida:</strong> Debe contener números y letras.</div>
+      <% elsif @error == 'INVALID_PLATE' %>
+      <div class="alert alert-warning"><strong>La placa que ingreso no es
+          valida:</strong> Debe contener máximo 14 números y
+        letras.</div>
+      <% elsif @error == 'FOREIGN_PLATE' %>
+      <div class="alert alert-warning"><strong>La placa que ingreso no es
+          de un auto particular de la Ciudad de México:</strong> Debe
+        estar en el rango de 100AAA a 999ZZZ.</div>
+      <% else %>
+      <div class="alert alert-warning"><strong>Intente más
+          tarde:</strong> Tenemos problemas técnicos para
+        consultar las fuentes de datos sobre autos.</div>
+      <% end %>
+      <% end %>
+      <%= form_tag({ controller: 'info', action: 'home' },
+          { method: 'post', id: 'form-home' }) do %>
+      <div class="row">
+        <div class="col-md-3 col-sm-4">
+          <input name="plate" type="text" placeholder="Placa"
+                 class="form-control input-lg">
+        </div>
+        <div class="col-md-2 col-sm-4">
+          <button id="btn-home" type="submit"
+                  class="btn btn-primary btn-lg">Consulta</button>
+        </div>
+      </div>
+      <p class="help-block">Ingrese la placa de su auto y consulte
+        el estado de su verificacion, hoy no circula, infracciones y
+        tenencias</p>
+      <% end %>
+    </div>
   </div>
 </div>
-
-<!-- bienvenida -->
-<div id="txt-info-home" class="row">
-  <div class="col-md-offset-2 col-md-8">
-    <% if @error %>
-    <!-- si hay error -->
-    <% if @error == 'MISSING_PLATE' %>
-    <div class="alert alert-warning"><strong>La placa que ingreso no es
-        valida:</strong> Debe contener números y letras.</div>
-    <% elsif @error == 'INVALID_PLATE' %>
-    <div class="alert alert-warning"><strong>La placa que ingreso no es
-        valida:</strong> Debe contener máximo 14 números y
-      letras.</div>
-    <% elsif @error == 'FOREIGN_PLATE' %>
-    <div class="alert alert-warning"><strong>La placa que ingreso no es
-        de un auto particular de la Ciudad de México:</strong> Debe
-      estar en el rango de 100AAA a 999ZZZ.</div>
-    <% else %>
-    <div class="alert alert-warning"><strong>Intente más
-        tarde:</strong> Tenemos problemas técnicos para
-      consultar las fuentes de datos sobre autos.</div>
-    <% end %>
-    <% else %>
-    <!-- si no hay error -->
-    <p id="txt-info-welcome" class="text-center">Ingrese la placa de su
-      auto y consulte el estado de su verificacion, hoy no circula,
-      infracciones y tenencias.</p>
-    <% end %>
-  </div>
-</div>
-
-<!-- forma -->
-<%= form_tag({ controller: 'info', action: 'home' },
-    { method: 'post', id: 'form-info-home' }) do %>
-
 <div class="row">
-  <div class="col-md-offset-5 col-md-2 col-sm-offset-4 col-sm-4">
-    <input id="input-info-plate" name="plate" type="text"
-           placeholder="Placa" class="form-control">
+  <div class="col-md-4">
+    <h2>Avisos</h2>
+    <p>Evite filas o multas recibiendo avisos oportunos sobre sus
+      obligaciones como automovilista particular del Distrito
+      Federal.</p>
+    <p><a href="<%= url_for({ controller: 'notices', action: 'home' })%>"
+          id="btn-notices" class="btn btn-default">Suscribirse &raquo;</a></p>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-offset-2 col-md-8 text-center">
-    <button type="submit" class="btn btn-primary">Continuar</button>    
+  <div class="col-md-4">
+    <h2>Respuestas</h2>
+    <p>Encuentre verificentros, donde pagar sus adeudos, consejos para
+      ahorrar gasolina y todo sobre automoviles de la Ciudad de
+      México.</p>
+    <p><a href="<%= url_for({ controller: 'answers', action: 'home' })%>"
+          id="btn-answers" class="btn btn-default" href="#">Preguntar
+        &raquo;</a></p>
   </div>
+  <!-- <div class="col-md-4">
+       <h2>Uso inteligente</h2>
+    <p>Utilizar racionalmente su auto le puede ahorrar tiempo y
+      dinero además de cuidar el medio ambiente de la Ciudad de
+      México.</p>
+       <p><a id="btn-inteligent" class="btn btn-default" href="#">Conozca
+    más &raquo;</a></p> -->
 </div>
-
-<% end %>
 
 <!-- analytics -->
 <script>

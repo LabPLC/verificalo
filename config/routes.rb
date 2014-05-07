@@ -1,11 +1,7 @@
 Verificalo::Application.routes.draw do
 
-  # paginas estaticas
-  root "static_pages#home"
-  match '/acerca', to: 'static_pages#about', via: 'get'
-
   # informacion
-  match '/info', to: 'info#home', via: [ 'get', 'post' ]
+  root 'info#home', via: [ 'get', 'post' ]
   match '/info/:plate', to: 'info#results', via: [ 'get', 'post' ]
   match '/info/:plate/verificaciones', to: 'info#verificaciones', via: 'get'
   match '/info/:plate/infracciones', to: 'info#infracciones', via: 'get'
@@ -23,6 +19,9 @@ Verificalo::Application.routes.draw do
   match '/respuestas/verificentros/cercanos', to: 'answers#verificentros_query', via: [ 'get', 'post' ]
   match '/respuestas/verificentros/delegaciones', to: 'answers#verificentros_delegaciones', via: 'get'
   match '/respuestas/verificentros/:delegacion', to: 'answers#verificentros_delegacion', via: 'get'
+
+  # paginas estaticas
+  match '/acerca', to: 'static_pages#about', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
