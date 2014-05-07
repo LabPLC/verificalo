@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base  
-  VALID_PLATE_REGEX = /\A[a-z0-9]{1,14}\z/i
+  VALID_PLATE_REGEX = /\A[1-9][0-9][0-9][a-z][a-z][a-z]\z/i
   validates :plate, presence: true, format: { with: VALID_PLATE_REGEX }
 
   validates :via, presence: true

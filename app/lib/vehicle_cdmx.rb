@@ -29,6 +29,10 @@ module VehicleCDMX
         @status = 'INVALID_PLATE'
         return false
       end
+      if params['plate'] !~ /\A[1-9][0-9][0-9][a-z][a-z][a-z]\z/i
+        @status = 'FOREIGN_PLATE'
+        return false
+      end
       @plate = params['plate'].upcase
       if params['vin']
         @vin = params['vin'].upcase
