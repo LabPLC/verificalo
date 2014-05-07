@@ -1,6 +1,6 @@
 FactoryGirl.define do
-  sequence :plate do |n|
-    n.to_s.rjust(3, '0') + 'aaa'
+  sequence :plate, 1 do |n|
+    n.to_s.ljust(3, '0') + 'aaa'
   end
   
   sequence :email do |n|
