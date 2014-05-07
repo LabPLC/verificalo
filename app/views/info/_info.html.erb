@@ -25,6 +25,7 @@
   </tbody>
 </table>
 <% else %>
+<!-- si no hay verificacion -->
 <% if @vehicle.user_vin? %>
 <div class="row row-info">
   <div class="col-md-4 col-sm-4">
@@ -37,9 +38,9 @@
     <p><a href="#">Seleccionar otro VIN &raquo;</a></p>
   </div>
 </div>
-<hr class="hr-info">
 <% end %>
 <% if @vehicle.registration_date? %>
+<hr class="hr-info-middle">
 <div class="row row-info">
   <div class="col-md-4 col-sm-4">
     <p><strong>Fecha de Alta</strong></p>
@@ -51,6 +52,6 @@
     <p><a href="#">Cambiar fecha de alta &raquo;</a></p>
   </div>
 </div>
-<hr class="hr-info">
 <% end %>
+<hr class="hr-info">
 <% end %>
