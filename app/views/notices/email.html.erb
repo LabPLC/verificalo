@@ -87,55 +87,56 @@
 <div class="row">
   <div class="col-md-6">
     <div class="checkbox">
-      <label>
+      <label class="checkbox-inline">
         <input type="checkbox"
                <%= setting_checked('VERIFICACION', true) %>
                name="settings[VERIFICACION]">        
         Verificación
+        <span class="help-block">Recibira un aviso antes de que inicie
+          el periodo para verificar su auto y recordatorios cada dos
+          semanas para que no olvide la verificación de su auto.</span>
+        <!-- Recibira un aviso cuando inicie el periodo para verificar su -->
+        <!-- auto, recordatorios quincenales hasta que su auto apruebe la -->
+        <!-- verificación y una confirmación cuando su auto apruebe la -->
+        <!-- verificación. -->
       </label>
-      <span class="help-block">Recibira un aviso antes de que inicie el
-        periodo para verificar su auto y recordatorios cada dos semanas
-        para que no olvide la verificación de su auto.</span>
-      <!-- Recibira un aviso cuando inicie el periodo para verificar su -->
-      <!-- auto, recordatorios quincenales hasta que su auto apruebe la -->
-      <!-- verificación y una confirmación cuando su auto apruebe la -->
-      <!-- verificación. -->
     </div>
     <div class="checkbox">
-      <label>
+      <label class="checkbox-inline">
         <input type="checkbox"
                <%= setting_checked('ADEUDOS', true) %>
                name="settings[ADEUDOS]">
         Pago de tenencias e infracciones
+        <span class="help-block">Recibira un aviso cuando tenga nuevos
+          pagos pendientes y recordatorios para que aproveche los
+          beneficios de pagar a tiempo la tenencia e
+          infracciones.</span>
+        <!-- Recibira un aviso cuando su auto presente nuevos adeudos, -->
+        <!-- recordatorios mensuales para liquidar sus adeudos y una -->
+        <!-- confirmación cuando su auto no tenga adeudos. -->
       </label>
-      <span class="help-block">Recibira un aviso cuando tenga nuevos
-        pagos pendientes y recordatorios para que aproveche los
-        beneficios de pagar a tiempo la tenencia e infracciones.</span>
-      <!-- Recibira un aviso cuando su auto presente nuevos adeudos, -->
-      <!-- recordatorios mensuales para liquidar sus adeudos y una -->
-      <!-- confirmación cuando su auto no tenga adeudos. -->
     </div>
   </div>
   <div class="col-md-6">
     <div class="checkbox">
-      <label>
+      <label class="checkbox-inline">
         <input type="checkbox" 
                <%= setting_checked('NO_CIRCULA_WEEKDAY', false) %>
                name="settings[NO_CIRCULA_WEEKDAY]">
         Hoy no circula de lunes a viernes
+        <span class="help-block">Recibira avisos un día antes de que su
+          auto no pueda circular entre lunes y viernes.</span>
       </label>
-      <span class="help-block">Recibira avisos un día antes de que su
-        auto no pueda circular entre lunes y viernes.</span>
     </div>
     <div class="checkbox">
-      <label>
+      <label class="checkbox-inline">
         <input type="checkbox"
                <%= setting_checked('NO_CIRCULA_WEEKEND', true) %>
                name="settings[NO_CIRCULA_WEEKEND]">
         Hoy no circula sabatino
+        <span class="help-block">Recibira avisos un día antes de que su
+          auto no pueda circular en sábado.</span>
       </label>
-      <span class="help-block">Recibira avisos un día antes de que su
-        auto no pueda circular en sábado.</span>
     </div>
   </div>
 </div>
