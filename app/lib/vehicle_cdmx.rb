@@ -9,50 +9,27 @@ module VehicleCDMX
     # constructor de clase
 
     def initialize (params)
+      return unless self.validate(params)
+      self.api
+    end
+
+    # validacion de parametros
+
+    def validate (params)
       unless params['plate']
         @status = 'MISSING_PLATE'
-        return
+        return false
       end
       params['plate'].gsub!(/[^0-9a-z ]/i, '')
       if params['plate'] == ''
         @status = 'MISSING_PLATE'
-        return
+        return false
       end
       if params['plate'] !~ /\A[a-z0-9]{1,14}\z/i
         @status = 'INVALID_PLATE'
-        return
+        return false
       end
       @plate = params['plate'].upcase
-      begin
-        url = 'http://datos.labplc.mx/movilidad/vehiculos/' + @plate + '.json'
-        res = HTTParty.get(url);
-      rescue
-        @status = 'API_GET_ERROR'
-        return
-      end
-      if res.code != 200
-        @status = 'API_HTTP_ERROR'
-        return
-      end
-      begin
-        res = JSON.parse(res.body)
-        @api = res['consulta']
-      rescue
-        @status = 'API_JSON_ERROR'
-        return
-      end
-      unless @api['verificaciones'].is_a?(Array)
-        @status = 'VERIFICACIONES_ERROR'
-        return
-      end
-      unless @api['infracciones'].is_a?(Array)
-        @status = 'INFRACCIONES_ERROR'
-        return
-      end
-      unless @api['tenencias'].is_a?(Hash)
-        @status = 'TENENCIAS_ERROR'
-        return
-      end
       if params['vin']
         @vin = params['vin'].upcase
       end
@@ -62,7 +39,44 @@ module VehicleCDMX
         @registration.m = params['registration']['month']
         @registration.d = params['registration']['day']
       end
+      true
+    end
+
+    # consulta api
+
+    def api
+      begin
+        url = 'http://datos.labplc.mx/movilidad/vehiculos/' + @plate + '.json'
+        res = HTTParty.get(url);
+      rescue
+        @status = 'API_GET_ERROR'
+        return false
+      end
+      if res.code != 200
+        @status = 'API_HTTP_ERROR'
+        return false
+      end
+      begin
+        res = JSON.parse(res.body)
+        @api = res['consulta']
+      rescue
+        @status = 'API_JSON_ERROR'
+        return false
+      end
+      unless @api['verificaciones'].is_a?(Array)
+        @status = 'API_VERIFICACIONES_ERROR'
+        return false
+      end
+      unless @api['infracciones'].is_a?(Array)
+        @status = 'API_INFRACCIONES_ERROR'
+        return false
+      end
+      unless @api['tenencias'].is_a?(Hash)
+        @status = 'API_TENENCIAS_ERROR'
+        return false
+      end
       @status = 'OK'
+      true
     end
 
     # accesores basicos
@@ -77,18 +91,18 @@ module VehicleCDMX
       @plate
     end
     
-    def plate_ending
+    def plate_last_digit
       return false if self.error
       /\d(?!.*\d)/.match(@plate)[0]
     end
 
-    def plate_ending_str
+    def plate_last_digit_str
       return false if self.error
-      plate_ending_str = { 
+      plate_last_digit_str = {
         '1' => 'uno', '2' => 'dos', '3' => 'tres', '4' => 'cuatro', 
         '5' => 'cinco', '6' => 'seis', '7' => 'siete', '8' => 'ocho',
         '9' => 'nueve', '0' => 'cero' }
-      return plate_ending_str[self.plate_ending]
+      return plate_last_digit_str[self.plate_last_digit]
     end
 
     # accesores vin
@@ -368,7 +382,7 @@ module VehicleCDMX
         '5' => 'lunes', '6' => 'lunes',
         '7' => 'martes', '8' => 'martes',
         '9' => 'viernes', '0' => 'viernes' }
-      return plate_no_circula_weekday[self.plate_ending]
+      return plate_no_circula_weekday[self.plate_last_digit]
     end
 
     def no_circula_weekend
@@ -379,7 +393,7 @@ module VehicleCDMX
         '5' => 'primer', '6' => 'primer',
         '7' => 'segundo', '8' => 'segundo',
         '9' => 'quinto', '0' => 'quinto' }
-      return plate_no_circula_weekend[self.plate_ending] + ' sábado'
+      return plate_no_circula_weekend[self.plate_last_digit] + ' sábado'
     end
 
     # infracciones
@@ -404,12 +418,11 @@ module VehicleCDMX
       unless @api['infracciones'].count > 0
         return false
       end
-      sorted = @api['infracciones'].sort { |a, b| 
+      @api['infracciones'].sort { |a, b| 
         _a = Date.strptime(a['fecha'], "%Y-%m-%d")
         _b = Date.strptime(b['fecha'], "%Y-%m-%d")
         _b <=> _a
-      }
-      sorted.collect { |i|
+      }.collect { |i|
         coder = HTMLEntities.new
         r = OpenStruct.new
         r.date = I18n.localize(Date.parse(i['fecha']), :format => :default);
@@ -420,7 +433,7 @@ module VehicleCDMX
         r.status = coder.decode(i['situacion'])
         r
       }
-    end    
+    end
 
     # tenencias
 
