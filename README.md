@@ -74,10 +74,11 @@ Datos](http://datos.labplc.mx), especificamente:
 - [API de Vehículos](http://datos.labplc.mx/movilidad/vehiculos.info)
 - [Datos de Verificentros](http://datos.labplc.mx/datasets/view/verificentros)
 
-Agradecemos a la [Secretaria de Medio
-Ambiente](http://www.sedema.df.gob.mx) y en especial a la **Dirección de
-Programas de Transporte Sustentable y Fuente Móviles** por su
-colaboración en la apertura de datos que hacen posible a este proyecto.
+Agradecemos a la **Dirección de Programas de Transporte Sustentable y
+Fuente Móviles** de la [Secretaria de Medio
+Ambiente](http://www.sedema.df.gob.mx) y a la [Secretaria de
+Finanzas](http://www.finanzas.df.gob.mx/) por su colaboración en la
+apertura de datos que hacen posible a este proyecto.
 
 Desarrollo
 ----------
