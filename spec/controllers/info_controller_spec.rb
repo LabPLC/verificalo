@@ -21,10 +21,10 @@ describe InfoController do
     end
 
     describe 'an empty plate' do
-      it 'should return MISSING_PLATE error' do
+      it 'should return INVALID_PLATE error' do
         post :home, plate: ''
         response.should be_success
-        expect(assigns(:error)).to eq('MISSING_PLATE')
+        expect(assigns(:error)).to eq('INVALID_PLATE')
         should render_template('home')
       end
     end
