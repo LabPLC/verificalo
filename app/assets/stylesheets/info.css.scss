@@ -1,15 +1,26 @@
 /* info#home */
 
-#txt-info-home {
-    margin-top: 10px;
+.jumbotron {
+    background-color: #f0f0f0;
+    padding: 16px 60px 24px 60px;
+    margin-bottom: 8px;
 }
 
-#txt-info-welcome {
-    margin-bottom: 20px;
+.jumbotron h1 {
+    margin-top: 0;
 }
 
-#form-info-home input, #form-info-home button {
-    margin-bottom: 20px;
+.jumbotron p {
+    margin: 0 0 15px 0;
+}
+
+.jumbotron p.help-block {
+    font-size: 15px;
+    margin: 15px 0 0 0;
+}
+
+#btn-home {
+    margin-top: 3px; 
 }
 
 /* info#vin */
