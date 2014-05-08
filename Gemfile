@@ -13,6 +13,7 @@ gem 'httparty', '~>0.13.1'
 gem 'rails-i18n', '~>4.0.1'
 gem 'htmlentities', '~>4.3.1'
 gem 'geocoder', '~>1.2.0'
+gem 'twilio-ruby', '~>3.11.5' 
 
 group :development do
   gem 'pry-rails'
