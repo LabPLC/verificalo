@@ -1,2 +1,161 @@
-<h1>Notices#phone</h1>
-<p>Find me in app/views/notices/phone.html.erb</p>
+<!-- notices#phone -->
+<input type="hidden" name="user[via]" value="PHONE">
+
+<div class="row">
+  <div class="col-md-12">
+    <p class="lead">¿Cual es la placa de su auto y su número
+      de teléfono?</p>
+  </div>
+</div>
+
+<% if request.post? %>
+<% if @errors[:INVALID_PLATE] && @errors[:INVALID_DESTINATION] %>
+<div class="row">
+  <div class="col-md-5">
+    <div class="alert alert-warning"><strong>La placa que ingreso no es
+        de un auto particular de la Ciudad de México.</strong></div>
+  </div>
+  <div class="col-md-7">
+    <div class="alert alert-warning"><strong>El número de teléfono que
+        ingreso no es valido.</strong></div>
+  </div>
+</div>
+<% elsif @errors[:INVALID_PLATE] || @errors[:INVALID_DESTINATION] %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-warning">
+      <% if @errors[:INVALID_PLATE] %>
+      <strong>La placa que ingreso no es de un auto particular de la
+        Ciudad de México.</strong>
+      <% end %>
+      <% if @errors[:INVALID_DESTINATION] %>
+      <strong>El número de teléfono que ingreso no es valido.</strong>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-7">
+          <input type="text" class="form-control"
+                 id="input-notices-plate" name="user[plate]"
+                 <% if request.post? && !@errors[:INVALID_PLATE] %>
+                 value="<%= @user[:plate] %>"
+                 <% end %>
+                 placeholder="Placa de auto">
+        </div>
+      </div>
+      <span class="help-block">Solo autos particulares de la Ciudad de
+        México</span>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-7 pull-right">
+          <input type="text" class="form-control"
+                 id="input-notices-prefix" name="extra[prefix]"
+                 <% if request.post? && !@errors[:INVALID_DESTINATION] %>
+                 value="<%= @extra[:prefix] %>"
+                 <% else %>
+                 value="55"
+                 <% end %>
+                 placeholder="LADA">
+        </div>
+      </div>
+      <span class="help-block pull-right">Clave LADA</span>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-9">
+          <input type="phone" class="form-control"
+                 id="input-notices-phone" name="user[destination]"
+                 <% if request.post? && !@errors[:INVALID_DESTINATION] %>
+                 value="<%= @user[:destination] %>"
+                 <% end %>
+                 placeholder="Teléfono">
+        </div>
+      </div>
+      <span class="help-block">No compartiremos su número de
+        teléfono</span>
+    </div>
+  </div>
+</div>
+
+<%= render 'settings' %>
+
+<div class="row">
+  <div class="col-md-12">
+    <p class="lead">¿En que horario desea recibir sus avisos?</p>
+  </div>
+</div>
+
+<% if request.post? && @errors[:INVALID_SETTINGS_COUNT] %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-warning"><strong>Debe seleccionar por lo
+        menos un horario.</strong></div>
+  </div>
+</div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-2">
+    <div class="checkbox">
+      <label class="checkbox-inline">
+        <input type="checkbox"
+               <%= setting_checked('VERIFICACION', false) %>
+               name="settings[VERIFICACION]">        
+        Temprano
+        <span class="help-block">7 a 9 am</span>
+      </label>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="checkbox">
+      <label class="checkbox-inline">
+        <input type="checkbox"
+               <%= setting_checked('VERIFICACION', true) %>
+               name="settings[VERIFICACION]">        
+        Mañana
+        <span class="help-block">9 am a 12 pm</span>
+      </label>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="checkbox">
+      <label class="checkbox-inline">
+        <input type="checkbox"
+               <%= setting_checked('VERIFICACION', true) %>
+               name="settings[VERIFICACION]">        
+        Tarde
+        <span class="help-block">12 a 6 pm</span>
+      </label>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="checkbox">
+      <label class="checkbox-inline">
+        <input type="checkbox"
+               <%= setting_checked('VERIFICACION', false) %>
+               name="settings[VERIFICACION]">        
+        Noche
+        <span class="help-block">6 a 9 pm</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <button id="btn-notices-ok" type="submit"
+            class="btn btn-primary btn-notices-form">Continuar</button>
+  </div>
+</div>

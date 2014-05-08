@@ -8,9 +8,9 @@
   </div>
 </div>
 
-<% if request.post? && (@errors[:INVALID_PLATE] || @errors[:INVALID_EMAIL]) %>
+<% if request.post? %>
+<% if @errors[:INVALID_PLATE] && @errors[:INVALID_DESTINATION] %>
 <div class="row">
-  <% if @errors[:INVALID_PLATE] && @errors[:INVALID_EMAIL] %>
   <div class="col-md-6">
     <div class="alert alert-warning"><strong>La placa que ingreso no es
         de un auto particular de la Ciudad de México.</strong></div>
@@ -19,19 +19,22 @@
     <div class="alert alert-warning"><strong>El correo electrónico que
         ingreso no es valido.</strong></div>
   </div>
-  <% else %>
+</div>
+<% elsif @errors[:INVALID_PLATE] || @errors[:INVALID_DESTINATION] %>
+<div class="row">
   <div class="col-md-12">
     <div class="alert alert-warning">
       <% if @errors[:INVALID_PLATE] %>
-      <strong>La placa que ingreso no es valida.</strong>
+      <strong>La placa que ingreso no es de un auto particular de la
+        Ciudad de México.</strong>
       <% end %>
-      <% if @errors[:INVALID_EMAIL] %>
+      <% if @errors[:INVALID_DESTINATION] %>
       <strong>El correo electrónico que ingreso no es valido.</strong>
       <% end %>
     </div>
   </div>
-  <% end %>
 </div>
+<% end %>
 <% end %>
 
 <div class="row">
@@ -44,7 +47,7 @@
                  <% if request.post? && !@errors[:INVALID_PLATE] %>
                  value="<%= @user[:plate] %>"
                  <% end %>
-                 placeholder="Placa de su auto">
+                 placeholder="Placa de auto">
         </div>
       </div>
       <span class="help-block">Solo autos particulares de la Ciudad de
@@ -57,89 +60,18 @@
         <div class="col-sm-10">
           <input type="email" class="form-control"
                  id="input-notices-email" name="user[destination]"
-                 <% if request.post? && !@errors[:INVALID_EMAIL] %>
+                 <% if request.post? && !@errors[:INVALID_DESTINATION] %>
                  value="<%= @user[:destination] %>"
                  <% end %>
-                 placeholder="Su correo electrónico">
+                 placeholder="Correo electrónico">
         </div>
       </div>
-      <span class="help-block">No compartiremos su dirección personal
-        con nadie</span>
+      <span class="help-block">No compartiremos su dirección personal</span>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <p class="lead">¿Qué avisos desea recibir sobre su auto?</p>
-  </div>
-</div>
-
-<% if request.post? && @errors[:INVALID_SETTINGS_COUNT] %>
-<div class="row">
-  <div class="col-md-12">
-    <div class="alert alert-warning"><strong>Debe seleccionar por lo
-        menos un aviso.</strong></div>
-  </div>
-</div>
-<% end %>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="checkbox">
-      <label class="checkbox-inline">
-        <input type="checkbox"
-               <%= setting_checked('VERIFICACION', true) %>
-               name="settings[VERIFICACION]">        
-        Verificación
-        <span class="help-block">Recibira un aviso antes de que inicie
-          el periodo para verificar su auto y recordatorios cada dos
-          semanas para que no olvide la verificación de su auto.</span>
-        <!-- Recibira un aviso cuando inicie el periodo para verificar su -->
-        <!-- auto, recordatorios quincenales hasta que su auto apruebe la -->
-        <!-- verificación y una confirmación cuando su auto apruebe la -->
-        <!-- verificación. -->
-      </label>
-    </div>
-    <div class="checkbox">
-      <label class="checkbox-inline">
-        <input type="checkbox"
-               <%= setting_checked('ADEUDOS', true) %>
-               name="settings[ADEUDOS]">
-        Pago de tenencias e infracciones
-        <span class="help-block">Recibira un aviso cuando tenga nuevos
-          pagos pendientes y recordatorios para que aproveche los
-          beneficios de pagar a tiempo la tenencia e
-          infracciones.</span>
-        <!-- Recibira un aviso cuando su auto presente nuevos adeudos, -->
-        <!-- recordatorios mensuales para liquidar sus adeudos y una -->
-        <!-- confirmación cuando su auto no tenga adeudos. -->
-      </label>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="checkbox">
-      <label class="checkbox-inline">
-        <input type="checkbox" 
-               <%= setting_checked('NO_CIRCULA_WEEKDAY', false) %>
-               name="settings[NO_CIRCULA_WEEKDAY]">
-        Hoy no circula de lunes a viernes
-        <span class="help-block">Recibira avisos un día antes de que su
-          auto no pueda circular entre lunes y viernes.</span>
-      </label>
-    </div>
-    <div class="checkbox">
-      <label class="checkbox-inline">
-        <input type="checkbox"
-               <%= setting_checked('NO_CIRCULA_WEEKEND', true) %>
-               name="settings[NO_CIRCULA_WEEKEND]">
-        Hoy no circula sabatino
-        <span class="help-block">Recibira avisos un día antes de que su
-          auto no pueda circular en sábado.</span>
-      </label>
-    </div>
-  </div>
-</div>
+<%= render 'settings' %>
 
 <div class="row">
   <div class="col-md-12 text-center">
