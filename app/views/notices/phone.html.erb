@@ -11,11 +11,11 @@
 <% if request.post? %>
 <% if @errors[:INVALID_PLATE] && @errors[:INVALID_DESTINATION] %>
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-6">
     <div class="alert alert-warning"><strong>La placa que ingreso no es
         de un auto particular de la Ciudad de México.</strong></div>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-6">
     <div class="alert alert-warning"><strong>El número de teléfono que
         ingreso no es valido.</strong></div>
   </div>
@@ -38,10 +38,10 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-6">
     <div class="form-group">
       <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-6">
           <input type="text" class="form-control"
                  id="input-notices-plate" name="user[plate]"
                  <% if request.post? && !@errors[:INVALID_PLATE] %>
@@ -57,7 +57,7 @@
   <div class="col-md-2">
     <div class="form-group">
       <div class="row">
-        <div class="col-sm-7 pull-right">
+        <div class="col-sm-12">
           <input type="text" class="form-control"
                  id="input-notices-prefix" name="extra[prefix]"
                  <% if request.post? && !@errors[:INVALID_DESTINATION] %>
@@ -68,13 +68,13 @@
                  placeholder="LADA">
         </div>
       </div>
-      <span class="help-block pull-right">Clave LADA</span>
+      <span class="help-block">Clave LADA</span>
     </div>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-4">
     <div class="form-group">
       <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-12">
           <input type="phone" class="form-control"
                  id="input-notices-phone" name="user[destination]"
                  <% if request.post? && !@errors[:INVALID_DESTINATION] %>
@@ -107,17 +107,6 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-offset-2 col-md-2">
-    <div class="checkbox">
-      <label class="checkbox-inline">
-        <input type="checkbox"
-               <%= setting_checked('VERIFICACION', false) %>
-               name="settings[VERIFICACION]">        
-        Temprano
-        <span class="help-block">7 a 9 am</span>
-      </label>
-    </div>
-  </div>
   <div class="col-md-2">
     <div class="checkbox">
       <label class="checkbox-inline">
