@@ -75,13 +75,9 @@ class NoticesController < ApplicationController
     end
   end
 
-  def results
-
-  end
-
   def confirm
     begin
-      @user = User.find(params[:user])
+      @user = User.find(user_id_param)
     rescue
       @error = 'USER_NOT_FOUND'
     else
@@ -90,26 +86,20 @@ class NoticesController < ApplicationController
       Notifier.welcome(@user).deliver
     end
   end
-  
+
   private
-  
+
   def user_params
     params.require(:user).permit(:plate, :via, :destination)
   end
 
-  def prefix_param?
-    return false unless params.has_key?(:extra)
-    return true if params[:extra].has_key?(:prefix)
-    false
-  end
-  
-  def prefix_param
-    return flase unless prefix_param?
-    params[:extra][:prefix]
-  end
-
   def settings_params
     params.require(:settings).collect{ |k, v| { user_id: @user.id, setting: k } }
+  end
+  
+  def user_id_param
+    params.require(:user)
+    params[:user]
   end
   
 end
