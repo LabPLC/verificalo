@@ -26,25 +26,23 @@ describe NoticesController do
     end
   end
 
-  describe 'POST home' do
+  describe 'POST new' do
     describe 'without params' do
-      it 'should return without errors' do
-        post :home
-        response.should be_success
-        should render_template('home')
-        assigns(:error).should be_nil        
+      it 'should redirect to home' do
+        post :new
+        response.should redirect_to({ action: 'home' })
       end
     end
     
     describe 'via email' do
       describe 'with invalid params' do
-        it 'should return INVALID_PLATE and INVALID_EMAIL errors' do
+        it 'should return INVALID_PLATE and INVALID_DESTINATION errors' do
           user = { via: 'EMAIL', plate: '', destination: '' }
-          post :home, user: user
+          post :new, user: user
           response.should be_success
           should render_template('home')
           expect(assigns(:errors)).to eq(INVALID_PLATE: true,
-                                         INVALID_EMAIL: true)
+                                         INVALID_DESTINATION: true)
         end
       end
 
@@ -52,7 +50,7 @@ describe NoticesController do
         it 'should return INVALID_PLATE error' do
           user = { via: 'EMAIL', plate: '', 
             destination: FactoryGirl.generate(:email) }
-          post :home, user: user
+          post :new, user: user
           response.should be_success
           should render_template('home')
           expect(assigns(:errors)).to eq(INVALID_PLATE: true)
@@ -60,13 +58,13 @@ describe NoticesController do
       end
 
       describe 'with invalid email' do
-        it 'should return INVALID_EMAIL error' do
+        it 'should return INVALID_DESTINATION error' do
           user = { via: 'EMAIL', destination: '', 
             plate: FactoryGirl.generate(:plate) }
-          post :home, user: user
+          post :new, user: user
           response.should be_success
           should render_template('home')
-          expect(assigns(:errors)).to eq(INVALID_EMAIL: true)
+          expect(assigns(:errors)).to eq(INVALID_DESTINATION: true)
         end
       end
 
@@ -75,7 +73,7 @@ describe NoticesController do
           user = { via: 'EMAIL', 
             destination: FactoryGirl.generate(:email), 
             plate: FactoryGirl.generate(:plate) }
-          post :home, user: user
+          post :new, user: user
           response.should be_success
           should render_template('home')
           expect(assigns(:errors)).to eq(INVALID_SETTINGS_COUNT: true)
@@ -88,7 +86,7 @@ describe NoticesController do
             destination: FactoryGirl.generate(:email), 
             plate: FactoryGirl.generate(:plate) }
           settings = { INVALID: true }
-          post :home, user: user, settings: settings
+          post :new, user: user, settings: settings
           response.should be_success
           should render_template('error')
         end
@@ -103,12 +101,29 @@ describe NoticesController do
             VERIFICACION: true,
             ADEUDOS: true,
             NO_CIRCULA_WEEKEND: true }
-          post :home, user: user, settings: settings
+          post :new, user: user, settings: settings
           response.should be_success
           should render_template('results')
           expect(assigns(:errors)).to be_empty
           expect(User.where(user)).to_not be_nil
         end
+      end
+    end
+
+    describe 'via invalid' do
+      it 'shoud render error' do
+        user = { via: 'INVALID', 
+          destination: FactoryGirl.generate(:email), 
+          plate: FactoryGirl.generate(:plate) }
+        settings = {
+          VERIFICACION: true,
+          ADEUDOS: true,
+          NO_CIRCULA_WEEKEND: true }
+        post :new, user: user, settings: settings
+        response.should be_success
+        should render_template('error')
+        expect(assigns(:errors)).to be_empty
+        expect(User.where(user)).to_not be_nil
       end
     end
   end

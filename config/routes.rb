@@ -8,7 +8,8 @@ Verificalo::Application.routes.draw do
   match '/info/:plate/reset/:item', to: 'info#reset', via: 'get'
 
   # avisos
-  match '/avisos', to: 'notices#home', via: [ 'get', 'post' ]
+  match '/avisos', to: 'notices#home', via: 'get'
+  match '/avisos', to: 'notices#new', via: 'post'
   match '/avisos/email', to: 'notices#email', via: 'get'
   match '/avisos/telefono', to: 'notices#phone', via: 'get'
   match '/avisos/twitter', to: 'notices#twitter', via: 'get'
