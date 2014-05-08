@@ -111,7 +111,7 @@ describe NoticesController do
     end
 
     describe 'via invalid' do
-      it 'shoud render error' do
+      it 'should render error' do
         user = { via: 'INVALID', 
           destination: FactoryGirl.generate(:email), 
           plate: FactoryGirl.generate(:plate) }

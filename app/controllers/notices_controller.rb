@@ -86,6 +86,7 @@ class NoticesController < ApplicationController
   end
 
   def prefix_param?
+    return false unless params.has_key?(:extra)
     return true if params[:extra].has_key?(:prefix)
     false
   end
