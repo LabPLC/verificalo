@@ -20,28 +20,28 @@ class NoticesController < ApplicationController
   def new
     @params = params
     @errors = Hash.new
+
     begin
       @user = User.new(user_params)      
-      @user.destination.insert(0, prefix_param) if prefix_param?
+      @user.save!
+      @debug = @user.errors
     rescue
-      redirect_to({ action: 'home' })
+      if @user && @user.errors
+        if @user.errors[:plate].count > 0
+          @errors[:INVALID_PLATE] = true
+        end
+        if @user.errors[:destination].count > 0
+          @errors[:INVALID_DESTINATION] = true
+        end
+        if @errors[:INVALID_DESTINATION] || @errors[:INVALID_PLATE]
+          render 'home'
+          return
+        end
+      end
+      render 'error'
       return
     end
-    @debug = @user.errors
-    if !@user.save
-      if @user.errors[:plate].count > 0
-        @errors[:INVALID_PLATE] = true
-      end
-      if @user.errors[:destination].count > 0
-        @errors[:INVALID_DESTINATION] = true
-      end
-      unless @errors[:INVALID_PLATE] || @errors[:INVALID_DESTINATION]
-        render 'error'
-        return
-      end
-      render 'home'
-      return
-    end
+    
     begin
       @settings = settings_params.collect{ |x|
         setting = Setting.new(x)
@@ -57,16 +57,28 @@ class NoticesController < ApplicationController
       @user.destroy
       render 'error'
       return
+    else
+      @settings.each{ |s| s.save }
     end
-    @settings.each{ |s| s.save }
-    Notifier.confirm(@user).deliver
-    render 'results'
+    
+    if @user.via == 'EMAIL'
+      Notifier.confirm(@user).deliver
+    elsif @user.via == 'PHONE'
+      tw_client = Twilio::REST::Client.new(ENV['VERIFICALO_TWILIO_SSID'],
+                                           ENV['VERIFICALO_TWILIO_TOKEN'])
+      tw_req = { to: '+521' + @user.destination,
+        from: '+17542108617',
+        url: 'http://codigo.labplc.mx/~manuel/twilio/uno.xml',
+        method: 'GET',
+        record: 'false' }
+      tw_client.account.calls.create(tw_req)
+    end
   end
 
   def results
 
   end
-  
+
   def confirm
     begin
       @user = User.find(params[:user])
@@ -99,5 +111,5 @@ class NoticesController < ApplicationController
   def settings_params
     params.require(:settings).collect{ |k, v| { user_id: @user.id, setting: k } }
   end
-
+  
 end

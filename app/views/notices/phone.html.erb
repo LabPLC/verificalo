@@ -54,33 +54,16 @@
         México</span>
     </div>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-6">
     <div class="form-group">
       <div class="row">
-        <div class="col-sm-12">
-          <input type="text" class="form-control"
-                 id="input-notices-prefix" name="extra[prefix]"
-                 <% if request.post? && !@errors[:INVALID_DESTINATION] %>
-                 value="<%= @extra[:prefix] %>"
-                 <% else %>
-                 value="55"
-                 <% end %>
-                 placeholder="LADA">
-        </div>
-      </div>
-      <span class="help-block">Clave LADA</span>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="form-group">
-      <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-9">
           <input type="phone" class="form-control"
                  id="input-notices-phone" name="user[destination]"
                  <% if request.post? && !@errors[:INVALID_DESTINATION] %>
                  value="<%= @user[:destination] %>"
                  <% end %>
-                 placeholder="Teléfono">
+                 placeholder="Teléfono (10 digitos)">
         </div>
       </div>
       <span class="help-block">No compartiremos su número de

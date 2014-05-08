@@ -28,9 +28,10 @@ describe NoticesController do
 
   describe 'POST new' do
     describe 'without params' do
-      it 'should redirect to home' do
+      it 'should show error' do
         post :new
-        response.should redirect_to({ action: 'home' })
+        response.should be_success
+        should render_template('error')
       end
     end
     
@@ -103,7 +104,7 @@ describe NoticesController do
             NO_CIRCULA_WEEKEND: true }
           post :new, user: user, settings: settings
           response.should be_success
-          should render_template('results')
+          should render_template('new')
           expect(assigns(:errors)).to be_empty
           expect(User.where(user)).to_not be_nil
         end
