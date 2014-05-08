@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :destination, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :destination, format: { with: VALID_EMAIL_REGEX }, if: lambda { self.via == 'EMAIL' }
-  VALID_PHONE_REGEX = /\A[0-9]{8,13}\z/i
+  VALID_PHONE_REGEX = /\A[0-9]{10}\z/i
   validates :destination, format: { with: VALID_PHONE_REGEX }, if: lambda { self.via == 'PHONE' }
 
   before_validation {
