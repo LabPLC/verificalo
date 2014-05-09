@@ -101,7 +101,7 @@ class NoticesController < ApplicationController
     response.headers["Content-Type"] = "text/xml"
     msg = 'Si desea recibir los avisos de su auto con placa '
     msg += @user.plate.split(//).join(';')
-    msg += ' presione 1; de lo contrario cuelgue'
+    msg += ' presione 1 o de lo contrario cuelgue'
     response = Twilio::TwiML::Response.new do |r|
       r.Pause(length: 2)
       2.times do
@@ -140,7 +140,7 @@ class NoticesController < ApplicationController
     if @user.settings.find_by_setting('NO_CIRCULA_WEEKEND')
       msg += 'hoy no circula sabatino; '
     end
-    msg += 'Gracias por usar Verifícalo'
+    msg += ';Gracias por usar Verifícalo'
     response = Twilio::TwiML::Response.new do |r|
       r.Say(msg, voice: 'alice', language: 'es-MX')
     end
