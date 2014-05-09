@@ -56,18 +56,6 @@ describe AnswersController do
     # end
   end
 
-  describe 'GET verificentros_delegaciones' do
-    before do
-      @delegaciones_count = Delegacion.all.count
-    end
-    it 'should return delegaciones' do
-      get :verificentros_delegaciones
-      response.should be_success
-      should render_template('verificentros_delegaciones')
-      assigns(:delegaciones).count.should eq(@delegaciones_count)
-    end
-  end
-
   describe 'GET verificentros_delegacion' do
     describe 'with invalid delegacion' do
       it 'should redirect to verificentros' do

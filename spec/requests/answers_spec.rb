@@ -17,10 +17,6 @@ describe 'questions' do
     before { visit respuestas_path }
     it { should have_link('¿Donde debo llevar mi auto a verificar?',
                           href: respuestas_verificentros_path) }
-    it { should have_link('¿Cuales son los verificentros más cercanos?',
-                          href: respuestas_verificentros_cercanos_path) }
-    it { should have_link('¿Que verificentros hay por delegación?',
-                          href: respuestas_verificentros_delegaciones_path) }
   end
 
   describe 'verificentros answer' do
