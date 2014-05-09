@@ -14,6 +14,8 @@ Verificalo::Application.routes.draw do
   match '/avisos/telefono', to: 'notices#phone', via: 'get'
   match '/avisos/twitter', to: 'notices#twitter', via: 'get'
   match '/avisos/:user', to: 'notices#confirm', via: 'get', as: :aviso
+  match '/twilio/confirm/:user', to: 'notices#twilio_confirm', via: 'get'
+  match '/twilio/accept/:user', to: 'notices#twilio_accept', via: 'get'
 
   # respuestas
   match '/respuestas', to: 'answers#home', via: 'get'
