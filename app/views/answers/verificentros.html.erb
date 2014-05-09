@@ -15,8 +15,29 @@
     <%= render 'verificentros_query_form' %>
     
     <h2 class="answer">Consulte verificentros por delegación</h2>
-    <%= render 'verificentros_delegaciones' %>
+    <% @delegaciones.in_groups_of((@delegaciones.count/2).ceil) do |g| %>
+    <div class="col-md-6">
+      <ul id="list-delegaciones">
+        <% g.each do |d| %>
+        <li>
+          <% if d.verificentros.count > 0 %>        
+          <a href="<%= url_for({ controller: 'answers', action:
+                   'verificentros_delegacion', delegacion: d.url })%>">
+            <%= d.name %></a><br/>
+          <% if d.verificentros.count > 1 %>        
+          <small><%= d.verificentros.count %> verificentros</small>
+          <% else %>
+          <small>1 verificentro</small>
+          <% end %>
+          <% else %>
+          <%= d.name %><br/><small>0 verificentros</small>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
   </div>
-
+  
   <%= render 'sidebar' %>
 </div>
