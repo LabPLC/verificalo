@@ -26,6 +26,10 @@ Verificalo::Application.routes.draw do
   # paginas estaticas
   match '/acerca', to: 'static_pages#about', via: 'get'
 
+  # Check Engine Light Status Path
+
+  get "/.well-known/status" => "status#check"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -15,6 +15,10 @@ gem 'htmlentities', '~>4.3.1'
 gem 'geocoder', '~>1.2.0'
 gem 'twilio-ruby', '~>3.11.5' 
 
+group :production do
+  gem 'rails_12factor', '~> 0.0.2'
+end
+
 group :development do
   gem 'pry-rails'
 end

@@ -1,21 +1,18 @@
-development:
+defaults: &defaults
   adapter: postgresql
   encoding: unicode
-  database: example_dev
+  host: localhost
   pool: 5
-  username: example
+  timeout: 5000
+
+development:
+  database: verificalo_development
+  <<: *defaults
 
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: example_test
-  pool: 5
-  username: example
+  database: verificalo_test
+  <<: *defaults
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: example
-  pool: 5
-  username: example
-  password: secret
+  database: verificalo_production
+  <<: *defaults
