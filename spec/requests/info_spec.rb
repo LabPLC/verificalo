@@ -7,13 +7,7 @@ describe 'visit homepage' do
   subject { page }
 
   it { should have_title('Verifícalo') }
-  
-  describe 'navbar' do
-    it { should have_link('Información', href: root_path) }
-    it { should have_link('Avisos', href: avisos_path) }
-    it { should have_link('Respuestas', href: respuestas_path) }
-  end
-  
+    
   describe 'jumbotron' do
     it { should have_css('div.jumbotron', 
                          :text => /conozca sus obligaciones/i) }

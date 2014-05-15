@@ -8,6 +8,12 @@ describe 'notices sign up' do
     before { visit avisos_path }
     it { should have_button('Correo electrónico') }
     it { should have_button('Llamada telefónica') }
+
+    describe 'navbar' do
+      it { should have_link('Información', href: root_path) }
+      it { should have_link('Avisos', href: avisos_path) }
+      it { should have_link('Respuestas', href: respuestas_path) }
+    end
     
     describe 'via email', :js => true do
       before { click_button('Correo electrónico') }
