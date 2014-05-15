@@ -192,7 +192,9 @@ module VehicleCDMX
       else
         v = @api['verificaciones']
       end
-      v.sort { |a, b| 
+      v.collect { |i| 
+        i if i['vin'].upcase != 'DESCONOCIDO'
+      }.compact.sort { |a, b| 
         if a == b
           _a = a['hora_verificacion']
           _b = b['hora_verificacion']
@@ -209,7 +211,9 @@ module VehicleCDMX
       if self.user_vin_valid?
         return [ self.user_vin ]
       else
-        return @api['verificaciones'].collect { |i| i['vin'] }.compact.uniq
+        return @api['verificaciones'].collect { |i|
+          i['vin'] if i['vin'].upcase != 'DESCONOCIDO'
+        }.compact.uniq
       end
     end
 
