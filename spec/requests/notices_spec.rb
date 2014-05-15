@@ -13,6 +13,8 @@ describe 'notices sign up' do
       it { should have_link('Información', href: root_path) }
       it { should have_link('Avisos', href: avisos_path) }
       it { should have_link('Respuestas', href: respuestas_path) }
+      it { should have_link('Mi suscripción', href: '#') }
+      it { should have_link('Acerca', href: acerca_path) }
     end
     
     describe 'via email', :js => true do
