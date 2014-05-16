@@ -15,7 +15,7 @@ class TwilioController < ApplicationController
     end    
 
     msg = 'Si desea recibir los avisos de su auto con placa;'
-    msg += @user.plate.split(//).join(';')
+    msg += @user.plate.downcase.split(//).join(';')
     msg += ';Presione 1 o de lo contrario cuelgue'
 
     res = Twilio::TwiML::Response.new do |r|
