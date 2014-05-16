@@ -2,7 +2,6 @@
 /.secret
 /config/application.yml
 /config/database.yml
-/config/smtp.yml
 /coverage
 /db/*.sqlite3
 /db/*.sqlite3-journal
