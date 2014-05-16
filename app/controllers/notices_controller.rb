@@ -103,13 +103,12 @@ class NoticesController < ApplicationController
     elsif @user.via == 'PHONE'
       tw_client = Twilio::REST::Client.new(ENV['VERIFICALO_TWILIO_SSID'],
                                            ENV['VERIFICALO_TWILIO_TOKEN'])
-      tw_req = { to: '+521' + @user.destination,
-        from: '+17542108617',
-        url: url_for_twilio({ controller: 'twilio', action: 'confirm', 
-                              user: @user.id }),
-        method: 'GET',
-        record: 'false' }
-      tw_client.account.calls.create(tw_req)
+      tw_req = { To: '+521' + @user.destination,
+        :Url => url_for_tw({ controller: 'twilio', action: 'confirm', 
+                             user: @user.id }),
+        :Method => 'POST'
+      }
+      tw_client.account.calls.create(tw_defaults(tw_req))
     end
   end
 

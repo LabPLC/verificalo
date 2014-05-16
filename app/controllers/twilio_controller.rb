@@ -14,15 +14,15 @@ class TwilioController < ApplicationController
       return
     end    
 
-    msg = 'Si desea recibir los avisos de su auto con placa '
+    msg = 'Si desea recibir los avisos de su auto con placa;'
     msg += @user.plate.split(//).join(';')
-    msg += ' presione 1 o de lo contrario cuelgue'
+    msg += ';Presione 1 o de lo contrario cuelgue'
+
     res = Twilio::TwiML::Response.new do |r|
-      r.Pause(length: 1)
       2.times do
-        r.Gather(numDigits: '1', timeout: '10', method: 'GET',
-                 action: url_for_twilio({ action: 'accept',
-                                          user: @user.id })) do |g|
+        r.Gather(numDigits: '1', timeout: '10', method: 'POST',
+                 action: url_for_tw({ action: 'accept',
+                                      user: @user.id })) do |g|
           g.Say(msg, voice: 'alice', language: 'es-MX')
         end
       end
@@ -55,6 +55,7 @@ class TwilioController < ApplicationController
       msg += 'hoy no circula sabatino; '
     end
     msg += ';Gracias por usar Verifícalo'
+
     res = Twilio::TwiML::Response.new do |r|
       r.Say(msg, voice: 'alice', language: 'es-MX')
     end

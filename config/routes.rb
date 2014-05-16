@@ -18,8 +18,8 @@ Verificalo::Application.routes.draw do
   match '/twilio/accept/:user', to: 'notices#twilio_accept', via: 'get'
 
   # twilio
-  match '/twilio/confirm', to: 'twilio#confirm', via: 'get'
-  match '/twilio/accept', to: 'twilio#accept', via: 'get'
+  match '/twilio/confirm', to: 'twilio#confirm', via: 'post'
+  match '/twilio/accept', to: 'twilio#accept', via: 'post'
   match '/twilio/error', to: 'twilio#error', via: 'get'
 
   # respuestas
