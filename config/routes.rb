@@ -17,6 +17,11 @@ Verificalo::Application.routes.draw do
   match '/twilio/confirm/:user', to: 'notices#twilio_confirm', via: 'get'
   match '/twilio/accept/:user', to: 'notices#twilio_accept', via: 'get'
 
+  # twilio
+  match '/twilio/confirm', to: 'twilio#confirm', via: 'get'
+  match '/twilio/accept', to: 'twilio#accept', via: 'get'
+  match '/twilio/error', to: 'twilio#error', via: 'get'
+
   # respuestas
   match '/respuestas', to: 'answers#home', via: 'get'
   match '/respuestas/verificentros', to: 'answers#verificentros', via: 'get'

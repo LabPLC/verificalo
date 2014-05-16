@@ -9,3 +9,9 @@ smtp_pwd: secret
 
 # mapxbox
 mapbox_id: codigocdmx.example
+
+# twilio
+twilio_ssid: secret
+twilio_token: secret
+twilio_callback_port: example.com
+twilio_callback_host: 80
