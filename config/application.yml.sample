@@ -1,5 +1,5 @@
 # smtp
-smtp_url_host: example.com
+smtp_base_url: example.com
 smtp_auth: plain
 smtp_addr: smtp.example.com
 smtp_port: 587
