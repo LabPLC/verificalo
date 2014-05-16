@@ -2,7 +2,7 @@
 class Notifier < ActionMailer::Base
   include VehicleCDMX
   
-  default from: ENV['VERIFICALO_SMTP_FROM']
+  default from: ENV['VERIFICALO_SMTP_FROM'] || 'default@example.com'
 
   def confirm (user)
     @user = user
