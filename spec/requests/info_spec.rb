@@ -17,8 +17,7 @@ describe 'visit homepage' do
   end
     
   describe 'jumbotron' do
-    it { should have_css('div.jumbotron', 
-                         :text => /conozca sus obligaciones/i) }
+    it { should have_css('div.jumbotron', :text => /ingrese la placa/i) }
     it { should have_field('plate') }
     it { should have_button('Consulta') }
   end

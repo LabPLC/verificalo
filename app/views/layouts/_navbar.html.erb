@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% unless is_root?() %>
+      <a class="navbar-brand" href="<%= root_path %>">
+        Verifícalo<sup><small>Beta</small></sup></a>
+      <% end %>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <% unless is_root?() %>
+      <ul class="nav navbar-nav">
+        <li class="<%= is_active?('info') %>">
+          <a href="<%= url_for({ controller: 'info', 
+                   action: 'home' })%>">Información</a></li>
+        <li class="<%= is_active?('notices') %>">
+          <a href="<%= url_for({ controller: 'notices', 
+                   action: 'home' })%>">Avisos</a></li>
+        <li class="<%= is_active?('answers') %>">
+          <a href="<%= url_for({ controller: 'answers', 
+                   action: 'home' })%>">Respuestas</a></li>
+        <!-- <li><a href="#">Uso inteligente</a></li> -->
+      </ul>
+      <% end %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a id="navbar-suscriptions"
+               href="#">Mi suscripción</a></li>
+        <li><a id="navbar-about"
+               href="<%= url_for({ controller: 'static_pages',
+                     action: 'about' }) %>">Acerca</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

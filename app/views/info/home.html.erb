@@ -2,9 +2,9 @@
 <div class="row">
   <div class="col-md-12">
     <div class="jumbotron">
-      <h1>Información</h1>
-      <p>Conozca sus obligaciones como automovilista
-        particular de la Ciudad de México</p>
+      <h1>Verifícalo<sup><small>Beta</small></sup></h1>
+      <p>Ingrese la placa de su auto y consulte el estado de su
+        verificacion, hoy no circula, infracciones y tenencias.</p>
       <% if @error %>
       <!-- si hay error -->      
       <% if @error == 'INVALID_PLATE' %>
@@ -28,15 +28,14 @@
                   class="btn btn-primary btn-lg">Consulta</button>
         </div>
       </div>
-      <p class="help-block">Ingrese la placa de su auto y consulte
-        el estado de su verificacion, hoy no circula, infracciones y
-        tenencias</p>
       <% end %>
+      <p class="help-block">Solo autos particulares de la Ciudad de
+        México.</p>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4 col-md-offset-1">
+  <div class="col-md-6">
     <h2>Avisos</h2>
     <p>Evite filas o multas recibiendo avisos oportunos sobre sus
       obligaciones como automovilista particular del Distrito
@@ -44,7 +43,7 @@
     <p><a href="<%= url_for({ controller: 'notices', action: 'home' })%>"
           id="btn-notices" class="btn btn-default">Suscribirse &raquo;</a></p>
   </div>
-  <div class="col-md-4 col-md-offset-2">
+  <div class="col-md-6">
     <h2>Respuestas</h2>
     <p>Encuentre verificentros, donde pagar sus adeudos, consejos para
       ahorrar gasolina y todo sobre automoviles de la Ciudad de
