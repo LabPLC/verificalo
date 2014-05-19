@@ -34,8 +34,8 @@ module Verificalo
       env_file = File.join(Rails.root, 'config', 'application.yml')
       YAML.load(File.open(env_file)).each do |key, value|
         ENV['VERIFICALO_' + key.to_s.upcase] = value.to_s
-      end if File.exists?(env_file)
+      end if File.exists?(env_file) && !Rails.env.test?
     end
-    
+
   end
 end
