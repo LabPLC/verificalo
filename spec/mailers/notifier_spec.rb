@@ -3,7 +3,7 @@ require 'spec_helper'
 
 shared_examples_for Notifier do
   it 'render sender' do
-    expect(@mail.from).to eql(['verificalo@dev.codigo.labplc.mx'])
+    expect(@mail.from).to eql(['default@example.com'])
   end  
 
   it 'render destination' do
