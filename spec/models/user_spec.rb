@@ -1,73 +1,40 @@
 require 'spec_helper'
 
-shared_examples_for User do
-  it { should have_many(:settings) }
-
+describe User do
+  before { @user = FactoryGirl.build(:user) }
+  
+  subject { @user }
+  
+  it { should have_one(:email) }
+  it { should have_one(:phone) }
+  
   it { should respond_to(:plate) }
-  it { should respond_to(:via) }
-  it { should respond_to(:destination) }
+  it { should respond_to(:adeudos) }
+  it { should respond_to(:verificacion) }
+  it { should respond_to(:no_circula_weekday) }
+  it { should respond_to(:no_circula_weekend) }
   it { should respond_to(:confirmed_at) }
   it { should respond_to(:declined_at) }
-
+  
   it { should be_valid }
-
+  
   describe 'without plate' do
     before { @user.plate = '' }
     it { should_not be_valid }
   end
-
+  
   describe 'with invalid plate' do
     before { @user.plate = 'abcdefghijklmnopqrstuvwxyz' }
     it { should_not be_valid }
   end  
-end
-
-describe User do
-  describe 'via email' do
-    before do
-      @user = FactoryGirl.build(:user_email)
-    end
-
-    subject { @user }
-    it_behaves_like User  
-
-    describe 'without email' do
-      before { @user.destination = '' }
-      it { should_not be_valid }  
-    end
-
-    describe 'with invalid email' do
-      before { @user.destination = 'invalid@example' }
-      it { should_not be_valid }      
-    end    
-  end
-
-  describe 'via phone' do
+  
+  describe 'without notices' do
     before do 
-      @user = FactoryGirl.build(:user_phone)
+      @user.adeudos = false
+      @user.verificacion = false
+      @user.no_circula_weekday = false
+      @user.no_circula_weekend = false
     end
-
-    subject { @user }
-    it_behaves_like User
-
-    describe 'without phone' do
-      before { @user.destination = '' }
-      it { should_not be_valid }  
-    end
-
-    describe 'with invalid phone' do
-      before { @user.destination = '12345678901234567890' }
-      it { should_not be_valid }
-    end    
-  end
-
-  describe 'via invalid' do
-    before do
-      @user = User.new(plate: '123abc', via: 'OTHER', 
-                       destination: 'example@example.com')
-    end
-
-    subject { @user }
     it { should_not be_valid }
   end
 end

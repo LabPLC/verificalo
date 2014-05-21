@@ -3,54 +3,32 @@ FactoryGirl.define do
     n.to_s.ljust(3, '0') + 'aaa'
   end
   
-  sequence :email do |n|
+  sequence :address do |n|
     "email-#{n}@example.com"
   end
 
-  sequence :phone do |n|
+  sequence :number do |n|
     n.to_s.ljust(10, '0')
   end
 
   factory :user do
     plate
-    
-    factory :user_email do
-      via 'EMAIL'
-      destination { generate(:email) }
-
-      factory :user_email_default_settings do
-        after(:create) do |user|
-          create(:setting_verificacion, user: user)
-          create(:setting_adeudos, user: user)
-          create(:setting_no_circula_weekend, user: user)
-        end
-      end
-    end
-
-    factory :user_phone do
-      via 'PHONE'
-      destination { generate(:phone) }
-    end
+    adeudos true
+    verificacion true
+    no_circula_weekend true    
   end
 
-  factory :setting do
-    user { create(:user_email) }
-    
-    factory :setting_verificacion do
-      setting 'VERIFICACION'
-    end
-    
-    factory :setting_adeudos do
-      setting 'ADEUDOS'
-    end
-    
-    factory :setting_no_circula_weekday do
-      setting 'NO_CIRCULA_WEEKDAY'
-    end
-    
-    factory :setting_no_circula_weekend do
-      setting 'NO_CIRCULA_WEEKEND'
-    end
+  factory :email do
+    user
+    address
+  end
+
+  factory :phone do
+    user
+    number
+    cellphone true
+    morning true
+    afternoon true
   end
 
   factory :delegacion do
@@ -78,5 +56,4 @@ FactoryGirl.define do
     lat 19.43
     lon -99.14
   end
-
 end

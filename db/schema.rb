@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403225152) do
+ActiveRecord::Schema.define(version: 20140521175155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,22 +25,34 @@ ActiveRecord::Schema.define(version: 20140403225152) do
     t.datetime "updated_at"
   end
 
-  create_table "settings", force: true do |t|
-    t.uuid     "user_id",                   null: false
-    t.string   "setting",                   null: false
-    t.boolean  "active",     default: true, null: false
+  create_table "emails", force: true do |t|
+    t.uuid     "user_id",    null: false
+    t.string   "address",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phones", force: true do |t|
+    t.uuid     "user_id",                               null: false
+    t.string   "number",     limit: 10,                 null: false
+    t.boolean  "cellphone",             default: false, null: false
+    t.boolean  "morning",               default: false, null: false
+    t.boolean  "afternoon",             default: false, null: false
+    t.boolean  "night",                 default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-    t.string   "plate",        limit: 14, null: false
-    t.string   "via",                     null: false
-    t.string   "destination",             null: false
+    t.string   "plate",              limit: 14,                 null: false
     t.datetime "confirmed_at"
     t.datetime "declined_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "adeudos",                       default: false, null: false
+    t.boolean  "verificacion",                  default: false, null: false
+    t.boolean  "no_circula_weekday",            default: false, null: false
+    t.boolean  "no_circula_weekend",            default: false, null: false
   end
 
   create_table "verificentros", force: true do |t|
