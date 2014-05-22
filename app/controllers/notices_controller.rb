@@ -13,10 +13,6 @@ class NoticesController < ApplicationController
     render layout: false
   end
 
-  def twitter
-    render layout: false
-  end
-
   def new
     @params = params
     @errors = Hash.new
