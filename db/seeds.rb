@@ -24,7 +24,7 @@ CSV.foreach('db/data/verificentros.csv', :headers => true) do |r|
   next unless r['DIRECCION']
   d = Delegacion.find_by(:url => r['DELEGACION'].downcase.gsub(/\s+/, '-'))
   unless d
-    d = Delegacion.find(:first, :conditions => ["unaccent(lower(name)) = ?", r['DELEGACION'].downcase])
+    d = Delegacion.where("unaccent(lower(name)) = ?", r['DELEGACION'].downcase).first
   end
   unless d
     puts '! delegacion not found: ' + r['DELEGACION']
