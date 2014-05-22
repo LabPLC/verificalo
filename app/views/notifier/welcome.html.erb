@@ -6,7 +6,7 @@
   en su correo electrónico los siguientes avisos sobre su auto:</p>
 
 <ul>
-  <% if @settings['VERIFICACION'] %>
+  <% if @user.verificacion %>
   <li id="setting-verificacion" 
       style="margin: 15px"><strong>Verificación</strong><br/>Recibira
     un aviso antes de que inicie el periodo para verificar su auto y
@@ -14,7 +14,7 @@
     de su auto.</li>
   <% end %>
 
-  <% if @settings['ADEUDOS'] %>
+  <% if @user.adeudos %>
   <li style="margin: 15px">
     <strong>Pago de tenencias e infracciones</strong><br/>
     Recibira un aviso cuando tenga nuevos
@@ -22,14 +22,14 @@
     de pagar a tiempo la tenencia e infracciones.</li>
   <% end %>
   
-  <% if @settings['NO_CIRCULA_WEEKDAY'] %>
+  <% if @user.no_circula_weekday %>
   <li style="margin: 15px">
     <strong>Hoy no circula de lunes a viernes</strong><br/>
     Recibira avisos un día antes de que su
     auto no pueda circular entre lunes y viernes.</li>
   <% end %>
   
-  <% if @settings['NO_CIRCULA_WEEKEND'] %>
+  <% if @user.no_circula_weekend %>
   <li style="margin: 15px">
     <strong>Hoy no circula sabatino</strong><br/>
     Recibira avisos un día antes de que su
