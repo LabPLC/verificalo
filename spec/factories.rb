@@ -1,6 +1,6 @@
 FactoryGirl.define do
   sequence :plate, 1 do |n|
-    n.to_s.ljust(3, '0') + 'aaa'
+    n.to_s.ljust(3, '0') + 'ABC'
   end
   
   sequence :address do |n|
@@ -15,7 +15,7 @@ FactoryGirl.define do
     plate
     adeudos true
     verificacion true
-    no_circula_weekend true    
+    no_circula_weekend true
   end
 
   factory :email do
