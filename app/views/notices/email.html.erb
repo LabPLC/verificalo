@@ -1,5 +1,5 @@
 <!-- notices#email -->
-<input type="hidden" name="user[via]" value="EMAIL">
+<input type="hidden" name="type" value="EMAIL">
 
 <div class="row">
   <div class="col-md-12">
@@ -9,7 +9,7 @@
 </div>
 
 <% if request.post? %>
-<% if @errors[:INVALID_PLATE] && @errors[:INVALID_DESTINATION] %>
+<% if @errors[:INVALID_USER_PLATE] && @errors[:INVALID_EMAIL_ADDRESS] %>
 <div class="row">
   <div class="col-md-6">
     <div class="alert alert-warning"><strong>La placa que ingreso no es
@@ -20,15 +20,15 @@
         ingreso no es valido.</strong></div>
   </div>
 </div>
-<% elsif @errors[:INVALID_PLATE] || @errors[:INVALID_DESTINATION] %>
+<% elsif @errors[:INVALID_USER_PLATE] || @errors[:INVALID_EMAIL_ADDRESS] %>
 <div class="row">
   <div class="col-md-12">
     <div class="alert alert-warning">
-      <% if @errors[:INVALID_PLATE] %>
+      <% if @errors[:INVALID_USER_PLATE] %>
       <strong>La placa que ingreso no es de un auto particular de la
         Ciudad de México.</strong>
       <% end %>
-      <% if @errors[:INVALID_DESTINATION] %>
+      <% if @errors[:INVALID_EMAIL_ADDRESS] %>
       <strong>El correo electrónico que ingreso no es valido.</strong>
       <% end %>
     </div>
@@ -44,8 +44,8 @@
         <div class="col-sm-6">
           <input type="text" class="form-control"
                  id="input-notices-plate" name="user[plate]"
-                 <% if request.post? && !@errors[:INVALID_PLATE] %>
-                 value="<%= @user[:plate] %>"
+                 <% if request.post? && !@errors[:INVALID_USER_PLATE] %>
+                 value="<%= params[:user][:plate] %>"
                  <% end %>
                  placeholder="Placa de auto">
         </div>
@@ -59,14 +59,13 @@
       <div class="row">
         <div class="col-sm-9">
           <input type="email" class="form-control"
-                 id="input-notices-email" name="user[destination]"
-                 <% if request.post? && !@errors[:INVALID_DESTINATION] %>
-                 value="<%= @user[:destination] %>"
+                 id="input-notices-email" name="email[address]"
+                 <% if request.post? && !@errors[:INVALID_EMAIL_ADDRESS] %>
+                 value="<%= params[:email][:address] %>"
                  <% end %>
                  placeholder="Correo electrónico">
         </div>
       </div>
-      <span class="help-block">No compartiremos su dirección personal</span>
     </div>
   </div>
 </div>

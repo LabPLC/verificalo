@@ -1,5 +1,5 @@
 <!-- notices#phone -->
-<input type="hidden" name="user[via]" value="PHONE">
+<input type="hidden" name="type" value="PHONE">
 
 <div class="row">
   <div class="col-md-12">
@@ -9,7 +9,7 @@
 </div>
 
 <% if request.post? %>
-<% if @errors[:INVALID_PLATE] && @errors[:INVALID_DESTINATION] %>
+<% if @errors[:INVALID_USER_PLATE] && @errors[:INVALID_PHONE_NUMBER] %>
 <div class="row">
   <div class="col-md-6">
     <div class="alert alert-warning"><strong>La placa que ingreso no es
@@ -20,15 +20,15 @@
         ingreso no es valido.</strong></div>
   </div>
 </div>
-<% elsif @errors[:INVALID_PLATE] || @errors[:INVALID_DESTINATION] %>
+<% elsif @errors[:INVALID_USER_PLATE] || @errors[:INVALID_PHONE_NUMBER] %>
 <div class="row">
   <div class="col-md-12">
     <div class="alert alert-warning">
-      <% if @errors[:INVALID_PLATE] %>
+      <% if @errors[:INVALID_USER_PLATE] %>
       <strong>La placa que ingreso no es de un auto particular de la
         Ciudad de México.</strong>
       <% end %>
-      <% if @errors[:INVALID_DESTINATION] %>
+      <% if @errors[:INVALID_PHONE_NUMBER] %>
       <strong>El número de teléfono que ingreso no es valido.</strong>
       <% end %>
     </div>
@@ -44,8 +44,8 @@
         <div class="col-sm-6">
           <input type="text" class="form-control"
                  id="input-notices-plate" name="user[plate]"
-                 <% if request.post? && !@errors[:INVALID_PLATE] %>
-                 value="<%= @user[:plate] %>"
+                 <% if request.post? && !@errors[:INVALID_USER_PLATE] %>
+                 value="<%= @params[:user][:plate] %>"
                  <% end %>
                  placeholder="Placa de auto">
         </div>
@@ -59,15 +59,35 @@
       <div class="row">
         <div class="col-sm-9">
           <input type="phone" class="form-control"
-                 id="input-notices-phone" name="user[destination]"
-                 <% if request.post? && !@errors[:INVALID_DESTINATION] %>
-                 value="<%= @user[:destination] %>"
+                 id="input-notices-phone" name="phone[number]"
+                 <% if request.post? && !@errors[:INVALID_PHONE_NUMBER] %>
+                 value="<%= @params[:phone][:number] %>"
                  <% end %>
                  placeholder="Teléfono (10 digitos)">
         </div>
       </div>
-      <span class="help-block">No compartiremos su número de
-        teléfono</span>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="radio">
+            <label>
+              <input type="radio" name="phone[cellphone]" 
+                     <%= phone_selected('cellphone', 'true', true) %>
+                     value="true">
+              Teléfono celular
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="radio">
+            <label>
+              <input type="radio" name="phone[cellphone]"
+                     <%= phone_selected('cellphone', 'false', false) %>
+                     value="false">
+              Teléfono fijo
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -80,7 +100,7 @@
   </div>
 </div>
 
-<% if request.post? && @errors[:INVALID_SETTINGS_COUNT] %>
+<% if request.post? && @errors[:MISSING_PHONE_SCHEDULE] %>
 <div class="row">
   <div class="col-md-12">
     <div class="alert alert-warning"><strong>Debe seleccionar por lo
@@ -94,8 +114,8 @@
     <div class="checkbox">
       <label class="checkbox-inline">
         <input type="checkbox"
-               <%= setting_checked('VERIFICACION', true) %>
-               name="settings[VERIFICACION]">        
+               <%= schedule_checked('morning', true) %>
+               name="phone[morning]">        
         Mañana
         <span class="help-block">9 am a 12 pm</span>
       </label>
@@ -105,8 +125,8 @@
     <div class="checkbox">
       <label class="checkbox-inline">
         <input type="checkbox"
-               <%= setting_checked('VERIFICACION', true) %>
-               name="settings[VERIFICACION]">        
+               <%= schedule_checked('afternoon', true) %>
+               name="phone[afternoon]">        
         Tarde
         <span class="help-block">12 a 6 pm</span>
       </label>
@@ -116,8 +136,8 @@
     <div class="checkbox">
       <label class="checkbox-inline">
         <input type="checkbox"
-               <%= setting_checked('VERIFICACION', false) %>
-               name="settings[VERIFICACION]">        
+               <%= schedule_checked('night', false) %>
+               name="phone[night]">        
         Noche
         <span class="help-block">6 a 9 pm</span>
       </label>

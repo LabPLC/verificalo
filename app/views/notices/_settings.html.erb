@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<% if request.post? && @errors[:INVALID_SETTINGS_COUNT] %>
+<% if request.post? && @errors[:MISSING_USER_NOTICES] %>
 <div class="row">
   <div class="col-md-12">
     <div class="alert alert-warning"><strong>Debe seleccionar por lo
@@ -18,8 +18,8 @@
     <div class="checkbox">
       <label class="checkbox-inline">
         <input type="checkbox"
-               <%= setting_checked('VERIFICACION', true) %>
-               name="settings[VERIFICACION]">        
+               <%= setting_checked('verificacion', true) %>
+               name="user[verificacion]">        
         Verificación
         <span class="help-block">Recibira un aviso antes de que inicie
           el periodo para verificar su auto y recordatorios cada dos
@@ -33,8 +33,8 @@
     <div class="checkbox">
       <label class="checkbox-inline">
         <input type="checkbox"
-               <%= setting_checked('ADEUDOS', true) %>
-               name="settings[ADEUDOS]">
+               <%= setting_checked('adeudos', true) %>
+               name="user[adeudos]">
         Pago de tenencias e infracciones
         <span class="help-block">Recibira un aviso cuando tenga nuevos
           pagos pendientes y recordatorios para que aproveche los
@@ -50,8 +50,8 @@
     <div class="checkbox">
       <label class="checkbox-inline">
         <input type="checkbox" 
-               <%= setting_checked('NO_CIRCULA_WEEKDAY', false) %>
-               name="settings[NO_CIRCULA_WEEKDAY]">
+               <%= setting_checked('no_circula_weekday', false) %>
+               name="user[no_circula_weekday]">
         Hoy no circula de lunes a viernes
         <span class="help-block">Recibira avisos un día antes de que su
           auto no pueda circular entre lunes y viernes.</span>
@@ -60,8 +60,8 @@
     <div class="checkbox">
       <label class="checkbox-inline">
         <input type="checkbox"
-               <%= setting_checked('NO_CIRCULA_WEEKEND', true) %>
-               name="settings[NO_CIRCULA_WEEKEND]">
+               <%= setting_checked('no_circula_weekend', true) %>
+               name="user[no_circula_weekend]">
         Hoy no circula sabatino
         <span class="help-block">Recibira avisos un día antes de que su
           auto no pueda circular en sábado.</span>

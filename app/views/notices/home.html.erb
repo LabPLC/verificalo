@@ -28,13 +28,13 @@
     <!-- </div> -->
   </div>
 
-  <% if request.post? && params[:user] %>
+  <% if request.post? && params[:type] %>
   <div id="notices-subform">
-    <% if params[:user][:via] == 'EMAIL' %>
+    <% if params[:type] == 'EMAIL' %>
     <%= render 'email' %>
-    <% elsif params[:user][:via] == 'PHONE' %>
+    <% elsif params[:type] == 'PHONE' %>
     <%= render 'phone' %>
-    <% elsif params[:user][:via] == 'TWITTER' %>
+    <% elsif params[:type] == 'TWITTER' %>
     <%= render 'twitter' %>
     <% end %>
   </div>
@@ -50,12 +50,12 @@
   'btn-notices-home-phone' : '<%= url_for({ controller: 'notices', action: 'phone' }) %>',
   'btn-notices-home-twitter' : '<%= url_for({ controller: 'notices', action: 'twitter' }) %>'
   };
-  <% if request.post?  && params[:user] %>
-  <% if params[:user][:via] == 'EMAIL' %>
+  <% if request.post?  && params[:type] %>
+  <% if params[:type] == 'EMAIL' %>
   var btn_active = $('#btn-notices-home-email');
-  <% elsif params[:user][:via] == 'PHONE' %>
+  <% elsif params[:type] == 'PHONE' %>
   var btn_active = $('#btn-notices-home-phone');
-  <% elsif params[:user][:via] == 'TWITTER' %>
+  <% elsif params[:type] == 'TWITTER' %>
   var btn_active = $('#btn-notices-home-twitter');
   <% end %>
   <% end %>
