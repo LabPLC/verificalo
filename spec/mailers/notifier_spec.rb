@@ -4,17 +4,18 @@ require 'spec_helper'
 shared_examples_for Notifier do
   it 'render sender' do
     expect(@mail.from).to eql(['default@example.com'])
-  end  
+  end
 
   it 'render destination' do
-    expect(@mail.to).to eql([@user.destination])
+    expect(@mail.to).to eql([@email.address])
   end  
 end
 
 describe Notifier do
   describe 'confirm' do
     before do
-      @user = FactoryGirl.create(:user_email)
+      @email = FactoryGirl.create(:email)
+      @user = @email.user
       @mail = Notifier.confirm(@user)
     end
 
@@ -35,7 +36,8 @@ describe Notifier do
 
   describe 'welcome' do
     before do
-      @user = FactoryGirl.create(:user_email_default_settings)
+      @email = FactoryGirl.create(:email)
+      @user = @email.user
       @mail = Notifier.welcome(@user)
       @mail.body.encoded.gsub(/\r?\n/, " ")
     end

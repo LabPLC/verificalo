@@ -7,19 +7,15 @@ class Notifier < ActionMailer::Base
   def confirm (user)
     @user = user
     subject = "Confirme los avisos de su auto "
-    subject += user.plate
-    mail(to: user.destination, subject: subject)
+    subject += @user.plate
+    mail(to: @user.email.address, subject: subject)
   end
   
   def welcome (user)
     @user = user
-    @settings = Hash.new
-    @user.settings.each { |s|
-      @settings[s.setting] = true;
-    }
     subject = "Los avisos de su auto "
-    subject += user.plate
+    subject += @user.plate
     subject += " estan confirmados"
-    mail(to: user.destination, subject: subject)
+    mail(to: @user.email.address, subject: subject)
   end
 end
