@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   before_validation {
     self.plate = self.plate.gsub(/[^0-9a-z ]/i, '').strip if self.plate
   }
+
   before_save {
     self.plate = self.plate.upcase
   }
