@@ -40,7 +40,7 @@ describe NoticesController do
         user = FactoryGirl.attributes_for(:user)
         user[:plate] = ''
         email = FactoryGirl.attributes_for(:email)
-        post :new, type: 'email', user: user, email: email
+        post :new, type: 'EMAIL', user: user, email: email
         response.should be_success
         should render_template('home')
         expect(assigns(:errors)).to eq(INVALID_USER_PLATE: true)
@@ -55,7 +55,7 @@ describe NoticesController do
         user[:no_circula_weekday] = false
         user[:no_circula_weekend] = false
         email = FactoryGirl.attributes_for(:email)
-        post :new, type: 'email', user: user, email: email
+        post :new, type: 'EMAIL', user: user, email: email
         response.should be_success
         should render_template('home')
         expect(assigns(:errors)).to eq(MISSING_USER_NOTICES: true)
@@ -68,7 +68,7 @@ describe NoticesController do
           user = FactoryGirl.attributes_for(:user)
           email = FactoryGirl.attributes_for(:email)
           email[:address] = ''
-          post :new, type: 'email', user: user, email: email
+          post :new, type: 'EMAIL', user: user, email: email
           response.should be_success
           should render_template('home')
           expect(assigns(:errors)).to eq(INVALID_EMAIL_ADDRESS: true)
@@ -79,7 +79,7 @@ describe NoticesController do
         it 'should create user' do
           user = FactoryGirl.attributes_for(:user)
           email = FactoryGirl.attributes_for(:email)
-          post :new, type: 'email', user: user, email: email
+          post :new, type: 'EMAIL', user: user, email: email
           response.should be_success
           should render_template('new')
           expect(assigns(:errors)).to be_empty
@@ -95,7 +95,7 @@ describe NoticesController do
           user = FactoryGirl.attributes_for(:user)
           phone = FactoryGirl.attributes_for(:phone)
           phone[:number] = ''
-          post :new, type: 'phone', user: user, phone: phone
+          post :new, type: 'PHONE', user: user, phone: phone
           response.should be_success
           should render_template('home')
           expect(assigns(:errors)).to eq(INVALID_PHONE_NUMBER: true)
@@ -109,7 +109,7 @@ describe NoticesController do
           phone[:morning] = false
           phone[:afternoon] = false
           phone[:night] = false
-          post :new, type: 'phone', user: user, phone: phone
+          post :new, type: 'PHONE', user: user, phone: phone
           response.should be_success
           should render_template('home')
           expect(assigns(:errors)).to eq(MISSING_PHONE_SCHEDULE: true)
@@ -120,7 +120,7 @@ describe NoticesController do
         it 'should create user' do
           user = FactoryGirl.attributes_for(:user)
           phone = FactoryGirl.attributes_for(:phone)
-          post :new, type: 'phone', user: user, phone: phone
+          post :new, type: 'PHONE', user: user, phone: phone
           response.should be_success
           should render_template('new')
           expect(assigns(:errors)).to be_empty

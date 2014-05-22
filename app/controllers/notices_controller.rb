@@ -23,9 +23,9 @@ class NoticesController < ApplicationController
 
     return unless new_user    
 
-    if type_param == 'email'
+    if type_param == 'EMAIL'
       return unless new_email
-    elsif type_param == 'phone'
+    elsif type_param == 'PHONE'
       return unless new_phone
     end
 
@@ -71,7 +71,7 @@ class NoticesController < ApplicationController
 
   def new_user
     begin
-      raise unless type_param =~ /\A(email|phone)\z/
+      raise unless type_param =~ /\A(EMAIL|PHONE)\z/
       @user = User.new(user_params)
     rescue
       render 'error'
@@ -148,9 +148,9 @@ class NoticesController < ApplicationController
   end
 
   def new_user_confirm
-    if type_param == 'email'
+    if type_param == 'EMAIL'
       Notifier.confirm(@user).deliver
-    elsif type_param == 'phone'
+    elsif type_param == 'PHONE'
       @tw_req = { To: @user.phone.number.dup,
         Url: url_for_tw({ controller: 'twilio', action: 'confirm',
                           user: @user.id }),
