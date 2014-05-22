@@ -1,6 +1,6 @@
 module ApplicationHelper
   def is_root?()
-    if current_page?(controller: 'info', action: 'home')
+    if params[:controller] == 'info' && params[:action] == 'home'
       true
     else
       false
