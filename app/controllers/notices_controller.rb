@@ -2,13 +2,13 @@ class NoticesController < ApplicationController
   include TwilioHelper
 
   def home
-    
+
   end
-  
+
   def email
     render layout: false
   end
-  
+
   def phone
     render layout: false
   end
@@ -20,9 +20,15 @@ class NoticesController < ApplicationController
   def new
     @params = params
     @errors = Hash.new
-    
-    return unless new_user
-    return unless new_user_settings
+
+    return unless new_user    
+
+    if type_param == 'email'
+      return unless new_email
+    elsif type_param == 'phone'
+      return unless new_phone
+    end
+
     new_user_confirm
   end
 
@@ -37,79 +43,131 @@ class NoticesController < ApplicationController
     @user.save
     Notifier.welcome(@user).deliver
   end
-  
+
   private
 
-  def user_params
-    params.require(:user).permit(:plate, :via, :destination)
+  def type_param
+    params.require(:type)
   end
 
-  def settings_params
-    params.require(:settings).collect{ |k, v| { user_id: @user.id, setting: k } }
+  def user_params
+    params.require(:user).permit(:plate, :adeudos, :verificacion, 
+                                 :no_circula_weekday, :no_circula_weekend)
   end
-  
+
+  def email_params
+    params.require(:email).permit(:address)
+  end
+
+  def phone_params
+    params.require(:phone).permit(:number, :cellphone, 
+                                  :morning, :afternoon, :night)
+  end
+
   def user_id_param
     params.require(:user)
     params[:user]
   end
-  
+
   def new_user
     begin
+      raise unless type_param =~ /\A(email|phone)\z/
       @user = User.new(user_params)
-      @user.save!
-      @debug = @user.errors
     rescue
-      if @user && @user.errors
-        if @user.errors[:plate].count > 0
-          @errors[:INVALID_PLATE] = true
-        end
-        if @user.errors[:destination].count > 0
-          @errors[:INVALID_DESTINATION] = true
-        end
-        if @errors[:INVALID_DESTINATION] || @errors[:INVALID_PLATE]
-          render 'home'
-          return false
-        end
-      end
       render 'error'
       return false
     end
-    return true
+
+    unless @user.save
+      if @user.errors[:plate].count > 0
+        @errors[:INVALID_USER_PLATE] = true
+      end
+      if @user.errors[:notices].count > 0
+        @errors[:MISSING_USER_NOTICES] = true
+      end
+      if @errors.length > 0 
+        render 'home'
+      else
+        render 'error'
+      end
+      return false
+    end
+
+    true
   end
 
-  def new_user_settings
+  def new_email
     begin
-      @settings = settings_params.collect{ |x|
-        setting = Setting.new(x)
-        raise if setting.invalid?
-        setting
-      }
-    rescue ActionController::ParameterMissing
-      @user.destroy
-      @errors[:INVALID_SETTINGS_COUNT] = true
-      render 'home'
-      return false
+      @email = @user.build_email(email_params)
     rescue
       @user.destroy
       render 'error'
       return false
     end
-    return @settings.each{ |s| s.save }
+
+    unless @email.save
+      @user.destroy
+      if @email.errors[:address].count > 0
+        @errors[:INVALID_EMAIL_ADDRESS] = true
+        render 'home'
+      else
+        render 'error'
+      end
+      return false
+    end
+
+    true
+  end
+
+  def new_phone
+    begin
+      @phone = @user.build_phone(phone_params)
+    rescue
+      @user.destroy
+      render 'error'
+      return false
+    end
+
+    unless @phone.save
+      @user.destroy
+      if @phone.errors[:number].count > 0
+        @errors[:INVALID_PHONE_NUMBER] = true
+      end
+      if @phone.errors[:schedule].count > 0
+        @errors[:MISSING_PHONE_SCHEDULE] = true
+      end
+      if @errors.length > 0 
+        render 'home'
+      else
+        render 'error'
+      end
+      return false
+    end
+    
+    true
   end
 
   def new_user_confirm
-    if @user.via == 'EMAIL'
+    if type_param == 'email'
       Notifier.confirm(@user).deliver
-    elsif @user.via == 'PHONE'
-      tw_client = Twilio::REST::Client.new(ENV['VERIFICALO_TWILIO_SSID'],
-                                           ENV['VERIFICALO_TWILIO_TOKEN'])
-      tw_req = { To: '+521' + @user.destination,
-        :Url => url_for_tw({ controller: 'twilio', action: 'confirm', 
-                             user: @user.id }),
-        :Method => 'POST'
+    elsif type_param == 'phone'
+      @tw_req = { To: @user.phone.number.dup,
+        Url: url_for_tw({ controller: 'twilio', action: 'confirm',
+                          user: @user.id }),
+        Method: 'POST'
       }
-      tw_client.account.calls.create(tw_defaults(tw_req))
+      if @user.phone.cellphone
+        @tw_req[:To].prepend('+521')
+      else
+        @tw_req[:To].prepend('+52')
+      end
+      unless Rails.env.test?
+        tw_client = Twilio::REST::Client.new(ENV['VERIFICALO_TWILIO_SSID'],
+                                             ENV['VERIFICALO_TWILIO_TOKEN'])
+        tw_client.account.calls.create(tw_defaults(@tw_req))
+      end
     end
+    true
   end
 
 end

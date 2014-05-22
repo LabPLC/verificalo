@@ -34,93 +34,107 @@ describe NoticesController do
         should render_template('error')
       end
     end
+
+    describe 'with invalid plate' do
+      it 'should return INVALID_PLATE error' do
+        user = FactoryGirl.attributes_for(:user)
+        user[:plate] = ''
+        email = FactoryGirl.attributes_for(:email)
+        post :new, type: 'email', user: user, email: email
+        response.should be_success
+        should render_template('home')
+        expect(assigns(:errors)).to eq(INVALID_USER_PLATE: true)
+      end
+    end
+
+    describe 'without notices' do
+      it 'should return MISSING_USER_NOTICES error' do
+        user = FactoryGirl.attributes_for(:user)
+        user[:adeudos] = false
+        user[:verificacion] = false
+        user[:no_circula_weekday] = false
+        user[:no_circula_weekend] = false
+        email = FactoryGirl.attributes_for(:email)
+        post :new, type: 'email', user: user, email: email
+        response.should be_success
+        should render_template('home')
+        expect(assigns(:errors)).to eq(MISSING_USER_NOTICES: true)
+      end
+    end
     
     describe 'via email' do
-      describe 'with invalid params' do
-        it 'should return INVALID_PLATE and INVALID_DESTINATION errors' do
-          user = { via: 'EMAIL', plate: '', destination: '' }
-          post :new, user: user
+      describe 'with invalid address' do
+        it 'should return INVALID_EMAIL_ADDRESS error' do
+          user = FactoryGirl.attributes_for(:user)
+          email = FactoryGirl.attributes_for(:email)
+          email[:address] = ''
+          post :new, type: 'email', user: user, email: email
           response.should be_success
           should render_template('home')
-          expect(assigns(:errors)).to eq(INVALID_PLATE: true,
-                                         INVALID_DESTINATION: true)
+          expect(assigns(:errors)).to eq(INVALID_EMAIL_ADDRESS: true)
         end
       end
-
-      describe 'with invalid plate' do
-        it 'should return INVALID_PLATE error' do
-          user = { via: 'EMAIL', plate: '', 
-            destination: FactoryGirl.generate(:email) }
-          post :new, user: user
-          response.should be_success
-          should render_template('home')
-          expect(assigns(:errors)).to eq(INVALID_PLATE: true)
-        end
-      end
-
-      describe 'with invalid email' do
-        it 'should return INVALID_DESTINATION error' do
-          user = { via: 'EMAIL', destination: '', 
-            plate: FactoryGirl.generate(:plate) }
-          post :new, user: user
-          response.should be_success
-          should render_template('home')
-          expect(assigns(:errors)).to eq(INVALID_DESTINATION: true)
-        end
-      end
-
-      describe 'without settings' do
-        it 'should return INVALID_SETTINGS_COUNT error' do
-          user = { via: 'EMAIL', 
-            destination: FactoryGirl.generate(:email), 
-            plate: FactoryGirl.generate(:plate) }
-          post :new, user: user
-          response.should be_success
-          should render_template('home')
-          expect(assigns(:errors)).to eq(INVALID_SETTINGS_COUNT: true)
-        end
-      end      
-
-      describe 'with invalid settings' do
-        it 'should show error' do
-          user = { via: 'EMAIL', 
-            destination: FactoryGirl.generate(:email), 
-            plate: FactoryGirl.generate(:plate) }
-          settings = { INVALID: true }
-          post :new, user: user, settings: settings
-          response.should be_success
-          should render_template('error')
-        end
-      end
-
-      describe 'with email, plate and settings' do
+      
+      describe 'with user and email' do
         it 'should create user' do
-          user = { via: 'EMAIL', 
-            destination: FactoryGirl.generate(:email), 
-            plate: FactoryGirl.generate(:plate) }
-          settings = {
-            VERIFICACION: true,
-            ADEUDOS: true,
-            NO_CIRCULA_WEEKEND: true }
-          post :new, user: user, settings: settings
+          user = FactoryGirl.attributes_for(:user)
+          email = FactoryGirl.attributes_for(:email)
+          post :new, type: 'email', user: user, email: email
           response.should be_success
           should render_template('new')
           expect(assigns(:errors)).to be_empty
-          expect(User.where(user)).to_not be_nil
+          expect(User.where(user)).to_not be_empty
+          expect(Email.where(email)).to_not be_empty
+        end
+      end
+    end
+
+    describe 'via phone' do
+      describe 'with invalid number' do
+        it 'should return INVALID_PHONE_NUMBER error' do
+          user = FactoryGirl.attributes_for(:user)
+          phone = FactoryGirl.attributes_for(:phone)
+          phone[:number] = ''
+          post :new, type: 'phone', user: user, phone: phone
+          response.should be_success
+          should render_template('home')
+          expect(assigns(:errors)).to eq(INVALID_PHONE_NUMBER: true)
+        end
+      end
+
+      describe 'without schedule' do
+        it 'should return MISSING_PHONE_SCHEDULE error' do
+          user = FactoryGirl.attributes_for(:user)
+          phone = FactoryGirl.attributes_for(:phone)
+          phone[:morning] = false
+          phone[:afternoon] = false
+          phone[:night] = false
+          post :new, type: 'phone', user: user, phone: phone
+          response.should be_success
+          should render_template('home')
+          expect(assigns(:errors)).to eq(MISSING_PHONE_SCHEDULE: true)
+        end
+      end
+
+      describe 'with user and phone' do
+        it 'should create user' do
+          user = FactoryGirl.attributes_for(:user)
+          phone = FactoryGirl.attributes_for(:phone)
+          post :new, type: 'phone', user: user, phone: phone
+          response.should be_success
+          should render_template('new')
+          expect(assigns(:errors)).to be_empty
+          expect(User.where(user)).to_not be_empty
+          expect(Phone.where(phone)).to_not be_empty
         end
       end
     end
 
     describe 'via invalid' do
       it 'should render error' do
-        user = { via: 'INVALID', 
-          destination: FactoryGirl.generate(:email), 
-          plate: FactoryGirl.generate(:plate) }
-        settings = {
-          VERIFICACION: true,
-          ADEUDOS: true,
-          NO_CIRCULA_WEEKEND: true }
-        post :new, user: user, settings: settings
+        user = FactoryGirl.attributes_for(:user)
+        email = FactoryGirl.attributes_for(:email)
+        post :new, type: 'invalid', user: user, email: email
         response.should be_success
         should render_template('error')
         expect(assigns(:errors)).to be_empty
@@ -140,7 +154,10 @@ describe NoticesController do
     end
 
     describe 'valid user' do
-      before { @user = FactoryGirl.create(:user_email) }
+      before do
+        @email = FactoryGirl.create(:email)
+        @user = @email.user
+      end
       it 'should confirm user' do
         get :confirm, user: @user.id
         @user.reload
