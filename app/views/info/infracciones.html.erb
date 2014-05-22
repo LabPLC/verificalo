@@ -58,16 +58,3 @@
   ga('set', 'title', 'Info - Infracciones');
   ga('send', 'pageview');
 </script>
-
-<% if Rails.env.development? %>
-<!-- debug -->
-<h2>Debug</h2>
-<h3>@params</h3>
-<%= debug(@params) %>
-<h3>@session</h3>
-<%= debug(@session) %>
-<h3>@vehicle.infracciones_all</h3>
-<%= debug(@vehicle.infracciones_all) %>
-<h3>@vehicle</h3>
-<%= debug(@vehicle) %>
-<% end %>

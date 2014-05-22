@@ -71,20 +71,3 @@
   ga('set', 'title', 'Info - Results');
   ga('send', 'pageview');
 </script>
-
-<% if Rails.env.development? %>
-<!-- debug -->
-<h2>Debug</h2>
-<h3>@params</h3>
-<%= debug(@params) %>
-<h3>@session</h3>
-<%= debug(@session) %>
-<h3>@vehicle.verificacion_current</h3>
-<%= debug(@vehicle.verificacion_current) %>
-<h3>@vehicle.verificaciones</h3>
-<%= debug(@vehicle.verificaciones) %>
-<h3>@vehicle.registration_date</h3>
-<%= debug(@vehicle.registration_date) %>
-<h3>@vehicle</h3>
-<%= debug(@vehicle) %>
-<% end %>

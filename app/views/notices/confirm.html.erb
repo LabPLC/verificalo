@@ -26,14 +26,3 @@
   ga('set', 'title', 'Notices - Confirm');
   ga('send', 'pageview');
 </script>
-
-<% if Rails.env.development? %>
-<!-- debug -->
-<h2>Debug</h2>
-<h3>@params</h3>
-<%= debug(@params) %>
-<h3>@error</h3>
-<%= debug(@error) %>
-<h3>@user</h3>
-<%= debug(@user) %>
-<% end %>

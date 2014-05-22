@@ -67,12 +67,3 @@
   ga('set', 'title', 'Info - Home');
   ga('send', 'pageview');
 </script>
-
-<% if Rails.env.development? %>
-<!-- debug -->
-<h2>Debug</h2>
-<h3>@error</h3>
-<%= debug(@error) %>
-<h3>@vehicle</h3>
-<%= debug(@vehicle) %>
-<% end %>
