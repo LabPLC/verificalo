@@ -42,18 +42,10 @@ class TwilioController < ApplicationController
     end
     
     msg = 'Su suscripción esta confirmada, recibira avisos sobre; '
-    if @user.settings.find_by_setting('VERIFICACION')
-      msg += 'verificación; '
-    end
-    if @user.settings.find_by_setting('ADEUDOS')
-      msg += 'pagos de tenencias e infracciones; '
-    end
-    if @user.settings.find_by_setting('NO_CIRCULA_WEEKDAY')
-      msg += 'hoy no circula de lunes a viernes; '
-    end
-    if @user.settings.find_by_setting('NO_CIRCULA_WEEKEND')
-      msg += 'hoy no circula sabatino; '
-    end
+    msg += 'verificación; ' if @user.verificacion
+    msg += 'pagos de tenencias e infracciones; ' if @user.adeudos
+    msg += 'hoy no circula de lunes a viernes; ' if @user.no_circula_weekday
+    msg += 'hoy no circula sabatino; ' if @user.no_circula_weekend
     msg += ';Gracias por usar Verifícalo'
 
     res = Twilio::TwiML::Response.new do |r|
