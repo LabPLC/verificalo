@@ -1,5 +1,7 @@
 Verificalo::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # informacion
   root 'info#home', via: [ 'get', 'post' ]
   match '/info/:plate', to: 'info#results', via: [ 'get', 'post' ]
