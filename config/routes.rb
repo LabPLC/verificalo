@@ -24,6 +24,7 @@ Verificalo::Application.routes.draw do
 
   # respuestas
   match '/respuestas', to: 'answers#home', via: 'get'
+  match '/buscar', to: 'answers#search', via: 'post'
   match '/respuestas/verificentros', to: 'answers#verificentros', via: 'get'
   match '/respuestas/verificentros/cercanos', to: 'answers#verificentros_query', via: [ 'get', 'post' ]
   match '/respuestas/verificentros/:delegacion', to: 'answers#verificentros_delegacion', via: 'get'

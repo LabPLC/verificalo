@@ -4,6 +4,10 @@ class AnswersController < ApplicationController
     
   end
 
+  def search
+
+  end
+
   def verificentros
     @verificentros_count = Verificentro.count
     @delegaciones = Delegacion.order('name')
