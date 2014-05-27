@@ -1,7 +1,5 @@
 Verificalo::Application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   # informacion
   root 'info#home', via: [ 'get', 'post' ]
   match '/info/:plate', to: 'info#results', via: [ 'get', 'post' ]
@@ -36,6 +34,10 @@ Verificalo::Application.routes.draw do
 
   # check engine
   match '/.well-known/status', to: 'status#check', via: 'get'
+
+  # active admin
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
