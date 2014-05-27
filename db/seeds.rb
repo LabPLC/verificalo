@@ -40,5 +40,5 @@ CSV.foreach('db/data/verificentros.csv', :headers => true) do |r|
                       delegacion_id: d.id, 
                       phone: r['TELEFONOS'],
                       lat: r['LATITUD'],
-                      lon: r['LONGITUD']);
+                      lon: r['LONGITUD'])
 end
