@@ -86,32 +86,8 @@
       </div>
     </div>
   </div>
-
+  
   <div class="col-md-4">
-    <h2>Buscar</h2>
-    <p>Encuentre las respuestas a sus preguntas sobre autos
-      particulares de la Ciudad de México.</p>
-    <%= form_tag({ controller: 'answers', action: 'search' },
-        { method: 'post', id: 'form-answers' }) do %>
-    <div class="row">
-      <div class="col-xs-9">
-        <input name="answers-query" type="text" 
-               placeholder="Hoy no circula, verificación, etc"
-               <% if request.post? and @query_value %>
-               value="<%= @query_value %>"
-               <% end %>
-               class="form-control input">
-      </div>
-      <div class="col-xs-3">
-        <button id="btn-answers-search" type="submit"
-                class="btn btn-primary btn">Buscar</button>
-      </div>
-    </div>
-    <% end %>    
-    <p class="help-block">Ingrese los terminos de su pregunta y haga
-      click en el botón buscar.</p>
+    <%= render 'search' %>
   </div>
 </div>
-
-
-<div class="row">
