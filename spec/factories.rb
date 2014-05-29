@@ -73,11 +73,16 @@ FactoryGirl.define do
     lon -99.14
   end
 
-  factory :answer do
+  factory :answer, :aliases => [ :related ] do
     category
     contact
     sequence(:url) { |n| "answer-#{n}" }
     sequence(:title) { |n| "Question #{n}" }
     sequence(:body) { |n| "Answer #{n}" }
+  end
+
+  factory :related_answer do
+    answer
+    related
   end
 end
