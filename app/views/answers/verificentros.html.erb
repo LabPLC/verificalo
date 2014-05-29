@@ -10,7 +10,12 @@
     <p class="answer">Existen <%= @verificentros_count %> verificentros
       en la Ciudad de México donde puede llevar su auto a
       verificar.</p>
-
+    <p><a href="<%= url_for({ controller: 'answers',
+                action: 'home' })%>">
+        Ver más respuestas sobre Verificación &raquo;</a></p>
+    <p><a href="<%= url_for({ controller: 'answers',
+                action: 'home' })%>">
+        Regresar a Respuestas &raquo;</a></p>
     <h2 class="answer">Encuentre los verificentros más cercanos</h2>
     <%= render 'verificentros_query_form' %>
     
@@ -37,6 +42,12 @@
       </ul>
     </div>
     <% end %>
+    <p><a href="<%= url_for({ controller: 'answers',
+                action: 'home' })%>">
+        Ver más respuestas sobre Verificación &raquo;</a></p>
+    <p><a href="<%= url_for({ controller: 'answers',
+                action: 'home' })%>">
+        Regresar a Respuestas &raquo;</a></p>
   </div>
   
   <%= render 'sidebar' %>
