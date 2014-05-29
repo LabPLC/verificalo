@@ -7,8 +7,8 @@ describe Contact do
 
   subject { @contact }
 
-  #it { should have_many(:verificentros) }
-
+  it { should have_many(:answer) }
+  
   it { should respond_to(:name) }
   it { should respond_to(:phone) }
   it { should respond_to(:phone_schedule) }

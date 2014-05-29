@@ -7,7 +7,7 @@ describe Category do
 
   subject { @category }
 
-  #it { should have_many(:verificentros) }
+  it { should have_many(:answer) }
 
   it { should respond_to(:url) }
   it { should respond_to(:name) }

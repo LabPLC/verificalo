@@ -72,4 +72,12 @@ FactoryGirl.define do
     lat 19.43
     lon -99.14
   end
+
+  factory :answer do
+    category
+    contact
+    sequence(:url) { |n| "answer-#{n}" }
+    sequence(:title) { |n| "Question #{n}" }
+    sequence(:body) { |n| "Answer #{n}" }
+  end
 end
