@@ -32,8 +32,8 @@ FactoryGirl.define do
   end
 
   factory :delegacion do
-    sequence(:url) { |n| "example-borough-#{n}" }
-    sequence(:name) { |n| "Example Borough #{n}" }
+    sequence(:url) { |n| "borough-#{n}" }
+    sequence(:name) { |n| "Borough #{n}" }
 
     factory :delegacion_verificentros do
       ignore do
@@ -50,8 +50,8 @@ FactoryGirl.define do
   factory :verificentro do
     delegacion
     sequence(:number) { |n| n.to_s.rjust(4, '0') }
-    sequence(:name) { |n| "Example #{n} Inc" }
-    address 'Fake street 123'
+    sequence(:name) { |n| "Verificentro #{n} Inc" }
+    address 'Fake Street 123'
     phone
     lat 19.43
     lon -99.14
@@ -60,5 +60,16 @@ FactoryGirl.define do
   factory :category do
     sequence(:url) { |n| "category-#{n}" }
     sequence(:name) { |n| "Category #{n}" }
+  end
+
+  factory :contact do
+    sequence(:name) { |n| "Contact #{n}" }
+    phone '1234 5678'
+    phone_schedule 'Lun a Vie de 10 a 5'
+    email 'info@example.com'
+    address 'Fake street 123'
+    address_schedule 'Lun a Vie de 9 a 6'
+    lat 19.43
+    lon -99.14
   end
 end
