@@ -7,7 +7,7 @@ describe Contact do
 
   subject { @contact }
 
-  it { should have_many(:answer) }
+  it { should have_many(:answers) }
   
   it { should respond_to(:name) }
   it { should respond_to(:phone) }
