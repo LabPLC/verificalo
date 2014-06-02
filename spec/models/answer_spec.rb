@@ -9,6 +9,11 @@ describe Answer do
 
   it { should belong_to(:category) }
   it { should belong_to(:contact) }
+  it { should belong_to(:related_1) }
+  it { should belong_to(:related_2) }
+  it { should belong_to(:related_3) }
+  it { should belong_to(:related_4) }
+  it { should belong_to(:related_5) }
 
   it { should respond_to(:url) }
   it { should respond_to(:title) }

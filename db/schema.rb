@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140602153554) do
+ActiveRecord::Schema.define(version: 20140602221050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,16 +52,21 @@ ActiveRecord::Schema.define(version: 20140602153554) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "answers", force: true do |t|
-    t.integer  "category_id",             null: false
+    t.integer  "category_id",              null: false
     t.integer  "contact_id"
-    t.string   "url",                     null: false
-    t.string   "title",                   null: false
-    t.text     "body",                    null: false
+    t.string   "url",                      null: false
+    t.string   "title",                    null: false
+    t.text     "body",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "views",       default: 0, null: false
-    t.integer  "positive",    default: 0, null: false
-    t.integer  "negative",    default: 0, null: false
+    t.integer  "views",        default: 0, null: false
+    t.integer  "positive",     default: 0, null: false
+    t.integer  "negative",     default: 0, null: false
+    t.integer  "related_1_id"
+    t.integer  "related_2_id"
+    t.integer  "related_3_id"
+    t.integer  "related_4_id"
+    t.integer  "related_5_id"
   end
 
   create_table "categories", force: true do |t|
@@ -106,13 +111,6 @@ ActiveRecord::Schema.define(version: 20140602153554) do
     t.boolean  "morning",               default: false, null: false
     t.boolean  "afternoon",             default: false, null: false
     t.boolean  "night",                 default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "related_answers", force: true do |t|
-    t.integer  "answer_id"
-    t.integer  "related_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
