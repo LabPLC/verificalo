@@ -13,6 +13,9 @@ describe Answer do
   it { should respond_to(:url) }
   it { should respond_to(:title) }
   it { should respond_to(:body) }
+  it { should respond_to(:views) }
+  it { should respond_to(:positive) }
+  it { should respond_to(:negative) }
 
   it { should be_valid }
 end
