@@ -1,6 +1,10 @@
 class AnswersController < ApplicationController
 
   def home
+    @categories = Category.order("priority ASC")
+  end
+
+  def category
     
   end
 
