@@ -11,7 +11,7 @@ describe Category do
 
   it { should respond_to(:url) }
   it { should respond_to(:name) }
-  it { should respond_to(:order) }
+  it { should respond_to(:priority) }
 
   it { should be_valid }
 end
