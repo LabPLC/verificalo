@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-describe 'notices sign up' do
+describe 'notices views' do
   subject { page }
   
   describe 'home' do
     before { visit avisos_path }
+
+    # navbar
+    it { should have_link('Información', href: root_path) }
+    it { should have_link('Avisos', href: avisos_path) }
+    it { should have_link('Respuestas', href: respuestas_path) }
+    it { should have_link('Mi suscripción', href: '#') }
+    it { should have_link('Acerca', href: acerca_path) }
+
+    # content
     it { should have_button('Correo electrónico') }
     it { should have_button('Llamada telefónica') }
-
-    describe 'navbar' do
-      it { should have_link('Información', href: root_path) }
-      it { should have_link('Avisos', href: avisos_path) }
-      it { should have_link('Respuestas', href: respuestas_path) }
-      it { should have_link('Mi suscripción', href: '#') }
-      it { should have_link('Acerca', href: acerca_path) }
-    end
     
     describe 'via email', :js => true do
       before { click_button('Correo electrónico') }
@@ -26,7 +27,7 @@ describe 'notices sign up' do
       it { should have_field('user[no_circula_weekday]', :unchecked) }
       it { should have_field('user[no_circula_weekend]', :checked) }
       it { should have_button('Continuar') }
-      describe 'post' do
+      describe 'submit' do
         before do
           fill_in('user[plate]', with: FactoryGirl.generate(:plate))
           fill_in('email[address]', with: FactoryGirl.generate(:address))
@@ -50,7 +51,7 @@ describe 'notices sign up' do
       it { should have_field('phone[afternoon]', :checked) }
       it { should have_field('phone[night]', :unchecked) }
       it { should have_button('Continuar') }
-      describe 'post' do
+      describe 'submit' do
         before do
           fill_in('user[plate]', with: FactoryGirl.generate(:plate))
           fill_in('phone[number]', with: FactoryGirl.generate(:number))
