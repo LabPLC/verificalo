@@ -3,12 +3,9 @@ require 'spec_helper'
 
 describe 'answers views' do
   before :all  do
-    FactoryGirl.create(:category_answers, 
-                       answers_count: 9)
-    FactoryGirl.create(:category_answers, 
-                       answers_count: 6)
-    FactoryGirl.create(:category_answers, 
-                       answers_count: 3)
+    FactoryGirl.create(:category_answers, answers_count: 9)
+    FactoryGirl.create(:category_answers, answers_count: 6)
+    FactoryGirl.create(:category_answers, answers_count: 3)
     FactoryGirl.create(:delegacion_verificentros,
                        verificentros_count: 9)
     FactoryGirl.create(:delegacion_verificentros,
