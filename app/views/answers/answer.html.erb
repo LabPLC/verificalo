@@ -1,0 +1,26 @@
+<!-- answers#answer -->
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="question"><%= @answer.title %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="answer">
+      <%= @answer.body.html_safe %>
+    </div>
+    <% if @answer.category.answers.count > 3 %>
+    <p><a href="<%= url_for({ controller: 'answers',
+                action: 'category',
+                category_url: @answer.category.url })%>">
+        Ver más respuestas sobre  <%= @answer.category.name %>
+        &raquo;</a></p>
+    <% end %>
+    <p><a href="<%= url_for({ controller: 'answers',
+                action: 'home' })%>">
+        Regresar a Respuestas &raquo;</a></p>
+  </div>
+  
+  <%= render 'sidebar' %>
+</div>

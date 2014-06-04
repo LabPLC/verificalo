@@ -1,17 +1,23 @@
 <!-- answers#category -->
 <div class="row">
+  <div class="col-md-12">
+    <h1 class="category"><%= @category.name %></h1>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-8">
-    <h1>Verificación</h1>
     <p><a href="<%= url_for({ controller: 'answers',
                 action: 'home' })%>">
-        Regresar &raquo;</a></p>
-    <p>Consulte las respuestas sobre Verificación para autos
-      particulares de la Ciudad de México.</p>
-    <p><a href="#">Uno</a></p>
-    <p><a href="#">Dos</a></p>
-    <p><a href="#">Tres</a></p>
-    <p><a href="#">Cuatro</a></p>
-    <p><a href="#">Cinco</a></p>
+        Regresar a Respuestas &raquo;</a></p>
+    <br />
+    <% @answers.each do |a| %>
+    <p><a class="answer" href="<%= url_for({ controller: 'answers',
+                               action: 'answer',
+                               category_url: a.category.url,
+                               answer_url: a.url })%>">
+        <%= a.title %></a></p>
+    <% end %>
   </div>
   <div class="col-md-4">
     <%= render 'search' %>

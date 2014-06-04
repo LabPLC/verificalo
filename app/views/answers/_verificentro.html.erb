@@ -3,15 +3,13 @@
    map += '/pin-m-car+007FFF(' 
    map += verificentro.lon.to_s + ',' + verificentro.lat.to_s + ')/'
    map += verificentro.lon.to_s + ',' + verificentro.lat.to_s + ',15'
-   map += '/394x222.png'
-   gmap = 'http://maps.google.com/?daddr='
-   gmap += verificentro.lat.to_s + ','
-   gmap += verificentro.lon.to_s + '&z=15' %>
+   map += '/394x222.png' %>
 
 <div class="col-md-6">
   <h2 class="answer">Verificentro <%= verificentro.number %></h2>
   <p><a href="<%= gmap %>" target="_blank">
       <img class="img-responsive" src="<%= map %>" /></a></p>
   <p><%= verificentro.address %></p>
-  <p><a href="<%= gmap %>" target="_blank">Cómo llegar &raquo;</a></p>
+  <p><a href="<%= gmap(verificentro) %>"
+        target="_blank">Cómo llegar &raquo;</a></p>
 </div>

@@ -60,6 +60,17 @@ FactoryGirl.define do
   factory :category do
     sequence(:url) { |n| "category-#{n}" }
     sequence(:name) { |n| "Category #{n}" }
+
+    factory :category_answers do
+      ignore do
+        answers_count 3
+      end
+      after(:create) do |category, evaluator|
+        create_list(:answer, 
+                    evaluator.answers_count,
+                    category: category)
+      end
+    end
   end
 
   factory :contact do
@@ -73,16 +84,11 @@ FactoryGirl.define do
     lon -99.14
   end
 
-  factory :answer, :aliases => [ :related ] do
+  factory :answer do
     category
     contact
     sequence(:url) { |n| "answer-#{n}" }
     sequence(:title) { |n| "Question #{n}" }
     sequence(:body) { |n| "Answer #{n}" }
-  end
-
-  factory :related_answer do
-    answer
-    related
-  end
+  end  
 end

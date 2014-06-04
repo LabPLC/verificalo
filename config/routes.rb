@@ -28,6 +28,8 @@ Verificalo::Application.routes.draw do
   match '/respuestas/verificentros', to: 'answers#verificentros', via: 'get'
   match '/respuestas/verificentros/cercanos', to: 'answers#verificentros_query', via: [ 'get', 'post' ]
   match '/respuestas/verificentros/:delegacion', to: 'answers#verificentros_delegacion', via: 'get'
+  match '/respuestas/:category_url', to: 'answers#category', via: 'get'
+  match '/respuestas/:category_url/:answer_url', to: 'answers#answer', via: 'get'
 
   # paginas estaticas
   match '/acerca', to: 'static_pages#about', via: 'get'

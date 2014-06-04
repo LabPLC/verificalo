@@ -1,13 +1,47 @@
-<div class="col-md-3 answer-sidebar">
-  <h2>Para más información</h2>
-  <p>Contacte a la SEDEMA</p>
-  <p>Telefono: 55 1234 5678 de 9 a 5 pm</p>
-  <p>Correo: <a href="#">info@sedema.df.gob.mx</a></p>
-  
+<% if @answer.contact || related?(@answer) %>
+<div class="col-md-4 answer-sidebar">
+  <% if @answer.contact %>
+  <h2>¿Mas información?</h2>
+  <p>Contacte a <strong><%= @answer.contact.name %>:</strong></p>
+  <ul>
+    <% if @answer.contact.phone %>
+    <li><a href="tel:<%= @answer.contact.phone %>">
+        <%= @answer.contact.phone %></a>
+      <% if @answer.contact.phone_schedule %>
+      (<%= @answer.contact.phone_schedule %>)
+      <% end %>
+    </li>
+    <% end %>
+    <% if @answer.contact.email %>
+    <li><a href="mailto:<%= @answer.contact.email %>">
+        <%= @answer.contact.email %></a>
+    </li>
+    <% end %>
+    <% if @answer.contact.address %>
+    <li>
+      <% if gmap?(@answer.contact) %>
+      <a href="<%= gmap(@answer.contact) %>" target="_blank">
+        <%= @answer.contact.address %>
+      </a>
+      <% else %>
+      <%= @answer.contact.address %>
+      <% end %>
+      <% if @answer.contact.address_schedule %>
+      (<%= @answer.contact.address_schedule %>)
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <% if related?(@answer) %>
   <h2>Respuestas relacionadas</h2>
-  <p><a href="#">¿Cuando debo verificar mi auto?</a></p>
-  <p><a href="#">¿Por que es obligatoria la verificación
-      vehicular?</a></p>
-  <p><a href="#">¿Si mi auto tiene placas de otro estado debo
-      verificarlo?</a></p>
+  <% related(@answer).each do |r| %>
+  <p><a href="<%= url_for({ controller: 'answers',
+              action: 'answer',
+              category_url: r.category.url,
+              answer_url: r.url })%>"><%= r.title %></a></p>
+  <% end %>
+  <% end %>
 </div>
+<% end %>

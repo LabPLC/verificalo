@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe AnswersController do
   before :all do
+    FactoryGirl.create(:category_answers, 
+                       answers_count: 3)
+    FactoryGirl.create(:category_answers, 
+                       answers_count: 6)
+    FactoryGirl.create(:category_answers, 
+                       answers_count: 9)
     FactoryGirl.create(:delegacion_verificentros, 
                        verificentros_count: 3)
     FactoryGirl.create(:delegacion_verificentros, 
@@ -11,17 +17,68 @@ describe AnswersController do
   end
 
   describe 'GET home' do
-    it 'should render home' do
+    before do
+      @categories_count = Category.count
+    end
+    it 'should render home with categories' do
       get :home
       response.should be_success
       should render_template('home')
+      assigns(:categories).count.should eq(@categories_count)
+    end
+  end
+
+  describe 'GET category' do
+    describe 'with invalid url' do
+      it 'should redirect to home' do
+        get :category, { category_url: 'invalid' }
+        response.should redirect_to({ action: 'home' })
+      end      
+    end
+
+    describe 'with valid url' do
+      before do 
+        @category = Category.order('RANDOM()').first
+        @answers_count = @category.answers.count
+      end
+      it 'should return answers' do
+        get :category, { category_url: @category.url }
+        response.should be_success
+        should render_template('category')
+        assigns(:category).should_not be_nil
+        assigns(:answers).count.should eq(@answers_count)
+      end
+    end
+  end
+
+  describe 'GET answer' do
+    before do 
+      @category = Category.order('RANDOM()').first
+    end
+    describe 'with invalid url' do
+      it 'should redirect to home' do
+        get :answer, { category_url: @category.url, answer_url: 'invalid' }
+        response.should redirect_to({ action: 'home' })
+      end
+    end
+    
+    describe 'with valid url' do
+      before do 
+        @answer = @category.answers.order('RANDOM()').first
+      end
+      it 'should return answer' do
+        get :answer, { category_url: @category.url, answer_url: @answer.url }
+        response.should be_success
+        should render_template('answer')
+        assigns(:answer).should_not be_nil
+      end
     end
   end
 
   describe 'GET verificentros' do
     before do
-      @verificentros_count = Verificentro.all.count
-      @delegaciones_count = Delegacion.all.count
+      @verificentros_count = Verificentro.count
+      @delegaciones_count = Delegacion.count
     end
     it 'should return verificentros count and delegaciones' do
       get :verificentros
@@ -77,6 +134,5 @@ describe AnswersController do
         assigns(:verificentros).count.should eq(@verificentros_count)
       end
     end
-
   end
 end

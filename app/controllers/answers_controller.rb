@@ -5,9 +5,26 @@ class AnswersController < ApplicationController
   end
 
   def category
-    
+    category_url = category_param[:category_url]
+    begin
+      @category = Category.find_by_url!(category_url)
+      @answers = @category.answers.order("title ASC")
+    rescue
+      redirect_to({ action: 'home' })
+    end
   end
 
+  def answer
+    category_url = category_param[:category_url]
+    answer_url = answer_param[:answer_url]
+    begin
+      @answer = Answer.find_by_url!(answer_url)
+      raise unless category_url == @answer.category.url
+    rescue
+     redirect_to({ action: 'home' })
+    end
+  end
+  
   def search
 
   end
@@ -50,6 +67,14 @@ class AnswersController < ApplicationController
   end
 
   private
+
+  def category_param
+    params.permit(:category_url)
+  end
+
+  def answer_param
+    params.permit(:answer_url)
+  end
 
   def verificentros_query_param
     params.permit(:query)
