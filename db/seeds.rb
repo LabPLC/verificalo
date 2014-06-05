@@ -48,55 +48,16 @@ Category.create([{ url: 'verificacion', name: 'Verificación', priority: 1 },
                  { url: 'infracciones', name: 'Infracciones', priority: 3 },
                  { url: 'tenencia', name: 'Tenencia', priority: 4 }])
 
-Contact.create([{ name: 'Secretaría del Medio Ambiente', 
-                  phone: '1234 5678', phone_schedule: '10 am a 5 pm', 
-                  email: 'contacto@sedema.df.gob.mx',
-                  address: 'Av. Tlaxcoaque No. 8, Col. Centro Histórico, Distrito Federal',
-                  address_schedule: '9 am a 6 pm', lat: '19.423219', lon: '-99.134159' },
-                { name: 'Secretaría de Finanzas',
-                  phone: '8765 4321', phone_schedule: '11 am a 4 pm', 
-                  email: 'contacto@sefin.df.gob.mx',
-                  address: 'Dr. Lavista No. 144, Col. Doctores, Distrito Federal',
-                  address_schedule: 'de 10 am hasta 3 pm' }])
+Contact.create({ name: 'Secretaría del Medio Ambiente', 
+                 phone: '5134 2380', phone_schedule: 'extensión 1690, 9 am a 5 pm',
+                 email: 'contacto@sedema.df.gob.mx',
+                 address: 'Av. Tlaxcoaque No. 8, Col. Centro Histórico, Distrito Federal',
+                 address_schedule: '9 am a 4 pm', lat: '19.423219', lon: '-99.134159' })
 
-Answer.create([{ category_id: 1, contact_id: 1, url: 'verificentros',
-                 title: '¿Donde debo llevar mi auto a verificar?',
-                 body: 'Verificentros de la Ciudad de México por delegación o cercanos donde puede llevar su auto a verificar',
-                 related_1_id: 1, related_2_id: 2, related_3_id: 3 }])
+Answer.create([{ category_id: 1, contact_id: 1, related_1_id: 2,
+                 title: '¿Donde puedo verificar mi auto?', url: 'verificentros',
+                 body: 'Verificentros de la Ciudad de México por delegación o cercanos donde puede verificar su auto' }])
 
-Answer.create([{ category_id: 2, url: 'hoy-no-circula-a',
-                 title: 'Pregunta A hoy no circula', body: '<p>Respuesta A hoy no circula</p>' },
-               { category_id: 2, url: 'hoy-no-circula-b',
-                 title: 'Pregunta B hoy no circula', body: '<p>Respuesta B hoy no circula</p>' },
-               { category_id: 2, url: 'hoy-no-circula-c',
-                 title: 'Pregunta C hoy no circula', body: '<p>Respuesta C hoy no circula</p>' }])
-
-Answer.create([{ category_id: 3, contact_id: 2, url: 'infracciones-a',
-                 title: 'Pregunta A infracciones', body: '<p>Respuesta A infracciones</p>' },
-               { category_id: 3, contact_id: 2, url: 'infracciones-b',
-                 title: 'Pregunta B infracciones', body: '<p>Respuesta B infracciones</p>' },
-               { category_id: 3, contact_id: 2, url: 'infracciones-c',
-                 title: 'Pregunta C infracciones', body: '<p>Respuesta C infracciones</p>' }])
-
-Answer.create([{ category_id: 4, contact_id: 2, url: 'tenencia-a',
-                 title: 'Pregunta A tenencia', body: '<p>Respuesta A tenencia</p>' },
-               { category_id: 4, contact_id: 2, url: 'tenencia-b',
-                 title: 'Pregunta B tenencia', body: '<p>Respuesta B tenencia</p>' },
-               { category_id: 4, contact_id: 2, url: 'tenencia-c',
-                 title: 'Pregunta C tenencia', body: '<p>Respuesta C tenencia</p>' }])
-
-Answer.create([{ category_id: 1, contact_id: 1, url: 'verificacion-a',
-                 title: 'Pregunta A verificación', body: '<p>Respuesta A verificación</p>',
-                 related_1_id: 1, related_2_id: 2, related_3_id: 3 },
-               { category_id: 1, contact_id: 1, url: 'verificacion-b',
-                 title: 'Pregunta B verificación', body: '<p>Respuesta B verificación</p>',
-                 related_1_id: 1, related_2_id: 2, related_3_id: 3 },
-               { category_id: 1, contact_id: 1, url: 'verificacion-c',
-                 title: 'Pregunta C verificación', body: '<p>Respuesta C verificación</p>',
-                 related_1_id: 1, related_2_id: 2, related_3_id: 3 },
-               { category_id: 1, contact_id: 1, url: 'verificacion-d',
-                 title: 'Pregunta D verificación', body: '<p>Respuesta D verificación</p>',
-                 related_1_id: 1, related_2_id: 2, related_3_id: 3 },
-               { category_id: 1, contact_id: 1, url: 'verificacion-e',
-                 title: 'Pregunta E verificación', body: '<p>Respuesta E verificación</p>',
-                 related_1_id: 1, related_2_id: 2, related_3_id: 3 }])
+Answer.create([{ category_id: 1, contact_id: 1, related_1_id: 1,
+                 title: '¿Qué es la verificación vehícular?', url: 'que-es-la-verificacion',
+                 body: '<p class="lead">Los automoviles son una de las fuentes más importantes de contaminación del aire en la Ciudad de México.</p><p class="lead">La verificación es el programa de la Secretaría del Medio Ambiente para asegurar que los vehículos que circulan en la Ciudad de México emitan la menor cantidad posible de contaminantes.</p>' }])
