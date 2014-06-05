@@ -6,49 +6,38 @@
 </div>
 
 <div class="row">
-  <div class="col-md-9">
-    <p class="answer">Existen <%= @verificentros_count %> verificentros
-      en la Ciudad de México donde puede llevar su auto a
-      verificar.</p>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'home' })%>">
-        Ver más respuestas sobre Verificación &raquo;</a></p>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'home' })%>">
-        Regresar a Respuestas &raquo;</a></p>
-    <h2 class="answer">Encuentre los verificentros más cercanos</h2>
-    <%= render 'verificentros_query_form' %>
-    
-    <h2 class="answer">Consulte verificentros por delegación</h2>
-    <% @delegaciones.in_groups_of((@delegaciones.count/2).ceil) do |g| %>
-    <div class="col-md-6">
-      <ul id="list-delegaciones">
-        <% g.each do |d| %>
-        <li>
-          <% if d.verificentros.count > 0 %>        
-          <a href="<%= url_for({ controller: 'answers', action:
-                   'verificentros_delegacion', delegacion: d.url })%>">
-            <%= d.name %></a><br/>
-          <% if d.verificentros.count > 1 %>        
-          <small><%= d.verificentros.count %> verificentros</small>
-          <% else %>
-          <small>1 verificentro</small>
+  <div class="col-md-8">
+    <div class="answer">
+      <p class="lead">Existen <%= @verificentros_count %> verificentros
+        en la Ciudad de México donde puede llevar su auto a
+        verificar.</p>
+      <h2>Encuentre los verificentros más cercanos</h2>
+      <%= render 'verificentros_query_form' %>
+      <h2>Consulte verificentros por delegación</h2>
+      <div id="list-delegaciones" class="row">
+        <% @delegaciones.in_groups_of((@delegaciones.count.to_f/3).ceil) do |g| %>
+        <div class="col-md-4">
+          <% g.each do |d| %>
+          <% next unless d %>
+          <p>
+            <% if d.verificentros.count > 0 %>
+            <a href="<%= url_for({ controller: 'answers', action:
+                     'verificentros_delegacion', delegacion: d.url })%>">
+              <%= d.name %></a><br/>
+            <% if d.verificentros.count > 1 %>        
+            <small><%= d.verificentros.count %> verificentros</small>
+            <% else %>
+            <small>1 verificentro</small>
+            <% end %>
+            <% else %>
+            <%= d.name %><br/><small>0 verificentros</small>
+            <% end %>
+          </p>
           <% end %>
-          <% else %>
-          <%= d.name %><br/><small>0 verificentros</small>
-          <% end %>
-        </li>
+        </div>
         <% end %>
-      </ul>
+      </div>
     </div>
-    <% end %>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'home' })%>">
-        Ver más respuestas sobre Verificación &raquo;</a></p>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'home' })%>">
-        Regresar a Respuestas &raquo;</a></p>
   </div>
-  
   <%= render 'sidebar' %>
 </div>

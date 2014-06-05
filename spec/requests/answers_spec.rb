@@ -61,28 +61,28 @@ describe 'answers views' do
 
   end
 
-  # describe 'verificentros answer' do
-  #   before do
-  #     @delegaciones_count = Delegacion.count
-  #     visit respuestas_verificentros_path 
-  #   end
-  #   it { should have_field('query') }
-  #   it { should have_button('Buscar') }
-  #   it { should have_css('ul#list-delegaciones li a', 
-  #                        count: @delegaciones_count) }
-
-  # TODO
-  # describe 'verificentros cercanos' do
-  # end
-
-  #   describe 'verificentros delegacion' do
-  #     before do
-  #       @delegacion = Delegacion.order('RANDOM()').first
-  #       @verificentros_count = @delegacion.verificentros.count
-  #       click_link(@delegacion.name)
-  #     end
-  #     it { should have_css('h2.answer', count: @verificentros_count) }
-  #   end
-  # end
+  describe 'verificentros answer' do
+    before do
+      @delegaciones_count = Delegacion.count
+      visit respuestas_verificacion_verificentros_path 
+    end
+    it { should have_field('query') }
+    it { should have_button('Buscar') }
+    it { should have_css('#list-delegaciones p',
+                         count: @delegaciones_count) }
+    
+    # TODO
+    # describe 'verificentros cercanos' do
+    # end
+    
+    describe 'verificentros delegacion' do
+      before do
+        @delegacion = Delegacion.order('RANDOM()').first
+        @verificentros_count = @delegacion.verificentros.count
+        click_link(@delegacion.name)
+      end
+      it { should have_css('h2.answer', count: @verificentros_count) }
+    end
+  end
 
 end

@@ -2,16 +2,16 @@
 <div class="row">
   <div class="col-md-12">
     <h1>Respuestas</h1>
-    <p>Visite las categorias o consulte las respuestas más utiles sobre
-      autos particulares de la Ciudad de México.</p>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-8">
-    <% @categories.in_groups_of((@categories.count/2).ceil) do |g| %>
+    <p>Visite las categorias o consulte las respuestas más utiles sobre
+      autos particulares de la Ciudad de México.</p>
+    <% @categories.each_slice(2) do |r| %>
     <div class="row">
-      <% g.each do |c| %>
+      <% r.each do |c| %>
       <div class="col-md-6">
         <h3 class="category">
           <a href="<%= url_for({ controller: 'answers',

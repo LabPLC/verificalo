@@ -59,6 +59,11 @@ Contact.create([{ name: 'Secretaría del Medio Ambiente',
                   address: 'Dr. Lavista No. 144, Col. Doctores, Distrito Federal',
                   address_schedule: 'de 10 am hasta 3 pm' }])
 
+Answer.create([{ category_id: 1, contact_id: 1, url: 'verificentros',
+                 title: '¿Donde debo llevar mi auto a verificar?',
+                 body: 'Verificentros de la Ciudad de México por delegación o cercanos donde puede llevar su auto a verificar',
+                 related_1_id: 1, related_2_id: 2, related_3_id: 3 }])
+
 Answer.create([{ category_id: 2, url: 'hoy-no-circula-a',
                  title: 'Pregunta A hoy no circula', body: '<p>Respuesta A hoy no circula</p>' },
                { category_id: 2, url: 'hoy-no-circula-b',

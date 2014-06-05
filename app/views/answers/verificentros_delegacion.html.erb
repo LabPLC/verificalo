@@ -2,19 +2,24 @@
 <div class="row">
   <div class="col-md-12">
     <h1 class="question">Verificentros en <%= @delegacion.name %></h1>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'verificentros' })%>">
-        Regresar &raquo;</a></p>
   </div>
 </div>
 
+<% content_for :parent do %>
+<p><a href="<%= url_for({ controller: 'answers',
+            action: 'verificentros' })%>">
+    Regresar a Verificentros &raquo;</a></p>    
+<% end %>
+
 <div class="row">
-  <div class="col-md-9">
-    <% @verificentros.each_slice(2) do |r| %>
-    <div class="row">
-      <%= render partial: 'verificentro', collection: r %>
+  <div class="col-md-8">
+    <div class="answer">
+      <% @verificentros.each_slice(2) do |r| %>
+      <div class="row">
+        <%= render partial: 'verificentro', collection: r %>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
   <%= render 'sidebar' %>
 </div>

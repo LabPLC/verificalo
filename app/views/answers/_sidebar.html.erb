@@ -1,24 +1,31 @@
-<% if @answer.contact || related?(@answer) %>
-<div class="col-md-4 answer-sidebar">
-  <% if @answer.contact %>
-  <h2>¿Mas información?</h2>
-  <p>Contacte a <strong><%= @answer.contact.name %>:</strong></p>
-  <ul>
+<div class="col-md-4">
+  <% if content_for?(:parent) %>
+  <%= yield :parent %>
+  <% else %>
+  <p><a href="<%= url_for({ controller: 'answers',
+              action: 'home' })%>">
+      Regresar a Respuestas &raquo;</a></p>
+  <% end %>
+
+  <div id="answer-sidebar">
+    <% if @answer.contact %>
+    <h2>¿Mas información?</h2>
+    <p>Contacte a <strong><%= @answer.contact.name %></strong></p>
     <% if @answer.contact.phone %>
-    <li><a href="tel:<%= @answer.contact.phone %>">
+    <p><a href="tel:<%= @answer.contact.phone %>">
         <%= @answer.contact.phone %></a>
       <% if @answer.contact.phone_schedule %>
       (<%= @answer.contact.phone_schedule %>)
       <% end %>
-    </li>
+    </p>
     <% end %>
     <% if @answer.contact.email %>
-    <li><a href="mailto:<%= @answer.contact.email %>">
+    <p><a href="mailto:<%= @answer.contact.email %>">
         <%= @answer.contact.email %></a>
-    </li>
+    </p>
     <% end %>
     <% if @answer.contact.address %>
-    <li>
+    <p>
       <% if gmap?(@answer.contact) %>
       <a href="<%= gmap(@answer.contact) %>" target="_blank">
         <%= @answer.contact.address %>
@@ -29,19 +36,20 @@
       <% if @answer.contact.address_schedule %>
       (<%= @answer.contact.address_schedule %>)
       <% end %>
-    </li>
+    </p>
     <% end %>
-  </ul>
-  <% end %>
-
-  <% if related?(@answer) %>
-  <h2>Respuestas relacionadas</h2>
-  <% related(@answer).each do |r| %>
-  <p><a href="<%= url_for({ controller: 'answers',
-              action: 'answer',
-              category_url: r.category.url,
-              answer_url: r.url })%>"><%= r.title %></a></p>
-  <% end %>
-  <% end %>
+    <% end %>
+    
+    <h2>Respuestas relacionadas</h2>
+    <% related(@answer).each do |r| %>
+    <p><a href="<%= url_for({ controller: 'answers',
+                action: 'answer',
+                category_url: r.category.url,
+                answer_url: r.url })%>"><%= r.title %></a></p>
+    <% end %>
+    <p><a href="<%= url_for({ controller: 'answers',
+                action: 'category',
+                category_url: @answer.category.url })%>">
+        Más respuestas sobre  <%= @answer.category.name %></a></p>
+  </div>
 </div>
-<% end %>

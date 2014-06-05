@@ -30,11 +30,13 @@ class AnswersController < ApplicationController
   end
 
   def verificentros
+    @answer = Answer.find(1)
     @verificentros_count = Verificentro.count
     @delegaciones = Delegacion.order('name')
   end
 
   def verificentros_query
+    @answer = Answer.find(1)
     return unless verificentros_query_param?
     @query_value = verificentros_query_value
     if verificentros_query_type == :CP
@@ -52,11 +54,8 @@ class AnswersController < ApplicationController
     @verificentros = res.slice(0, 4)
   end
 
-  def verificentros_delegaciones
-    @delegaciones = Delegacion.order('name')
-  end
-
   def verificentros_delegacion
+    @answer = Answer.find(1)
     url = verificentros_delegacion_param[:delegacion]
     begin
       @delegacion = Delegacion.find_by_url!(url)

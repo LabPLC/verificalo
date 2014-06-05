@@ -16,35 +16,26 @@ h1.question {
     margin: 20px 0 10px 0;
 }
 
-.answer p {
+.answer p.lead {
     font-size: 17px;
     margin: 10px 0;
 }
 
-.answer-sidebar {
+#answer-sidebar {
+    margin-top: 20px;
+    padding: 5px 10px;
     background-color: #E6E6E6
 }
 
-.answer-sidebar h2 {
+#answer-sidebar h2 {
+    margin: 15px 0;
     font-size: 22px;
-}
-
-.answer-sidebar ul {
-    padding-left: 20px;
 }
 
 /* answers#verificientros */
 
-#form-verificentros {
+#form-verificentros, #list-delegaciones {
     margin-top: 20px;
-}
-
-#list-delegaciones {
-    margin: 10px 0 20px 0;
-}
-
-#list-delegaciones > li {
-    margin-bottom: 10px;
 }
 
 /* answers#verificentros_cercanos */

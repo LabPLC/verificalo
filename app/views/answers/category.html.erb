@@ -7,19 +7,24 @@
 
 <div class="row">
   <div class="col-md-8">
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'home' })%>">
-        Regresar a Respuestas &raquo;</a></p>
-    <br />
-    <% @answers.each do |a| %>
-    <p><a class="answer" href="<%= url_for({ controller: 'answers',
-                               action: 'answer',
-                               category_url: a.category.url,
-                               answer_url: a.url })%>">
-        <%= a.title %></a></p>
+    <% @answers.each_slice(2) do |r| %>
+    <div class="row">
+      <% r.each do |a| %>
+      <div class="col-md-6">
+        <p><a class="answer" href="<%= url_for({ controller: 'answers',
+                                   action: 'answer',
+                                   category_url: a.category.url,
+                                   answer_url: a.url })%>">
+            <%= a.title %></a></p>
+      </div>
+      <% end %>
+    </div>
     <% end %>
   </div>
   <div class="col-md-4">
+    <p><a href="<%= url_for({ controller: 'answers',
+                action: 'home' })%>">
+        Regresar a Respuestas &raquo;</a></p>
     <%= render 'search' %>
   </div>
 </div>

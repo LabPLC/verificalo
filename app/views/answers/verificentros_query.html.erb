@@ -2,33 +2,38 @@
 <div class="row">
   <div class="col-md-12">
     <h1 class="question">Verificentros más cercanos</h1>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'verificentros' })%>">
-        Regresar &raquo;</a></p>
   </div>
 </div>
 
+<% content_for :parent do %>
+<p><a href="<%= url_for({ controller: 'answers',
+            action: 'verificentros' })%>">
+    Regresar a Verificentros &raquo;</a></p>    
+<% end %>
+
 <div class="row">
-  <div class="col-md-9">
-    <% if @query_value && !@verificentros %>
-    <div class="alert alert-warning"><strong>Intente más
-        tarde:</strong> Tenemos problemas técnicos para
-      consultar las fuentes de datos sobre ubicaciones.</div>
-    <% end %>
-    <% if @verificentros && @verificentros.count < 1 %>
-    <div id="warning-verificentros" class="alert alert-warning">
-      <strong>No hay resultados:</strong> Verifique
-      la colonia o código postal que ingreso.
+  <div class="col-md-8">
+    <div class="answer">
+      <% if @query_value && !@verificentros %>
+      <div class="alert alert-warning"><strong>Intente más
+          tarde:</strong> Tenemos problemas técnicos para
+        consultar las fuentes de datos sobre ubicaciones.</div>
+      <% end %>
+      <% if @verificentros && @verificentros.count < 1 %>
+      <div id="warning-verificentros" class="alert alert-warning">
+         <strong>No hay resultados:</strong> Verifique
+         la colonia o código postal que ingreso.
+      </div>
+      <% end %>
+      <%= render 'verificentros_query_form' %>
+      <% if @verificentros %>
+      <% @verificentros.each_slice(2) do |r| %>
+      <div class="row">
+        <%= render partial: 'verificentro', collection: r %>
+      </div>
+      <% end %>
+      <% end %>
     </div>
-    <% end %>
-    <%= render 'verificentros_query_form' %>
-    <% if @verificentros %>
-    <% @verificentros.each_slice(2) do |r| %>
-    <div class="row">
-      <%= render partial: 'verificentro', collection: r %>
-    </div>
-    <% end %>
-    <% end %>
   </div>
   <%= render 'sidebar' %>
 </div>
