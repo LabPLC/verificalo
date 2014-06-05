@@ -30,11 +30,11 @@
       </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
-        <li><a id="navbar-suscriptions"
-               href="#">Mi suscripción</a></li>
-        <li><a id="navbar-about"
-               href="<%= url_for({ controller: 'static_pages',
-                     action: 'about' }) %>">Acerca</a></li>
+        <!-- <li><a id="navbar-suscriptions"
+               href="#">Mi suscripción</a></li> -->
+        <li><a href="<%= url_for({ controller: 'static_pages',
+                     action: 'about' }) %>"
+               id="navbar-about">Acerca</a></li>
       </ul>
     </div>
   </div>
