@@ -5,7 +5,7 @@
     { method: 'post', id: 'form-answers' }) do %>
 <div class="row">
   <div class="col-sm-9">
-    <input name="answers-search" type="text" 
+    <input name="answers_search" type="text" 
            placeholder="Hoy no circula, verificación, etc"
            <% if request.post? and @search_value %>
            value="<%= @query_value %>"

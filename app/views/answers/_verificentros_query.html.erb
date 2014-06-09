@@ -2,7 +2,7 @@
     { method: 'post', id: 'form-verificentros' }) do %>
 <div class="row">
   <div class="col-md-6 col-sm-6">
-    <input name="query" type="text" 
+    <input name="verificentros_query" type="text" 
            placeholder="Colonia o código postal"
            <% if request.post? and @query_value %>
            value="<%= @query_value %>"

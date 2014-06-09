@@ -32,7 +32,7 @@ describe 'answers views' do
     it { should have_link('Acerca', href: acerca_path) }
     
     # search
-    it { should have_field('answers-search') }
+    it { should have_field('answers_search') }
     it { should have_button('Buscar') }      
 
     # content
@@ -58,6 +58,9 @@ describe 'answers views' do
       end
     end
 
+    # TODO
+    # describe 'search' do
+    # end
   end
 
   describe 'verificentros answer' do
@@ -65,7 +68,7 @@ describe 'answers views' do
       @delegaciones_count = Delegacion.count
       visit respuestas_verificacion_verificentros_path 
     end
-    it { should have_field('query') }
+    it { should have_field('verificentros_query') }
     it { should have_button('Buscar') }
     it { should have_css('#list-delegaciones p',
                          count: @delegaciones_count) }
