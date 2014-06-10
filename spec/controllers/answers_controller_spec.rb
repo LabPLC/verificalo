@@ -75,6 +75,22 @@ describe AnswersController do
     end
   end
 
+  describe 'GET search' do
+    it 'should render form' do
+      get :search
+      response.should be_success
+      should render_template('search')
+    end
+  end
+
+  # TODO
+  # describe 'POST search' do
+  #   describe 'without params' do
+  #   end    
+  #   describe 'with query' do
+  #   end
+  # end
+
   describe 'GET verificentros' do
     before do
       @verificentros_count = Verificentro.count
@@ -89,45 +105,42 @@ describe AnswersController do
     end
   end
 
-  describe 'GET verificentros_query' do
+  describe 'GET verificentros_search' do
     it 'should render form' do
-      get :verificentros_query
+      get :verificentros_search
       response.should be_success
-      should render_template('verificentros_query')
+      should render_template('verificentros_search')
     end
   end
 
-  describe 'POST verificentros_query' do
-    describe 'without params' do
-      it 'should render form without response' do
-        post :verificentros_query
-        response.should be_success
-        should render_template('verificentros_query')
-        assigns(:query_value).should be_nil
-        assigns(:verificentros).should be_nil        
-      end
-    end
-
-    # TODO
-    # describe 'with query' do
-    # end
-  end
+  # TODO
+  # describe 'POST verificentros_search' do
+  #   describe 'without params' do
+  #     it 'should render form without response' do
+  #       post :verificentros_search
+  #       response.should be_success
+  #       should render_template('verificentros_search')
+  #       assigns(:verificentros).should be_nil        
+  #     end
+  #   end    
+  #   describe 'with query' do
+  #   end
+  # end
 
   describe 'GET verificentros_delegacion' do
     describe 'with invalid delegacion' do
       it 'should redirect to verificentros' do
-        get :verificentros_delegacion, { delegacion: 'invalid' }
+        get :verificentros_delegacion, { delegacion_url: 'invalid' }
         response.should redirect_to({ action: 'verificentros' })
       end      
     end
-
     describe 'with valid delegacion' do
       before do 
         @delegacion = Delegacion.order('RANDOM()').first
         @verificentros_count = @delegacion.verificentros.count
       end
       it 'should return verificentros' do
-        get :verificentros_delegacion, { delegacion: @delegacion.url }
+        get :verificentros_delegacion, { delegacion_url: @delegacion.url }
         response.should be_success
         should render_template('verificentros_delegacion')
         assigns(:delegacion).should_not be_nil
