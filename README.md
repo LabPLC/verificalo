@@ -96,34 +96,31 @@ Rails](http://rubyonrails.org/) y utiliza la base de datos
 
 ### Instalación del ambiente de desarrollo
 
-**Crear el usuario y base de datos para el ambiente de desarrollo**
-
-    $ createuser -U postgres -s verificalo_dev
-    $ createdb -U postgres verificalo_dev
-
-**Clonar el deposito**
+**1. Clonar deposito**
 
     $ git clone https://github.com/LabPLC/verificalo
 
-**Instalar dependencias**
+**2. Instalar dependencias**
 
     $ cd verificalo
     $ bundle install
 
-**Copiar la configuración de ejemplo**
+**3. Configurar aplicación**
 
-    $ cp config/application.yml.sample config/application.yml
-    $ cp config/database.yml.sample config/database.yml
+    $ cp config/application.yml.sample config/application.ylm
+    $ cp config/database.yml.sample config/database.ym
 
-**Configurar la aplicación**
+Ajustar `config/database.yml` y `config/application.yml`.
 
-Ingresar en la seccion `development` de `config/database.yml` el
-usuario y base de datos de PostgreSQL.
+**4. Inicializar base de datos**
 
-Ingresar en `config/application.yml` la configuración del servidor STMP
-y el id de la cuenta de Mapbox.
+    $ rake db:setup
 
-**Ejecutar el servidor de rails**
+**5. Generar indice de busqueda**
+
+    $ rake searchkick:reindex CLASS=Answer
+
+**6. Ejecutar servidor de rails**
   
     $ rails server
 
@@ -131,12 +128,11 @@ y el id de la cuenta de Mapbox.
 
 Se necesita un ambiente de desarrollo funcional y después:
 
-**Crear el usuario y base de datos para el ambiente de pruebas**
+**1. Inicializar base de datos**
 
-    $ createuser -U postgres -s verificalo_test
-    $ createdb -U postgres verificalo_test
+    $ rake db:setup RAILS_ENV=test
 
-**Ejecutar las pruebas**
+**2. Ejecutar pruebas**
 
     $ rspec -fd
 
