@@ -24,14 +24,14 @@ Verificalo::Application.routes.draw do
 
   # respuestas
   match '/respuestas', to: 'answers#home', via: 'get'
-  match '/respuestas/buscar', to: 'answers#search', via: [ 'get', 'post' ]
+  match '/respuestas/buscar', to: 'answers#search', via: 'get'
 
-  # respuestas por views
+  # respuestas de view
   match '/respuestas/verificacion/verificentros', to: 'answers#verificentros', via: 'get'
   match '/respuestas/verificacion/verificentros/cercanos', to: 'answers#verificentros_search', via: [ 'get', 'post' ]
   match '/respuestas/verificacion/verificentros/:delegacion_url', to: 'answers#verificentros_delegacion', via: 'get'
   
-  # respuesta por db
+  # respuesta de db
   match '/respuestas/:category_url', to: 'answers#category', via: 'get'
   match '/respuestas/:category_url/:answer_url', to: 'answers#answer', via: 'get'
 

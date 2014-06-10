@@ -32,7 +32,7 @@ describe 'answers views' do
     it { should have_link('Acerca', href: acerca_path) }
     
     # search
-    it { should have_field('answers_query') }
+    it { should have_field('q') }
     it { should have_button('Buscar') }      
 
     # content

@@ -28,7 +28,8 @@ class AnswersController < ApplicationController
   def search
     @categories = Category.order("priority ASC")
     begin
-      @answers = Answer.search(search_param[:answers_query], suggest: true)
+      @answers = Answer.search(search_param[:q], suggest: true)
+      session[:q] = search_param[:q]
     rescue
       return
     end
@@ -79,7 +80,7 @@ class AnswersController < ApplicationController
   end
   
   def search_param
-    params.permit(:answers_query)
+    params.permit(:q)
   end
 
   def verificentros_search_param

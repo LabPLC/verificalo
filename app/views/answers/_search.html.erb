@@ -1,11 +1,11 @@
 <%= form_tag({ controller: 'answers', action: 'search' },
-    { method: 'post', id: 'form-answers' }) do %>
+             { method: 'get', id: 'form-answers' }) do %>
 <div class="row">
   <div class="col-sm-9">
-    <input name="answers_query" type="text" 
+    <input name="q" type="text" 
            placeholder="Hoy no circula, verificación, etc"
-           <% if request.post? and params[:answers_query].present? %>
-           value="<%= params[:answers_query] %>"
+           <% if params[:q].present? %>
+           value="<%= params[:q] %>"
            <% end %>
            class="form-control input">
   </div>

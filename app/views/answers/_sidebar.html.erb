@@ -1,5 +1,14 @@
 <div class="col-md-4">
-  <% if content_for?(:parent) %>
+  <% if parent_search? %>
+  <p><a href="<%= url_for({ controller: 'answers',
+              action: 'search', q: session[:q] })%>">
+      Regresar a Buscar &raquo;</a></p>  
+  <% elsif parent_category? %>
+  <p><a href="<%= url_for({ controller: 'answers',
+              action: 'category', 
+              category_url: @answer.category.url })%>">
+      Regresar a <%= @answer.category.name %> &raquo;</a></p>  
+  <% elsif content_for?(:parent) %>
   <%= yield :parent %>
   <% else %>
   <p><a href="<%= url_for({ controller: 'answers',
