@@ -28,8 +28,8 @@ Verificalo::Application.routes.draw do
 
   # respuestas por views
   match '/respuestas/verificacion/verificentros', to: 'answers#verificentros', via: 'get'
-  match '/respuestas/verificacion/verificentros/cercanos', to: 'answers#verificentros_query', via: [ 'get', 'post' ]
-  match '/respuestas/verificacion/verificentros/:delegacion', to: 'answers#verificentros_delegacion', via: 'get'
+  match '/respuestas/verificacion/verificentros/cercanos', to: 'answers#verificentros_search', via: [ 'get', 'post' ]
+  match '/respuestas/verificacion/verificentros/:delegacion_url', to: 'answers#verificentros_delegacion', via: 'get'
   
   # respuesta por db
   match '/respuestas/:category_url', to: 'answers#category', via: 'get'

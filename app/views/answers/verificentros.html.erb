@@ -12,7 +12,7 @@
         en la Ciudad de México donde puede llevar su auto a
         verificar.</p>
       <h2>Encuentre los verificentros más cercanos</h2>
-      <%= render 'verificentros_query' %>
+      <%= render 'verificentros_search' %>
       <h2>Consulte verificentros por delegación</h2>
       <div id="list-delegaciones" class="row">
         <% @delegaciones.in_groups_of((@delegaciones.count.to_f/3).ceil) do |g| %>

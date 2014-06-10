@@ -93,7 +93,7 @@ class InfoController < ApplicationController
   end
 
   def plate_param?
-    return true if plate_param[:plate]
+    return true if plate_param[:plate].present?
     false
   end
 

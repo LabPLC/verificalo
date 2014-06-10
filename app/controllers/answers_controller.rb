@@ -40,16 +40,14 @@ class AnswersController < ApplicationController
     @delegaciones = Delegacion.order('name')
   end
 
-  def verificentros_query
+  def verificentros_search
     @answer = Answer.find(1)
-    return unless verificentros_query_param?
-    @query_value = verificentros_query_param[:verificentros_query]
-    if verificentros_query_type == :CP
-      query = verificentros_query_value
+    if verificentros_search_param[:verificentros_query].present?
+      query = verificentros_search_param[:verificentros_query]
       query += ', Ciudad de Mexico'
     else
-      query = verificentros_query_value
-      query += ', Ciudad de Mexico'
+      @verificentros = [ ]
+      return
     end
     begin
       res = Verificentro.near(query, 60, {:order => "distance"})
@@ -61,7 +59,7 @@ class AnswersController < ApplicationController
 
   def verificentros_delegacion
     @answer = Answer.find(1)
-    url = verificentros_delegacion_param[:delegacion]
+    url = verificentros_delegacion_param[:delegacion_url]
     begin
       @delegacion = Delegacion.find_by_url!(url)
       @verificentros = @delegacion.verificentros
@@ -84,32 +82,12 @@ class AnswersController < ApplicationController
     params.permit(:answers_query)
   end
 
-  # REVISAR
-
-  def verificentros_query_param
-    params.permit(:query)
+  def verificentros_search_param
+    params.permit(:verificentros_query)
   end
   
-  def verificentros_query_param?
-    return true if verificentros_query_param[:query]
-    false
-  end
-
-  def verificentros_query_value
-    return false unless verificentros_query_param?
-    verificentros_query_param[:query].gsub(/[^0-9a-z ]/i, '')
-  end
-
-  def verificentros_query_type
-    return :NONE unless verificentros_query_param[:query]
-    query = verificentros_query_param[:query]
-    query.strip!
-    return :CP if query =~ /\A[0-9]{5}\z/i
-    return :COLONIA
-  end
-
   def verificentros_delegacion_param
-    params.permit(:delegacion)
+    params.permit(:delegacion_url)
   end
 
 end
