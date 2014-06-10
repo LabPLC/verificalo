@@ -18,4 +18,44 @@ describe Verificentro do
   it { should respond_to(:lon) }
 
   it { should be_valid }
+
+  describe 'without number' do
+    before { @verificentro.number = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'without name' do
+    before { @verificentro.name = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'without address' do
+    before { @verificentro.address = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'without delegacion' do
+    before { @verificentro.delegacion = nil }
+    it { should_not be_valid }
+  end
+  
+  describe 'without lat' do
+    before { @verificentro.lat = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'without lon' do
+    before { @verificentro.lon = '' }
+    it { should_not be_valid }
+  end
+
+  describe 'with invalid lat' do
+    before { @verificentro.lat = 'abc' }
+    it { should_not be_valid }
+  end
+  
+  describe 'with invalid lon' do
+    before { @verificentro.lon = 'abc' }
+    it { should_not be_valid }
+  end
 end

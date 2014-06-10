@@ -1,3 +1,3 @@
 class Delegacion < ActiveRecord::Base
-  has_many :verificentros
+  has_many :verificentros, inverse_of: :delegacion
 end
