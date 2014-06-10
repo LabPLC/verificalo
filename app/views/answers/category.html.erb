@@ -6,25 +6,24 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-7">
     <% @answers.each_slice(2) do |r| %>
     <div class="row">
       <% r.each do |a| %>
       <div class="col-md-6">
-        <p><a class="answer" href="<%= url_for({ controller: 'answers',
-                                   action: 'answer',
-                                   category_url: a.category.url,
-                                   answer_url: a.url })%>">
-            <%= a.title %></a></p>
+        <%= render partial: 'answer', object: a %>
       </div>
       <% end %>
     </div>
     <% end %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <p><a href="<%= url_for({ controller: 'answers',
                 action: 'home' })%>">
         Regresar a Respuestas &raquo;</a></p>
-    <%= render 'search' %>
+    <div id="answer-sidebar">
+      <h2>Buscar</h2>
+      <%= render 'search' %>
+    </div>
   </div>
 </div>

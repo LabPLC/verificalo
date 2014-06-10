@@ -6,9 +6,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
-    <p>Visite las categorias o consulte las respuestas más utiles sobre
-      autos particulares de la Ciudad de México.</p>
+  <div class="col-md-7">
     <% @categories.each_slice(2) do |r| %>
     <div class="row">
       <% r.each do |c| %>
@@ -18,13 +16,7 @@
                    action: 'category',
                    category_url: c.url })%>"><%= c.name %></a>
         </h3>
-        <% c.top_answers.each do |a| %>
-        <p><a class="answer" href="<%= url_for({ controller: 'answers',
-                                   action: 'answer',
-                                   category_url: a.category.url,
-                                   answer_url: a.url })%>">
-            <%= a.title %></a></p>
-        <% end %>
+        <%= render partial: 'answer', collection: c.top_answers %>
         <% if c.more_answers? %>
         <p><a href="<%= url_for({ controller: 'answers',
                     action: 'category',
@@ -35,7 +27,10 @@
     </div>
     <% end %>
   </div>
-  <div class="col-md-4">
-    <%= render 'search' %>
+  <div class="col-md-5">
+    <div id="answer-sidebar">
+      <h2>Buscar</h2>
+      <%= render 'search' %>
+    </div>
   </div>
 </div>
