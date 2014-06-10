@@ -20,6 +20,7 @@ class AnswersController < ApplicationController
     begin
       @answer = Answer.find_by_url!(answer_url)
       raise unless category_url == @answer.category.url
+      answer_view(@answer.id)
     rescue
      redirect_to({ action: 'home' })
     end
@@ -37,6 +38,7 @@ class AnswersController < ApplicationController
 
   def verificentros
     @answer = Answer.find(1)
+    answer_view(@answer.id)
     @verificentros_count = Verificentro.count
     @delegaciones = Delegacion.order('name')
   end
@@ -89,6 +91,16 @@ class AnswersController < ApplicationController
   
   def verificentros_delegacion_param
     params.permit(:delegacion_url)
+  end
+
+  def answer_view (id)
+    unless session[:views]
+      session[:views] = { }
+    end
+    unless session[:views][id]
+      Answer.increment_counter("views", id)
+      session[:views][id] = 1
+    end
   end
 
 end
