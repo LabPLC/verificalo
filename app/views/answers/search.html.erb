@@ -1,24 +1,39 @@
 <!-- answers#home -->
 <div class="row">
   <div class="col-md-12">
-    <h1>Respuestas</h1>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'home' })%>">
-        Regresar &raquo;</a></p>
+    <h1>Buscar</h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8">
     <%= render 'search' %>
+    <% if @answers %>
+    <% if @answers.count < 1 %>
+    <div class="alert alert-warning"><strong>No hay
+      resultados:</strong> Intente con otros terminos de
+      busqueda.</div>  
+    <% else %>
+    <h3>Resultados</h3>
+    <%= render partial: 'answer', collection: @answers %>
+    <% end %>
+    <% else %>
+    <div class="alert alert-warning"><strong>Intente más
+        tarde:</strong> Tenemos problemas técnicos para
+      en la busqueda de respuestas.</div>
+    <% end %>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <h2>Resultados</h2>
+  <div class="col-md-4">
     <p><a href="<%= url_for({ controller: 'answers',
                 action: 'home' })%>">
-        Regresar &raquo;</a></p>
+        Regresar a Respuestas &raquo;</a></p>
+    <div id="answer-sidebar">
+      <h2>Categorias</h2>
+      <% @categories.each do |c| %>
+      <p><a href="<%= url_for({ controller: 'answers',
+                  action: 'category',
+                  category_url: c.url })%>"><%= c.name %></a></p>
+      <% end %>
+    </div>
   </div>
 </div>

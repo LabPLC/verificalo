@@ -26,7 +26,12 @@ class AnswersController < ApplicationController
   end
   
   def search
-
+    @categories = Category.order("priority ASC")
+    begin
+      @answers = Answer.search(search_param[:answers_query], suggest: true)
+    rescue
+      return
+    end
   end
 
   def verificentros
@@ -38,7 +43,7 @@ class AnswersController < ApplicationController
   def verificentros_query
     @answer = Answer.find(1)
     return unless verificentros_query_param?
-    @query_value = verificentros_query_value
+    @query_value = verificentros_query_param[:verificentros_query]
     if verificentros_query_type == :CP
       query = verificentros_query_value
       query += ', Ciudad de Mexico'
@@ -74,14 +79,25 @@ class AnswersController < ApplicationController
   def answer_param
     params.permit(:answer_url)
   end
+  
+  def search_param
+    params.permit(:answers_query)
+  end
+
+  # REVISAR
 
   def verificentros_query_param
     params.permit(:query)
   end
-
+  
   def verificentros_query_param?
     return true if verificentros_query_param[:query]
     false
+  end
+
+  def verificentros_query_value
+    return false unless verificentros_query_param?
+    verificentros_query_param[:query].gsub(/[^0-9a-z ]/i, '')
   end
 
   def verificentros_query_type
@@ -90,11 +106,6 @@ class AnswersController < ApplicationController
     query.strip!
     return :CP if query =~ /\A[0-9]{5}\z/i
     return :COLONIA
-  end
-
-  def verificentros_query_value
-    return false unless verificentros_query_param?
-    verificentros_query_param[:query].gsub(/[^0-9a-z ]/i, '')
   end
 
   def verificentros_delegacion_param

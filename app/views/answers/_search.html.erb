@@ -1,14 +1,11 @@
-<h2>Buscar</h2>
-<p>Encuentre las respuestas a sus preguntas sobre autos
-  particulares de la Ciudad de México.</p>
 <%= form_tag({ controller: 'answers', action: 'search' },
     { method: 'post', id: 'form-answers' }) do %>
 <div class="row">
   <div class="col-sm-9">
-    <input name="answers_search" type="text" 
+    <input name="answers_query" type="text" 
            placeholder="Hoy no circula, verificación, etc"
-           <% if request.post? and @search_value %>
-           value="<%= @query_value %>"
+           <% if request.post? and params[:answers_query].present? %>
+           value="<%= params[:answers_query] %>"
            <% end %>
            class="form-control input">
   </div>
