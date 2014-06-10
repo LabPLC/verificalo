@@ -75,15 +75,14 @@ describe AnswersController do
     end
   end
 
-  describe 'GET search' do
-    it 'should render form' do
-      get :search
-      response.should be_success
-      should render_template('search')
-    end
-  end
-
   # TODO
+  # describe 'GET search' do
+  #   it 'should render form' do
+  #     get :search
+  #     response.should be_success
+  #     should render_template('search')
+  #   end
+  # end
   # describe 'POST search' do
   #   describe 'without params' do
   #   end    
@@ -105,15 +104,14 @@ describe AnswersController do
     end
   end
 
-  describe 'GET verificentros_search' do
-    it 'should render form' do
-      get :verificentros_search
-      response.should be_success
-      should render_template('verificentros_search')
-    end
-  end
-
   # TODO
+  # describe 'GET verificentros_search' do
+  #   it 'should render form' do
+  #     get :verificentros_search
+  #     response.should be_success
+  #     should render_template('verificentros_search')
+  #   end
+  # end
   # describe 'POST verificentros_search' do
   #   describe 'without params' do
   #     it 'should render form without response' do
