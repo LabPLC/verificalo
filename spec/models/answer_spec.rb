@@ -23,4 +23,54 @@ describe Answer do
   it { should respond_to(:negative) }
 
   it { should be_valid }
+
+  describe 'without url' do
+    before { @answer.url = nil }
+    it { should_not be_valid }
+  end
+
+  describe 'without title' do
+    before { @answer.title = nil }
+    it { should_not be_valid }
+  end
+
+  describe 'without body' do
+    before { @answer.body = nil }
+    it { should_not be_valid }
+  end
+
+  describe 'without category' do
+    before { @answer.category = nil }
+    it { should_not be_valid }
+  end
+
+  describe 'without views' do
+    before { @answer.views = nil }
+    it { should_not be_valid }    
+  end
+
+  describe 'with invalid views' do
+    before { @answer.views = -1 }
+    it { should_not be_valid }    
+  end
+
+  describe 'without positive' do
+    before { @answer.positive = nil }
+    it { should_not be_valid }    
+  end
+
+  describe 'with invalid positive' do
+    before { @answer.positive = -1 }
+    it { should_not be_valid }    
+  end
+
+  describe 'without negative' do
+    before { @answer.negative = nil }
+    it { should_not be_valid }    
+  end
+
+  describe 'with invalid negative' do
+    before { @answer.negative = -1 }
+    it { should_not be_valid }    
+  end
 end
