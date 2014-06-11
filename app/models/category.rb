@@ -1,5 +1,8 @@
 class Category < ActiveRecord::Base
-  has_many :answers
+  validates :url, :name, presence: true
+  validates :priority, numericality: { only_integer: true, allow_nil: true, greater_than: 0 }
+
+  has_many :answers, inverse_of: :category
   
   def sort_answers
     self.answers.order("positive ASC, negative DESC, views ASC, title")
