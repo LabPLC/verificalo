@@ -33,7 +33,11 @@ module Verificalo
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'application.yml')
       YAML.load(File.open(env_file)).each do |key, value|
-        ENV['VERIFICALO_' + key.to_s.upcase] = value.to_s
+        if key.to_s.upcase == 'ELASTICSEARCH_URL'
+          ENV['ELASTICSEARCH_URL'] = value.to_s
+        else
+          ENV['VERIFICALO_' + key.to_s.upcase] = value.to_s
+        end
       end if File.exists?(env_file) && !Rails.env.test?
     end
 

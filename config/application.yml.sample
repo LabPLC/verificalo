@@ -8,12 +8,15 @@ smtp_domain: example.com
 smtp_user: postmaster@example.com
 smtp_pwd: secret
 
-# mapxbox
-mapbox_id: codigocdmx.example
-
 # twilio
 twilio_ssid: secret
 twilio_token: secret
 twilio_from: +1234567890
 twilio_callback_host: example.com
 twilio_callback_port: 80
+
+# mapxbox
+mapbox_id: codigocdmx.example
+
+# elasticsearch
+elasticsearch_url: http://localhost:9200
