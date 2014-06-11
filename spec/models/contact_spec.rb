@@ -19,4 +19,29 @@ describe Contact do
   it { should respond_to(:lon) }
 
   it { should be_valid }
+
+  describe 'without name' do
+    before { @contact.name = nil }
+    it { should_not be_valid }
+  end
+
+  describe 'with invalid lat' do
+    before { @contact.lat = 'abc' }
+    it { should_not be_valid }
+  end
+  
+  describe 'with invalid lon' do
+    before { @contact.lon = 'abc' }
+    it { should_not be_valid }
+  end
+
+  describe 'without lat' do
+    before { @contact.lat = nil }
+    it { should be_valid }
+  end
+
+  describe 'without lon' do
+    before { @contact.lon = nil }
+    it { should be_valid }
+  end
 end

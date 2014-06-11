@@ -1,3 +1,6 @@
 class Contact < ActiveRecord::Base
-  has_many :answers
+  validates :name, presence: true
+  validates :lat, :lon, numericality: { allow_nil: true }
+  
+  has_many :answers, inverse_of: :contact
 end
