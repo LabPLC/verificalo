@@ -74,4 +74,8 @@ RSpec.configure do |config|
   config.after :each do
     DatabaseCleaner.clean
   end
+
+  # rspec-rails 3 will no longer automatically infer an example group's
+  # spec type from the file location
+  config.infer_spec_type_from_file_location!
 end
