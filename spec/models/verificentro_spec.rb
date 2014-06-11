@@ -20,17 +20,17 @@ describe Verificentro do
   it { should be_valid }
 
   describe 'without number' do
-    before { @verificentro.number = '' }
+    before { @verificentro.number = nil }
     it { should_not be_valid }
   end
 
   describe 'without name' do
-    before { @verificentro.name = '' }
+    before { @verificentro.name = nil }
     it { should_not be_valid }
   end
 
   describe 'without address' do
-    before { @verificentro.address = '' }
+    before { @verificentro.address = nil }
     it { should_not be_valid }
   end
 
@@ -40,12 +40,12 @@ describe Verificentro do
   end
   
   describe 'without lat' do
-    before { @verificentro.lat = '' }
+    before { @verificentro.lat = nil }
     it { should_not be_valid }
   end
 
   describe 'without lon' do
-    before { @verificentro.lon = '' }
+    before { @verificentro.lon = nil }
     it { should_not be_valid }
   end
 
