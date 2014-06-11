@@ -19,7 +19,7 @@ describe User do
   it { should be_valid }
   
   describe 'without plate' do
-    before { @user.plate = '' }
+    before { @user.plate = nil }
     it { should_not be_valid }
   end
   

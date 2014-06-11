@@ -13,7 +13,7 @@ describe Email do
   it { should be_valid }
   
   describe 'without address' do
-    before { @email.address = '' }
+    before { @email.address = nil }
     it { should_not be_valid }
   end
   

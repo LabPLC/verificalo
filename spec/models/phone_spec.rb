@@ -17,7 +17,7 @@ describe Phone do
   it { should be_valid }
   
   describe 'without number' do
-    before { @phone.number = '' }
+    before { @phone.number = nil }
     it { should_not be_valid }
   end
   
