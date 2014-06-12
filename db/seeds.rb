@@ -51,9 +51,9 @@ CSV.foreach('db/data/verificentros.csv', :headers => true) do |r|
 end
 
 Category.create([{ url: 'verificacion', name: 'Verificación', priority: 1 },
-                 { url: 'hoy-no-circula', name: 'Hoy no circula', priority: 2 },
-                 { url: 'infracciones', name: 'Infracciones', priority: 3 },
-                 { url: 'tenencia', name: 'Tenencia', priority: 4 }])
+                 { url: 'hoy-no-circula', name: 'Hoy No Circula', priority: 2 }])
+                 #{ url: 'infracciones', name: 'Infracciones', priority: 3 },
+                 #{ url: 'tenencia', name: 'Tenencia', priority: 4 }])
 
 Contact.create({ name: 'Secretaría del Medio Ambiente', 
                  phone: '5134 2380', phone_schedule: 'extensión 1690, 9 am a 5 pm',
@@ -61,7 +61,8 @@ Contact.create({ name: 'Secretaría del Medio Ambiente',
                  address: 'Av. Tlaxcoaque No. 8, Col. Centro Histórico, Distrito Federal',
                  address_schedule: '9 am a 4 pm', lat: '19.423219', lon: '-99.134159' })
 
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
+# 1
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3, related_3_id: 4, related_4_id: 7,
                 title: '¿Qué es la verificación vehícular?', url: 'que-es-la-verificacion',
                 body: '<p class="lead">Los vehículos son una de las fuentes más importantes de contaminantes del aire en la Ciudad de México, por eso la Secretaría del Medio Ambiente cuenta con un programa para asegurar que los vehículos que circulan en el Distrito Federal tienen la menor emisión posible de contaminantes, este programa se conoce como Programa de Verificación Vehicular. Además de asegurar una menor contaminación, fomenta también el mantenimiento preventivo y correctivo del vehículo. El programa es de carácter obligatorio para todos los autos matriculados en el Distrito Federal.</p>
 
@@ -82,9 +83,10 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
 
 <p>El proceso de verificación de emisiones vehiculares aplica a todos los automotores matriculados en el Distrito Federal y los que portan placas metropolitanas, con excepción de los tractores agrícolas, la maquinaria dedicada a las industrias de la construcción y minera, las motocicletas, los vehículos eléctricos, los vehículos con matrícula de auto antiguo, automotores con matrícula demostradora y aquellos cuya tecnología impida la aplicación de la Norma Oficial Mexicana correspondiente (algunos vehículos híbridos y unidades a gas natural con sistema de combustión empobrecida).</p>' })
 
-Answer.create([{ category_id: 1, contact_id: 1, related_1_id: 1,
-                 title: '¿Qué necesito para verificar mi auto?', url: 'que-necesito-para-verificar',
-                 body: '<p class="lead">Los documentos que deberá llevar y mostrar el propietario, poseedor o conductor del vehículo que se presenta a verificar, en original y copia simple (salvo la factura del auto, en cuyo caso y por seguridad sólo debe llevar copia simple), dejando copia simple en el Verificentro de cada documento requerido, de acuerdo a la siguiente tabla:</p>
+# 2
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 4, related_3_id: 5,
+                title: '¿Qué necesito para verificar mi auto?', url: 'que-necesito-para-verificar',
+                body: '<p class="lead">Los documentos que deberá llevar y mostrar el propietario, poseedor o conductor del vehículo que se presenta a verificar, en original y copia simple (salvo la factura del auto, en cuyo caso y por seguridad sólo debe llevar copia simple), dejando copia simple en el Verificentro de cada documento requerido, de acuerdo a la siguiente tabla:</p>
 
 <table class="table table-bordered">
 <thead><tr><th>Requisitos</th><th>Verificación por 1a Vez en el DF</th><th>Verificación regular</th><th>Verificación con cambio de placa (baja y alta)</th><th>Verificación extemporánea</th><th>Verificación de vehículos a gas</th><th>Verificación con cambio convertidor catalítico</th><th>Verificaciones voluntarias</th></tr></thead>
@@ -109,13 +111,15 @@ Answer.create([{ category_id: 1, contact_id: 1, related_1_id: 1,
 
 <p>Si el ciudadano tiene el certificado de su verificación vehicular anterior, deberá presentarse en el Módulo de Atención Ciudadana de la Dirección General de Gestión de la Calidad del Aire de la Secretaría del Medio Ambiente del Gobierno del Distrito Federal “DGGCA”, ubicada en Tlaxcoaque número 8, Planta Baja, Colonia Centro, Delegación Cuauhtémoc, C.P. 06090, México, Distrito Federal, en el horario comprendido entre las 9:00 y las 14:00 horas de lunes a viernes, en donde se corroborará la realización de la verificación de emisiones vehiculares y, de ser el caso, se realizarán las acciones correspondientes para que el vehículo sea verificado.</p>
 
-<p>En el caso de los vehículos sancionados dentro del Programa de Vehículos Contaminantes, se deberán presentar los documentos definidos a lo largo del numeral 13 del Programa de Verificación Vehicular vigente.<br /><br /><a href="http://www.consejeria.df.gob.mx/portal_old/uploads/gacetas/52bf9eb19f707.pdf" target="_blank" title="Gaceta Oficial del Distrito Federal">Consulta aquí el Programa de Verificación Vehicular Obligatorio del Primer Semestre 2014</a></p>' }])
+<p>En el caso de los vehículos sancionados dentro del Programa de Vehículos Contaminantes, se deberán presentar los documentos definidos a lo largo del numeral 13 del Programa de Verificación Vehicular vigente.<br /><br /><a href="http://www.consejeria.df.gob.mx/portal_old/uploads/gacetas/52bf9eb19f707.pdf" target="_blank" title="Gaceta Oficial del Distrito Federal">Consulta aquí el Programa de Verificación Vehicular Obligatorio del Primer Semestre 2014</a></p>' })
 
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
+# 3
+Answer.create({ category_id: 1, contact_id: 1,  related_1_id: 2, related_3_id: 4, related_4_id: 8,
                 title: '¿Donde puedo verificar mi auto?', url: 'verificentros',
                 body: 'Verificentros de la Ciudad de México por delegación o cercanos donde puede verificar su auto' })
 
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
+# 4
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2, related_3_id: 3,
                 title: '¿Cuál es el costo de la verificación?', url: 'cuanto-cuesta-verificacion',
                 body: '<p class="lead">Para el segundo semestre de 2013, el costo por los servicios de verificación vehicular es de $383.00 para todo tipo de Constancia de Verificación (00, 0, 2, Rechazo y Evaluación Técnica) que se entregue al usuario.</p>
 
@@ -131,7 +135,8 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
 
 <p>Antes de pagar su multa por verificación extemporánea, asegúrese de no tener adeudos de tenencia y/o infracciones de tránsito, con el objeto de evitar que se venza la vigencia del pago de su multa y que tenga la obligación de volver a pagarla.</p>'})
 
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
+# 5
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
                 title: 'Mi pago de adeudos NO aparece', url: 'mi-pago-no-aparece',
                 body: '<p class="lead">Los propietarios o poseedores de los vehículos que no hayan sido verificados en su periodo de verificación debido a falta de actualización oportuna de pagos de tenencias o infracciones al Reglamento de Tránsito Metropolitano, en el sistema de consulta de la Secretaría de Finanzas, se les permitirá verificar sus emisiones sin el pago de multa por verificación extemporánea, siempre y cuando tramiten y les sea autorizada la condonación del pago por parte de la Secretaría de Finanzas del Gobierno del Distrito Federal, de acuerdo a lo siguiente:</p>
 
@@ -146,7 +151,8 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
 
 <p>Posterior a la realización de este trámite, el propietario o poseedor de la unidad deberá acudir al Módulo de Atención Ciudadana de la “DGGCA”, ubicada en Tlaxcoaque número 8, Planta Baja, Colonia Centro, Delegación Cuauhtémoc, C.P. 06090, México, Distrito Federal, para obtener un oficio que le permita circular para poder llevar su unidad a verificar y para que se libere del adeudo al vehículo registrado en los equipos de verificación de emisiones vehiculares. Este oficio se entregará sólo si en el sistema de consulta de la Secretaría de Finanzas se muestra la leyenda “Permitir Verificar”, con lo cual el vehículo podrá ser verificado sin el pago de multa por verificación vehicular extemporánea.</p>'})
 
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
+# 6
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2, related_3_id: 3,
                 title: '¿Cuál es la vigencia del holograma doble cero?', url: 'vigencia-doble-cero',
                 body: '<p>La constancia de verificación en su tipo doble cero podrá otorgarse a:</p>
 <ol>
@@ -166,7 +172,8 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
 
 <p><a href="/sedema/images/archivos/verificacion-hoy-no-circula/verificacion-vehicular/listado-vehiculos-holograma-00.pdf" target="_blank">Listado de vehículos que pueden obtener el holograma “00” por más de una ocasión</a></p>'})
 
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
+# 7
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2,
                 title: '¿Qué vehículos estan exentos de la verificación?', url: 'vehiculos-exentos-verificacion',
                 body: '<p class="lead">Vehículos exentos del Programa de Verificación Vehicular y del Acuerdo que Establece las Medidas para Limitar la Circulación de Vehículos Automotores en las en las Vialidades del Distrito Federal, para Controlar y Reducir la Contaminación Atmosférica y Contingencias Ambientales conocido como “Programa Hoy No Circula”:</td>
 <table class="table table-bordered">
@@ -187,7 +194,8 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
 </tbody>
 </table>'})
 
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
+# 8
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
                 title: '¿Qué hago si mi convertidor catalítico está en mal estado?', url: 'rechazo-convertidor-catalitico',
                 body: '<p class="lead">Durante la prueba de verificación se evalúa la eficiencia del convertidor catalítico mediante la lectura de los gases de escape, generándose un rechazo en aquellas unidades de pasajeros de uso particular modelos 1991 a 2003 o de transporte público, mercantil y privado de carga, y transporte público de pasajeros modelos 1991 a 2006, cuyos convertidores catalíticos hayan perdido eficiencia en la conversión.</p>
 
@@ -222,3 +230,92 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1,
 <li>En caso de ser rechazado o no obtener el holograma máximo permitido para tu vehículo, regresar al Taller Autorizado PIREC para reclamar la garantía.</li>
 <li>Solo reemplazar el convertidor catalítico no resuelve el problema, se requiere revisar y en su caso reparar el motor.</li>
 </ul>'})
+
+# 9
+Answer.create({ category_id: 2, contact_id: 1, related_1_id: 10, related_2_id: 11, related_3_id: 12,
+                title: '¿En qué consiste el Hoy No Circula?', url: 'que-es-hoy-no-circula',
+                body: '<p class="lead">Dentro del parque vehicular que circula en la ciudad existen vehículos cuya tecnología o estado mecánico ya no permite garantizar un mínimo de emisiones contaminantes. El porcentaje de este tipo de vehículos disminuye año con año, sin embargo, para evitar que estos vehículos tengan un impacto significativo en la calidad del aire, se limita su circulación una vez a la semana de lunes a viernes y un sábado de cada mes, este programa se conoce como Hoy No Circula. En el caso de los vehículos que provienen de otros estados o del extranjero, no es posible conocer con certidumbre los niveles de emisión por lo tanto, se incluyen dentro del programa Hoy No Circula.</p>
+<p>Los vehículos de combustión interna matriculados en el Distrito Federal o Estado de México que porten holograma 2 deben dejar de circular de lunes a sábado de las 5:00 a las 22:00 horas, con base en el último dígito numérico de la placa de matrícula y/o del color de la calcomanía de circulación permanente (engomado), con excepción del transporte local público de pasajeros cuya restricción será de las 10:00 a las 22:00 horas.</p>
+
+<p>La restricción aplica de acuerdo a lo establecido en la siguiente tabla:</p>
+
+<table class="table table-bordered">
+<thead><tr><th>Día</th><th>Limitación de la circulación</th></tr></thead>
+<tbody>
+<tr><td>Lunes</td><td>Amarillo* (5 y 6)**</td></tr>
+<tr><td>Martes</td><td>Rosa* (7 y 8)**</td></tr>
+<tr><td>Miércoles</td><td>Rojo* (3 y 4)**</td></tr>
+<tr><td>Jueves</td><td>Verde* (1 y 2)**</td></tr>
+<tr><td>Viernes</td><td>Azul* (9, 0, matrículas que carecen de números o automotores con permisos de circulación)</td></tr>
+<tr><td>Sábado</td><td>El segundo sábado de cada mes los vehículos con engomado color rosa y terminación de placas 7 y 8;<br /> El tercer sábado de cada mes los vehículos con engomado color rojo y terminación de placas 3 y 4;<br /> El cuarto sábado de cada mes los vehículos con engomado color verde terminación de placas 1 y 2; y<br /> El quinto sábado, en aquellos meses que lo contengan, los vehículos con engomado color azul y terminación de placas 9 y 0, así como matrículas que carecen de números o automotores con permisos de circulación.</td></tr>
+</tbody>
+</table>
+
+<p>* Último dígito numérico de la placa de matrícula.</p>
+<p>** Color del engomado que contiene el número de la matrícula.</p>' })
+
+# 10
+Answer.create({ category_id: 2, contact_id: 1, related_1_id: 12, related_2_id: 9,
+                title: '¿El Hoy No Circula aplica a vehículos de otros estados?', url: 'autos-otros-estados',
+                body: '<p class="lead">Los vehículos de combustión interna con placas del extranjero o de un estado que no sea el Distrito Federal o el Estado de México deben dejar de circular de lunes a sábado de las 5:00 a las 22:00 horas, con base en el último dígito numérico de la placa de matrícula y/o del color de la calcomanía de circulación permanente (engomado). La restricción aplica de acuerdo a lo establecido en la siguiente tabla:</p>
+
+<table class="table table-bordered">
+<thead><tr><th>Día</th><th>Limitación de la circulación</th></tr></thead>
+<tbody>
+<tr><td>Lunes</td><td>Amarillo* (5 y 6)**</td></tr>
+<tr><td>Martes</td><td>Rosa* (7 y 8)**</td></tr>
+<tr><td>Miércoles</td><td>Rojo* (3 y 4)**</td></tr>
+<tr><td>Jueves</td><td>Verde* (1 y 2)**</td></tr>
+<tr><td>Viernes</td><td>Azul* (9, 0, matrículas que carecen de números o automotores con permisos de circulación)</td></tr>
+<tr><td>Sábado</td><td>El primer sábado de cada mes los vehículos con engomado color amarillo y terminación de placas 5 y 6;<br /> El segundo sábado de cada mes los vehículos con engomado color rosa y terminación de placas 7 y 8;<br /> El tercer sábado de cada mes los vehículos con engomado color rojo y terminación de placas 3 y 4;<br /> El cuarto sábado de cada mes los vehículos con engomado color verde terminación de placas 1 y 2; y<br /> El quinto sábado, en aquellos meses que lo contengan, los vehículos con engomado color azul y terminación de placas 9 y 0, así como matrículas que carecen de números o automotores con permisos de circulación.</td></tr>
+</tbody>
+</table>
+
+<p>* Color del engomado que contiene el número de la matrícula.</p>
+<p>** Último dígito numérico de la placa de matrícula.</p>
+
+<p>Además, las unidades de servicio particular y unidades ligeras de carga (automóviles, camionetas tipo van y pick up), deben dejar de circular de lunes a viernes en el horario comprendido entre las 05:00 a las 11:00 horas. (Están exentas de esta restricción las unidades conocidas como 350 o tres y media toneladas).</p>
+
+<p>Por ejemplo: un vehículo de uso particular proveniente de Aguascalientes cuyo último dígito numérico sea “6”, deberá dejar de circular los lunes de cada semana y el primer sábado de cada mes de las 05:00 a las 22:00 horas; asimismo deberá dejar de circular de martes a viernes de cada semana de las 05:00 a las 11:00 horas.</p>'})
+
+# 11
+Answer.create({ category_id: 2, contact_id: 1, related_1_id: 9, related_2_id: 10, related_3_id: 12,
+                title: '¿Qué vehículos estan exentos del Hoy No Circula?', url: 'vehiculos-extenos-hoy-no-circula',
+                body: '<p class="lead">Están exentos del Programa Hoy No Circula:</p>
+<ol>
+<li>Los vehículos que obtengan un holograma vigente “00” ó “0” como resultado de la realización de una prueba de verificación vehicular en el Distrito Federal o en los Centros de Verificación de entidades reconocidas por la Secretaría del Medio Ambiente del Gobierno del Distrito Federal (estas entidades son: Estado de México, Guanajuato, Hidalgo, Querétaro, Puebla, Morelos, Michoacán y Tlaxcala).</li>
+<li>Las motocicletas de cualquier tipo en tanto existan Normas Oficiales Mexicanas aplicables a estos automotores.</li>
+<li>Los vehículos que porten la matrícula de vehículo antiguo emitida por alguna autoridad competente.</li>
+<li>Los vehículos que transporten o sean conducidos por personas con discapacidad y que además cuenten con las placas para vehículos de personas con discapacidad, o porten el documento o autorización que para tal efecto expida la autoridad correspondiente.</li>
+<li>Los vehículos destinados a servicios médicos, seguridad pública, bomberos, rescate y protección civil, servicios urbanos, servicio público federal de transporte de pasajeros, unidades de cualquier tipo que atiendan alguna emergencia médica, así como los vehículos que la Secretaría del Medio Ambiente del Gobierno del Distrito Federal determine a través del establecimiento de programas o convenios, mediante los cuales se reduzcan sus niveles de emisión, y los vehículos que por su peso y dimensiones estén imposibilitados de verificar (tractores agrícolas, la maquinaria dedicada a las industrias de la construcción y minera).</li>
+<li>Los vehículos que porten placas de demostración.</li>
+<li>Los vehículos destinados a prestar el servicio de transporte escolar que cuenten con la autorización de la autoridad correspondiente, o bien aquellos autobuses propiedad de instituciones académicas que presten el servicio de transporte de alumnos o personal.</li>
+<li>Los vehículos de procedencia extranjera o los matriculados en entidades federativas distintas al Distrito Federal y Estado de México que circulen portando un Pase Turístico vigente otorgado por la Secretaría del Medio Ambiente del Gobierno del Distrito Federal (<a href="http://www.paseturistico.df.gob.mx/" target="_blank">www.paseturistico.df.gob.mx</a>).</li>
+<li>Los vehículos cuya tecnología impida la aplicación de la Norma Oficial Mexicana correspondiente (algunos vehículos híbridos y unidades a gas natural que operan con mezclas aire – combustible empobrecidas, revisar las submarcas exentas en la sección <a href="http://www.sedema.df.gob.mx/index.php/verificacion-hoy-no-circula/verificacion-vehicular" target="_blank"><em>Verificación vehicular</em></a>), no importando la entidad federativa en donde fue registrado el automotor.</li>
+<li>Automotores que no emitan contaminantes derivados de la combustión, tales como los que utilizan energía solar, eléctrica, entre otros.</li>
+<li>Los automotores registrados en el Distrito Federal que hayan realizado un cambio de matrícula y porten algún holograma vigente de los tipos “00” ó “0” obtenido con la matrícula anterior.</li>
+</ol>
+<p>Los vehículos de procedencia extranjera o los matriculados en entidades federativas distintas al Distrito Federal y Estado de México que obtengan un holograma “2” como resultado de la realización de una prueba de verificación vehicular en Centros de Verificación del Distrito Federal, del Estado de México o de Centros de Verificación de entidades reconocidas por la Secretaría del Medio Ambiente del Gobierno del Distrito Federal, de conformidad con los criterios establecidos en el presente Programa, quedarán exentos de la restricción a la circulación, solamente, en los días en que les aplica la restricción de las 5:00 a las 11:00 horas (siempre y cuando no esté declarada una Precontingencia o Contingencia Ambiental).</p>' })
+
+# 12
+Answer.create({ category_id: 2, contact_id: 1, related_1_id: 9, related_2_id: 10,
+                title: '¿Qué es el Pase Turístico?', url: 'pase-turistico',
+                body: '<p class="lead">Para los vehículos con placas de algún Estado (sin incluir a los matriculados en el D.F. y el Estado de México) o del extranjero existe la posibilidad de obtener un “Pase Turístico Metropolitano” que les permite circular todos los días a cualquier hora durante la vigencia del documento, en vialidades del Distrito Federal y del Estado de México.</p>
+
+<p>El Pase se otorga de manera gratuita, pudiendo obtenerse un Pase Turístico Metropolitano por 7 días continuos (2 veces al semestre) o por 14 días continuos (una vez al semestre).</p>
+
+<p>Para obtenerlo deberá entrar a la página de Pase Turístico a través del portal electrónico de la Secretaría del Medio Ambiente del DF http://www.paseturistico.df.gob.mx/pasetur/. Es necesario que cuente con una dirección de correo electrónico personal, evitando utilizar cuentas de Hotmail o Live ya que este tipo de cuentas no permite que se reciban correos del Sistema de Pase Turístico; asimismo deberá tener a la mano la tarjeta de circulación de su vehículo.</p>
+
+<p>El procedimiento para tramitar un Pase Turístico es el siguiente:</p>
+
+<ul>
+<li>Entrar a la página de Pase Turístico - <a href="http://www.paseturistico.df.gob.mx/" target="_blank">www.paseturistico.df.gob.mx</a></li>
+<li>Iniciar su registro al capturar su correo electrónico</li>
+<li>El Sistema de Pase Turístico le enviará un correo con una dirección electrónica a su correo registrado</li>
+<li>Ingresar a la liga electrónica y llenar el registro con sus datos generales. Cuando envíe esta información, el Sistema le enviará a su vez otro correo (a su correo registrado) con una clave de acceso</li>
+<li>Con su correo electrónico y su clave de acceso podrá ingresar al Sistema</li>
+<li>En la pestaña de Registro de Automóviles deberá registrar los datos de su vehículo que se encuentran en la tarjeta de circulación. Al capturar la placa solo utilizar números y letras, sin dejar espacios en blanco.</li>
+<li>Cuando haya registrado los datos de su vehículo podrá generar su Pase, indicando si lo requiere por 7 ó 14 días. Es necesario considerar la fecha en que el vehículo circulará en algún municipio de la Zona Metropolitana del Valle de México, para que el periodo del pase contemple esta fecha.</li>
+<li>Con los datos ingresados al sistema se generarán dos pases turísticos, uno emitido por el Distrito Federal y otro por el Estado de México.</li>
+<li>Una vez tramitado el Pase, lo deberá imprimir (los dos oficios generados) y pegarlos en un lugar visible en el vehículo durante el periodo de vigencia de los mismos.</li>
+</ul>' })
