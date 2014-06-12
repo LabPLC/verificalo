@@ -7,14 +7,8 @@
 
 <div class="row">
   <div class="col-md-7">
-    <% @answers.each_slice(2) do |r| %>
-    <div class="row">
-      <% r.each do |a| %>
-      <div class="col-md-6">
-        <%= render partial: 'answer', object: a %>
-      </div>
-      <% end %>
-    </div>
+    <% @answers.each do |a| %>
+    <%= render partial: 'answer', object: a %>
     <% end %>
   </div>
   <div class="col-md-5">
