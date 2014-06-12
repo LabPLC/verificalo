@@ -108,8 +108,8 @@ Rails](http://rubyonrails.org/) y utiliza la base de datos
 
 **3. Configurar aplicación**
 
-    $ cp config/application.yml.sample config/application.ylm
-    $ cp config/database.yml.sample config/database.ym
+    $ cp config/application.yml.sample config/application.yml
+    $ cp config/database.yml.sample config/database.yml
 
 Ajustar `config/database.yml` y `config/application.yml`.
 
@@ -131,7 +131,8 @@ Se necesita un ambiente de desarrollo funcional y después:
 
 **1. Inicializar base de datos**
 
-    $ rake db:setup RAILS_ENV=test
+    $ rake db:create RAILS_ENV=test
+    $ rake db:migrate RAILS_ENV=test
 
 **2. Ejecutar pruebas**
 
