@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
   has_many :answers, inverse_of: :category
   
   def sort_answers
-    self.answers.order("positive ASC, negative DESC, views ASC, title")
+    self.answers.order("positive DESC, negative ASC, views DESC, title")
   end
   
   def top_answers(n = 3)
