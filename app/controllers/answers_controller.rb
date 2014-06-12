@@ -37,14 +37,14 @@ class AnswersController < ApplicationController
   end
 
   def verificentros
-    @answer = Answer.find(1)
+    @answer = Answer.find(3)
     answer_view(@answer.id)
     @verificentros_count = Verificentro.count
     @delegaciones = Delegacion.order('name')
   end
 
   def verificentros_search
-    @answer = Answer.find(1)
+    @answer = Answer.find(3)
     if verificentros_search_param[:verificentros_query].present?
       query = verificentros_search_param[:verificentros_query]
       query += ', Ciudad de Mexico'
@@ -61,7 +61,7 @@ class AnswersController < ApplicationController
   end
 
   def verificentros_delegacion
-    @answer = Answer.find(1)
+    @answer = Answer.find(3)
     url = verificentros_delegacion_param[:delegacion_url]
     begin
       @delegacion = Delegacion.find_by_url!(url)
