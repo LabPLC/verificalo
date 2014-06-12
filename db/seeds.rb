@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
-
 require 'csv'
 require 'i18n'
+require 'database_cleaner'
+
+DatabaseCleaner.clean_with :truncation, { only: ['admin_users',
+                                                 'delegaciones',
+                                                 'verificentros',
+                                                 'categories',
+                                                 'contacts',
+                                                 'answers' ] }
 
 AdminUser.create(email: 'admin@verificalo.mx', 
                  password: 'verificalo',
