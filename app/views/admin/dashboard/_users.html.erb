@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <td>Confirmados</td>
+    <%= stats(User.are_active.count, User.count).html_safe %>
+  </tr>
+  <tr>
+    <td>Pendiente confirmación</td>
+    <%= stats(User.where(confirmed_at: nil).count, User.count).html_safe %>
+  </tr>
+  <tr>
+    <td>Cancelados</td>
+    <%= stats(User.where.not(confirmed_at: nil).where.not(declined_at: nil).count, User.count).html_safe %>
+  </tr>
+  <tr>
+    <td>Total de registros</td>
+    <%= stats(User.count).html_safe %>
+  </tr>
+</table>

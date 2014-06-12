@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <td>Verificación</td>
+    <%= stats(User.are_active.where(verificacion: true).count, User.are_active.count).html_safe %>
+  </tr>
+  <tr>
+    <td>Adeudos</td>
+    <%= stats(User.are_active.where(adeudos: true).count, User.are_active.count).html_safe %>
+  </tr>
+  <tr>
+    <td>Hoy no circula semanal</td>
+    <%= stats(User.are_active.where(no_circula_weekday: true).count, User.are_active.count).html_safe %>
+  </tr>
+  <tr>
+    <td>Hoy no circula sabatino</td>
+    <%= stats(User.are_active.where(no_circula_weekend: true).count, User.are_active.count).html_safe %>
+  <tr>
+    <td>Total usuarios confirmados</td>
+    <%= stats(User.are_active.count).html_safe %>
+  </tr>
+</table>

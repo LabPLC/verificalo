@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <td>Correo electrónico</td>
+    <%= stats(User.are_active.joins(:email).count, User.are_active.count).html_safe %>
+  </tr>
+  <tr>
+    <td>Llamada telefónica</td>
+    <%= stats(User.are_active.joins(:phone).count, User.are_active.count).html_safe %>
+  </tr>
+  <tr>
+    <td>Total usuarios confirmados</td>
+    <%= stats(User.are_active.count).html_safe %>
+  </tr>
+</table>
