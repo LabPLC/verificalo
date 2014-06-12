@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
       errors.add(:notices, "You must fill in at least one notice")
     end
   end
+
+  def self.are_active
+    self.where.not(confirmed_at: nil).where(declined_at: nil)
+  end
 end
