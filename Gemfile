@@ -18,6 +18,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise',  '~>3.2.4'
 gem 'devise-i18n', '~>0.10.3'
 gem 'searchkick', '~>0.7.6'
+gem 'database_cleaner', '~>1.3.0'
 
 group :production do
   gem 'rails_12factor', '~> 0.0.2'
@@ -34,5 +35,4 @@ group :test do
   gem 'coveralls'
   gem 'shoulda'
   gem 'factory_girl_rails'
-  gem 'database_cleaner'
 end
