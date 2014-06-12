@@ -15,13 +15,6 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
-GIT
-  remote: git://github.com/log0ymxm/bootswatch-rails.git
-  revision: 93d450185c57ceaabd0e29c7b03ea235824998c8
-  specs:
-    bootswatch-rails (3.0.0)
-      railties (>= 3.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,8 +46,6 @@ GEM
       activesupport (>= 3.0.0)
     arel (4.0.2)
     bcrypt (3.1.7)
-    bootstrap-sass (3.1.1.1)
-      sass (~> 3.2)
     bourbon (3.2.3)
       sass (~> 3.2)
       thor
@@ -273,8 +264,6 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
-  bootstrap-sass (~> 3.1.1.1)
-  bootswatch-rails!
   capybara
   coffee-rails (~> 4.0.1)
   coveralls

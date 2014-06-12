@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~>4.0.4'
-gem 'bootstrap-sass', '~>3.1.1.1'
-gem 'bootswatch-rails', github: 'log0ymxm/bootswatch-rails'
 gem 'sass-rails', '~>4.0.2'
 gem 'uglifier', '~>2.5.0'
 gem 'coffee-rails', '~>4.0.1'
