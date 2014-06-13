@@ -1,22 +1,33 @@
-<% if @vehicle.infracciones_unpaid > 0 %>
-<!-- con adeudos de infracciones -->
-<div class="alert alert-warning status-info">
-  <% if @vehicle.infracciones_unpaid > 1 %>
-  <strong>Su auto tiene <%= @vehicle.infracciones_unpaid %>
-    infracciones
-    <% else %>
-    <strong>Su auto tiene una infracción
+<div class="row">
+  <% if @vehicle.infracciones_unpaid > 0 %>
+  <!-- con adeudos de infracciones -->
+  <div class="col-xs-1 red">&#11044;</div>
+  <div class="col-xs-11">
+    <p>
+      <% if @vehicle.infracciones_unpaid > 1 %>
+      <strong>Su auto tiene <%= @vehicle.infracciones_unpaid %>
+        infracciones sin pagar</strong>
+      <% else %>
+      <strong>Su auto tiene una infracción sin pagar.</strong>
       <% end %>
-      sin pagar:</strong> Recuerde que debe realizar su pago antes de
-    llevar su auto a verificar.</div>
-<!-- <p><a href="#">Consulte las opciones para pagar las infracciones de
-    su auto &raquo;</a></p> -->
-<% else %>
-<!-- sin adeudos de infracciones -->
-<div class="alert alert-success status-info">Su auto no tiene
-  infracciones sin pagar.</div>
-<% end %>
-
-<!-- links sobre infracciones -->    
-<p><a href="<%= url_for({ controller: 'info', action: 'infracciones', plate: @vehicle.plate })%>">
-  Ver el historial de infracciones de su auto &raquo;</a></p>
+    </p>
+    <p>Recuerde que debe realizar su pago antes de
+      llevar su auto a verificar.</p>
+  </div>
+  <% else %>
+  <!-- sin adeudos de infracciones -->
+  <div class="col-xs-1 green">&#11044;</div>
+  <div class="col-xs-11">
+    <p>Su auto no tiene infracciones sin pagar.</p>
+  </div>
+  <% end %>
+  
+  <!-- links sobre infracciones -->    
+  <div class="col-xs-12">
+    <a href="<%= url_for({ controller: 'info', 
+             action: 'infracciones',
+             plate: @vehicle.plate })%>"
+       class="btn btn-primary btn-sm btn-wide">Mi historial de
+      infracciones</a>
+  </div>
+</div>

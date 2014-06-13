@@ -17,9 +17,13 @@ h2 {
     border-color: #fee550;
 }
 
+.btn-wide {
+    width: 100%;
+}
+
 .cta {
     color: #6c6e77;
-    text-align: justify;    
+    text-align: justify;
 }
 
 .gt {
@@ -30,12 +34,25 @@ h2 {
     border-color: #fee550;
     border-width: 1px;
     border-style: solid;
-    padding: 10px 15px;
+    padding: 5px 10px;
+    margin-top: 80px;
     color: #268f8d;
 }
 
 .cta-box h3 {
     margin-top: 0;
+}
+
+.green {
+    color: #53b76c;
+}
+
+.yellow {
+    color: #fee550;
+}
+
+.red {
+    color: #ff0019;
 }
 
 /* navbar */
