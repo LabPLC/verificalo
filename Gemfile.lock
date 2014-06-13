@@ -289,7 +289,7 @@ DEPENDENCIES
   rails_12factor (~> 0.0.2)
   rspec-rails (~> 2.99.0)
   sass-rails (~> 4.0.2)
-  searchkick (~> 0.7.6)
+  searchkick (~> 0.7.7)
   shoulda
   twilio-ruby (~> 3.11.5)
   uglifier (~> 2.5.0)
