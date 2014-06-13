@@ -11,7 +11,6 @@ describe 'notices views' do
     it { should have_link('Información', href: root_path) }
     it { should have_link('Avisos', href: avisos_path) }
     it { should have_link('Respuestas', href: respuestas_path) }
-    it { should have_link('Acerca', href: acerca_path) }
 
     # content
     it { should have_button('Correo electrónico') }

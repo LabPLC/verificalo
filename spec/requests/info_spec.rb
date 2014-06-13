@@ -12,7 +12,6 @@ describe 'info views' do
     it { should_not have_link('Información', href: root_path) }
     it { should_not have_link('Avisos', href: avisos_path) }
     it { should_not have_link('Respuestas', href: respuestas_path) }
-    it { should have_link('Acerca', href: acerca_path) }
     
     # jumbotron
     it { should have_css('div.jumbotron', :text => /ingrese la placa/i) }
