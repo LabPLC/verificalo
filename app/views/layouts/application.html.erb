@@ -19,9 +19,12 @@
       ga('create', 'UA-49195730-1', 'auto');
     </script>
   </head>
-  <body>
+
+  <body style="<% if is_root?() %>padding-top: 0;<% end %>">
+    <% unless is_root?() %>
     <!-- navbar -->
     <%= render 'layouts/navbar' %>
+    <% end %>
 
     <!-- container -->
     <div class="container">      

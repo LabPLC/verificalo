@@ -9,13 +9,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <% unless is_root?() %>
-      <a class="navbar-brand" href="<%= root_path %>">
-        Verifícalo<sup><small>Beta</small></sup></a>
-      <% end %>
+      <a class="navbar-brand" href="<%= root_path %>">Verifícalo</a>
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse">
-      <% unless is_root?() %>
       <ul class="nav navbar-nav">
         <li class="<%= is_active?('info') %>">
           <a href="<%= url_for({ controller: 'info', 
@@ -28,14 +24,10 @@
                    action: 'home' })%>">Respuestas</a></li>
         <!-- <li><a href="#">Uso inteligente</a></li> -->
       </ul>
-      <% end %>
-      <ul class="nav navbar-nav navbar-right">
-        <!-- <li><a id="navbar-suscriptions"
-               href="#">Mi suscripción</a></li> -->
-        <li><a href="<%= url_for({ controller: 'static_pages',
-                     action: 'about' }) %>"
-               id="navbar-about">Acerca</a></li>
-      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right"> -->
+      <!--   <li><a id="navbar-about" -->
+      <!--          href="#">Acerca</a></li> -->
+      <!-- </ul> -->
     </div>
   </div>
 </nav>
