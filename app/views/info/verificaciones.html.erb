@@ -1,99 +1,101 @@
 <!-- info#verificaciones -->
-<div class="row">
-  <div class="col-md-12">
-    <h1>Auto <%= @vehicle.plate %></h1>
-    <% if @vehicle.verificaciones? %>
-    <p class="regresar-info"><a href="<%= url_for({ action: 'results', 
-                                      plate: @vehicle.plate })%>">
-        Regresar &raquo;</a></p>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Auto <%= @vehicle.plate %></h1>
+      <% if @vehicle.verificaciones? %>
+      <p class="regresar-info"><a href="<%= url_for({ action: 'results', 
+                                        plate: @vehicle.plate })%>">
+          Regresar &raquo;</a></p>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<% if @vehicle.verificaciones? %>
-<!-- si hay verificaciones -->
-
-<% if @vehicle.verificacion_current? %>
-<!-- si hay verificacion actual -->
-<table class="table">
-  <thead>
-    <tr>
-      <th>Marca</th>
-      <th>Submarca</th>
-      <th>Modelo</th>
-      <th>VIN</th>
-      <th>Combustible</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @vehicle.verificacion_current_brand_str %></td>
-      <td><%= @vehicle.verificacion_current_model_str %></td>
-      <td><%= @vehicle.verificacion_current_year_str %></td>
-      <td><%= @vehicle.verificacion_current_vin_str %></td>
-      <td><%= @vehicle.verificacion_current_fuel_str %></td>
-    </tr>
-  </tbody>
-</table>
-<% end %>
-
-<div class="row">
-  <div class="col-md-12">
-    <h2>Verificaciones</h2>
-  </div>
-</div>
-<div class="table-responsive">
+  
+  <% if @vehicle.verificaciones? %>
+  <!-- si hay verificaciones -->
+  
+  <% if @vehicle.verificacion_current? %>
+  <!-- si hay verificacion actual -->
   <table class="table">
     <thead>
       <tr>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Verificentro</th>
-        <th>Linea</th>
-        <th>Certificado</th>
-        <th>Vigencia</th>
-        <th>Resultado</th>
-        <th></th>
+        <th>Marca</th>
+        <th>Submarca</th>
+        <th>Modelo</th>
+        <th>VIN</th>
+        <th>Combustible</th>
       </tr>
     </thead>
     <tbody>
-      <% @vehicle.verificaciones_all.each do |v| %>
       <tr>
-        <td><%= v.date %></td>
-        <td><%= v.time %></td>
-        <td><%= v.verificentro %></td>
-        <td><%= v.line %></td>
-        <td><%= v.cert %></td>
-        <td><%= v.vigency %></td>
-        <td><%= v.result %></td>
-        <td>
-          <% if v.cancel == true %>
-          CERTIFICADO CANCELADO
-          <% end %>
-          <% if v.cancel == true && v.result == 'RECHAZO' %>
-          <br/>
-          <% end %>
-          <% if v.result == 'RECHAZO' %>
-          <small><%= v.reject %></small>
-          <% end %>
-        </td>
+        <td><%= @vehicle.verificacion_current_brand_str %></td>
+        <td><%= @vehicle.verificacion_current_model_str %></td>
+        <td><%= @vehicle.verificacion_current_year_str %></td>
+        <td><%= @vehicle.verificacion_current_vin_str %></td>
+        <td><%= @vehicle.verificacion_current_fuel_str %></td>
       </tr>
-      <% end %>
-    </tbody>
+  </tbody>
   </table>
-</div>
-<% else %>
-<!-- si no hay verificaciones -->
-<div id="alert-verificaciones" class="alert alert-warning"><strong>Su
-    auto nunca ha sido verificado.</strong></div> 
-<% end %>
-
-<!-- regresar -->
-<div class="row">
-  <div class="col-md-12">
-    <p><a href="<%= url_for({ action: 'results', plate: @vehicle.plate })%>">
-        Regresar &raquo;</a></p>
+  <% end %>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Verificaciones</h2>
     </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Verificentro</th>
+          <th>Linea</th>
+          <th>Certificado</th>
+          <th>Vigencia</th>
+          <th>Resultado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vehicle.verificaciones_all.each do |v| %>
+        <tr>
+          <td><%= v.date %></td>
+          <td><%= v.time %></td>
+          <td><%= v.verificentro %></td>
+          <td><%= v.line %></td>
+          <td><%= v.cert %></td>
+          <td><%= v.vigency %></td>
+          <td><%= v.result %></td>
+          <td>
+            <% if v.cancel == true %>
+            CERTIFICADO CANCELADO
+            <% end %>
+            <% if v.cancel == true && v.result == 'RECHAZO' %>
+            <br/>
+            <% end %>
+            <% if v.result == 'RECHAZO' %>
+            <small><%= v.reject %></small>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% else %>
+  <!-- si no hay verificaciones -->
+  <div id="alert-verificaciones" class="alert alert-warning"><strong>Su
+      auto nunca ha sido verificado.</strong></div> 
+  <% end %>
+  
+  <!-- regresar -->
+  <div class="row">
+    <div class="col-md-12">
+      <p><a href="<%= url_for({ action: 'results', plate: @vehicle.plate })%>">
+          Regresar &raquo;</a></p>
+    </div>
+  </div>
 </div>
 
 <!-- analytics -->

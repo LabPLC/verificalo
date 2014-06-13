@@ -1,15 +1,89 @@
 body {
    padding-top: 50px;
-   /* padding-bottom: 50px; */
 }
 
-.navbar > .container .navbar-brand {
-    margin-left: 0px;
+h2 {
+    color: #268f8d;
 }
 
-.navbar > .container .navbar-right {
-    margin-right: 0px;
+.btn, .btn-primary, .btn-default {
+    background-color: #268f8d;
+    border-color: #268f8d;
 }
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary.active {
+    color: #6c6e77;
+    background-color: #fee550;
+    border-color: #fee550;
+}
+
+.cta {
+    color: #6c6e77;
+    text-align: justify;    
+}
+
+.gt {
+    font-size: 30px;
+}
+
+.cta-box {
+    border-color: #fee550;
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px 15px;
+    color: #268f8d;
+}
+
+.cta-box h3 {
+    margin-top: 0;
+}
+
+/* navbar */
+
+.navbar {
+    background-color: white;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.navbar .navbar-brand {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #268f8d;
+    margin: 0 50px 0 0;
+}
+
+.navbar ul li {
+    border-left: 1px solid #d8d8d8;
+}
+
+.navbar ul li:last-child {
+    border-right: 1px solid #d8d8d8;    
+}
+
+.navbar ul li a {
+    color: #6c6e77;
+}
+
+.navbar ul li a:hover {
+    color: #6c6e77;
+    background-color: #fee550;
+}
+
+.navbar .active {
+    color: white;
+    background-color: #268f8d;
+    font-weight: normal;
+}
+
+.navbar-toggle {
+    background-color: #268f8d;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+/* footer */
 
 /*footer {
     background-color: #E6E6E6;

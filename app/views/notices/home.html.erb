@@ -1,15 +1,16 @@
 <!-- notices#home -->
-<div class="row">
-  <div class="col-md-12">
-    <h1>Avisos</h1>
-    <p class="lead">¿Por qué medio desea recibir sus avisos?</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Avisos</h1>
+      <p class="lead">¿Por qué medio desea recibir sus avisos?</p>
+    </div>
   </div>
-</div>
-
-<!-- forma -->
-<%= form_tag({ controller: 'notices', action: 'home' },
-    { method: 'post', id: 'form-notices-home' }) do %>
-
+  
+  <!-- forma -->
+  <%= form_tag({ controller: 'notices', action: 'home' },
+      { method: 'post', id: 'form-notices-home' }) do %>
+  
   <div class="row">
     <div class="col-md-5 col-md-offset-1">
       <button id="btn-notices-home-email"
@@ -22,7 +23,7 @@
               type="submit">Llamada telefónica</button>
     </div>
   </div>
-
+  
   <% if request.post? && params[:type] %>
   <div id="notices-subform">
     <% if params[:type] == 'EMAIL' %>
@@ -34,15 +35,15 @@
   <% else %>
   <div id="notices-subform" style="display: none;"></div>
   <% end %>
-<% end %>
-
+  <% end %>
+</div>
 <!-- btn_subforms & btn_active -->
 <script>
   var btn_subforms = { 
   'btn-notices-home-email' : '<%= url_for({ controller: 'notices', action: 'email' }) %>',
   'btn-notices-home-phone' : '<%= url_for({ controller: 'notices', action: 'phone' }) %>'
   };
-  <% if request.post?  && params[:type] %>
+  <% if request.post? && params[:type] %>
   <% if params[:type] == 'EMAIL' %>
   var btn_active = $('#btn-notices-home-email');
   <% elsif params[:type] == 'PHONE' %>

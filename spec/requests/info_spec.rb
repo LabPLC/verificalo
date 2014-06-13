@@ -10,16 +10,16 @@ describe 'info views' do
         
     # navbar
     it { should_not have_link('Información', href: root_path) }
-    it { should_not have_link('Avisos', href: avisos_path) }
-    it { should_not have_link('Respuestas', href: respuestas_path) }
+    it { should_not have_link('Recordatorios', href: avisos_path) }
+    it { should_not have_link('Preguntas y respuestas', href: respuestas_path) }
     
     # jumbotron
-    it { should have_css('div.jumbotron', :text => /ingrese la placa/i) }
+    it { should have_css('div.jumbotron', :text => /ingresa la placa/i) }
     it { should have_field('plate') }
     it { should have_button('Consulta') }
 
     # grid
-    it { should have_link('Suscribirse', href: avisos_path) }
+    it { should have_link('¡Suscríbete!', href: avisos_path) }
     it { should have_link('Preguntar', href: respuestas_path) }
 
     # content

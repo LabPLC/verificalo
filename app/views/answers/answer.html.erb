@@ -1,15 +1,17 @@
 <!-- answers#answer -->
-<div class="row">
-  <div class="col-md-8">
-    <h1 class="question"><%= @answer.title %></h1>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-8">
-    <div class="answer">
-      <%= @answer.body.html_safe %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="question"><%= @answer.title %></h1>
     </div>
   </div>
-  <%= render 'sidebar' %>
+  
+  <div class="row">
+    <div class="col-md-8">
+      <div class="answer">
+        <%= @answer.body.html_safe %>
+      </div>
+    </div>
+    <%= render 'sidebar' %>
+  </div>
 </div>

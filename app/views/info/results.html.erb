@@ -1,67 +1,61 @@
 <!-- info#results -->
-<div class="row">
-  <div class="col-md-12">
-    <h1>Auto <%= @vehicle.plate %></h1>
-    <p><a href="<%= url_for({ controller: 'info', action: 'home' })%>">
-        Consultar otro auto &raquo;</a></p>
+<div id="head-info">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-5">
+        <h1>AUTO <strong><%= @vehicle.plate %></strong></h1>
+        <p><a href="<%= url_for({ controller: 'info', action: 'home' })%>">
+            Cambiar placa &raquo;</a></p>
+      </div>
+      <div class="col-lg-8 col-md-7">
+        <%= render 'info' %>
+      </div>
+    </div>
   </div>
 </div>
 
-<%= render 'info' %>
-
-<div class="row">
-  <!-- verificacion -->
-  <div class="col-md-6">
-    <h2 class="section-info">Verificaciones</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="section-info">Verificacion</h2>
+    </div>
+    <!-- verificacion -->
     <%= render 'verificacion' %>
   </div>
-
-  <!-- hoy no circula -->
-  <div class="col-md-6">    
-    <h2 class="section-info">Hoy no circula</h2>
-    <%= render 'no_circula' %>
-  </div>
 </div>
 
-<div class="row">
-  <!-- infracciones -->
-  <div class="col-md-6">
-    <h2 class="section-info">Infracciones</h2>
-    <%= render 'infracciones' %>
-  </div>
+<div class="container">
+  <div class="row">
+    <!-- hoy no circula -->
+    <div class="col-md-4">
+      <h2 class="section-info">Hoy no circula</h2>
+      <%= render 'no_circula' %>
+    </div>
   
-  <!-- tenencia -->
-  <div class="col-md-6">
-    <h2 class="section-info">Tenencia</h2>
-    <%= render 'tenencia' %>
+    <!-- infracciones -->
+    <div class="col-md-4">
+      <h2 class="section-info">Infracciones</h2>
+      <%= render 'infracciones' %>
+    </div>
+    
+    <!-- tenencia -->
+    <div class="col-md-4">
+      <h2 class="section-info">Tenencia</h2>
+      <%= render 'tenencia' %>
+    </div>
   </div>
 </div>
 
-<!-- llamados a otras secciones -->
-<div class="row">
-  <div class="col-md-6">
-    <h2 class="section-info">Avisos</h2>
-    <p>Evite filas o multas recibiendo avisos oportunos sobre sus
-      obligaciones como automovilista particular del Distrito
-      Federal.</p>
-    <p><a href="<%= url_for({ controller: 'notices', action: 'home' })%>"
-          id="btn-notices">Suscribirse &raquo;</a></p>
-    <!-- <h2 class="section-info">Respuestas</h2>
-    <p>Encuentre las respuestas a sus preguntas sobre tramites de
-      automoviles particulares del Distrito Federal.</p>
-    <p><a href="#" id="btn-answers">Preguntar &raquo;</a></p> -->
-  </div>
-  <div class="col-md-6">
-    <!-- <h2 class="section-info">Uso inteligente</h2>
-    <p>Utilizar racionalmente su auto le puede ahorrar tiempo y
-      dinero además de cuidar el medio ambiente de la Ciudad de
-      México.</p>
-    <p><a id="btn-inteligente" href="#">Conozca más &raquo;</a></p> -->
-    <h2 class="section-info">Importante</h2>
-    <p>La información mostrada tiene caracter informativo y no puede
-      ser utilizada como un documento oficial. Conserve el último
-      certificado de verificación de su auto y los pagos de tenencías e
-      infracciones para cualquier aclaración.</p>
+<!-- importante -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="section-info">Importante</h2>
+      <p>La información mostrada tiene caracter informativo y no puede
+        ser utilizada como un documento oficial. Conserve el último
+        certificado de verificación de su auto y los pagos de tenencías e
+        infracciones para cualquier aclaración.</p>
+    </div>
   </div>
 </div>
 

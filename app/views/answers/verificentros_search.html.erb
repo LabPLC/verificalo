@@ -1,38 +1,40 @@
 <!-- answers#verificentros_query -->
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="question">Verificentros más cercanos</h1>
-  </div>
-</div>
-
-<% content_for :parent do %>
-<p><a href="<%= url_for({ controller: 'answers',
-            action: 'verificentros' })%>">
-    Regresar a Verificentros &raquo;</a></p>    
-<% end %>
-
-<div class="row">
-  <div class="col-md-8">
-    <div class="answer">
-      <%= render 'verificentros_search' %>
-      <% if @verificentros %>
-      <% if @verificentros.count < 1 %>
-      <div class="alert alert-warning"><strong>No hay
-          resultados:</strong> Verifique la colonia o código postal que
-        ingreso.</div>  
-      <% else %>
-      <% @verificentros.each_slice(2) do |r| %>
-      <div class="row">
-        <%= render partial: 'verificentro', collection: r %>
-      </div>
-      <% end %>
-      <% end %>
-      <% else %>
-      <div class="alert alert-warning"><strong>Intente más
-          tarde:</strong> Tenemos problemas técnicos en la busqueda de
-        verificentros.</div>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="question">Verificentros más cercanos</h1>
     </div>
   </div>
-  <%= render 'sidebar' %>
+  
+  <% content_for :parent do %>
+  <p><a href="<%= url_for({ controller: 'answers',
+              action: 'verificentros' })%>">
+      Regresar a Verificentros &raquo;</a></p>    
+  <% end %>
+  
+  <div class="row">
+    <div class="col-md-8">
+      <div class="answer">
+        <%= render 'verificentros_search' %>
+        <% if @verificentros %>
+        <% if @verificentros.count < 1 %>
+           <div class="alert alert-warning"><strong>No hay
+               resultados:</strong> Verifique la colonia o código postal que
+             ingreso.</div>  
+           <% else %>
+           <% @verificentros.each_slice(2) do |r| %>
+           <div class="row">
+             <%= render partial: 'verificentro', collection: r %>
+           </div>
+           <% end %>
+           <% end %>
+           <% else %>
+           <div class="alert alert-warning"><strong>Intente más
+               tarde:</strong> Tenemos problemas técnicos en la busqueda de
+             verificentros.</div>
+           <% end %>
+      </div>
+    </div>
+    <%= render 'sidebar' %>
+  </div>
 </div>

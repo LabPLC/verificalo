@@ -1,23 +1,25 @@
 <!-- answers#category -->
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="category"><%= @category.name %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="category"><%= @category.name %></h1>
+    </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-7">
-    <% @answers.each do |a| %>
-    <%= render partial: 'answer', object: a %>
-    <% end %>
-  </div>
-  <div class="col-md-5">
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'home' })%>">
-        Regresar a Respuestas &raquo;</a></p>
-    <div id="answer-sidebar">
-      <h2>Buscar</h2>
-      <%= render 'search' %>
+  
+  <div class="row">
+    <div class="col-md-7">
+      <% @answers.each do |a| %>
+      <%= render partial: 'answer', object: a %>
+      <% end %>
+    </div>
+    <div class="col-md-5">
+      <p><a href="<%= url_for({ controller: 'answers',
+                  action: 'home' })%>">
+          Regresar a Respuestas &raquo;</a></p>
+      <div id="answer-sidebar">
+        <h2>Buscar</h2>
+        <%= render 'search' %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,44 +1,46 @@
 <!-- answers#verificentros -->
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="question">¿Donde puedo verificar mi auto?</h1>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-8">
-    <div class="answer">
-      <p class="lead">Existen <%= @verificentros_count %> verificentros
-        en la Ciudad de México donde puede llevar su auto a
-        verificar.</p>
-      <h2>Encuentre los verificentros más cercanos</h2>
-      <%= render 'verificentros_search' %>
-      <h2>Consulte verificentros por delegación</h2>
-      <div id="list-delegaciones" class="row">
-        <% @delegaciones.in_groups_of((@delegaciones.count.to_f/3).ceil) do |g| %>
-        <div class="col-md-4">
-          <% g.each do |d| %>
-          <% next unless d %>
-          <p>
-            <% if d.verificentros.count > 0 %>
-            <a href="<%= url_for({ controller: 'answers', 
-                     action: 'verificentros_delegacion',
-                     delegacion_url: d.url })%>">
-              <%= d.name %></a><br/>
-            <% if d.verificentros.count > 1 %>        
-            <small><%= d.verificentros.count %> verificentros</small>
-            <% else %>
-            <small>1 verificentro</small>
-            <% end %>
-            <% else %>
-            <%= d.name %><br/><small>0 verificentros</small>
-            <% end %>
-          </p>
-          <% end %>
-        </div>
-        <% end %>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="question">¿Donde puedo verificar mi auto?</h1>
     </div>
   </div>
-  <%= render 'sidebar' %>
+  
+  <div class="row">
+    <div class="col-md-8">
+      <div class="answer">
+        <p class="lead">Existen <%= @verificentros_count %> verificentros
+          en la Ciudad de México donde puede llevar su auto a
+          verificar.</p>
+        <h2>Encuentre los verificentros más cercanos</h2>
+        <%= render 'verificentros_search' %>
+        <h2>Consulte verificentros por delegación</h2>
+        <div id="list-delegaciones" class="row">
+          <% @delegaciones.in_groups_of((@delegaciones.count.to_f/3).ceil) do |g| %>
+          <div class="col-md-4">
+            <% g.each do |d| %>
+            <% next unless d %>
+            <p>
+              <% if d.verificentros.count > 0 %>
+              <a href="<%= url_for({ controller: 'answers', 
+                       action: 'verificentros_delegacion',
+                       delegacion_url: d.url })%>">
+                <%= d.name %></a><br/>
+              <% if d.verificentros.count > 1 %>        
+              <small><%= d.verificentros.count %> verificentros</small>
+              <% else %>
+              <small>1 verificentro</small>
+              <% end %>
+              <% else %>
+              <%= d.name %><br/><small>0 verificentros</small>
+              <% end %>
+            </p>
+            <% end %>
+          </div>
+          <% end %>
+      </div>
+      </div>
+    </div>
+    <%= render 'sidebar' %>
+  </div>
 </div>

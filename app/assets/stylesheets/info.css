@@ -1,27 +1,28 @@
 /* info#home */
 
 .jumbotron {
-    background-color: #f0f0f0;
-    padding: 24px 60px 36px 60px;
-    margin-bottom: 8px;
+    background-color: #f2f5f6;
+    padding: 24px 60px 24px 60px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #d8d8d8;
+    text-align: center;
 }
 
 .jumbotron h1 {
     margin-top: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #268f8d;
 }
 
 .jumbotron p {
-    font-size: 20px;
     margin: 0 0 15px 0;
-}
-
-.jumbotron p.help-block {
-    font-size: 15px;
-    margin: 15px 0 0 0;
+    text-align: justify;
+    color: #6c6e77;
 }
 
 #btn-home {
-    margin-top: 3px; 
+    margin-top: 15px;
 }
 
 /* info#vin */
@@ -39,26 +40,38 @@
 }
 
 /* info#results */
+#head-info {
+    background-color: #f2f5f6;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+#head-info h1 {
+    color: #494b57;
+}
+
 #table-info {
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
-.row-info p {
-    padding: 5px;
-    margin: 0;
+#table-info p {
+    margin-bottom: 5px;
 }
 
-.hr-info-middle {
-    margin: 0;
+.table-info-key {
+    color: #bcbcbc;
 }
 
-.hr-info {
-    margin: 0 0 10px 0;
+.table-info-value {
+    color: #494b57;
+    font-weight: bold;
 }
 
 .section-info {
-    margin-top: 10px;
+    color: #494b57;
+    margin-top: 15px;
     font-size: 23px;
+    text-transform: uppercase;
 }
 
 .status-info {

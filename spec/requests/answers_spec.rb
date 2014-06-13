@@ -27,8 +27,8 @@ describe 'answers views' do
     
     # navbar
     it { should have_link('Información', href: root_path) }
-    it { should have_link('Avisos', href: avisos_path) }
-    it { should have_link('Respuestas', href: respuestas_path) }
+    it { should have_link('Recordatorios', href: avisos_path) }
+    it { should have_link('Preguntas y respuestas', href: respuestas_path) }
     
     # search
     it { should have_field('q') }

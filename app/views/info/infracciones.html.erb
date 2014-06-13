@@ -1,54 +1,56 @@
 <!-- info#infracciones -->
-<div class="row">
-  <div class="col-md-12">
-    <h1>Auto <%= @vehicle.plate %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Auto <%= @vehicle.plate %></h1>
+    </div>
   </div>
-</div>
-
-<% if @vehicle.infracciones? %>
-<!-- si hay infracciones -->
-<div class="row">
-  <div class="col-md-12">
-    <h2>Infracciones</h2>
-    <p class="regresar-info"><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
-        Regresar &raquo;</a></p>
+  
+  <% if @vehicle.infracciones? %>
+  <!-- si hay infracciones -->
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Infracciones</h2>
+      <p class="regresar-info"><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
+          Regresar &raquo;</a></p>
+    </div>
   </div>
-</div>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Folio</th>
-        <th>Motivo y fundamento</th>
-        <th>Sanción</th>
-        <th>Situación</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @vehicle.infracciones_all.each do |i| %>
-      <tr>
-        <td><%= i.date %></td>
-        <td><%= i.id %></td>
-        <td><%= i.cause %><br/><small><%= i.basis %></small></td>
-        <td><%= i.sanction %></td>
-        <td><%= i.status %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-<% else %>
-<!-- si no hay infracciones -->
-<div id="alert-infracciones" class="alert alert-success">Su auto nunca ha
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Folio</th>
+          <th>Motivo y fundamento</th>
+          <th>Sanción</th>
+          <th>Situación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vehicle.infracciones_all.each do |i| %>
+        <tr>
+          <td><%= i.date %></td>
+          <td><%= i.id %></td>
+          <td><%= i.cause %><br/><small><%= i.basis %></small></td>
+          <td><%= i.sanction %></td>
+          <td><%= i.status %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% else %>
+  <!-- si no hay infracciones -->
+  <div id="alert-infracciones" class="alert alert-success">Su auto nunca ha
     sido infraccionado.</div> 
-<% end %>
-
-<!-- regresar -->
-<div class="row">
-  <div class="col-md-12">
-    <p><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
-        Regresar &raquo;</a></p>
+  <% end %>
+  
+  <!-- regresar -->
+  <div class="row">
+    <div class="col-md-12">
+      <p><a href="<%= url_for({ controller: 'info', action: 'results', plate: @vehicle.plate })%>">
+          Regresar &raquo;</a></p>
+    </div>
   </div>
 </div>
 

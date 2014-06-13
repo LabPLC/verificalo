@@ -1,54 +1,72 @@
-<% if @vehicle.verificacion_ok? %>
-<!-- verificacion vigente -->
-<div class="alert alert-success status-info">El próximo periodo para
-  verificar su auto inicia el
-  <%= @vehicle.verificacion_current_period_str %> y termina el 
-  <%= @vehicle.verificacion_current_vigency_str %>.
+<div class="col-md-4">
+  <% if @vehicle.verificacion_ok? %>
+  <!-- verificacion vigente -->
+  <div class="alert alert-success status-info">El próximo periodo para
+    verificar su auto inicia el
+    <%= @vehicle.verificacion_current_period_str %> y termina el 
+    <%= @vehicle.verificacion_current_vigency_str %>.
+  </div>
+  <% end %>
+  
+  <% if @vehicle.verificacion_period? %>   
+  <!-- en periodo para verificar -->
+  <div class="alert alert-info status-info"><strong>Su auto debe aprobar
+      la verificación antes del 
+      <%= @vehicle.verificacion_current_vigency_str %>.</strong></div>
+  <% end %>
+  
+  <% if @vehicle.verificacion_expired? %>
+  <!-- verificacion vencida -->
+  <div class="alert alert-warning status-info"><strong>La verificación de
+      su auto expiro el 
+      <%= @vehicle.verificacion_current_vigency_str %>:</strong>
+    Debe pagar una multa por verificación extemporanea antes de
+    llevar su auto a verificar.</div>
+  <!-- <p><a href="#">Obtenga la linea de captura de su multa y consulte
+       las opciones para pagarla &raquo;</a></p> -->
+  <% end %>
+  
+  <% if @vehicle.verificacion_first_period_ok? %>
+  <!-- en periodo para 1a verificacion -->
+  <div class="alert alert-info status-info"><strong>Su auto debe aprobar
+      la verificación antes del 
+      <%= @vehicle.verificacion_first_period_end_str %>:</strong>
+    Nunca ha verificado su auto por lo que tiene 180 días naturales a
+    partir de la fecha de alta para que apruebe la verificación por
+    primera vez.</div>
+  <% end %>
+  
+  <% if @vehicle.verificacion_first_period_expired? %>
+  <!-- fuera de periodo para 1a verificacion -->
+  <div class="alert alert-warning status-info"><strong>El periodo para
+      verificar su auto por primera vez termino el 
+      <%= @vehicle.verificacion_first_period_end_str %>:</strong>
+    Debe pagar una multa por verificación extemporanea antes de
+    llevar a verificar su auto por primera vez.</div>
+  <!-- <p><a href="#">Obtenga la linea de captura de su multa y consulte las
+       opciones para pagarla &raquo;</a></p> -->
+  <% end %>
 </div>
-<% end %>
 
-<% if @vehicle.verificacion_period? %>   
-<!-- en periodo para verificar -->
-<div class="alert alert-info status-info"><strong>Su auto debe aprobar
-    la verificación antes del 
-    <%= @vehicle.verificacion_current_vigency_str %>.</strong></div>
-<% end %>
+<div class="col-md-4">
+  <!-- links sobre verificacion -->    
+  <p><a href="<%= url_for({ controller: 'answers', action:'verificentros' })%>">
+      Localice los verificentos donde puede llevar su auto a verificar
+      &raquo;</a></p>
+  <p><a href="<%= url_for({ controller: 'info', action: 'verificaciones', plate: @vehicle.plate })%>">
+      Ver el historial de verificaciones de su auto &raquo;</a></p>
+</div>
 
-<% if @vehicle.verificacion_expired? %>
-<!-- verificacion vencida -->
-<div class="alert alert-warning status-info"><strong>La verificación de
-    su auto expiro el 
-    <%= @vehicle.verificacion_current_vigency_str %>:</strong>
-  Debe pagar una multa por verificación extemporanea antes de
-  llevar su auto a verificar.</div>
-<!-- <p><a href="#">Obtenga la linea de captura de su multa y consulte
-    las opciones para pagarla &raquo;</a></p> -->
-<% end %>
-
-<% if @vehicle.verificacion_first_period_ok? %>
-<!-- en periodo para 1a verificacion -->
-<div class="alert alert-info status-info"><strong>Su auto debe aprobar
-    la verificación antes del 
-    <%= @vehicle.verificacion_first_period_end_str %>:</strong>
-  Nunca ha verificado su auto por lo que tiene 180 días naturales a
-  partir de la fecha de alta para que apruebe la verificación por
-  primera vez.</div>
-<% end %>
-
-<% if @vehicle.verificacion_first_period_expired? %>
-<!-- fuera de periodo para 1a verificacion -->
-<div class="alert alert-warning status-info"><strong>El periodo para
-    verificar su auto por primera vez termino el 
-    <%= @vehicle.verificacion_first_period_end_str %>:</strong>
-  Debe pagar una multa por verificación extemporanea antes de
-  llevar a verificar su auto por primera vez.</div>
-<!-- <p><a href="#">Obtenga la linea de captura de su multa y consulte las
-        opciones para pagarla &raquo;</a></p> -->
-<% end %>
-
-<!-- links sobre verificacion -->    
-<p><a href="<%= url_for({ controller: 'answers', action:'verificentros' })%>">
-    Localice los verificentos donde puede llevar su auto a verificar
-    &raquo;</a></p>
-<p><a href="<%= url_for({ controller: 'info', action: 'verificaciones', plate: @vehicle.plate })%>">
-    Ver el historial de verificaciones de su auto &raquo;</a></p>
+<div class="col-md-4 cta-box">
+  <h3>Recordatorios</h3>
+  <p class="cta">Evita filas o multas recibiendo avisos oportunos
+    sobre tus obligaciones como automovilista particular de la Ciudad
+    de México.</p>
+  <div class="row">
+    <div class="col-xs-12">
+      <a href="<%= url_for({ controller: 'notices',
+               action: 'home' })%>" id="btn-notices"
+         class="pull-right">¡Suscríbete!</a>
+    </div>
+  </div>
+</div>

@@ -1,77 +1,79 @@
 <!-- info#registration -->
-<div class="row">
-  <div class="col-md-offset-2 col-md-8 text-center">
-    <h1>Auto <%= @vehicle.plate %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8 text-center">
+      <h1>Auto <%= @vehicle.plate %></h1>
+    </div>
   </div>
-</div>
-
-<!-- forma -->
-<%= form_tag({ controller: 'info', action: 'results', plate: @vehicle.plate },
-    { method: 'post', id: 'form-info-registration' }) do %>
-
-<div class="row">
-  <div class="col-md-offset-2 col-md-8">
-    <% if @vehicle.registration_date? && !@vehicle.registration_date_valid? %>
-    <div class="alert alert-warning"><strong>La fecha que ingreso no es
-        valida:</strong> Su auto nunca ha aprobado la
-      verificación y para brindarle información
-      precisa necesitamos conocer la fecha de alta de su auto,
-      puede consultarla en su tarjeta de circulación.</div>
-    <% else %>
-    <div class="alert alert-info"><strong>Su auto nunca ha aprobado la
-        verificación:</strong> Para brindarle información
-      precisa necesitamos conocer la fecha de alta de su auto,
-      puede consultarla en su tarjeta de circulación.</div>
-    <% end %>
+  
+  <!-- forma -->
+  <%= form_tag({ controller: 'info', action: 'results', plate: @vehicle.plate },
+      { method: 'post', id: 'form-info-registration' }) do %>
+  
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <% if @vehicle.registration_date? && !@vehicle.registration_date_valid? %>
+      <div class="alert alert-warning"><strong>La fecha que ingreso no es
+          valida:</strong> Su auto nunca ha aprobado la
+        verificación y para brindarle información
+        precisa necesitamos conocer la fecha de alta de su auto,
+        puede consultarla en su tarjeta de circulación.</div>
+      <% else %>
+      <div class="alert alert-info"><strong>Su auto nunca ha aprobado la
+          verificación:</strong> Para brindarle información
+        precisa necesitamos conocer la fecha de alta de su auto,
+        puede consultarla en su tarjeta de circulación.</div>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-offset-2 col-md-8">
-    <div class="row">
-      <div class="col-md-offset-2 col-md-2 col-sm-offset-1 col-sm-3">
-        <input id="input-info-registration_day"
-               name="registration[day]" type="text"
-               placeholder="Día" class="form-control">
-      </div>
-      <div class="col-md-4 col-sm-4">
-        <!-- <input id="input-info-registration_month"
-                    name="registration[month]" type="text"
-                    placeholder="Mes" class="form-control"> -->
-        <select id="select-info-registration_month"
-                name="registration[month]"
-                class="form-control">
-          <option value="0">Mes</option>
-          <option value="1">Enero</option>
-          <option value="2">Febrero</option>
-          <option value="3">Marzo</option>
-          <option value="4">Abril</option>
-          <option value="5">Mayo</option>
-          <option value="6">Junio</option>
-          <option value="7">Julio</option>
-          <option value="8">Agosto</option>
-          <option value="9">Septiembre</option>
-          <option value="10">Octubre</option>
-          <option value="11">Noviembre</option>
-          <option value="12">Diciembre</option>
-        </select>
-      </div>
-      <div class="col-md-2 col-sm-3">
-        <input id="input-info-registration_year"
-               name="registration[year]" type="text"
-               placeholder="Año" class="form-control">
+  
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-2 col-sm-offset-1 col-sm-3">
+          <input id="input-info-registration_day"
+                 name="registration[day]" type="text"
+                 placeholder="Día" class="form-control">
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <!-- <input id="input-info-registration_month"
+               name="registration[month]" type="text"
+               placeholder="Mes" class="form-control"> -->
+          <select id="select-info-registration_month"
+                  name="registration[month]"
+                  class="form-control">
+            <option value="0">Mes</option>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+          </select>
+        </div>
+        <div class="col-md-2 col-sm-3">
+          <input id="input-info-registration_year"
+                 name="registration[year]" type="text"
+                 placeholder="Año" class="form-control">
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-offset-2 col-md-8 text-center">
-    <button type="submit" class="btn btn-primary">Continuar</button>    
+  
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8 text-center">
+      <button type="submit" class="btn btn-primary">Continuar</button>    
+    </div>
   </div>
+  
+  <% end %>
 </div>
-
-<% end %>
 
 <!-- analytics -->
 <script>
