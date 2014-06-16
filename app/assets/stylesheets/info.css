@@ -40,12 +40,12 @@
 }
 
 /* info#results */
-#head-info {
+#header-info {
     background-color: #f2f5f6;
     border-bottom: 1px solid #d8d8d8;
 }
 
-#head-info h1 {
+#header-info h1 {
     color: #494b57;
 }
 
@@ -76,8 +76,22 @@ h2.info {
     font-weight: bold;
 }
 
-.status-info {
+/* info#infracciones e info#verificaciones*/
+
+h2.history-info {
     margin-bottom: 10px;
+}
+
+.history {
+    margin-bottom: 10px;
+}
+
+.back-info-top {
+    margin-bottom: 20px;
+}
+
+.back-info-bottom {
+    margin-bottom: 0;
 }
 
 /* info#verificaciones */
@@ -90,10 +104,4 @@ h2.info {
 
 #alert-infracciones {
     margin-top: 15px;
-}
-
-/* info#infracciones e info#verificaciones*/
-
-.regresar-info {
-    margin: 20px 0;
 }

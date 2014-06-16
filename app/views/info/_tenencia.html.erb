@@ -4,21 +4,21 @@
   <div class="col-xs-1 red">&#11044;</div>
   <div class="col-xs-11">  
     <p><% if @vehicle.tenencias_unpaid > 1 %>
-      <strong>Su auto tiene adeudos por los años
+      <strong>Tu auto tiene adeudos por los años
         <%= @vehicle.tenencias_unpaid_str %>.</strong>  
       <% else %>
-      <strong>Su auto tiene un adeudo por el año
+      <strong>Tu auto tiene un adeudo por el año
         <%= @vehicle.tenencias_unpaid_str %>.</strong>
       <% end %>
     </p>
-    <p>Recuerde que debe realizar su pago antes de llevar su auto a
-      verificar.</p>
+    <p>Recuerda que debes pagar tus adeudos de tenencia antes de llevar
+      tu auto a verificar.</p>
   </div>
   <% else %>
   <!-- sin adeudos de tenencia -->
   <div class="col-xs-1 green">&#11044;</div>
   <div class="col-xs-11">  
-    <p>Su auto no tiene adeudos de tenencia.</p>
+    <p>Tu auto no tiene adeudos de tenencia.</p>
   </div>
   <% end %>
 </div>

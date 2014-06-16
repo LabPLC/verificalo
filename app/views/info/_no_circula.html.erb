@@ -4,10 +4,10 @@
   <% if @vehicle.verificacion_result == 'dos' %>
   <!-- calcomania 2 -->
   <div class="col-xs-12">
-    <p>Debido a que su auto obtuvo el
+    <p>Tu auto obtuvo el
       holograma <strong><%= @vehicle.verificacion_result %></strong>
-      en su última verificación y su placa termina en
-      <strong><%= @vehicle.plate_last_digit_str %></strong>, no puede
+      en su última verificación y como su placa termina en
+      <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
       circular:</p>
   </div>
   <div class="col-xs-12">
@@ -19,9 +19,9 @@
   <% else %>
   <!-- calcomania 0 o 00 -->
   <div class="col-xs-12">
-    <p>Debido a que su auto obtuvo el
+    <p>Tu auto obtuvo el
       holograma <strong><%= @vehicle.verificacion_result %></strong> en
-      su última verificación <strong>puede circular todos los
+      su última verificación y <strong>puede circular todos los
         días.</strong></p> 
   </div>
   <% end %>
@@ -30,8 +30,8 @@
   <% if @vehicle.verificacion_first_period_ok? %>
   <!-- en periodo para la 1a verificacion -->
   <div class="col-xs-12">
-    <p>Debido a que nunca ha verificado su auto y su placa termina
-      en <strong><%= @vehicle.plate_last_digit_str %></strong>, no puede
+    <p>Nunca has verificado tu auto y como su placa termina
+      en <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
       circular:</p>
   </div>
   <div class="col-xs-12">
@@ -47,8 +47,8 @@
   <!-- sin verificacion o fuera de periodo para la 1a verificacion -->
   <div class="col-xs-1 red">&#11044;</div>
   <div class="col-xs-11">
-    <p><strong>Su auto no puede circular.</strong></p>
-    <p>Debe llevar a verificar su auto.</p>
+    <p><strong>Tu auto no puede circular.</strong></p>
+    <p>Debes llevar a verificar tu auto.</p>
   </div>
   <% else %>
   <!-- con verificacion o en periodo para la 1a verificacion -->

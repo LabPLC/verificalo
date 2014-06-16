@@ -329,11 +329,6 @@ module VehicleCDMX
       self.verificacion_current['vin']
     end
 
-    def verificacion_current_fuel_str
-      return false if self.verificacion_never?
-      self.verificacion_current['combustible'].capitalize
-    end
-
     # detalle de verificaciones
 
     def verificaciones_all
@@ -344,6 +339,7 @@ module VehicleCDMX
         r.time = v['hora_verificacion'].gsub(/:\d\d$/, '');
         r.verificentro = v['verificentro']
         r.line = v['linea']
+        r.fuel = v['combustible'].capitalize
         r.cert = v['certificado']
         r.cancel = v['cancelado'] == 'SI' ? true : false
         r.vigency = I18n.localize(Date.parse(v['vigencia']), :format => :default);

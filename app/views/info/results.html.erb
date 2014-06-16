@@ -1,19 +1,6 @@
-<!-- info#results -->
-<div id="head-info">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-5">
-        <h1>AUTO <strong><%= @vehicle.plate %></strong></h1>
-        <p><a href="<%= url_for({ controller: 'info', action: 'home' })%>">
-            Cambiar placa &raquo;</a></p>
-      </div>
-      <div class="col-lg-8 col-md-7">
-        <%= render 'info' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'header' %>
 
+<!-- info#results -->
 <div class="container">
   <div class="row">
     <div class="col-md-8">
@@ -68,18 +55,7 @@
   </div>
 </div>
 
-<!-- importante -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="info">Importante</h2>
-      <p>La información mostrada tiene caracter informativo y no puede
-        ser utilizada como un documento oficial. Conserve el último
-        certificado de verificación de su auto y los pagos de tenencías e
-        infracciones para cualquier aclaración.</p>
-    </div>
-  </div>
-</div>
+<%= render('footer') %>
 
 <!-- analytics -->
 <script>

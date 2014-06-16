@@ -3,7 +3,7 @@
     <% if @vehicle.verificacion_ok? %>
     <!-- verificacion vigente -->
     <div class="col-xs-1 green">&#11044;</div>
-    <div class="col-xs-11"><p>El próximo periodo para verificar su auto
+    <div class="col-xs-11"><p>El próximo periodo para verificar tu auto
         inicia el <%= @vehicle.verificacion_current_period_str %> y
         termina el 
         <%= @vehicle.verificacion_current_vigency_str %>.</p></div>
@@ -12,7 +12,7 @@
     <% if @vehicle.verificacion_period? %>   
     <!-- en periodo para verificar -->
     <div class="col-xs-1 yellow">&#11044;</div>
-    <div class="col-xs-11"><p><strong>Su auto debe aprobar
+    <div class="col-xs-11"><p><strong>Tu auto debe aprobar
           la verificación antes del 
           <%= @vehicle.verificacion_current_vigency_str %>.</strong></p>
     </div>
@@ -22,21 +22,21 @@
     <!-- verificacion vencida -->
     <div class="col-xs-1 red">&#11044;</div>
     <div class="col-xs-11">
-      <p><strong>La verificación de su auto expiro el 
+      <p><strong>La verificación de tu auto vencio el 
           <%= @vehicle.verificacion_current_vigency_str %>.</strong>
       </p>
-      <p>Debe pagar una multa por verificación extemporanea antes de
-        llevar su auto a verificar.</p>
+      <p>Debes pagar una multa por verificación extemporanea antes de
+        llevar tu auto a verificar.</p>
     </div>
     <% end %>
   
     <% if @vehicle.verificacion_first_period_ok? %>
     <!-- en periodo para 1a verificacion -->
     <div class="col-xs-1 yellow">&#11044;</div>
-    <div class="col-xs-11"><p><strong>Su auto debe aprobar
+    <div class="col-xs-11"><p><strong>Tu auto debe aprobar
           la verificación antes del 
           <%= @vehicle.verificacion_first_period_end_str %>.</strong></p>
-      <p>Nunca ha verificado su auto por lo que tiene 180 días naturales a
+      <p>Nunca has verificado tu auto, tienes 180 días naturales a
         partir de la fecha de alta para que apruebe la verificación por
         primera vez.</p></div>
     <% end %>
@@ -45,12 +45,12 @@
     <!-- fuera de periodo para 1a verificacion -->
     <div class="col-xs-1 red">&#11044;</div>
     <div class="col-xs-11">
-      <p><strong>El periodo para verificar su auto por primera vez
+      <p><strong>El periodo para verificar tu auto por primera vez
           termino el 
           <%= @vehicle.verificacion_first_period_end_str %>:</strong>
       </p>
-      <p>Debe pagar una multa por verificación extemporanea
-        antes de llevar a verificar su auto por primera vez.</p>
+      <p>Debes pagar una multa por verificación extemporanea
+        antes de llevar a verificar tu auto por primera vez.</p>
     </div>
     <% end %>
   </div>

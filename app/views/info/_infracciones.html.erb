@@ -5,20 +5,20 @@
   <div class="col-xs-11">
     <p>
       <% if @vehicle.infracciones_unpaid > 1 %>
-      <strong>Su auto tiene <%= @vehicle.infracciones_unpaid %>
-        infracciones sin pagar</strong>
+      <strong>Tu auto tiene <%= @vehicle.infracciones_unpaid %>
+        infracciones sin pagar.</strong>
       <% else %>
-      <strong>Su auto tiene una infracción sin pagar.</strong>
+      <strong>Tu auto tiene una infracción sin pagar.</strong>
       <% end %>
     </p>
-    <p>Recuerde que debe realizar su pago antes de
-      llevar su auto a verificar.</p>
+    <p>Recuerda que debes pagar tus infracciones antes de llevar tu
+      auto a verificar.</p>
   </div>
   <% else %>
   <!-- sin adeudos de infracciones -->
   <div class="col-xs-1 green">&#11044;</div>
   <div class="col-xs-11">
-    <p>Su auto no tiene infracciones sin pagar.</p>
+    <p>Tu auto no tiene infracciones sin pagar.</p>
   </div>
   <% end %>
   
