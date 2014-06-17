@@ -28,9 +28,10 @@ module Verificalo
 
     # autoload app/lib
     config.autoload_paths += %W(#{config.root}/app/lib)
-    
-    # http://www.erikminkel.com/2013/09/01/twitter-bootstrap-3-in-a-rails-4-application/
+
+    # fonts
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
     # load config/application.yml into ENV
     config.before_configuration do
