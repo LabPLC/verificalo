@@ -14,9 +14,17 @@
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
+          <% if session.has_key?(:plate) %>
           <a class="<%= is_active?('info') %>"
              href="<%= url_for({ controller: 'info', 
-                   action: 'home' })%>">Información</a></li>
+                   action: 'results',
+                   plate: session[:plate] })%>">Información</a>
+          <% else %>
+          <a class="<%= is_active?('info') %>"
+             href="<%= url_for({ controller: 'info', 
+                   action: 'home' })%>">Información</a>
+          <% end %>
+        </li>
         <li>
           <a class="<%= is_active?('notices') %>"
              href="<%= url_for({ controller: 'notices', 
