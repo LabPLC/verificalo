@@ -1,7 +1,7 @@
 <div class="row">
   <% if @vehicle.tenencias_unpaid > 0 %>
   <!-- con adeudos de tenencia -->
-  <div class="col-xs-1 red">&#11044;</div>
+  <div class="col-xs-1"><%= icon(:error) %></div>
   <div class="col-xs-11">  
     <p><% if @vehicle.tenencias_unpaid > 1 %>
       <strong>Tu auto tiene adeudos por los años
@@ -16,7 +16,7 @@
   </div>
   <% else %>
   <!-- sin adeudos de tenencia -->
-  <div class="col-xs-1 green">&#11044;</div>
+  <div class="col-xs-1"><%= icon(:ok) %></div>
   <div class="col-xs-11">  
     <p>Tu auto no tiene adeudos de tenencia.</p>
   </div>

@@ -2,10 +2,6 @@ body {
    padding-top: 50px;
 }
 
-h2 {
-    color: #268f8d;
-}
-
 /* buttons */
 
 .btn, .btn-primary, .btn-default {
@@ -13,7 +9,7 @@ h2 {
     border-color: #268f8d;
 }
 
-.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary.active {
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
     color: #6c6e77;
     background-color: #fee550;
     border-color: #fee550;
@@ -56,6 +52,17 @@ h2 {
     color: #ff0019;
 }
 
+.blue {
+    color: blue;
+}
+
+/* icons */
+
+.icon {
+    font-size: 20px;
+    margin-top: 3px;
+}
+
 /* navbar */
 
 .navbar {
@@ -75,7 +82,7 @@ h2 {
 }
 
 .navbar ul li:last-child {
-    border-right: 1px solid #d8d8d8;    
+    border-right: 1px solid #d8d8d8;
 }
 
 .navbar ul li a {

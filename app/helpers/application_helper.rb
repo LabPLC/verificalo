@@ -14,4 +14,16 @@ module ApplicationHelper
       ''
     end
   end
+
+  def icon (type)
+    if type == :ok
+      '<span class="glyphicon glyphicon-ok-sign green icon"></span>'.html_safe
+    elsif type == :warning
+      '<span class="glyphicon glyphicon-info-sign yellow icon"></span>'.html_safe
+    elsif type == :error
+      '<span class="glyphicon glyphicon-exclamation-sign red icon"></span>'.html_safe
+    elsif type == :question
+      '<span class="glyphicon glyphicon-question-sign blue icon"></span>'.html_safe
+    end
+  end
 end
