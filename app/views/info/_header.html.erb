@@ -38,7 +38,10 @@
         <!-- si no hay verificacion -->
         <div id="table-info" class="row">
           <% if @vehicle.user_vin? %>
-          <div class="col-sm-6 col-xs-12 pull-right">
+          <div class="col-md-6 col-xs-12
+                      <% unless @vehicle.registration_date? %>
+                      col-md-offset-6
+                      <% end %>">
             <p class="table-info-key">Número de serie</p>
             <p class="table-info-value"><%= @vehicle.user_vin %></p>
             <p><a href="<%= url_for({ action: 'reset', 
@@ -48,7 +51,10 @@
           </div>
           <% end %>
           <% if @vehicle.registration_date? %>
-          <div class="col-sm-6 col-xs-12 pull-right">
+          <div class="col-md-6 col-xs-12
+                      <% unless @vehicle.user_vin? %>
+                      col-md-offset-6
+                      <% end %>">
             <p class="table-info-key">Fecha de Alta</p>
             <p class="table-info-value">
               <%= @vehicle.registration_date_str %></p>

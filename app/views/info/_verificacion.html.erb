@@ -1,63 +1,54 @@
-<div class="col-md-6">
-  <div class="row">
-    <% if @vehicle.verificacion_ok? %>
-    <!-- verificacion vigente -->
-    <div class="col-xs-1"><%= icon(:ok) %></div>
-    <div class="col-xs-11"><p>El próximo periodo para
-        verificar tu auto inicia el
-        <%= @vehicle.verificacion_current_period_str %> y
-        termina el 
-        <%= @vehicle.verificacion_current_vigency_str %>.</p></div>
-    <% end %>
-    
-    <% if @vehicle.verificacion_period? %>   
-    <!-- en periodo para verificar -->
-    <div class="col-xs-1"><%= icon(:warning) %></div>
-    <div class="col-xs-11"><p><strong>Tu auto debe aprobar
-          la verificación antes del 
-          <%= @vehicle.verificacion_current_vigency_str %>.</strong></p>
-    </div>
-    <% end %>
-    
-    <% if @vehicle.verificacion_expired? %>
-    <!-- verificacion vencida -->
-    <div class="col-xs-1"><%= icon(:error) %></div>
-    <div class="col-xs-11">
-      <p><strong>La verificación de tu auto vencio el 
-          <%= @vehicle.verificacion_current_vigency_str %>.</strong>
-      </p>
-      <p>Debes pagar una multa por verificación extemporanea antes de
-        llevar tu auto a verificar.</p>
-    </div>
-    <% end %>
+<div class="col-md-4">
+  <% if @vehicle.verificacion_ok? %>
+  <!-- verificacion vigente -->
+  <%= icon(:ok) %>
+  <p class="msg">El próximo periodo para
+    verificar tu auto inicia el
+    <%= @vehicle.verificacion_current_period_str %> y
+    termina el 
+    <%= @vehicle.verificacion_current_vigency_str %>.</p>
+  <% end %>
   
-    <% if @vehicle.verificacion_first_period_ok? %>
-    <!-- en periodo para 1a verificacion -->
-    <div class="col-xs-1"><%= icon(:warning) %></div>
-    <div class="col-xs-11"><p><strong>Tu auto debe aprobar
-          la verificación antes del 
-          <%= @vehicle.verificacion_first_period_end_str %>.</strong></p>
-      <p>Nunca has verificado tu auto, tienes 180 días naturales a
-        partir de la fecha de alta para que apruebe la verificación por
-        primera vez.</p></div>
-    <% end %>
-    
-    <% if @vehicle.verificacion_first_period_expired? %>
-    <!-- fuera de periodo para 1a verificacion -->
-    <div class="col-xs-1"><%= icon(:error) %></div>
-    <div class="col-xs-11">
-      <p><strong>El periodo para verificar tu auto por primera vez
-          termino el 
-          <%= @vehicle.verificacion_first_period_end_str %>:</strong>
-      </p>
-      <p>Debes pagar una multa por verificación extemporanea
-        antes de llevar a verificar tu auto por primera vez.</p>
-    </div>
-    <% end %>
-  </div>
+  <% if @vehicle.verificacion_period? %>   
+  <!-- en periodo para verificar -->
+  <%= icon(:warning) %>
+  <p class="msg"><strong>Tu auto debe aprobar
+      la verificación antes del 
+      <%= @vehicle.verificacion_current_vigency_str %>.</strong></p>
+  <% end %>
+  
+  <% if @vehicle.verificacion_expired? %>
+  <!-- verificacion vencida -->
+  <%= icon(:error) %>
+  <p class="msg"><strong>La verificación de tu auto vencio el 
+      <%= @vehicle.verificacion_current_vigency_str %>.</strong>
+  </p>
+  <p class="msg">Debes pagar una multa por verificación extemporanea antes de
+    llevar tu auto a verificar.</p>
+  <% end %>
+  
+  <% if @vehicle.verificacion_first_period_ok? %>
+  <!-- en periodo para 1a verificacion -->
+  <%= icon(:warning) %>
+  <p class="msg"><strong>Tu auto debe aprobar la verificación antes
+      del <%= @vehicle.verificacion_first_period_end_str %>.</strong></p>
+  <p class="msg">Tienes 180 días naturales a partir de la fecha de
+    alta para que apruebe la verificación por primera vez.</p>
+  <% end %>
+  
+  <% if @vehicle.verificacion_first_period_expired? %>
+  <!-- fuera de periodo para 1a verificacion -->
+  <%= icon(:error) %>
+  <p class="msg"><strong>El periodo para verificar tu auto por
+      primera vez termino el 
+      <%= @vehicle.verificacion_first_period_end_str %>:</strong>
+  </p>
+  <p class="msg">Debes pagar una multa por verificación extemporanea
+    antes de llevar a verificar tu auto por primera vez.</p>
+  <% end %>
 </div>
 
-<div class="col-md-6">
+<div class="col-md-4">
   <!-- links sobre verificacion -->
   <p><a href="<%= url_for({ controller: 'answers',
               action:'answer', category_url: 'verificacion',

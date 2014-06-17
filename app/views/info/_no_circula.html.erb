@@ -1,61 +1,45 @@
-<div class="row">
-  <% if @vehicle.verificacion_valid? %>
-  <!-- verificados -->
-  <% if @vehicle.verificacion_result == 'dos' %>
-  <!-- calcomania 2 -->
-  <div class="col-xs-1"><%= icon(:warning) %></div>
-  <div class="col-xs-11">
-    <p>Tu auto obtuvo el
-      holograma <strong><%= @vehicle.verificacion_result %></strong>
-      en su última verificación y como su placa termina en
-      <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
-      circular:</p>
-  </div>
-  <div class="col-xs-12">
-    <ul>
-      <li>Todos los <%= @vehicle.no_circula_weekday %> del año.</li>
-      <li>El <%= @vehicle.no_circula_weekend %> de cada mes.</li>
-    </ul>
-  </div>
-  <% else %>
-  <!-- calcomania 0 o 00 -->
-  <div class="col-xs-1"><%= icon(:ok) %></div>
-  <div class="col-xs-11">
-    <p>Tu auto obtuvo el
-      holograma <strong><%= @vehicle.verificacion_result %></strong> en
-      su última verificación y <strong>puede circular todos los
-        días.</strong></p> 
-  </div>
-  <% end %>
-  <% end %>
-  
-  <% if @vehicle.verificacion_first_period_ok? %>
-  <!-- en periodo para la 1a verificacion -->
-  <div class="col-xs-1"><%= icon(:warning) %></div>
-  <div class="col-xs-11">
-    <p>Nunca has verificado tu auto y como su placa termina
-      en <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
-      circular:</p>
-  </div>
-  <div class="col-xs-12">
-    <ul>
-      <li>Todos los <%= @vehicle.no_circula_weekday %> del año.</li>
-      <li>El <%= @vehicle.no_circula_weekend %> de cada mes.</li>
-    </ul>
-  </div>
-  <% end %>
-  
-  <% if @vehicle.verificacion_expired? || 
-     @vehicle.verificacion_first_period_expired? %>
-  <!-- sin verificacion o fuera de periodo para la 1a verificacion -->
-  <div class="col-xs-1"><%= icon(:error) %></div>
-  <div class="col-xs-11">
-    <p><strong>Tu auto no puede circular.</strong></p>
-    <p>Debes llevar a verificar tu auto.</p>
-  </div>
-  <% else %>
-  <!-- con verificacion o en periodo para la 1a verificacion -->
-  <!-- <p><a href="#">Consulte la lista de días que su auto no puede
-       circular &raquo;</a></p> -->
-  <% end %>    
-</div>
+<% if @vehicle.verificacion_valid? %>
+<!-- verificados -->
+<% if @vehicle.verificacion_result == 'dos' %>
+<!-- calcomania 2 -->
+<%= icon(:warning) %>
+<p class="msg">Tu auto obtuvo el
+  holograma <strong><%= @vehicle.verificacion_result %></strong> en
+  su última verificación y como su placa termina en
+  <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
+  circular:</p>
+<ul>
+  <li>Todos los <%= @vehicle.no_circula_weekday %> del año.</li>
+  <li>El <%= @vehicle.no_circula_weekend %> de cada mes.</li>
+</ul>
+<% else %>
+<!-- calcomania 0 o 00 -->
+<%= icon(:ok) %>
+<p class="msg">Tu auto obtuvo el
+  holograma <strong><%= @vehicle.verificacion_result %></strong> en
+  su última verificación y <strong>puede circular todos los
+    días.</strong></p> 
+<% end %>
+<% end %>
+
+<% if @vehicle.verificacion_first_period_ok? %>
+<!-- en periodo para la 1a verificacion -->
+<%= icon(:warning) %>
+<p class="msg">Nunca has verificado tu auto y como su placa termina
+  en <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
+  circular:</p>
+<ul>
+  <li>Todos los <%= @vehicle.no_circula_weekday %> del año.</li>
+  <li>El <%= @vehicle.no_circula_weekend %> de cada mes.</li>
+</ul>
+<% end %>
+
+<% if @vehicle.verificacion_expired? || 
+   @vehicle.verificacion_first_period_expired? %>
+<!-- sin verificacion o fuera de periodo para la 1a verificacion -->
+<%= icon(:error) %>
+<p class="msg"><strong>Tu auto no puede circular.</strong></p>
+<p class="msg">Debes llevar a verificar tu auto.</p>
+<% else %>
+<!-- con verificacion o en periodo para la 1a verificacion -->
+<% end %>    
