@@ -1,8 +1,7 @@
 /* info#home */
-
 .jumbotron {
     background-color: #f2f5f6;
-    padding: 24px 60px 24px 60px;
+    padding: 24px 0 24px 0;
     margin-bottom: 10px;
     border-bottom: 1px solid #d8d8d8;
     text-align: center;
@@ -13,16 +12,31 @@
     text-transform: uppercase;
     font-weight: bold;
     color: #268f8d;
+    font-size: 80px;
 }
 
 .jumbotron p {
     margin: 0 0 15px 0;
     text-align: left;
     color: #6c6e77;
+    font-size: 20px;
 }
 
-#btn-home {
-    margin-top: 15px;
+.input-home {
+    margin-top: 10px;
+}
+
+h2.section {
+    color: #268f8d;
+    font-size: 26px;
+}
+
+@media(max-width:767px) {
+    .jumbotron h1 { font-size: 60px; }
+}
+@media(max-width:480px) {
+    .jumbotron h1 { font-size: 40px; }
+    .jumbotron p { font-size: 18px; }
 }
 
 /* info#vin */
