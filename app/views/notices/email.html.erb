@@ -1,80 +1,26 @@
 <!-- notices#email -->
-<input type="hidden" name="type" value="EMAIL">
-
-<div class="row">
-  <div class="col-md-12">
-    <p class="lead">¿Cual es la placa de su auto y su dirección de
-      correo electrónico?</p>
+<div class="form-group">
+  <label for="input-notcies-plate"
+         class="col-md-4 control-label">¿Cual es tu correo electrónico?</label>
+  <div class="col-md-4">
+    <input id="input-notices-plate" type="text"
+           class="form-control input-notices" 
+           <% if params[:email].present? && params[:email][:address].present? %>
+           value="<%= params[:email][:address] %>"
+           <% end %>
+           placeholder="Correo electrónico" name="email[address]">
+  </div>
+  <div class="col-md-4 error-notices">
+    <% if request.post? && @errors[:INVALID_EMAIL_ADDRESS] %>
+    <%= icon(:error) %>
+    <p class="msg">El correo electrónico no es valido.</p>
+    <% end %>
   </div>
 </div>
 
-<% if request.post? %>
-<% if @errors[:INVALID_USER_PLATE] && @errors[:INVALID_EMAIL_ADDRESS] %>
-<div class="row">
-  <div class="col-md-6">
-    <div class="alert alert-warning"><strong>La placa que ingreso no es
-        de un auto particular de la Ciudad de México.</strong></div>
-  </div>
-  <div class="col-md-6">
-    <div class="alert alert-warning"><strong>El correo electrónico que
-        ingreso no es valido.</strong></div>
-  </div>
-</div>
-<% elsif @errors[:INVALID_USER_PLATE] || @errors[:INVALID_EMAIL_ADDRESS] %>
-<div class="row">
-  <div class="col-md-12">
-    <div class="alert alert-warning">
-      <% if @errors[:INVALID_USER_PLATE] %>
-      <strong>La placa que ingreso no es de un auto particular de la
-        Ciudad de México.</strong>
-      <% end %>
-      <% if @errors[:INVALID_EMAIL_ADDRESS] %>
-      <strong>El correo electrónico que ingreso no es valido.</strong>
-      <% end %>
-    </div>
-  </div>
-</div>
-<% end %>
-<% end %>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="form-group">
-      <div class="row">
-        <div class="col-sm-6">
-          <input type="text" class="form-control"
-                 id="input-notices-plate" name="user[plate]"
-                 <% if request.post? && !@errors[:INVALID_USER_PLATE] %>
-                 value="<%= params[:user][:plate] %>"
-                 <% end %>
-                 placeholder="Placa de auto">
-        </div>
-      </div>
-      <span class="help-block">Solo autos particulares de la Ciudad de
-        México</span>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="form-group">
-      <div class="row">
-        <div class="col-sm-9">
-          <input type="email" class="form-control"
-                 id="input-notices-email" name="email[address]"
-                 <% if request.post? && !@errors[:INVALID_EMAIL_ADDRESS] %>
-                 value="<%= params[:email][:address] %>"
-                 <% end %>
-                 placeholder="Correo electrónico">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%= render 'settings' %>
-
-<div class="row">
-  <div class="col-md-12 text-center">
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-4">
     <button id="btn-notices-ok" type="submit"
-            class="btn btn-primary btn-notices-form">Continuar</button>
+            class="btn btn-primary btn-wide">Suscribirse</button>
   </div>
 </div>

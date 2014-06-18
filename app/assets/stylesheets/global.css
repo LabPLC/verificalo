@@ -120,6 +120,21 @@ body {
     background-color: white;
 }
 
+/* header */
+
+#header {
+    background-color: #f2f5f6;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+#header h1 {
+    color: #494b57;
+}
+
+#header h1.alone {
+    margin-bottom: 21px;
+}
+
 /* footer */
 
 /*footer {

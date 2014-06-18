@@ -1,0 +1,18 @@
+/* notices#home */
+
+#form-notices {
+    margin-top: 30px;
+}
+
+#form-notices label {
+    text-align: left;
+}
+
+@media(max-width: 991px) {
+    #form-notices .form-group { margin-bottom: 5px; }
+    .input-notices { margin-top: 15px; }
+    .error-notices { margin-top: 10px; }
+    .error-notices p { margin-bottom: 0; }
+    #form-notices button { margin-top: 10px; }
+}
+

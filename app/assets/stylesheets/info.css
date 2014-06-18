@@ -42,15 +42,6 @@ h2.section {
 
 /* info#_header */
 
-#header-info {
-    background-color: #f2f5f6;
-    border-bottom: 1px solid #d8d8d8;
-}
-
-#header-info h1 {
-    color: #494b57;
-}
-
 .box-info {
     margin-bottom: 10px;
 }

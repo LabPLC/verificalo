@@ -1,4 +1,12 @@
 module NoticesHelper
+  def type_selected (name, value)
+    if params[name] && params[name] == value
+      'checked="true"'
+    else
+      ''
+    end
+  end
+
   def setting_checked (setting, default)
     checkbox_checked(:user, setting, default)
   end
@@ -10,7 +18,7 @@ module NoticesHelper
   def phone_selected (extra, value, default)
     radio_checked(:phone, extra, value, default)
   end
-    
+
   private
 
   def checkbox_checked (array, checkbox, default)

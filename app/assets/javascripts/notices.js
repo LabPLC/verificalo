@@ -1,19 +1,17 @@
-var btn_label = {
-    'btn-notices-home-email' : 'notices-home-email',
-    'btn-notices-home-phone' : 'notices-home-phone'
+var radio_label = {
+    'radio-notices-email' : 'notices-home-email',
+    'radio-notices-phone' : 'notices-home-phone'
 };
 
 $(document).ready(function() {
-    $('.btn-notices-home').click(function (e) {
+    $('.radio-notices-type').change(function (e) {
         e.preventDefault();
         ga('send', {
             'hitType': 'event',
             'eventCategory': 'button',
             'eventAction': 'click',
-            'eventLabel': btn_label[this.id] });
-        $('.btn-notices-home').removeClass('active');
-        $(this).addClass('active');
-        $.ajax({ url: btn_subforms[this.id],
+            'eventLabel': radio_label[this.id] });
+        $.ajax({ url: radio_subforms[this.id],
                  success: function (data) {
                      $('#notices-subform').fadeOut('slow', function() {
                          $('#notices-subform').html(data);
@@ -23,10 +21,6 @@ $(document).ready(function() {
                      });
                  }});
     });
-    if (typeof btn_active != 'undefined') {
-        $(btn_active).addClass('active');
-        scroll_subform();
-    }
 });
 
 function scroll_subform () {

@@ -7,13 +7,13 @@ Verificalo::Application.routes.draw do
   match '/info/:plate/infracciones', to: 'info#infracciones', via: 'get'
   match '/info/:plate/reset/:item', to: 'info#reset', via: 'get'
 
-  # avisos
-  match '/avisos', to: 'notices#home', via: 'get'
-  match '/avisos', to: 'notices#new', via: 'post'
-  match '/avisos/email', to: 'notices#email', via: 'get'
-  match '/avisos/telefono', to: 'notices#phone', via: 'get'
-  match '/avisos/twitter', to: 'notices#twitter', via: 'get'
-  match '/avisos/:user', to: 'notices#confirm', via: 'get', as: :aviso
+  # recordatorios
+  match '/recordatorios', to: 'notices#home', via: 'get'
+  match '/recordatorios', to: 'notices#new', via: 'post'
+  match '/recordatorios/email', to: 'notices#email', via: 'get'
+  match '/recordatorios/telefono', to: 'notices#phone', via: 'get'
+  match '/recordatorios/twitter', to: 'notices#twitter', via: 'get'
+  match '/recordatorios/:user', to: 'notices#confirm', via: 'get', as: :aviso
   match '/twilio/confirm/:user', to: 'notices#twilio_confirm', via: 'get'
   match '/twilio/accept/:user', to: 'notices#twilio_accept', via: 'get'
 

@@ -17,7 +17,7 @@ class NoticesController < ApplicationController
     @params = params
     @errors = Hash.new
 
-    return unless new_user    
+    return unless new_user
 
     if type_param == 'EMAIL'
       return unless new_email

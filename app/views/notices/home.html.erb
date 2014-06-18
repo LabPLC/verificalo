@@ -1,28 +1,95 @@
 <!-- notices#home -->
+<div id="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 class="alone">Suscribirse a recordatorios</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Avisos</h1>
-      <p class="lead">¿Por qué medio desea recibir sus avisos?</p>
-    </div>
-  </div>
-  
-  <!-- forma -->
   <%= form_tag({ controller: 'notices', action: 'home' },
-      { method: 'post', id: 'form-notices-home' }) do %>
+      { method: 'post', id: 'form-notices', class: 'form-horizontal' }) do %>
   
-  <div class="row">
-    <div class="col-md-5 col-md-offset-1">
-      <button id="btn-notices-home-email"
-              class="btn btn-primary btn-notices-home"
-              type="submit">Correo electrónico</button>
+  <div class="form-group">
+    <label for="input-notcies-plate"
+           class="col-md-4 control-label">¿Cual es la placa de tu
+      auto?</label>
+    <div class="col-md-4">
+      <input id="input-notices-plate" type="text" 
+             class="form-control input-notices" 
+             <% if params[:user].present? && params[:user][:plate].present? %>
+             value="<%= params[:user][:plate] %>"
+             <% end %>
+             placeholder="Placa" name="user[plate]">
     </div>
-    <div class="col-md-5">
-      <button id="btn-notices-home-phone"
-              class="btn btn-primary btn-notices-home" 
-              type="submit">Llamada telefónica</button>
+    <div class="col-md-4 error-notices">
+      <% if request.post? && @errors[:INVALID_USER_PLATE] %>
+      <%= icon(:error) %>
+      <p class="msg">La placa no es de un auto particular de la Ciudad
+        de México.</p>
+      <% end %>
     </div>
   </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label">¿Qué recordatorios deseas
+      recibir?</label>
+    <div class="col-md-4">
+      <div class="checkbox">
+        <label><input type="checkbox"
+                      <%= setting_checked('verificacion', true) %>
+                      name="user[verificacion]">Verificación</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox"
+                      <%= setting_checked('adeudos', true) %>
+                      name="user[adeudos]">Adeudos de tenencias e
+          infracciones</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" 
+                      <%= setting_checked('no_circula_weekday', false) %>
+                      name="user[no_circula_weekday]">
+          Hoy no circula de lunes a viernes</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox"
+                      <%= setting_checked('no_circula_weekend', true) %>
+                      name="user[no_circula_weekend]">Hoy no circula
+          sabatino</label>
+      </div>
+    </div>
+    <div class="col-md-4 error-notices">
+      <% if request.post? && @errors[:MISSING_USER_NOTICES] %>
+      <%= icon(:error) %>
+      <p class="msg">Debes seleccionar por lo menos un tipo de
+        recordatorio.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label">¿Cómo deseas recibir tus avisos?</label>
+    <div class="col-md-4">
+      <div class="radio">
+        <label><input id="radio-notices-email" type="radio"
+                      class="radio-notices-type"
+                      <%= type_selected('type', 'EMAIL') %>
+                      name="type" value="EMAIL">Correo electrónico</label>
+      </div>
+      <div class="radio">
+        <label><input id="radio-notices-phone" type="radio"
+                      class="radio-notices-type"
+                      <%= type_selected('type', 'PHONE') %>
+                      name="type" value="PHONE">Llamada telefónica</label>
+      </div>
+    </div>
+    <div class="col-md-4 error-notices"></div>
+  </div>
+
   
   <% if request.post? && params[:type] %>
   <div id="notices-subform">
@@ -35,21 +102,16 @@
   <% else %>
   <div id="notices-subform" style="display: none;"></div>
   <% end %>
+
   <% end %>
 </div>
+
 <!-- btn_subforms & btn_active -->
 <script>
-  var btn_subforms = { 
-  'btn-notices-home-email' : '<%= url_for({ controller: 'notices', action: 'email' }) %>',
-  'btn-notices-home-phone' : '<%= url_for({ controller: 'notices', action: 'phone' }) %>'
+  var radio_subforms = { 
+  'radio-notices-email' : '<%= url_for({ controller: 'notices', action: 'email' }) %>',
+  'radio-notices-phone' : '<%= url_for({ controller: 'notices', action: 'phone' }) %>'
   };
-  <% if request.post? && params[:type] %>
-  <% if params[:type] == 'EMAIL' %>
-  var btn_active = $('#btn-notices-home-email');
-  <% elsif params[:type] == 'PHONE' %>
-  var btn_active = $('#btn-notices-home-phone');
-  <% end %>
-  <% end %>
 </script>
 
 <!-- analytics -->
