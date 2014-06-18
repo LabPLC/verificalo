@@ -1,4 +1,4 @@
-<div class="col-md-4">
+<div class="col-md-4 col-sm-6">
   <% if @vehicle.verificacion_ok? %>
   <!-- verificacion vigente -->
   <%= icon(:ok) %>
@@ -48,7 +48,7 @@
   <% end %>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-4 col-sm-6">
   <!-- links sobre verificacion -->
   <p><a href="<%= url_for({ controller: 'answers',
               action:'answer', category_url: 'verificacion',
