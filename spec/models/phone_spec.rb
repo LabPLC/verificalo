@@ -26,6 +26,11 @@ describe Phone do
     it { should_not be_valid }
   end
 
+  describe 'without cellphone' do
+    before { @phone.cellphone = nil }
+    it { should_not be_valid }
+  end
+
   describe 'without schedule' do
     before do 
       @phone.morning = false

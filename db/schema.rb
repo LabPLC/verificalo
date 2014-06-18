@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603164417) do
+ActiveRecord::Schema.define(version: 20140618221406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 20140603164417) do
   create_table "phones", force: true do |t|
     t.uuid     "user_id",                               null: false
     t.string   "number",     limit: 10,                 null: false
-    t.boolean  "cellphone",             default: false, null: false
+    t.boolean  "cellphone",                             null: false
     t.boolean  "morning",               default: false, null: false
     t.boolean  "afternoon",             default: false, null: false
     t.boolean  "night",                 default: false, null: false
