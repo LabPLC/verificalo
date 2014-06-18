@@ -4,7 +4,7 @@ body {
 
 /* buttons */
 
-.btn, .btn-primary, .btn-default {
+.btn-primary, .btn-default {
     background-color: #268f8d;
     border-color: #268f8d;
 }
@@ -27,6 +27,7 @@ body {
     border-style: solid;
     padding: 5px 10px;
     color: #268f8d;
+    margin-bottom: 5px;
 }
 
 @media(max-width: 991px) and (min-width: 768px) {
@@ -34,7 +35,7 @@ body {
 }
 
 @media(max-width: 767px) {
-    .cta-box { margin-top: 40px; }
+    .cta-box { margin-top: 35px; }
 }
 
 .cta-box h3 {

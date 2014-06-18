@@ -1,47 +1,55 @@
 <!-- info#registration -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-offset-2 col-md-8 text-center">
-      <h1>Auto <%= @vehicle.plate %></h1>
+<div id="header-info">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>AUTO <strong><%= @vehicle.plate %></strong></h1>
+        <p><a href="<%= url_for({ controller: 'info', action: 'home' })%>">
+            Cambiar placa &raquo;</a></p>
+      </div>
     </div>
   </div>
-  
-  <!-- forma -->
-  <%= form_tag({ controller: 'info', action: 'results', plate: @vehicle.plate },
-      { method: 'post', id: 'form-info-registration' }) do %>
-  
+</div>
+
+<!-- forma -->
+<%= form_tag({ controller: 'info', action: 'results', plate: @vehicle.plate },
+    { method: 'post', id: 'form-info' }) do %>
+
+<div class="container">  
   <div class="row">
-    <div class="col-md-offset-2 col-md-8">
+    <div class="col-md-4 col-xs-12">
       <% if @vehicle.registration_date? && !@vehicle.registration_date_valid? %>
-      <div class="alert alert-warning"><strong>La fecha que ingreso no es
-          valida:</strong> Su auto nunca ha aprobado la
+      <%= icon(:error) %>
+      <p class="msg"><strong>La fecha que ingreso no es
+          valida.</strong></p>
+      <p class="msg">Su auto nunca ha aprobado la
         verificación y para brindarle información
         precisa necesitamos conocer la fecha de alta de su auto,
-        puede consultarla en su tarjeta de circulación.</div>
+        puede consultarla en su tarjeta de circulación.</p>
       <% else %>
-      <div class="alert alert-info"><strong>Su auto nunca ha aprobado la
-          verificación:</strong> Para brindarle información
+      <%= icon(:question) %>
+      <p class="msg"><strong>Su auto nunca ha aprobado la
+          verificación.</strong></p>
+      <p class="msg">Para brindarle información
         precisa necesitamos conocer la fecha de alta de su auto,
-        puede consultarla en su tarjeta de circulación.</div>
+        puede consultarla en su tarjeta de circulación.</p>
       <% end %>
     </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-offset-2 col-md-8">
+    
+    <div class="col-md-8 col-xs-12">
       <div class="row">
-        <div class="col-md-offset-2 col-md-2 col-sm-offset-1 col-sm-3">
+        <div class="col-sm-3">
           <input id="input-info-registration_day"
                  name="registration[day]" type="text"
-                 placeholder="Día" class="form-control">
+                 placeholder="Día" class="form-control input-info">
         </div>
-        <div class="col-md-4 col-sm-4">
+        <div class="col-sm-6">
           <!-- <input id="input-info-registration_month"
                name="registration[month]" type="text"
                placeholder="Mes" class="form-control"> -->
           <select id="select-info-registration_month"
                   name="registration[month]"
-                  class="form-control">
+                  class="form-control input-info">
             <option value="0">Mes</option>
             <option value="1">Enero</option>
             <option value="2">Febrero</option>
@@ -57,23 +65,21 @@
             <option value="12">Diciembre</option>
           </select>
         </div>
-        <div class="col-md-2 col-sm-3">
+        <div class="col-sm-3">
           <input id="input-info-registration_year"
                  name="registration[year]" type="text"
-                 placeholder="Año" class="form-control">
+                 placeholder="Año" class="form-control input-info">
+        </div>
+        <div class="col-xs-12">
+          <button type="submit"
+                  class="btn btn-primary 
+                         btn-wide submit-info">Continuar</button>    
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="row">
-    <div class="col-md-offset-2 col-md-8 text-center">
-      <button type="submit" class="btn btn-primary">Continuar</button>    
-    </div>
-  </div>
-  
-  <% end %>
 </div>
+<% end %>
 
 <!-- analytics -->
 <script>

@@ -2,50 +2,55 @@
 
 <!-- info#infracciones -->
 <div class="container">
-  <% if @vehicle.infracciones? %>
-  <!-- si hay infracciones -->
   <div class="row">
-    <div class="col-sm-9">
+    <% if @vehicle.infracciones? %>
+    <!-- si hay infracciones -->
+    <div class="col-xs-12">
       <h2 class="info history-info">Infracciones</h2>
       <p class="back-info-top">
         <a href="<%= url_for({ action: 'results', 
                  plate: @vehicle.plate })%>">
           Regresar &raquo;</a></p>
     </div>
-  </div>
-  <div class="table-responsive">
-    <table class="table table-striped table-condensed history">
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Folio</th>
-          <th>Motivo y fundamento</th>
-          <th>Sanción</th>
-          <th>Situación</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @vehicle.infracciones_all.each do |i| %>
-        <tr>
-          <td><%= i.date %></td>
-          <td><%= i.id %></td>
-          <td><%= i.cause %><br/><small><%= i.basis %></small></td>
-          <td><%= i.sanction %></td>
-          <td><%= i.status %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <% else %>
-  <!-- si no hay infracciones -->
-  <div id="alert-infracciones" class="alert alert-success">Tu auto nunca ha
-    sido infraccionado.</div> 
-  <% end %>
-  
-  <!-- regresar -->
-  <div class="row">
-    <div class="col-md-12">
+    <div class="col-xs-12">
+      <div class="table-responsive">
+        <table class="table table-striped table-condensed history">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Folio</th>
+              <th>Motivo y fundamento</th>
+              <th>Sanción</th>
+              <th>Situación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @vehicle.infracciones_all.each do |i| %>
+            <tr>
+              <td><%= i.date %></td>
+              <td><%= i.id %></td>
+              <td><%= i.cause %><br/><small><%= i.basis %></small></td>
+              <td><%= i.sanction %></td>
+              <td><%= i.status %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% else %>
+    <!-- si no hay infracciones -->
+    <div class="col-xs-12">
+      <h2 class="info history-info">Infracciones</h2>
+    </div>
+    <div class="col-xs-12 empty-info">
+      <%= icon(:ok) %>
+      <p class="msg">Tu auto nunca ha sido infraccionado.</p> 
+    </div>
+    <% end %>
+    
+    <!-- regresar -->
+    <div class="col-xs-12">
       <p class="back-info-bottom">
         <a href="<%= url_for({ action: 'results', plate: @vehicle.plate })%>">
           Regresar &raquo;</a></p>

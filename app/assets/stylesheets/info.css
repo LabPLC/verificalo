@@ -40,21 +40,8 @@ h2.section {
     .jumbotron p { font-size: 18px; }
 }
 
-/* info#vin */
-
-#form-info-vin input, #form-info-vin button {
-    margin-bottom: 20px;
-}
-
-/* info#registration */
-
-#form-info-registration input,
-#form-info-registration select, 
-#form-info-registration button {
-    margin-bottom: 20px;
-}
-
 /* info#_header */
+
 #header-info {
     background-color: #f2f5f6;
     border-bottom: 1px solid #d8d8d8;
@@ -100,6 +87,20 @@ h2.info {
     font-weight: bold;
 }
 
+/* info#vin e info#registration*/
+
+#form-info {
+    margin-top: 30px;
+}
+
+.input-info {
+    margin-top: 15px;
+}
+
+.submit-info {
+    margin-top: 15px;
+}
+
 /* info#infracciones e info#verificaciones*/
 
 h2.history-info {
@@ -107,7 +108,7 @@ h2.history-info {
 }
 
 .history {
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .back-info-top {
@@ -115,7 +116,12 @@ h2.history-info {
 }
 
 .back-info-bottom {
+    margin-top: 10px;
     margin-bottom: 0;
+}
+
+.empty-info {
+    margin-top: 10px;
 }
 
 /* info#verificaciones */

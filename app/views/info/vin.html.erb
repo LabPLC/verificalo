@@ -1,57 +1,65 @@
 <!-- info#vin -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-offset-2 col-md-8 text-center">
-      <h1>Auto <%= @vehicle.plate %></h1>
-    </div>
-  </div>
-  
-  <!-- forma -->
-  <%= form_tag({ controller: 'info', action: 'results', plate: @vehicle.plate },
-      { method: 'post', id: 'form-info-vin' }) do %>
-  
-  <div class="row">
-    <div class="col-md-offset-2 col-md-8">
-      <% if request.post? && !@vehicle.user_vin_valid? %>
-      <div class="alert alert-warning"><strong>No selecciono un número de
-          serie:</strong> Hay mas de un auto verificado
-        con esa placa y para brindarle información precisa necesitamos
-        seleccione el número de serie o VIN de su auto. Puede consultarlo en
-        su tarjeta de circulación, factura o chasis de su auto.</div>
-      <% else %>
-      <div class="alert alert-info"><strong>Hay más de un auto verificado
-          con esa placa:</strong> Para brindarle información
-        precisa necesitamos seleccione el número de serie o VIN de su auto,
-        puede consultarlo en su tarjeta de circulación, factura o chasis
-        de su auto.</div>
-      <% end %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-offset-2 col-md-8">
-      <div class="col-md-offset-4 col-md-4">
-        <% @vehicle.verificaciones_vins.each do |v| %>
-        <div class="radio">
-          <label>
-            <input type="radio" name="vin" value="<%= v %>">
-            <%= v %>
-          </label>
-        </div>
-        <% end %>
+<div id="header-info">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>AUTO <strong><%= @vehicle.plate %></strong></h1>
+        <p><a href="<%= url_for({ controller: 'info', action: 'home' })%>">
+            Cambiar placa &raquo;</a></p>
       </div>
     </div>
   </div>
-  
-  <div class="row">
-    <div class="col-md-offset-2 col-md-8 text-center">
-      <button type="submit" class="btn btn-primary">Continuar</button>    
-  </div>
-  </div>
-  
-  <% end %>
 </div>
 
+<!-- forma -->
+<%= form_tag({ controller: 'info', action: 'results', plate: @vehicle.plate },
+    { method: 'post', id: 'form-info' }) do %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+    <% if request.post? && !@vehicle.user_vin_valid? %>
+    <%= icon(:error) %>    
+      <p class="msg"><strong>No selecciono un número de
+          serie.</strong></p>
+    <p class="msg">Hay mas de un auto verificado con esa placa y para
+      brindarle información precisa necesitamos seleccione el número de
+      serie o VIN de su auto. Puede consultarlo en su tarjeta de
+      circulación, factura o chasis de su auto.</p>
+    <% else %>
+    <%= icon(:question) %>
+    <p class="msg"><strong>Hay más de un auto verificado
+        con esa placa.</strong></p>
+    <p class="msg">Para brindarle información precisa necesitamos
+      seleccione el número de serie o VIN de su auto, puede
+      consultarlo en su tarjeta de circulación, factura o chasis de
+      su auto.</p>
+    <% end %>
+    </div>
+
+    <div class="col-md-8 col-xs-12">
+      <div class="row">
+        <% @vehicle.verificaciones_vins.each do |v| %>
+        <div class="col-sm-6 col-xs-12">
+          <div class="radio input-info">
+            <label>
+              <input type="radio" name="vin" value="<%= v %>">
+              <%= v %>
+            </label>
+          </div>
+        </div>
+        <% end %>
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary
+                                       btn-wide
+                                       submit-info">Continuar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+  
 <!-- analytics -->
 <script>
   ga('set', 'page', '/info/vin');
