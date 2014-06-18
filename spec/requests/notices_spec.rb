@@ -36,24 +36,25 @@ describe 'notices views' do
       end
     end
 
-    # describe 'via phone', :js => true do
-    #   before { choose('Llamada telefónica') }
-    #   it { should have_field('phone[number]') }
-    #   it { should have_field('phone[cellphone]') }
-    #   it { should have_field('phone[morning]', :checked) }
-    #   it { should have_field('phone[afternoon]', :checked) }
-    #   it { should have_field('phone[night]', :unchecked) }
-    #   it { should have_button('Suscribirse') }
-    #   describe 'submit' do
-    #     before do
-    #       fill_in('user[plate]', with: FactoryGirl.generate(:plate))
-    #       fill_in('phone[number]', with: FactoryGirl.generate(:number))
-    #       click_button('Suscribirse')
-    #     end
-    #     it { should have_css('div.alert-info', 
-    #                          :text => /confirmar(.*)llamada telefonica/i) }
-    #   end
-    # end
+    describe 'via phone', :js => true do
+      before { choose('Llamada telefónica') }
+      it { should have_field('phone[number]') }
+      it { should have_field('phone[cellphone]') }
+      it { should have_field('phone[morning]', :checked) }
+      it { should have_field('phone[afternoon]', :checked) }
+      it { should have_field('phone[night]', :unchecked) }
+      it { should have_button('Suscribirse') }
+      describe 'submit' do
+        before do
+          fill_in('user[plate]', with: FactoryGirl.generate(:plate))
+          fill_in('phone[number]', with: FactoryGirl.generate(:number))
+          choose('Teléfono celular')
+          click_button('Suscribirse')
+        end
+        it { should have_css('div.alert-info', 
+                             :text => /confirmar(.*)llamada telefonica/i) }
+      end
+    end
   end
   
   describe 'confirm user email' do

@@ -116,6 +116,18 @@ describe NoticesController do
         end
       end
 
+      describe 'without cellphone' do
+        it 'should return MISSING_PHONE_CELLPHONE error' do
+          user = FactoryGirl.attributes_for(:user)
+          phone = FactoryGirl.attributes_for(:phone)
+          phone[:cellphone] = nil
+          post :new, type: 'PHONE', user: user, phone: phone
+          response.should be_success
+          should render_template('home')
+          expect(assigns(:errors)).to eq(MISSING_PHONE_CELLPHONE: true)
+        end
+      end
+
       describe 'with user and phone' do
         it 'should create user' do
           user = FactoryGirl.attributes_for(:user)
