@@ -22,6 +22,17 @@
     font-size: 20px;
 }
 
+.jumbotron .icon {
+    font-size: 20px;
+    float: left;
+    margin-top: 18px !important;
+}
+
+.jumbotron .msg {
+    margin: 15px 0 0 30px !important;
+    font-size: 18px;
+}
+
 .input-home {
     margin-top: 10px;
 }
@@ -38,6 +49,7 @@ h2.section {
 @media(max-width: 480px) {
     .jumbotron h1 { font-size: 40px; }
     .jumbotron p { font-size: 18px; }
+    .jumbotron .msg { font-size: 16px; }
 }
 
 /* info#_header */
