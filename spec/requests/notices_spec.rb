@@ -5,60 +5,55 @@ describe 'notices views' do
   subject { page }
   
   describe 'home' do
-    before { visit avisos_path }
+    before { visit recordatorios_path }
 
     # navbar
     it { should have_link('Información', href: root_path) }
-    it { should have_link('Recordatorios', href: avisos_path) }
+    it { should have_link('Recordatorios', href: recordatorios_path) }
     it { should have_link('Preguntas y respuestas', href: respuestas_path) }
 
     # content
-    it { should have_button('Correo electrónico') }
-    it { should have_button('Llamada telefónica') }
+    it { should have_field('user[plate]') }
+    it { should have_field('user[verificacion]', :checked) }
+    it { should have_field('user[adeudos]', :checked) }
+    it { should have_field('user[no_circula_weekday]', :unchecked) }
+    it { should have_field('user[no_circula_weekend]', :checked) }
+    it { should have_field('Correo electrónico') }
+    it { should have_field('Llamada telefónica') }
     
     describe 'via email', :js => true do
-      before { click_button('Correo electrónico') }
-      it { should have_field('user[plate]') }
+      before { choose('Correo electrónico') }
       it { should have_field('email[address]') }
-      it { should have_field('user[verificacion]', :checked) }
-      it { should have_field('user[adeudos]', :checked) }
-      it { should have_field('user[no_circula_weekday]', :unchecked) }
-      it { should have_field('user[no_circula_weekend]', :checked) }
-      it { should have_button('Continuar') }
+      it { should have_button('Suscribirse') }
       describe 'submit' do
         before do
           fill_in('user[plate]', with: FactoryGirl.generate(:plate))
           fill_in('email[address]', with: FactoryGirl.generate(:address))
-          click_button('Continuar') 
+          click_button('Suscribirse') 
         end
         it { should have_css('div.alert-info', 
                              :text => /confirmar(.*)visitando la dirección/i) }
       end
     end
 
-    describe 'via phone', :js => true do
-      before { click_button('Llamada telefónica') }
-      it { should have_field('user[plate]') }
-      it { should have_field('phone[number]') }
-      it { should have_field('phone[cellphone]') }
-      it { should have_field('user[verificacion]', :checked) }
-      it { should have_field('user[adeudos]', :checked) }
-      it { should have_field('user[no_circula_weekday]', :unchecked) }
-      it { should have_field('user[no_circula_weekend]', :checked) }
-      it { should have_field('phone[morning]', :checked) }
-      it { should have_field('phone[afternoon]', :checked) }
-      it { should have_field('phone[night]', :unchecked) }
-      it { should have_button('Continuar') }
-      describe 'submit' do
-        before do
-          fill_in('user[plate]', with: FactoryGirl.generate(:plate))
-          fill_in('phone[number]', with: FactoryGirl.generate(:number))
-          click_button('Continuar') 
-        end
-        it { should have_css('div.alert-info', 
-                             :text => /confirmar(.*)llamada telefonica/i) }
-      end
-    end
+    # describe 'via phone', :js => true do
+    #   before { choose('Llamada telefónica') }
+    #   it { should have_field('phone[number]') }
+    #   it { should have_field('phone[cellphone]') }
+    #   it { should have_field('phone[morning]', :checked) }
+    #   it { should have_field('phone[afternoon]', :checked) }
+    #   it { should have_field('phone[night]', :unchecked) }
+    #   it { should have_button('Suscribirse') }
+    #   describe 'submit' do
+    #     before do
+    #       fill_in('user[plate]', with: FactoryGirl.generate(:plate))
+    #       fill_in('phone[number]', with: FactoryGirl.generate(:number))
+    #       click_button('Suscribirse')
+    #     end
+    #     it { should have_css('div.alert-info', 
+    #                          :text => /confirmar(.*)llamada telefonica/i) }
+    #   end
+    # end
   end
   
   describe 'confirm user email' do
