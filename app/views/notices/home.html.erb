@@ -15,7 +15,7 @@
   
   <div class="form-group">
     <label for="input-notcies-plate"
-           class="col-md-4 control-label">¿Cual es la placa de tu
+           class="col-md-4 control-label">¿Cuál es la placa de tu
       auto?</label>
     <div class="col-md-4">
       <input id="input-notices-plate" type="text" 
@@ -28,8 +28,8 @@
     <div class="col-md-4 error-notices">
       <% if request.post? && @errors[:INVALID_USER_PLATE] %>
       <%= icon(:error) %>
-      <p class="msg">La placa no es de un auto particular de la Ciudad
-        de México.</p>
+      <p class="msg"><strong>La placa no es de un auto particular de la
+          Ciudad de México.</strong></p>
       <% end %>
     </div>
   </div>
@@ -65,14 +65,15 @@
     <div class="col-md-4 error-notices">
       <% if request.post? && @errors[:MISSING_USER_NOTICES] %>
       <%= icon(:error) %>
-      <p class="msg">Debes seleccionar por lo menos un tipo de
-        recordatorio.</p>
+      <p class="msg"><strong>Debes seleccionar por lo menos un tipo de
+        recordatorio.</strong></p>
       <% end %>
     </div>
   </div>
 
   <div class="form-group">
-    <label class="col-md-4 control-label">¿Cómo deseas recibir tus avisos?</label>
+    <label class="col-md-4 control-label">¿Cómo deseas recibir tus
+      recordatorios?</label>
     <div class="col-md-4">
       <div class="radio">
         <label><input id="radio-notices-email" type="radio"

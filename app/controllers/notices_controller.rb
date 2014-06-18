@@ -132,6 +132,9 @@ class NoticesController < ApplicationController
       if @phone.errors[:schedule].count > 0
         @errors[:MISSING_PHONE_SCHEDULE] = true
       end
+      if @phone.errors[:cellphone].count > 0
+        @errors[:MISSING_PHONE_CELLPHONE] = true
+      end
       if @errors.length > 0 
         render 'home'
       else

@@ -1,153 +1,86 @@
 <!-- notices#phone -->
-<input type="hidden" name="type" value="PHONE">
-
-<div class="row">
-  <div class="col-md-12">
-    <p class="lead">¿Cual es la placa de su auto y su número
-      de teléfono?</p>
+<div class="form-group">
+  <label for="input-notcies-phone"
+         class="col-md-4 control-label">¿Cuál es tu número
+    telefonico?</label>
+  <div class="col-md-4">
+    <input id="input-notices-phone" type="text"
+           class="form-control input-notices" 
+           <% if params[:phone].present? && params[:phone][:number].present? %>
+           value="<%= params[:phone][:number] %>"
+           <% end %>
+           placeholder="Teléfono (10 digitos)" name="phone[number]">
+  </div>
+  <div class="col-md-4 error-notices">
+    <% if request.post? && @errors[:INVALID_PHONE_NUMBER] %>
+    <%= icon(:error) %>
+    <p class="msg"><strong>El número de teléfono no es
+        valido.</strong></p>
+    <% end %>
   </div>
 </div>
 
-<% if request.post? %>
-<% if @errors[:INVALID_USER_PLATE] && @errors[:INVALID_PHONE_NUMBER] %>
-<div class="row">
-  <div class="col-md-6">
-    <div class="alert alert-warning"><strong>La placa que ingreso no es
-        de un auto particular de la Ciudad de México.</strong></div>
-  </div>
-  <div class="col-md-6">
-    <div class="alert alert-warning"><strong>El número de teléfono que
-        ingreso no es valido.</strong></div>
-  </div>
-</div>
-<% elsif @errors[:INVALID_USER_PLATE] || @errors[:INVALID_PHONE_NUMBER] %>
-<div class="row">
-  <div class="col-md-12">
-    <div class="alert alert-warning">
-      <% if @errors[:INVALID_USER_PLATE] %>
-      <strong>La placa que ingreso no es de un auto particular de la
-        Ciudad de México.</strong>
-      <% end %>
-      <% if @errors[:INVALID_PHONE_NUMBER] %>
-      <strong>El número de teléfono que ingreso no es valido.</strong>
-      <% end %>
+<div class="form-group">
+  <label class="col-md-4 control-label">¿Qué tipo de teléfono nos
+    proporcionas?</label>
+  <div class="col-md-4">
+    <div class="radio">
+      <label>
+        <input type="radio"
+               <%= phone_selected('cellphone', 'true', false) %>
+               name="phone[cellphone]" value="true">Teléfono
+        celular</label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio"
+               <%= phone_selected('cellphone', 'false', false) %>
+               name="phone[cellphone]" value="false">Número
+        fijo</label>
     </div>
   </div>
-</div>
-<% end %>
-<% end %>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="form-group">
-      <div class="row">
-        <div class="col-sm-6">
-          <input type="text" class="form-control"
-                 id="input-notices-plate" name="user[plate]"
-                 <% if request.post? && !@errors[:INVALID_USER_PLATE] %>
-                 value="<%= @params[:user][:plate] %>"
-                 <% end %>
-                 placeholder="Placa de auto">
-        </div>
-      </div>
-      <span class="help-block">Solo autos particulares de la Ciudad de
-        México</span>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="form-group">
-      <div class="row">
-        <div class="col-sm-9">
-          <input type="phone" class="form-control"
-                 id="input-notices-phone" name="phone[number]"
-                 <% if request.post? && !@errors[:INVALID_PHONE_NUMBER] %>
-                 value="<%= @params[:phone][:number] %>"
-                 <% end %>
-                 placeholder="Teléfono (10 digitos)">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="radio">
-            <label>
-              <input type="radio" name="phone[cellphone]" 
-                     <%= phone_selected('cellphone', 'true', true) %>
-                     value="true">
-              Teléfono celular
-            </label>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="radio">
-            <label>
-              <input type="radio" name="phone[cellphone]"
-                     <%= phone_selected('cellphone', 'false', false) %>
-                     value="false">
-              Teléfono fijo
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="col-md-4 error-notices">
+    <% if request.post? && @errors[:MISSING_PHONE_CELLPHONE] %>
+    <%= icon(:error) %>
+    <p class="msg"><strong>Debes seleccionar el tipo de tu
+        número telefonico.</strong></p>
+    <% end %>
   </div>
 </div>
 
-<%= render 'settings' %>
-
-<div class="row">
-  <div class="col-md-12">
-    <p class="lead">¿En que horario desea recibir sus avisos?</p>
-  </div>
-</div>
-
-<% if request.post? && @errors[:MISSING_PHONE_SCHEDULE] %>
-<div class="row">
-  <div class="col-md-12">
-    <div class="alert alert-warning"><strong>Debe seleccionar por lo
-        menos un horario.</strong></div>
-  </div>
-</div>
-<% end %>
-
-<div class="row">
-  <div class="col-md-2">
+<div class="form-group">
+  <label class="col-md-4 control-label">¿En qué horario prefieres
+    recibir tus recordatorios?</label>
+  <div class="col-md-4">
     <div class="checkbox">
-      <label class="checkbox-inline">
-        <input type="checkbox"
-               <%= schedule_checked('morning', true) %>
-               name="phone[morning]">        
-        Mañana
-        <span class="help-block">9 am a 12 pm</span>
-      </label>
+      <label><input type="checkbox"
+                    <%= schedule_checked('morning', true) %>
+                    name="phone[morning]">Mañana</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"
+                    <%= schedule_checked('afternoon', true) %>
+                    name="phone[afternoon]">Tarde</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"
+                    <%= schedule_checked('night', false) %>
+                    name="phone[night]">Noche</label>    
     </div>
   </div>
-  <div class="col-md-2">
-    <div class="checkbox">
-      <label class="checkbox-inline">
-        <input type="checkbox"
-               <%= schedule_checked('afternoon', true) %>
-               name="phone[afternoon]">        
-        Tarde
-        <span class="help-block">12 a 6 pm</span>
-      </label>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div class="checkbox">
-      <label class="checkbox-inline">
-        <input type="checkbox"
-               <%= schedule_checked('night', false) %>
-               name="phone[night]">        
-        Noche
-        <span class="help-block">6 a 9 pm</span>
-      </label>
-    </div>
+  <div class="col-md-4 error-notices">
+    <% if request.post? && @errors[:MISSING_PHONE_SCHEDULE] %>
+    <%= icon(:error) %>
+    <p class="msg"><strong>Debes seleccionar por lo
+        menos un horario.</strong></p>
+    <% end %>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12 text-center">
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-4">
     <button id="btn-notices-ok" type="submit"
-            class="btn btn-primary btn-notices-form">Continuar</button>
+            class="btn btn-primary btn-wide">Suscribirse</button>
   </div>
 </div>
+

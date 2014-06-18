@@ -1,9 +1,9 @@
 <!-- notices#email -->
 <div class="form-group">
-  <label for="input-notcies-plate"
-         class="col-md-4 control-label">¿Cual es tu correo electrónico?</label>
+  <label for="input-notcies-email"
+         class="col-md-4 control-label">¿Cuál es tu correo electrónico?</label>
   <div class="col-md-4">
-    <input id="input-notices-plate" type="text"
+    <input id="input-notices-email" type="text"
            class="form-control input-notices" 
            <% if params[:email].present? && params[:email][:address].present? %>
            value="<%= params[:email][:address] %>"
@@ -13,7 +13,8 @@
   <div class="col-md-4 error-notices">
     <% if request.post? && @errors[:INVALID_EMAIL_ADDRESS] %>
     <%= icon(:error) %>
-    <p class="msg">El correo electrónico no es valido.</p>
+    <p class="msg"><strong>El correo electrónico no es
+        valido.</strong></p>
     <% end %>
   </div>
 </div>
