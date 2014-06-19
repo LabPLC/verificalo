@@ -1,5 +1,6 @@
 body {
    padding-top: 50px;
+   padding-bottom: 20px;
 }
 
 .title {
@@ -139,11 +140,13 @@ body {
 
 /* footer */
 
-/*footer {
-    background-color: #E6E6E6;
-}
+/* footer { */
+/*     background-color: #E6E6E6; */
+/*     padding-bottom: 32000px; */
+/*     margin-bottom: -32000px; */
+/* } */
 
-footer p {
-    line-height: 49px;
-    margin-bottom: 0;
-}*/
+/* footer p { */
+/*     line-height: 49px; */
+/*     margin-bottom: 0; */
+/* } */

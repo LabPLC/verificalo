@@ -23,17 +23,12 @@
   <body style="<% if is_root?() %>padding-top: 0;<% end %>">
     <% unless is_root?() %>
     <!-- navbar -->
-    <%= render 'layouts/navbar' %>
+    <%= render 'navbar' %>
     <% end %>
 
     <!-- content -->
     <%= yield %>
-    
-    <!-- footer -->
-    <!-- <footer class="navbar navbar-fixed-bottom" role="navigation"> -->
-    <!--   <div class="container"> -->
-    <!--     <p>Código para la Ciudad de México</p> -->
-    <!--   </div> -->
-    <!-- </footer> -->
+
+    <%= render 'footer' %>
   </body>
 </html>
