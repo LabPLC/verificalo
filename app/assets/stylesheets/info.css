@@ -54,6 +54,15 @@ h2.section {
 
 /* info#_header */
 
+#header {
+    background-color: #f2f5f6;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+#header h1 {
+    color: #494b57;
+}
+
 .box-info {
     margin-bottom: 10px;
 }
@@ -79,17 +88,6 @@ h2.section {
     font-weight: bold;
 }
 
-/* info#results */
-
-h2.info {
-    color: #494b57;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    font-size: 23px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
 /* info#vin e info#registration*/
 
 #form-info {
@@ -106,7 +104,7 @@ h2.info {
 
 /* info#infracciones e info#verificaciones*/
 
-h2.history-info {
+h2.history-title {
     margin-bottom: 10px;
 }
 
@@ -125,16 +123,4 @@ h2.history-info {
 
 .empty-info {
     margin-top: 10px;
-}
-
-/* info#verificaciones */
-
-#alert-verificaciones {
-    margin-top: 15px;
-}
-
-/* info#infracciones */
-
-#alert-infracciones {
-    margin-top: 15px;
 }
