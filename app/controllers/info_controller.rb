@@ -53,8 +53,6 @@ class InfoController < ApplicationController
   end
   
   def verificaciones
-    @params = params
-    @session = session.to_hash
     @vehicle = VehicleCDMX.new(plate_param)
     if @vehicle.error
       redirect_to({ action: 'home' }, { flash: { error: @vehicle.error } })
@@ -68,12 +66,40 @@ class InfoController < ApplicationController
         return
       end
     end
+    if @vehicle.verificacion_never? && !@vehicle.registration_date_valid?
+      if session.has_key?(:registration_date)
+        @vehicle.registration_date = session[:registration_date]
+      else
+        redirect_to({ action: 'results', plate: @vehicle.plate })        
+        return
+      end
+    end
   end
   
   def infracciones
     @vehicle = VehicleCDMX.new(plate_param)
+    if @vehicle.error
+      redirect_to({ action: 'home' }, { flash: { error: @vehicle.error } })
+      return
+    end
+    if @vehicle.verificaciones_vins?
+      if session.has_key?(:vin) && session[:plate] == @vehicle.plate
+        @vehicle.user_vin = session[:vin]
+      else
+        redirect_to({ action: 'results', plate: @vehicle.plate })
+        return
+      end
+    end
+    if @vehicle.verificacion_never? && !@vehicle.registration_date_valid?
+      if session.has_key?(:registration_date)
+        @vehicle.registration_date = session[:registration_date]
+      else
+        redirect_to({ action: 'results', plate: @vehicle.plate })        
+        return
+      end
+    end
   end
-  
+
   def reset
     @params = params
     @session = session.to_hash
@@ -114,5 +140,4 @@ class InfoController < ApplicationController
     return true if reset_params[:item] == 'alta'
     false
   end
-
 end
