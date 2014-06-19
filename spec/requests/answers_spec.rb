@@ -35,8 +35,8 @@ describe 'answers views' do
     it { should have_button('Buscar') }      
 
     # content
-    it { should have_css('h3.category', count: @categories_count) }
-    it { should have_css('a.answer', count: @answers_count) }
+    it { should have_css('h2.title', count: @categories_count) }
+    it { should have_css('a.btn-answer', count: @answers_count) }
     
     describe 'category' do
       before do
@@ -44,15 +44,15 @@ describe 'answers views' do
         @answers_count = @category.answers.count
         click_link(@category.name)
       end
-      it { should have_css('h1.category', text: @category.name) }
-      it { should have_css('a.answer', count: @answers_count) }  
+      it { should have_css('h2.title', text: @category.name) }
+      it { should have_css('a.btn-wide', count: @answers_count) }
       
       describe 'answer' do
         before do
           @answer = @category.answers.first
           click_on(@answer.title)
         end
-        it { should have_css('h1.question', text: @answer.title) }
+        it { should have_css('h2.title', text: @answer.title) }
         it { should have_css('div.answer', text: @answer.body) }
       end
     end
@@ -69,7 +69,7 @@ describe 'answers views' do
     end
     it { should have_field('verificentros_query') }
     it { should have_button('Buscar') }
-    it { should have_css('#list-delegaciones p',
+    it { should have_css('a.btn-delegacion',
                          count: @delegaciones_count) }
     
     # TODO
@@ -82,7 +82,7 @@ describe 'answers views' do
         @verificentros_count = @delegacion.verificentros.count
         click_link(@delegacion.name)
       end
-      it { should have_css('h2.answer', count: @verificentros_count) }
+      it { should have_css('h5.verificentro', count: @verificentros_count) }
     end
   end
 

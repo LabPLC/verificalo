@@ -20,7 +20,8 @@
             <% next unless d %>
             <p>
               <% if d.verificentros.count > 0 %>
-              <a href="<%= url_for({ controller: 'answers', 
+              <a class="btn-delegacion"
+                 href="<%= url_for({ controller: 'answers', 
                        action: 'verificentros_delegacion',
                        delegacion_url: d.url })%>">
                 <%= d.name %></a><br/>
