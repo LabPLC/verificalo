@@ -68,7 +68,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-1 col-sm-6">
-      <h2 class="section">Recordatorios</h2>
+      <h2 class="section">
+        <a href="<%= url_for({ controller: 'notices',
+                 action: 'home' })%>">Recordatorios</a>
+      </h2>
       <p class="cta">Evita filas o multas recibiendo avisos oportunos
         sobre tus obligaciones como automovilista particular de la Ciudad
         de México.</p>
@@ -76,12 +79,15 @@
         <div class="col-xs-12">
           <a href="<%= url_for({ controller: 'notices',
                    action: 'home' })%>" id="btn-notices"
-             class="btn btn-primary pull-right">¡Suscríbete!</a>
+             class="btn btn-primary">¡Suscríbete!</a>
         </div>
       </div>
     </div>
     <div class="col-md-4 col-md-offset-2 col-sm-6">
-      <h2 class="section">Preguntas y respuestas</h2>
+      <h2 class="section">
+        <a href="<%= url_for({ controller: 'answers',
+                 action: 'home' })%>">Preguntas y respuestas</a>
+      </h2>
       <p class="cta">Encuentra verificentros, dónde pagar tus adeudos y
          todo lo que necesitas saber sobre una mejor movilidad en la
          Ciudad de México.</p>
@@ -89,7 +95,7 @@
         <div class="col-xs-12">      
           <a href="<%= url_for({ controller: 'answers',
                    action: 'home' })%>" id="btn-answers" 
-             class="btn btn-primary pull-right" href="#">Preguntar</a>
+             class="btn btn-primary">Preguntar</a>
         </div>
       </div>
     </div>

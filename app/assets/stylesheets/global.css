@@ -11,6 +11,14 @@ body {
     font-weight: bold;
 }
 
+.title a {
+    color: #494b57;
+}
+
+.title a:hover {
+    text-decoration: none;
+}
+
 /* buttons */
 
 .btn-primary, .btn-default {
@@ -34,7 +42,7 @@ body {
     border-color: #fee550;
     border-width: 1px;
     border-style: solid;
-    padding: 5px 10px;
+    padding: 10px;
     color: #268f8d;
     margin-bottom: 5px;
 }
