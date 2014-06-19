@@ -153,7 +153,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
 
 # 6
 Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2, related_3_id: 3,
-                title: '¿Cuál es la vigencia del holograma doble cero?', url: 'vigencia-doble-cero',
+                title: '¿Vigencia del holograma doble cero?', url: 'vigencia-doble-cero',
                 body: '<p>La constancia de verificación en su tipo doble cero podrá otorgarse a:</p>
 <ol>
 <li>Unidades híbridas (gasolina – electricidad) de cualquier modelo y renovarlo hasta en dos ocasiones.</li>
@@ -174,7 +174,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2,
 
 # 7
 Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2,
-                title: '¿Qué vehículos estan exentos de la verificación?', url: 'vehiculos-exentos-verificacion',
+                title: 'Autos exentos de la verificación', url: 'vehiculos-exentos-verificacion',
                 body: '<p class="lead">Vehículos exentos del Programa de Verificación Vehicular y del Acuerdo que Establece las Medidas para Limitar la Circulación de Vehículos Automotores en las en las Vialidades del Distrito Federal, para Controlar y Reducir la Contaminación Atmosférica y Contingencias Ambientales conocido como “Programa Hoy No Circula”:</td>
 <table class="table table-bordered">
 <thead><tr><th>Marca</th><th>Submarca</th></tr></thead>
@@ -196,7 +196,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2,
 
 # 8
 Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
-                title: '¿Qué hago si mi convertidor catalítico está en mal estado?', url: 'rechazo-convertidor-catalitico',
+                title: 'Convertidor catalítico en mal estado', url: 'rechazo-convertidor-catalitico',
                 body: '<p class="lead">Durante la prueba de verificación se evalúa la eficiencia del convertidor catalítico mediante la lectura de los gases de escape, generándose un rechazo en aquellas unidades de pasajeros de uso particular modelos 1991 a 2003 o de transporte público, mercantil y privado de carga, y transporte público de pasajeros modelos 1991 a 2006, cuyos convertidores catalíticos hayan perdido eficiencia en la conversión.</p>
 
 <p>La constancia de verificación no aprobatoria que se entregue deberá contener la leyenda: “Falla en la eficiencia del convertidor catalítico, debe acudir a un Taller PIREC autorizado y ubicado en el Distrito Federal o a una agencia automotriz a cambiar este dispositivo anticontaminante, así como a realizar el diagnóstico y las reparaciones necesarias al motor de su vehículo”.</p>
@@ -256,7 +256,7 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 10, related_2_id: 1
 
 # 10
 Answer.create({ category_id: 2, contact_id: 1, related_1_id: 12, related_2_id: 9,
-                title: '¿El Hoy No Circula aplica a vehículos de otros estados?', url: 'autos-otros-estados',
+                title: 'El Hoy No Circula y autos de otros estados', url: 'autos-otros-estados',
                 body: '<p class="lead">Los vehículos de combustión interna con placas del extranjero o de un estado que no sea el Distrito Federal o el Estado de México deben dejar de circular de lunes a sábado de las 5:00 a las 22:00 horas, con base en el último dígito numérico de la placa de matrícula y/o del color de la calcomanía de circulación permanente (engomado). La restricción aplica de acuerdo a lo establecido en la siguiente tabla:</p>
 
 <table class="table table-bordered">
@@ -280,7 +280,7 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 12, related_2_id: 9
 
 # 11
 Answer.create({ category_id: 2, contact_id: 1, related_1_id: 9, related_2_id: 10, related_3_id: 12,
-                title: '¿Qué vehículos estan exentos del Hoy No Circula?', url: 'vehiculos-extenos-hoy-no-circula',
+                title: 'Autos exentos del Hoy No Circula', url: 'vehiculos-extenos-hoy-no-circula',
                 body: '<p class="lead">Están exentos del Programa Hoy No Circula:</p>
 <ol>
 <li>Los vehículos que obtengan un holograma vigente “00” ó “0” como resultado de la realización de una prueba de verificación vehicular en el Distrito Federal o en los Centros de Verificación de entidades reconocidas por la Secretaría del Medio Ambiente del Gobierno del Distrito Federal (estas entidades son: Estado de México, Guanajuato, Hidalgo, Querétaro, Puebla, Morelos, Michoacán y Tlaxcala).</li>
