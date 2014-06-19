@@ -31,8 +31,7 @@ describe 'notices views' do
           fill_in('email[address]', with: FactoryGirl.generate(:address))
           click_button('Suscribirse') 
         end
-        it { should have_css('div.alert-info', 
-                             :text => /confirmar(.*)visitando la dirección/i) }
+        it { should have_content(/visita la página web que te enviamos/i) }
       end
     end
 
@@ -51,8 +50,7 @@ describe 'notices views' do
           choose('Teléfono celular')
           click_button('Suscribirse')
         end
-        it { should have_css('div.alert-info', 
-                             :text => /confirmar(.*)llamada telefonica/i) }
+        it { should have_content(/durante la llamada(.*)debes confirmar/i) }
       end
     end
   end
@@ -63,8 +61,7 @@ describe 'notices views' do
       @user = @email.user
       visit aviso_path(@user.id)
     end
-    it { should have_css('div.alert-success', 
-                         :text => /suscripción(.*)confirmada/i) }
+    it { should have_content(/tu suscripción esta confirmada/i) }
   end
 
 end
