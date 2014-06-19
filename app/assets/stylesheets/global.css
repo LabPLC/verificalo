@@ -46,14 +46,6 @@ body {
     color: #268f8d;
 }
 
-@media(max-width: 991px) and (min-width: 768px) {
-    .cta-box { margin-top: 20px; }
-}
-
-@media(max-width: 767px) {
-    .cta-box { margin-top: 35px; }
-}
-
 .cta-box h3 {
     margin-top: 0;
 }

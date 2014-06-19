@@ -94,16 +94,16 @@ h2.section a:hover {
 
 /* info#results */
 
-.cta-wrapper {
+.cta-info {
     margin-bottom: 5px;
 }
 
 @media(max-width: 991px) and (min-width: 768px) {
-    .cta-wrapper { margin-top: 20px; }
+    .cta-info { margin-top: 20px; }
 }
 
 @media(max-width: 767px) {
-    .cta-wrapper { margin-top: 35px; }
+    .cta-info { margin-top: 35px; }
 }
 
 
