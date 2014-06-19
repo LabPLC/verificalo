@@ -10,19 +10,7 @@
     <%= render 'verificacion' %>
     <!-- recordatorios -->
     <div class="col-md-4 col-sm-12">
-      <div class="cta-box">
-        <h3>Recordatorios</h3>
-        <p class="cta-msg">Evita filas o multas recibiendo avisos
-          oportunos sobre tus obligaciones como automovilista
-          particular de la Ciudad de México.</p>
-        <div class="row">
-          <div class="col-xs-12">
-            <a href="<%= url_for({ controller: 'notices',
-                     action: 'home' })%>" id="btn-notices"
-               class="pull-right">¡Suscríbete!</a>
-          </div>
-        </div>
-      </div>
+      <%= render 'cta' %>
     </div>
   </div>
 </div>
