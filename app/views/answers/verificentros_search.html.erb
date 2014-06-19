@@ -1,26 +1,29 @@
+<%= render 'search' %>
+
+<% content_for :parent do %>
+<p><a href="<%= url_for({ controller: 'answers',
+            action: 'verificentros' })%>">
+    Regresar &raquo;</a></p>    
+<% end %>
+
 <!-- answers#verificentros_query -->
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1 class="question">Verificentros más cercanos</h1>
-    </div>
-  </div>
-  
-  <% content_for :parent do %>
-  <p><a href="<%= url_for({ controller: 'answers',
-              action: 'verificentros' })%>">
-      Regresar a Verificentros &raquo;</a></p>    
-  <% end %>
-  
-  <div class="row">
     <div class="col-md-8">
+      <h2 class="title title-back">Verificentros más cercanos</h2>
+      <%= render 'back' %>
       <div class="answer">
         <%= render 'verificentros_search' %>
         <% if @verificentros %>
         <% if @verificentros.count < 1 %>
-           <div class="alert alert-warning"><strong>No hay
-               resultados:</strong> Verifique la colonia o código postal que
-             ingreso.</div>  
+           <div class="row">
+             <div class="col-xs-12 error-answers">
+               <%= icon(:error) %>
+               <p class="msg"><strong>No hay resultados.</strong></p>
+               <p class="msg">Verifique la colonia o código postal que
+                 ingreso.</p>  
+             </div>
+           </div>
            <% else %>
            <% @verificentros.each_slice(2) do |r| %>
            <div class="row">
@@ -29,9 +32,14 @@
            <% end %>
            <% end %>
            <% else %>
-           <div class="alert alert-warning"><strong>Intente más
-               tarde:</strong> Tenemos problemas técnicos en la busqueda de
-             verificentros.</div>
+           <div class="row">
+             <div class="col-xs-12 error-answers">
+               <%= icon(:error) %>
+               <p class="msg"><strong>Intente más tard.</strong></p>
+               <p class="msg">Tenemos problemas técnicos en la busqueda
+                 de verificentros.</p>
+             </div>
+           </div>
            <% end %>
       </div>
     </div>

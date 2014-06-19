@@ -1,13 +1,11 @@
+<%= render 'search' %>
+
 <!-- answers#answer -->
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h1 class="question"><%= @answer.title %></h1>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-8">
+      <h2 class="title title-back"><%= @answer.title %></h2>
+      <%= render 'back' %>
       <div class="answer">
         <%= @answer.body.html_safe %>
       </div>

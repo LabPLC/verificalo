@@ -35,8 +35,7 @@ module AnswersHelper
 
   def parent_search?
     return false unless request.referer
-    search_url = url_for({ controller: 'answers', action: 'search' }) + '?'
-    if request.referer.match(/#{Regexp.escape(search_url)}/)
+    if request.referer.match(/q=.+/)
       return true
     end
     false

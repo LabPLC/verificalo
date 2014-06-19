@@ -1,0 +1,16 @@
+<% if parent_search? %>
+<p><a href="<%= url_for({ controller: 'answers',
+            action: 'home', q: session[:q] })%>">
+    Regresar &raquo;</a></p>  
+<% elsif parent_category? %>
+<p><a href="<%= url_for({ controller: 'answers',
+            action: 'category', 
+            category_url: @answer.category.url })%>">
+    Regresar &raquo;</a></p>  
+<% elsif content_for?(:parent) %>
+<%= yield :parent %>
+<% else %>
+<p><a href="<%= url_for({ controller: 'answers',
+            action: 'home' })%>">
+    Regresar &raquo;</a></p>
+<% end %>

@@ -1,0 +1,22 @@
+<% @categories.each_slice(2) do |r| %>
+<div class="row">
+  <% r.each do |c| %>
+  <div class="col-sm-6">
+    <h2 class="title">
+      <a href="<%= url_for({ controller: 'answers',
+               action: 'category',
+               category_url: c.url })%>"><%= c.name %></a>
+    </h2>
+    <%= render partial: 'answer', collection: c.top_answers %>
+    <% if c.more_answers? %>
+    <p><a  class="btn btn-primary btn-sm btn-wide"
+           href="<%= url_for({ controller: 'answers',
+                 action: 'category',
+                 category_url: c.url })%>">
+        Ver más sobre <%= c.name %></a></p>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<% end %>
+

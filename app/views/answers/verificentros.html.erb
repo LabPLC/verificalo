@@ -1,23 +1,21 @@
+<%= render 'search' %>
+
 <!-- answers#verificentros -->
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1 class="question">¿Donde puedo verificar mi auto?</h1>
-    </div>
-  </div>
-  
-  <div class="row">
     <div class="col-md-8">
+      <h2 class="title title-back">¿Donde puedo verificar mi auto?</h1>
+      <%= render 'back' %>
       <div class="answer">
         <p class="lead">Existen <%= @verificentros_count %> verificentros
           en la Ciudad de México donde puede llevar su auto a
           verificar.</p>
-        <h2>Encuentre los verificentros más cercanos</h2>
+        <h4 class="title">Encuentre los verificentros más cercanos</h4>
         <%= render 'verificentros_search' %>
-        <h2>Consulte verificentros por delegación</h2>
-        <div id="list-delegaciones" class="row">
-          <% @delegaciones.in_groups_of((@delegaciones.count.to_f/3).ceil) do |g| %>
-          <div class="col-md-4">
+        <h4 class="title">Verificentros por delegación</h4>
+        <div class="row">
+          <% @delegaciones.in_groups_of((@delegaciones.count.to_f/2).ceil) do |g| %>
+          <div class="col-sm-6">
             <% g.each do |d| %>
             <% next unless d %>
             <p>
@@ -38,7 +36,7 @@
             <% end %>
           </div>
           <% end %>
-      </div>
+        </div>
       </div>
     </div>
     <%= render 'sidebar' %>

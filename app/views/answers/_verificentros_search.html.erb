@@ -1,7 +1,7 @@
 <%= form_tag({ controller: 'answers', action: 'verificentros_search' },
     { method: 'post', id: 'form-verificentros' }) do %>
 <div class="row">
-  <div class="col-md-6 col-sm-6">
+  <div class="col-md-9 col-sm-10">
     <input name="verificentros_query" type="text" 
            placeholder="Colonia o código postal"
            <% if request.post? and params[:verificentros_query].present? %>
@@ -9,11 +9,9 @@
            <% end %>
            class="form-control input">
   </div>
-  <div class="col-md-2 col-sm-4">
+  <div class="col-md-2 col-sm-2">
     <button id="btn-verificentros-search" type="submit"
             class="btn btn-primary btn">Buscar</button>
   </div>
 </div>
 <% end %>
-<p class="help-block">Ingrese su colonia o código postal y haga
-  click en el botón buscar.</p>

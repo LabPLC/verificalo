@@ -44,7 +44,6 @@ body {
     border-style: solid;
     padding: 10px;
     color: #268f8d;
-    margin-bottom: 5px;
 }
 
 @media(max-width: 991px) and (min-width: 768px) {
@@ -90,6 +89,15 @@ body {
 
 .msg {
     margin-left: 30px;
+}
+
+.bullet {
+    margin-top: 4px;
+    float: left;
+}
+
+.item {
+    margin-left: 25px;
 }
 
 /* navbar */

@@ -2,6 +2,13 @@ class AnswersController < ApplicationController
 
   def home
     @categories = Category.order("priority ASC")
+    return unless search_param[:q].present?
+    begin
+      @results = Answer.search(search_param[:q], suggest: true)
+      session[:q] = search_param[:q]
+    rescue
+      return
+    end
   end
 
   def category
@@ -26,16 +33,6 @@ class AnswersController < ApplicationController
     end
   end
   
-  def search
-    @categories = Category.order("priority ASC")
-    begin
-      @answers = Answer.search(search_param[:q], suggest: true)
-      session[:q] = search_param[:q]
-    rescue
-      return
-    end
-  end
-
   def verificentros
     @answer = Answer.find(3)
     answer_view(@answer.id)

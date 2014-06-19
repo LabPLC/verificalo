@@ -24,6 +24,12 @@ module ApplicationHelper
       '<span class="glyphicon glyphicon-exclamation-sign red icon"></span>'.html_safe
     elsif type == :question
       '<span class="glyphicon glyphicon-question-sign blue icon"></span>'.html_safe
+    elsif type == :phone
+      '<span class="glyphicon glyphicon-earphone bullet"></span>'.html_safe
+    elsif type == :mail
+      '<span class="glyphicon glyphicon-envelope bullet"></span>'.html_safe
+    elsif type == :address
+      '<span class="glyphicon glyphicon-home bullet"></span>'.html_safe
     end
   end
 end

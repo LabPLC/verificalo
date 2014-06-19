@@ -1,19 +1,18 @@
+<%= render 'search' %>
+
+<% content_for :parent do %>
+<p><a href="<%= url_for({ controller: 'answers',
+            action: 'verificentros' })%>">
+    Regresar &raquo;</a></p>    
+<% end %>
+
 <!-- answers#verificentros_delegacion -->
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1 class="question">Verificentros en <%= @delegacion.name %></h1>
-    </div>
-  </div>
-  
-  <% content_for :parent do %>
-  <p><a href="<%= url_for({ controller: 'answers',
-              action: 'verificentros' })%>">
-      Regresar a Verificentros &raquo;</a></p>    
-  <% end %>
-  
-  <div class="row">
     <div class="col-md-8">
+      <h2 class="title title-back">Verificentros en
+        <%= @delegacion.name %></h2>
+      <%= render 'back' %>
       <div class="answer">
         <% @verificentros.each_slice(2) do |r| %>
         <div class="row">

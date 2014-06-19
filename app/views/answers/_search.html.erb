@@ -1,19 +1,38 @@
-<%= form_tag({ controller: 'answers', action: 'search' },
-             { method: 'get', id: 'form-answers' }) do %>
-<div class="row">
-  <div class="col-sm-9">
-    <input name="q" type="text" 
-           placeholder="Hoy no circula, verificación, etc"
-           <% if params[:q].present? %>
-           value="<%= params[:q] %>"
-           <% end %>
-           class="form-control input">
+<!-- answers#_search -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title">Preguntas y respuestas</h1>
+    </div>
   </div>
-  <div class="col-sm-3">
-    <button id="btn-answers-search" type="submit"
-            class="btn btn-primary btn">Buscar</button>
+  <div class="row">
+    <%= form_tag({ controller: 'answers', action: 'home' },
+        { method: 'get', id: 'form-answers' }) do %>
+    <div class="col-md-6 col-sm-10">
+      <input name="q" type="text" 
+             placeholder="Intenta con hoy no circula, verificación, etc"
+             <% if params[:q].present? %>
+             value="<%= params[:q] %>"
+             <% end %>
+             class="form-control">
+    </div>
+    <div class="col-md-2 col-sm-2">
+      <button type="submit" class="btn btn-primary">Buscar</button>
+      <% end %>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-md-8 col-sm-12 error-answers">
+      <% if @results && @results.count < 1 %>
+      <%= icon(:error) %>
+      <p class="msg"><strong>No hay resultados.</strong></p>
+      <p class="msg">Intente con otros térmios de busqueda.</p>
+      <% elsif params[:q].present? && !@results %>
+      <%= icon(:error) %>
+      <p class="msg"><strong>Intente más tarde.</strong></p>
+      <p class="msg">Tenemos problemas técnicos en la busqueda de
+        respuestas.</p>      
+      <% end %>
+    </div>
+  </div>  
 </div>
-<% end %>    
-<p class="help-block">Ingrese los terminos de su pregunta y haga
-  click en el botón buscar.</p>

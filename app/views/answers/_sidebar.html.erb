@@ -1,64 +1,51 @@
 <div class="col-md-4">
-  <% if parent_search? %>
-  <p><a href="<%= url_for({ controller: 'answers',
-              action: 'search', q: session[:q] })%>">
-      Regresar a Buscar &raquo;</a></p>  
-  <% elsif parent_category? %>
-  <p><a href="<%= url_for({ controller: 'answers',
-              action: 'category', 
-              category_url: @answer.category.url })%>">
-      Regresar a <%= @answer.category.name %> &raquo;</a></p>  
-  <% elsif content_for?(:parent) %>
-  <%= yield :parent %>
-  <% else %>
-  <p><a href="<%= url_for({ controller: 'answers',
-              action: 'home' })%>">
-      Regresar a Respuestas &raquo;</a></p>
-  <% end %>
-
-  <div id="answer-sidebar">
+  <div id="sidebar-answer">
     <% if @answer.contact %>
-    <h2>¿Más información?</h2>
-    <p>Contacte a <strong><%= @answer.contact.name %></strong></p>
-    <% if @answer.contact.phone %>
-    <p><a href="tel:<%= @answer.contact.phone %>">
-        <%= @answer.contact.phone %></a>
-      <% if @answer.contact.phone_schedule %>
-      (<%= @answer.contact.phone_schedule %>)
+    <div class="cta-box">
+      <h3>¿Más información?</h3>
+      <p class="cta-msg">Contacte a 
+        <strong><%= @answer.contact.name %></strong></p>
+      <% if @answer.contact.phone %>
+      <%= icon(:phone) %>
+      <p class="cta-msg item">
+        <a href="tel:<%= @answer.contact.phone %>">
+          <%= @answer.contact.phone %></a>
+        <% if @answer.contact.phone_schedule %>
+        (<%= @answer.contact.phone_schedule %>)
+        <% end %>
+      </p>
       <% end %>
-    </p>
-    <% end %>
-    <% if @answer.contact.email %>
-    <p><a href="mailto:<%= @answer.contact.email %>">
-        <%= @answer.contact.email %></a>
-    </p>
-    <% end %>
-    <% if @answer.contact.address %>
-    <p>
-      <% if gmap?(@answer.contact) %>
-      <a href="<%= gmap(@answer.contact) %>" target="_blank">
+      <% if @answer.contact.email %>
+      <%= icon(:mail) %>
+      <p class="cta-msg item">
+        <a href="mailto:<%= @answer.contact.email %>">
+          <%= @answer.contact.email %></a>
+      </p>
+      <% end %>
+      <% if @answer.contact.address %>
+      <%= icon(:address) %>
+      <p class="cta-msg item">
+        <% if gmap?(@answer.contact) %>
+        <a href="<%= gmap(@answer.contact) %>" target="_blank">
+          <%= @answer.contact.address %>
+        </a>
+        <% else %>
         <%= @answer.contact.address %>
-      </a>
-      <% else %>
-      <%= @answer.contact.address %>
+        <% end %>
+        <% if @answer.contact.address_schedule %>
+        (<%= @answer.contact.address_schedule %>)
+        <% end %>
+      </p>
       <% end %>
-      <% if @answer.contact.address_schedule %>
-      (<%= @answer.contact.address_schedule %>)
-      <% end %>
-    </p>
+    </div>
     <% end %>
-    <% end %>
-    
-    <h2>Respuestas relacionadas</h2>
-    <% related(@answer).each do |r| %>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'answer',
-                category_url: r.category.url,
-                answer_url: r.url })%>"><%= r.title %></a></p>
-    <% end %>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'category',
-                category_url: @answer.category.url })%>">
-        Más respuestas sobre  <%= @answer.category.name %></a></p>
+
+    <h4 class="title">Preguntas y respuestas relacionadas</h4>
+    <%= render partial: 'answer', collection: related(@answer) %>
+    <p><a  class="btn btn-primary btn-sm btn-wide"
+           href="<%= url_for({ controller: 'answers',
+                 action: 'category',
+                 category_url: @answer.category.url })%>">
+        Ver más sobre <%= @answer.category.name %></a></p>
   </div>
 </div>

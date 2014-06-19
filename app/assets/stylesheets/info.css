@@ -92,6 +92,21 @@ h2.section a:hover {
     font-weight: bold;
 }
 
+/* info#results */
+
+.cta-wrapper {
+    margin-bottom: 5px;
+}
+
+@media(max-width: 991px) and (min-width: 768px) {
+    .cta-wrapper { margin-top: 20px; }
+}
+
+@media(max-width: 767px) {
+    .cta-wrapper { margin-top: 35px; }
+}
+
+
 /* info#vin e info#registration*/
 
 #form-info {
