@@ -18,6 +18,8 @@
              class="form-control input-notices" 
              <% if params[:user].present? && params[:user][:plate].present? %>
              value="<%= params[:user][:plate] %>"
+             <% elsif session.has_key?(:plate) %>
+             value="<%= session[:plate] %>"
              <% end %>
              placeholder="Placa" name="user[plate]">
     </div>
