@@ -1,15 +1,11 @@
 <!-- notices#home -->
-<div id="header">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h1 class="alone">Suscribirse a recordatorios</h1>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title">Suscribirse a recordatorios</h1>
     </div>
   </div>
-</div>
 
-<div class="container">
   <%= form_tag({ controller: 'notices', action: 'home' },
       { method: 'post', id: 'form-notices', class: 'form-horizontal' }) do %>
   

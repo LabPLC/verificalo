@@ -1,11 +1,11 @@
 /* notices#home */
 
-#form-notices {
-    margin-top: 30px;
-}
-
 #form-notices label {
     text-align: left;
+}
+
+#btn-notices-error {
+    margin-top: 5px;
 }
 
 @media(max-width: 991px) {
@@ -15,4 +15,3 @@
     .error-notices p { margin-bottom: 0; }
     #form-notices button { margin-top: 10px; }
 }
-

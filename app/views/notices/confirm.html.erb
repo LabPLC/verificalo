@@ -1,22 +1,24 @@
 <!-- notices#confirm -->
 <div class="container">
   <div class="row">
-    <div class="col-md-offset-2 col-md-8 text-center">
-      <h1>Avisos</h1>
+    <div class="col-xs-12">
+      <h1 class="title">Suscribirse a recordatorios</h1>
     </div>
   </div>
   
   <!-- confirmacion -->
   <div class="row">
-    <div class="col-md-offset-2 col-md-8">
+    <div class="col-md-8 col-sm-12">
       <% if @error %>
-      <div class="alert alert-warning">
-        <strong>Error al confirmar la suscripción:</strong>
-        La dirección no es valida.</div>
+      <%= icon(:error) %>
+      <p class="msg"><strong>Ocurrio un error.</strong></p> 
+      <p class="msg">La dirección no es valida.</p>
       <% else %>
-      <div class="alert alert-success">La suscripción a los avisos de su
-      auto con placa <strong><%= @user.plate %></strong> esta
-        confirmada.</div>
+      <%= icon(:ok) %>
+      <p class="msg"><strong>Tu suscripción esta confirmada.</strong></p> 
+      <p class="msg">Recibiras los recordatorios de tu
+        auto con placa <strong><%= @user.plate %></strong> en tu correo
+        electrónico.</p>
       <% end %>
     </div>
   </div>

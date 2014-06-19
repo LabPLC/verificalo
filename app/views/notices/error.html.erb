@@ -1,24 +1,25 @@
 <!-- notices#error -->
 <div class="container">
   <div class="row">
-    <div class="col-md-offset-2 col-md-8 text-center">
-      <h1>Avisos</h1>
+    <div class="col-xs-12">
+      <h1 class="title">Suscribirse a recordatorios</h1>
     </div>
   </div>
   
   <!-- error -->
   <div class="row">
-    <div class="col-md-offset-2 col-md-8">
-      <div class="alert alert-warning"><strong>Ocurrio un
-          error: </strong>Vuelva a intentar registrarse, si el error
-        continua intente más tarde.</div>
+    <div class="col-md-8 col-sm-12">
+      <%= icon(:error) %>
+      <p class="msg"><strong>Ocurrio un error.</strong></p> 
+      <p class="msg">Vuelve a intentar suscribirte, si el error
+        continua intenta más tarde.</p>
     </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-offset-2 col-md-8 text-center">
-      <a href="<%= url_for({ controller: 'notices', action: 'home' })%>"
-         id="btn-notices-error" class="btn btn-primary">Regresar</a>
+    
+    <div class="col-xs-12">
+      <p class="msg"><a href="<%= url_for({ controller: 'notices',
+                              action: 'home' })%>"
+                        id="btn-notices-error"
+                        class="btn btn-primary">Regresar</a></p>
     </div>
   </div>
 </div>
