@@ -20,7 +20,7 @@
     </script>
   </head>
 
-  <body style="<% if is_root?() %>padding-top: 0;<% end %>">
+  <body style="<% if is_root?() %>padding-top: 0;<% end %><% if is_about?() %>margin-bottom: 0;<% end %>">
     <% unless is_root?() %>
     <!-- navbar -->
     <%= render 'navbar' %>
@@ -29,6 +29,9 @@
     <!-- content -->
     <%= yield %>
 
+    <% unless is_about?() %>
+    <!-- footer -->
     <%= render 'footer' %>
+    <% end %>
   </body>
 </html>
