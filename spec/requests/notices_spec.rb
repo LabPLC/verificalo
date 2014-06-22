@@ -23,11 +23,11 @@ describe 'notices views' do
     it { should have_field('user[adeudos]', :checked) }
     it { should have_field('user[no_circula_weekday]', :unchecked) }
     it { should have_field('user[no_circula_weekend]', :checked) }
-    it { should have_field('Correo electrónico') }
-    it { should have_field('Llamada telefónica') }
+    # it { should have_field('Correo electrónico') }
+    # it { should have_field('Llamada telefónica') }
     
-    describe 'via email', :js => true do
-      before { choose('Correo electrónico') }
+    # describe 'via email', :js => true do
+      # before { choose('Correo electrónico') }
       it { should have_field('email[address]') }
       it { should have_button('Suscribirse') }
       describe 'submit' do
@@ -38,26 +38,26 @@ describe 'notices views' do
         end
         it { should have_content(/visita la página web que te enviamos/i) }
       end
-    end
+    # end
 
-    describe 'via phone', :js => true do
-      before { choose('Llamada telefónica') }
-      it { should have_field('phone[number]') }
-      it { should have_field('phone[cellphone]') }
-      it { should have_field('phone[morning]', :checked) }
-      it { should have_field('phone[afternoon]', :checked) }
-      it { should have_field('phone[night]', :unchecked) }
-      it { should have_button('Suscribirse') }
-      describe 'submit' do
-        before do
-          fill_in('user[plate]', with: FactoryGirl.generate(:plate))
-          fill_in('phone[number]', with: FactoryGirl.generate(:number))
-          choose('Teléfono celular')
-          click_button('Suscribirse')
-        end
-        it { should have_content(/durante la llamada(.*)debes confirmar/i) }
-      end
-    end
+  #   describe 'via phone', :js => true do
+  #     before { choose('Llamada telefónica') }
+  #     it { should have_field('phone[number]') }
+  #     it { should have_field('phone[cellphone]') }
+  #     it { should have_field('phone[morning]', :checked) }
+  #     it { should have_field('phone[afternoon]', :checked) }
+  #     it { should have_field('phone[night]', :unchecked) }
+  #     it { should have_button('Suscribirse') }
+  #     describe 'submit' do
+  #       before do
+  #         fill_in('user[plate]', with: FactoryGirl.generate(:plate))
+  #         fill_in('phone[number]', with: FactoryGirl.generate(:number))
+  #         choose('Teléfono celular')
+  #         click_button('Suscribirse')
+  #       end
+  #       it { should have_content(/durante la llamada(.*)debes confirmar/i) }
+  #     end
+  #   end
   end
   
   describe 'confirm user email' do

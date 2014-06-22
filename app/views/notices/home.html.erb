@@ -69,26 +69,26 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label class="col-md-4 control-label">¿Cómo deseas recibir tus
-      recordatorios?</label>
-    <div class="col-md-4">
-      <div class="radio">
-        <label><input id="radio-notices-email" type="radio"
-                      class="radio-notices-type"
-                      <%= type_selected('type', 'EMAIL') %>
-                      name="type" value="EMAIL">Correo electrónico</label>
-      </div>
-      <div class="radio">
-        <label><input id="radio-notices-phone" type="radio"
-                      class="radio-notices-type"
-                      <%= type_selected('type', 'PHONE') %>
-                      name="type" value="PHONE">Llamada telefónica</label>
-      </div>
-    </div>
-    <div class="col-md-4 error-notices"></div>
-  </div>
-
+  <input type="hidden" name="type" value="EMAIL">
+  <!-- <div class="form-group"> -->
+  <!--   <label class="col-md-4 control-label">¿Cómo deseas recibir tus -->
+  <!--     recordatorios?</label> -->
+  <!--   <div class="col-md-4"> -->
+  <!--     <div class="radio"> -->
+  <!--       <label><input id="radio-notices-email" type="radio" -->
+  <!--                     class="radio-notices-type" -->
+  <!--                     <%= type_selected('type', 'EMAIL') %> -->
+  <!--                     name="type" value="EMAIL">Correo electrónico</label> -->
+  <!--     </div> -->
+  <!--     <div class="radio"> -->
+  <!--       <label><input id="radio-notices-phone" type="radio" -->
+  <!--                     class="radio-notices-type" -->
+  <!--                     <%= type_selected('type', 'PHONE') %> -->
+  <!--                     name="type" value="PHONE">Llamada telefónica</label> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!--   <div class="col-md-4 error-notices"></div> -->
+  <!-- </div> -->
   
   <% if request.post? && params[:type] %>
   <div id="notices-subform">
@@ -99,7 +99,10 @@
     <% end %>
   </div>
   <% else %>
-  <div id="notices-subform" style="display: none;"></div>
+  <!-- <div id="notices-subform" style="display: none;"></div> -->
+  <div id="notices-subform">
+    <%= render 'email' %>    
+  </div>
   <% end %>
 
   <% end %>
