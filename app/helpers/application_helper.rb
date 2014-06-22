@@ -7,6 +7,14 @@ module ApplicationHelper
     end
   end
 
+  def is_about?()
+    if params[:controller] == 'static_pages' && params[:action] == 'about'
+      true
+    else
+      false
+    end
+  end
+
   def is_active?(controller)
     if params[:controller] == controller
       'active'
@@ -30,6 +38,10 @@ module ApplicationHelper
       '<span class="glyphicon glyphicon-envelope bullet"></span>'.html_safe
     elsif type == :address
       '<span class="glyphicon glyphicon-home bullet"></span>'.html_safe
+    elsif type == :web
+      '<span class="glyphicon glyphicon-globe bullet"></span>'.html_safe
+    elsif type == :wrench
+      '<span class="glyphicon glyphicon-wrench bullet"></span>'.html_safe
     end
   end
 end

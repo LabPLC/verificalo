@@ -1,0 +1,12 @@
+@media(max-width: 991px) {
+    .about-box { margin-top: 35px; }
+}
+
+.thanks {
+    background-color: #268f8d;
+    margin-top: 40px;
+}
+
+.thanks img {
+    margin: 30px auto;
+}

@@ -1,14 +1,93 @@
 <!-- static_pages#about -->
-<h1>Acerca de Verifícalo</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title">Acerca de Verifícalo</h1>
+    </div>
+    <div class="col-md-8">
+      <p>Para que un automovilista de la Ciudad de México tenga toda la
+        información necesaria para cumplir con sus obligaciones debe
+        consultar diferentes recursos desconectados: el último
+        certificado de verificación &mdash;el cual es un papel
+        impreso&mdash; y dos páginas de internet diferentes.</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-nunc ligula, pulvinar at ullamcorper in, ornare porta leo. Maecenas
-lobortis ultricies egestas. Quisque ac pretium magna, et laoreet
-tellus. Morbi placerat nisi sapien, mattis bibendum nisi blandit
-non. Pellentesque eu turpis lorem. Sed diam massa, dictum ut laoreet
-vitae, iaculis quis felis. Nullam ante erat, suscipit at leo vitae,
-feugiat gravida metus. Integer ut magna vestibulum, accumsan sapien
-nec, eleifend mi.</p>
+      <p>Este es un problema que aborda Verifícalo, ya que funciona
+        como un centro de información que se alimenta de datos de
+        diferentes secretarías para que los automovilistas encuentren
+        toda la información que necesitan para cumplir sus
+        obligaciones.</p>
+
+      <p>Además, mediante un simple registro los automovilistas pueden
+        recibir en su correo electrónico recordatorios sobre:</p>
+      
+      <ul>
+        <li>El próximo periodo para verificar su auto.</li>
+        <li>Los días de la semana en que no pueden circular.</li>
+        <li>Adeudos de infracciones e impuestos.</li>
+      </ul>
+
+      <p>El objetivo de Verifícalo es contribuir a mejorar la cultura
+        cívica alrededor del uso del automóvil privado.</p>
+      
+      <p>Esta aplicación fue desarrollada
+        por <a href="http://twitter.com/manuelrabade">Manuel Rábade</a>
+        con ayuda de <a href="http://twitter.com/_betoman">Alberto
+        Barquin</a> durante el
+        programa <a href="http://codigo.labplc.mx">Código para la
+        Ciudad de México</a>.
+
+      <p>Agradecemos a
+        la <a href="http://www.sedema.df.gob.mx">Secretaria de
+          Medio Ambiente</a> y a
+        la <a href="http://www.finanzas.df.gob.mx">Secretaria de
+          Finanzas</a> por su colaboración en la apertura de datos
+        que hacen posible a este proyecto.</p>
+      
+      <p>Verifícalo es Software Libre y cualquiera puede replicar o
+        mejorar la aplicación, te invitamos a visitar su
+        su <a href="http://github.com/LabPLC/verificalo">deposito en
+        GitHub</a>.</p>
+    </div>
+    <div class="col-md-4">
+      <div class="cta-box about-box">
+        <%= icon(:mail) %>
+        <p class="item">
+          <a href="mailto:contacto@verificalo.mx">contacto@verificalo.mx</a></p>
+        <%= icon(:web) %>
+        <p class="item">
+          <a href="http://codigo.labplc.mx">codigo.labplc.mx</a></p>
+        <%= icon(:wrench) %>
+        <p class="item">
+          <a href="http://github.com/labplc/verificalo">github.com/labplc/verificalo</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="row thanks">
+    <div class="col-md-4 col-sm-6">
+      <a href="http://cdmx.gob.mx">
+        <img class="img-responsive" alt="Ciudad de México"
+             src="<%= asset_path('cdmx.png') %>"></a>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <a href="http://sedema.df.gob.mx">
+        <img class="img-responsive" alt="Secretaria del Medio Ambiente"
+             src="<%= asset_path('sedema.png') %>"></a>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <a href="http://labplc.mx">
+        <img class="img-responsive" alt="Laboratorio para la Ciudad"
+             src="<%= asset_path('labplc.png') %>"></a>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <a href="http://codeforamerica.org">
+        <img class="img-responsive" alt="Code for America"
+             src="<%= asset_path('cfa.png') %>"></a>
+    </div>
+    <div class="col-md-8">
+      <a href="http://codigo.labplc.mx">
+        <img class="img-responsive" alt="Código para la Ciudad de México"
+             src="<%= asset_path('codigocdmx.png') %>"></a>
+</div>
 
 <!-- analytics -->
 <script>
