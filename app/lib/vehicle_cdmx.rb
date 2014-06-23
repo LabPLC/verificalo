@@ -266,7 +266,7 @@ module VehicleCDMX
 
     def verificacion_current_period
       return false unless self.verificacion_current?
-      (self.verificacion_current_vigency.clone << 2) + 1
+      self.verificacion_current_vigency.beginning_of_month.prev_month
     end
     
     def verificacion_expired?
