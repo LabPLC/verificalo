@@ -25,11 +25,16 @@
 .jumbotron .icon {
     font-size: 20px;
     float: left;
-    margin-top: 18px !important;
+    margin-top: 18px;
+}
+
+.jumbotron .error {
+    margin: 15px 0 0 30px;
+    font-size: 18px;    
 }
 
 .jumbotron .msg {
-    margin: 15px 0 0 30px !important;
+    margin: 5px 0 0 30px;
     font-size: 18px;
 }
 
@@ -53,6 +58,7 @@ h2.section a:hover {
 @media(max-width: 480px) {
     .jumbotron h1 { font-size: 40px; }
     .jumbotron p { font-size: 18px; }
+    .jumbotron .error { font-size: 16px; }
     .jumbotron .msg { font-size: 16px; }
 }
 

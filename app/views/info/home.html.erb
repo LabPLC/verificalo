@@ -45,17 +45,16 @@
           <div class="col-lg-10 col-lg-offset-1
                       col-xs-12">
             <%= icon(:error) %>
-            <p class="msg"><strong>La placa no es de un auto
+            <p class="error"><strong>La placa no es de un auto
                 particular de la Ciudad de México.</strong></p>
           </div>
           <% else %>
           <div class="col-lg-10 col-lg-offset-1
                       col-xs-12">
             <%= icon(:error) %>
-            <p class="msg"><strong>Intenta más
-                tarde</strong></p>
-            <p class="msg">Tenemos problemas técnicos para
-              consultar el estado de tu auto.</p>
+            <p class="error"><strong>Vuelve a intentar.</strong></p>
+            <p class="msg">Tuvimos problemas técnicos en la consulta de
+              información.</p>
           </div>
           <% end %>
           <% end %>
