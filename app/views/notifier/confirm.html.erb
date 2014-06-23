@@ -1,11 +1,47 @@
 <!-- notifier#confirm -->
-<h1>Confirme su suscripción</h1>
+<% content_for :title do %>Confirma tu suscripción<% end %>
 
-<p>Para confirmar que desea recibir en su correo electrónico los avisos
-  de su auto con placa <strong><%= @user.plate %></strong> visite la
-  siguiente dirección:</p>
+<p style="margin: 20px 0;">Confirma que deseas recibir en tu
+  correo electrónico los recordatorios sobre:</p>
 
-<a href="<%= url_for(controller: 'notices', action: 'confirm', user: @user.id, only_path: false) %>">
-  <%= url_for(controller: 'notices', action: 'confirm', user: @user.id, only_path: false) %></a>
+<ul>
+  <% if @user.verificacion %>
+  <li style="margin: 5px"><strong>Verificación</strong></li>
+  <% end %>
 
-<p>Gracias y saludos.</p>
+  <% if @user.adeudos %>
+  <li style="margin: 5px">
+    <strong>Adeudos de tenencias e infracciones</strong></li>
+  <% end %>
+  
+  <% if @user.no_circula_weekday %>
+  <li style="margin: 5px">
+    <strong>Hoy no circula de lunes a viernes</strong></li>
+  <% end %>
+  
+  <% if @user.no_circula_weekend %>
+  <li style="margin: 5px">
+    <strong>Hoy no circula sabatino</strong></li>
+  <% end %>
+</ul>
+
+<p style="margin: 20px 0;">De tu auto con placa 
+  <strong><%= @user.plate %></strong>.</p>
+
+<p style="margin: 20px 0; text-align: center;">
+  <a style="font-size: 21px; padding: 40px 0;"
+     href="<%= url_for(controller: 'notices', 
+           action: 'confirm', user: @user.id,
+           only_path: false) %>">Confirmar</a>
+</p>
+
+<p style="margin: 20px 0;">O haz click en el siguiente link:</p>
+
+<p style="margin: 20px 0;">
+  <a href="<%= url_for(controller: 'notices', 
+           action: 'confirm', user: @user.id, 
+           only_path: false) %>">
+    <%= url_for(controller: 'notices', 
+        action: 'confirm', 
+        user: @user.id, 
+        only_path: false) %></a><p>

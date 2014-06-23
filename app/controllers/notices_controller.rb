@@ -37,7 +37,6 @@ class NoticesController < ApplicationController
     end
     @user.confirmed_at = Time.now
     @user.save
-    Notifier.welcome(@user).deliver
   end
 
   private

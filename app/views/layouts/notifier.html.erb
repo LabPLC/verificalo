@@ -4,36 +4,54 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
   </head>
-  <body style="margin: 0; padding: 0; font-size: 15px;
+  <body style="font-size: 15px; 
                font-family: 'Open Sans',Calibri,Candara,Arial,sans-serif;">
-    <table style="width: 100%; padding: 0;">
+    <table align="center" cellpading="0" cellspacing="0" border="0" width="600"
+           style="border: 1px solid #fee550;">
       <!-- header -->
       <tr>
-        <td style="width: 100%; height: 50px; background-color: #007FFF;">
-          <table style="width: 100%;">
-            <tr>
-              <td style="width: 50%; padding-left: 15px;">
-                <a href="<%= root_path %>"
-                   style="color: #ffffff; font-size: 19px; text-decoration: none;">Verifícalo</a>
-              </td>
-              <td style="width: 50%; text-align: right; padding-right: 15px;">
-                <!-- <a href="<%= url_for(controller: 'static_pages', action: 'about', only_path: false) %>"
-                   style="color: #ffffff; font-size: 15px; text-decoration: none;">Acerca</a> -->
-              </td>
-            </tr>
-          </table>
+        <td style="width: 100%; height: 50px;
+                   background-color: #268f8d; padding: 0 15px;">
+          <a href="<%= url_for(controller: 'info', action: 'home', only_path: false) %>"
+             style="color: #f2f5f6; font-size: 16px;  font-weight: bold;
+                    margin: 30px 0 20px 0;  line-height: 50px;
+                    text-decoration: none;">VERIFÍCALO</a>
         </td>
       </tr>
       <!-- content -->
       <tr>
-        <td style="width: 100%; padding: 10px 15px;">
+        <td style="width: 100%; padding: 15px;">
+          <h1 style="color: #494b57; font-size: 21px; font-weight: bold; 
+                     margin-bottom: 30px;
+                     text-transform: uppercase;"><%= yield :title %></h1>
           <%= yield %>
         </td>
       </tr>
       <!-- footer -->
       <tr>
-        <td style="width: 100%; padding: 0 15px; background-color: #E6E6E6;">
-          <p>Código para la Ciudad de México</p>
+        <td style="width: 100%; height: 40px; 
+                   padding: 0 15px;
+                   border-top: 1px solid #d8d8d8;
+                   background-color: #f2f5f6;">
+          <p style="margin: 5px 0;">
+            <a href="<%= url_for(controller: 'notices', 
+                     action: 'confirm', 
+                     user: @user.id, only_path: false) %>"
+               style="text-decoration: none;
+                      font-size: 13px;
+                      color: #268f8d;">Modifica o cancela tu
+              suscripción</a></p>
+          <p style="margin: 5px 0;">
+            <a href="<%= url_for(controller: 'static_pages', 
+                     action: 'about', only_path: false) %>"
+               style="text-decoration: none;
+                      font-size: 13px;
+                      color: #268f8d;">Acerca de Verifícalo</a></p>
+          <p style="margin: 5px 0;">
+            <a href="mailto:contacto@verificalo.mx"
+               style="text-decoration: none;
+                      font-size: 13px;
+                      color: #268f8d;">Contactanos</a></p>
         </td>
       </tr>
     </table>
