@@ -42,7 +42,7 @@ class InfoController < ApplicationController
     if @vehicle.registration_date_valid?
       session[:registration_date] = @vehicle.registration_date.to_s
     end
-    if @vehicle.verificacion_never? && !@vehicle.registration_date_valid?
+    if !@vehicle.verificaciones_approved? && !@vehicle.registration_date_valid?
       if session.has_key?(:registration_date)
         @vehicle.registration_date = session[:registration_date]
       else
@@ -66,7 +66,7 @@ class InfoController < ApplicationController
         return
       end
     end
-    if @vehicle.verificacion_never? && !@vehicle.registration_date_valid?
+    if !@vehicle.verificacion_current? && !@vehicle.registration_date_valid?
       if session.has_key?(:registration_date)
         @vehicle.registration_date = session[:registration_date]
       else
@@ -90,7 +90,7 @@ class InfoController < ApplicationController
         return
       end
     end
-    if @vehicle.verificacion_never? && !@vehicle.registration_date_valid?
+    if !@vehicle.verificacion_current? && !@vehicle.registration_date_valid?
       if session.has_key?(:registration_date)
         @vehicle.registration_date = session[:registration_date]
       else

@@ -195,13 +195,8 @@ module VehicleCDMX
       v.collect { |i| 
         i if i['vin'].upcase != 'DESCONOCIDO'
       }.compact.sort { |a, b| 
-        if a == b
-          _a = a['hora_verificacion']
-          _b = b['hora_verificacion']
-        else
-          _a = Date.strptime(a['fecha_verificacion'], "%Y-%m-%d")
-          _b = Date.strptime(b['fecha_verificacion'], "%Y-%m-%d")
-        end
+        _a = a['fecha_verificacion'].gsub(/-/, '') + a['hora_verificacion'].gsub(/:/, '')
+        _b = b['fecha_verificacion'].gsub(/-/, '') + b['hora_verificacion'].gsub(/:/, '')
         _b <=> _a
       }
     end
@@ -239,6 +234,21 @@ module VehicleCDMX
       false
     end
 
+    def verificaciones_approved
+      return false unless self.verificaciones_valid?
+      self.verificaciones_valid.collect { |i|
+        i if i['resultado'] != 'RECHAZO'
+      }.compact      
+    end
+
+    def verificaciones_approved?
+      return false unless self.verificaciones_valid?
+      if self.verificaciones_approved.count > 0
+        return true
+      end
+      false
+    end
+
     def verificacion_current
       return false unless self.verificaciones_valid?
       return self.verificaciones_valid[0]
@@ -249,35 +259,30 @@ module VehicleCDMX
       true
     end
 
-    def verificacion_never?
-      return true unless self.verificacion_current
-      false
-    end
-    
     def verificacion_current_vigency
-      return false if self.verificacion_never?
+      return false unless self.verificacion_current?
       Date.parse(self.verificacion_current['vigencia'])
     end
 
     def verificacion_current_period
-      return false if self.verificacion_never?
+      return false unless self.verificacion_current?
       (self.verificacion_current_vigency.clone << 2) + 1
     end
     
     def verificacion_expired?
-      return false if self.verificacion_never?
+      return false unless self.verificaciones_approved?
       return true if self.verificacion_current_vigency < Date.today
       false
     end
 
     def verificacion_valid?
-      return false if self.verificacion_never?
+      return false unless self.verificacion_current?
       return false if self.verificacion_current_vigency < Date.today
       true
     end
 
     def verificacion_period?
-      return false if self.verificacion_never?
+      return false unless self.verificaciones_approved?
       return false if self.verificacion_expired?
       if verificacion_current_period < Date.today
         return true
@@ -286,7 +291,7 @@ module VehicleCDMX
     end
 
     def verificacion_ok?
-      return false if self.verificacion_never?
+      return false unless self.verificaciones_approved?
       return false if self.verificacion_expired?
       return false if self.verificacion_period?
       true
@@ -295,37 +300,37 @@ module VehicleCDMX
     # accesores verificacion vigente
 
     def verificacion_current_vigency_str
-      return false if self.verificacion_never?
+      return false unless self.verificacion_current?
       I18n.localize(self.verificacion_current_vigency, :format => :long);
     end
 
     def verificacion_current_period_str
-      return false if self.verificacion_never?
+      return false unless self.verificaciones_approved?
       I18n.localize(self.verificacion_current_period, :format => :long);
     end
 
     def verificacion_result
-      return false if self.verificacion_never?
+      return false unless self.verificacion_current?
       self.verificacion_current['resultado'].downcase
     end
 
     def verificacion_current_brand_str
-      return false if self.verificacion_never?
+      return false unless self.verificacion_current?
       self.verificacion_current['marca'].gsub(/_/, ' ')
     end
 
     def verificacion_current_model_str
-      return false if self.verificacion_never?
+      return false unless self.verificacion_current?
       self.verificacion_current['submarca'].gsub(/_/, ' ')
     end
 
     def verificacion_current_year_str
-      return false if self.verificacion_never?
+      return false unless self.verificacion_current?
       self.verificacion_current['modelo']
     end
 
     def verificacion_current_vin_str
-      return false if self.verificacion_never?
+      return false unless self.verificacion_current?
       self.verificacion_current['vin']
     end
 
