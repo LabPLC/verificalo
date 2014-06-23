@@ -5,7 +5,7 @@ module ActiveAdminHelper
 
   def pct (x, y)
     if y > 0
-      (x.to_f / y) * 100 
+      number_with_precision((x.to_f / y) * 100, precision: 1, separator: '.')
     else
       0
     end
