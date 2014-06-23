@@ -12,8 +12,8 @@
     <div class="col-md-8">
       <h2 class="title title-back">Verificentros más cercanos</h2>
       <%= render 'back' %>
+      <%= render 'verificentros_search' %>
       <div class="answer">
-        <%= render 'verificentros_search' %>
         <% if @verificentros %>
         <% if @verificentros.count < 1 %>
            <div class="row">
@@ -25,11 +25,13 @@
              </div>
            </div>
            <% else %>
-           <% @verificentros.each_slice(2) do |r| %>
-           <div class="row">
-             <%= render partial: 'verificentro', collection: r %>
+           <div id="verificentros">
+             <% @verificentros.each_slice(2) do |r| %>
+             <div class="row">
+               <%= render partial: 'verificentro', collection: r %>
+             </div>
+             <% end %>
            </div>
-           <% end %>
            <% end %>
            <% else %>
            <div class="row">

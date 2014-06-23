@@ -15,22 +15,6 @@ h4.title {
     font-size: 16px;
 }
 
-/* answers#_sidebar */
-
-#sidebar-answer {
-    padding-top: 30px;
-}
-
-#sidebar-answer h4 {
-    margin-top: 40px;
-}
-
-/* answers#_search */
-
-@media(max-width: 767px) {
-    #form-answers button { margin-top: 15px; }
-}
-
 /* answers#home */
 
 h3.category a {
@@ -43,6 +27,26 @@ h3.category a {
 
 .error-answers p {
     margin: 10px 0 0 30px;
+}
+
+/* answers#_sidebar */
+
+#sidebar-answer {
+    padding-top: 30px;
+}
+
+#sidebar-answer .cta-box {
+    margin-bottom: 10px;
+}
+
+#sidebar-answer h4 {
+    margin-top: 40px;
+}
+
+/* answers#_search */
+
+@media(max-width: 767px) {
+    #form-answers button { margin-top: 15px; }
 }
 
 /* answers#answer */
@@ -85,4 +89,10 @@ h1.question {
     margin-bottom: 10px;
     text-transform: uppercase;
     font-weight: bold;    
+}
+
+/* answers#verificentros_search */
+
+#verificentros {
+    margin-top: 15px;
 }
