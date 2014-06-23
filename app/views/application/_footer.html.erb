@@ -6,10 +6,14 @@
                     action: 'about' })%>">Acerca de Verifícalo</a></p>
       </div>
       <div class="col-sm-4 text-center hidden-xs">
-        <p><a href="mailto:contacto@verificalo.mx">Contactanos</a></p>
+        <p><a onclick="trackClick('mailto:contacto@verificalo.mx',
+                       'Pie de página - Contactanos');"
+         href="mailto:contacto@verificalo.mx">Contactanos</a></p>
       </div>
       <div class="col-sm-4 text-right hidden-xs">
-        <p><a href="http://codigo.labplc.mx">Código para la Ciudad de
+        <p><a onclick="trackClick('http://codigo.labplc.mx', 
+                       'Pie de página - Codigo CDMX');"
+              href="http://codigo.labplc.mx">Código para la Ciudad de
             México</a></p>
       </div>
     </div>

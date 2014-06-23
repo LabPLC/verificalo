@@ -5,9 +5,11 @@
     particular de la Ciudad de México.</p>
   <div class="row">
     <div class="col-xs-12">
-      <a href="<%= url_for({ controller: 'notices',
-               action: 'home' })%>" 
-               id="btn-notices">¡Suscríbete!</a>
+      <a onclick="trackClick('<%= url_for({ controller: 'notices',
+                  action: 'home' }) %>', 'CTA - Suscribirse');" 
+         href="<%= url_for({ controller: 'notices',
+               action: 'home' }) %>" 
+         id="btn-notices">¡Suscríbete!</a>
     </div>
   </div>
 </div>

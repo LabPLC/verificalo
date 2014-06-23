@@ -15,3 +15,16 @@
     </div>
   </div>
 </div>
+
+<!-- analytics -->
+<script>
+  <% if @results %>
+  ga('set', 'page', '/respuestas/buscar');
+  ga('set', 'title', 'Busqueda en respuestas');
+  ga('send', 'pageview');
+  <% else %>
+  ga('set', 'page', '/respuestas');
+  ga('set', 'title', 'Respuestas');
+  ga('send', 'pageview');
+  <% end %>  
+</script>

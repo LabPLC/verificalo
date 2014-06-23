@@ -52,13 +52,19 @@
       <div class="cta-box about-box">
         <%= icon(:mail) %>
         <p class="item">
-          <a href="mailto:contacto@verificalo.mx">contacto@verificalo.mx</a></p>
+          <a onclick="trackClick('mailto:contacto@verificalo.mx',
+                      'Acerca de - Contactanos');" 
+             href="mailto:contacto@verificalo.mx">contacto@verificalo.mx</a></p>
         <%= icon(:web) %>
         <p class="item">
-          <a href="http://codigo.labplc.mx">codigo.labplc.mx</a></p>
+          <a onclick="trackClick('http://codigo.labplc.mx',
+                      'Acerca de - Código CDMX');" 
+             href="http://codigo.labplc.mx">codigo.labplc.mx</a></p>
         <%= icon(:wrench) %>
         <p class="item">
-          <a href="http://github.com/labplc/verificalo">github.com/labplc/verificalo</a></p>
+          <a onclick="trackClick('http://github.com/labplc/verificalo',
+                      'Acerca de - Github');" 
+             href="http://github.com/labplc/verificalo">github.com/labplc/verificalo</a></p>
       </div>
     </div>
   </div>
@@ -91,7 +97,7 @@
 
 <!-- analytics -->
 <script>
-  ga('set', 'page', '/about');
-  ga('set', 'title', 'About');
+  ga('set', 'page', '/acerca');
+  ga('set', 'title', 'Acerca de Verifícalo');
   ga('send', 'pageview');
 </script>

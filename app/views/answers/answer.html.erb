@@ -13,3 +13,10 @@
     <%= render 'sidebar' %>
   </div>
 </div>
+
+<!-- analytics -->
+<script>
+  ga('set', 'page', '/respuestas/<%= @answer.url %>');
+  ga('set', 'title', '<%= @answer.title %>');
+  ga('send', 'pageview');
+</script>

@@ -8,7 +8,9 @@
       <% if @answer.contact.phone %>
       <%= icon(:phone) %>
       <p class="cta-msg item">
-        <a href="tel:<%= @answer.contact.phone %>">
+        <a onclick="trackClick('tel:<%= @answer.contact.phone %>', 
+                    'Teléfono <%= @answer.contact.name %>');"
+           href="tel:<%= @answer.contact.phone %>">
           <%= @answer.contact.phone %></a>
         <% if @answer.contact.phone_schedule %>
         (<%= @answer.contact.phone_schedule %>)
@@ -18,7 +20,9 @@
       <% if @answer.contact.email %>
       <%= icon(:mail) %>
       <p class="cta-msg item">
-        <a href="mailto:<%= @answer.contact.email %>">
+        <a onclick="trackClick('mailto:<%= @answer.contact.email %>', 
+                    'Correo electrónico <%= @answer.contact.name %>');"
+           href="mailto:<%= @answer.contact.email %>">
           <%= @answer.contact.email %></a>
       </p>
       <% end %>
@@ -26,7 +30,9 @@
       <%= icon(:address) %>
       <p class="cta-msg item">
         <% if gmap?(@answer.contact) %>
-        <a href="<%= gmap(@answer.contact) %>" target="_blank">
+        <a onclick="trackClick('<%= gmap(@answer.contact) %>', 
+                    'Dirección <%= @answer.contact.name %>');"
+           href="<%= gmap(@answer.contact) %>">
           <%= @answer.contact.address %>
         </a>
         <% else %>

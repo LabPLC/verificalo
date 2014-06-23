@@ -1,6 +1,6 @@
 var radio_label = {
-    'radio-notices-email' : 'notices-home-email',
-    'radio-notices-phone' : 'notices-home-phone'
+    'radio-notices-email' : 'Recordatorios por correo electrónico',
+    'radio-notices-phone' : 'Recordatorios por llamada telefónica'
 };
 
 $(document).ready(function() {
@@ -23,7 +23,7 @@ $(document).ready(function() {
     });
 });
 
-function scroll_subform () {
+var scroll_subform = function() {
     var y = $('#notices-subform').offset().top - 
         parseInt($('body').css('padding-top').replace('px', ''), 10);
     $('html,body').animate({ scrollTop: y }, 'slow');

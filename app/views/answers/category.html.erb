@@ -26,3 +26,10 @@
     </div>
   </div>
 </div>
+
+<!-- analytics -->
+<script>
+  ga('set', 'page', '/respuestas/<%= @category.url %>');
+  ga('set', 'title', 'Respuestas de <%= @category.name %>');
+  ga('send', 'pageview');
+</script>
