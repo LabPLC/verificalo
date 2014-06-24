@@ -50,7 +50,7 @@ module VehicleCDMX
     def api
       begin
         url = 'http://datos.labplc.mx/movilidad/vehiculos/' + @plate + '.json'
-        res = HTTParty.get(url);
+        res = HTTParty.get(url)
       rescue
         @status = 'API_GET_ERROR'
         return false
@@ -168,7 +168,7 @@ module VehicleCDMX
 
     def registration_date_str
       return false unless self.registration_date?
-      I18n.localize(self.registration_date, :format => :long);
+      I18n.localize(self.registration_date, :format => :long)
     end
 
     # verificaciones
@@ -268,6 +268,8 @@ module VehicleCDMX
       return false unless self.verificacion_current?
       self.verificacion_current_vigency.beginning_of_month.prev_month
     end
+
+    # estado verificacion
     
     def verificacion_expired?
       return false unless self.verificaciones_approved?
@@ -297,16 +299,16 @@ module VehicleCDMX
       true
     end
 
-    # accesores verificacion vigente
+    # strings verificacion vigente
 
     def verificacion_current_vigency_str
       return false unless self.verificacion_current?
-      I18n.localize(self.verificacion_current_vigency, :format => :long);
+      I18n.localize(self.verificacion_current_vigency, :format => :long)
     end
 
     def verificacion_current_period_str
       return false unless self.verificaciones_approved?
-      I18n.localize(self.verificacion_current_period, :format => :long);
+      I18n.localize(self.verificacion_current_period, :format => :long)
     end
 
     def verificacion_result
@@ -334,27 +336,31 @@ module VehicleCDMX
       self.verificacion_current['vin']
     end
 
-    # detalle de verificaciones
+    # historial de verificaciones
 
     def verificaciones_all
       return false unless self.verificaciones?
       self.verificaciones.collect { |v|
         r = OpenStruct.new
-        r.date = I18n.localize(Date.parse(v['fecha_verificacion']), :format => :default);
-        r.time = v['hora_verificacion'].gsub(/:\d\d$/, '');
+        r.date = I18n.localize(Date.parse(v['fecha_verificacion']), :format => :default)
+        r.time = v['hora_verificacion'].gsub(/:\d\d$/, '')
         r.verificentro = v['verificentro']
         r.line = v['linea']
         r.fuel = v['combustible'].capitalize
         r.cert = v['certificado']
         r.cancel = v['cancelado'] == 'SI' ? true : false
-        r.vigency = I18n.localize(Date.parse(v['vigencia']), :format => :default);
+        if v['equipo_gdf'] == '1' && v['resultado'] == 'doble cero'
+          r.vigency = 'No disponible'
+        else
+          r.vigency = I18n.localize(Date.parse(v['vigencia']), :format => :default)
+        end
         r.result = v['resultado']
         r.reject = v['casua_rechazo']
         r
       }
     end
 
-    # accesores primera verificacion
+    # strings primera verificacion
 
     def verificacion_first_period_end
       return false unless self.registration_date_valid? 
@@ -377,7 +383,7 @@ module VehicleCDMX
 
     def verificacion_first_period_end_str
       return false unless self.registration_date_valid?
-      I18n.localize(self.verificacion_first_period_end, :format => :long);
+      I18n.localize(self.verificacion_first_period_end, :format => :long)
     end
 
     # hoy no circula
@@ -433,7 +439,7 @@ module VehicleCDMX
       }.collect { |i|
         coder = HTMLEntities.new
         r = OpenStruct.new
-        r.date = I18n.localize(Date.parse(i['fecha']), :format => :default);
+        r.date = I18n.localize(Date.parse(i['fecha']), :format => :default)
         r.id = i['folio']
         r.cause = coder.decode(i['motivo'])
         r.basis = coder.decode(i['fundamento'])
