@@ -11,6 +11,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+# Require local libs
+require "vehicle_cdmx"
+
 module Verificalo
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -25,9 +28,6 @@ module Verificalo
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.enforce_available_locales = true
     config.i18n.default_locale = :es
-
-    # autoload app/lib
-    config.autoload_paths += %W(#{config.root}/app/lib)
 
     # fonts
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
