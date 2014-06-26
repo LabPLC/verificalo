@@ -1,5 +1,6 @@
+require 'vehicle_cdmx'
+
 class InfoController < ApplicationController
-  include VehicleCDMX
 
   def home
     if flash[:error]

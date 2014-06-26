@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+require 'vehicle_cdmx'
+
 class Notifier < ActionMailer::Base
-  include VehicleCDMX
   
   default from: ENV['VERIFICALO_SMTP_FROM'] || 'default@example.com'
 
