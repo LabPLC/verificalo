@@ -5,6 +5,8 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'coveralls'
 require 'capybara/poltergeist'
+require 'webmock/rspec'
+require 'stubs_helper'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -25,6 +27,9 @@ Capybara.default_wait_time = 3600
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, timeout: 3600)
 end
+
+# WebMock
+WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -78,4 +83,7 @@ RSpec.configure do |config|
   # rspec-rails 3 will no longer automatically infer an example group's
   # spec type from the file location
   config.infer_spec_type_from_file_location!
+
+  # helpers
+  config.include StubsHelper
 end

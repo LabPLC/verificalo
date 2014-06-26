@@ -33,4 +33,5 @@ group :test do
   gem 'coveralls'
   gem 'shoulda'
   gem 'factory_girl_rails'
+  gem 'webmock'
 end
