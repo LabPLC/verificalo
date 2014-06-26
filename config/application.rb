@@ -11,9 +11,6 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-# Require local libs
-require "vehicle_cdmx"
-
 module Verificalo
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
