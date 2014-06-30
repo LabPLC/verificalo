@@ -36,12 +36,16 @@ h3.category a {
 
 /* answers#_sidebar */
 
-#sidebar-answer {
-    padding-top: 30px;
+@media(min-width: 992px) {
+    #sidebar-answer { padding-top: 100px; }
 }
 
-#sidebar-answer .cta-box {
-    margin-bottom: 10px;
+@media(max-width: 991px) {
+    #sidebar-answer { padding-top: 30px; }
+}
+
+#sidebar-answer .cta-box { 
+    margin-bottom: 10px; 
 }
 
 #sidebar-answer a.more-info {
