@@ -1,0 +1,46 @@
+{ "consulta": 
+  { "placa":"123ABC",
+    "tenencias": { "placa" : "123ABC", "tieneadeudos" : "0" },
+    "infracciones": [ 
+        { "folio" : "00000000001",
+          "fecha" : "2014-04-04",
+          "situacion" : "No pagada",
+          "motivo" : "MOTIVO",
+          "fundamento" : "ARTICULO: , FRACCION: , PARRAFO: , INCISO: ",
+          "sancion" : "DIAS DE SALARIO MINIMO"
+        },
+        { "folio" : "00000000002",
+          "fecha" : "2014-04-04",
+          "situacion" : "No pagada",
+          "motivo" : "MOTIVO",
+          "fundamento" : "ARTICULO: , FRACCION: , PARRAFO: , INCISO: ",
+          "sancion" : "DIAS DE SALARIO MINIMO"
+        },
+        { "folio" : "00000000003",
+          "fecha" : "2014-04-04",
+          "situacion" : "Pagada",
+          "motivo" : "MOTIVO",
+          "fundamento" : "ARTICULO: , FRACCION: , PARRAFO: , INCISO: ",
+          "sancion" : "DIAS DE SALARIO MINIMO"
+        }
+    ],
+    "verificaciones":[ 
+        { "placa" : "123ABC",
+          "vin" : "1234567890ABCDEFG",
+          "marca" : "MARCA",
+          "submarca" : "SUBMARCA",
+          "modelo" : 2000,
+          "combustible" : "GASOLINA",
+          "certificado" : 12345678,
+          "cancelado" : "NO",
+          "verificentro" : 9001,
+          "linea" : 1,
+          "resultado" : "DOS",
+          "causa_rechazo" : "NO APLICA",
+          "fecha_verificacion" :  "<%= Date.today.months_ago(2).to_s(:db) %>",
+          "hora_verificacion" : "09:00:00",
+          "vigencia" : "<%= Date.today.at_end_of_month.months_since(2).to_s(:db) %>",
+          "equipo_gdf" : "1" }
+    ]
+  }
+}
