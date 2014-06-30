@@ -29,16 +29,13 @@ describe 'answers views' do
     it { should have_link('Información', href: root_path) }
     it { should have_link('Recordatorios', href: recordatorios_path) }
     it { should have_link('Preguntas y respuestas', href: respuestas_path) }
-
     # footer
     it { should have_link('Acerca de Verifícalo', href: acerca_path) }
     it { should have_link('Contactanos', href: 'mailto:contacto@verificalo.mx') }
     it { should have_link('Código para la Ciudad de México', href: 'http://codigo.labplc.mx') }
-    
     # search
     it { should have_field('q') }
     it { should have_button('Buscar') }      
-
     # content
     it { should have_css('h2.title', count: @categories_count) }
     it { should have_css('a.btn-answer', count: @answers_count) }
@@ -49,6 +46,7 @@ describe 'answers views' do
         @answers_count = @category.answers.count
         click_link(@category.name)
       end
+
       it { should have_css('h2.title', text: @category.name) }
       it { should have_css('a.btn-wide', count: @answers_count) }
       
@@ -57,6 +55,7 @@ describe 'answers views' do
           @answer = @category.answers.first
           click_on(@answer.title)
         end
+
         it { should have_css('h2.title', text: @answer.title) }
         it { should have_css('div.answer', text: @answer.body) }
       end
@@ -72,6 +71,7 @@ describe 'answers views' do
       @delegaciones_count = Delegacion.count
       visit respuestas_verificacion_verificentros_path 
     end
+
     it { should have_field('verificentros_query') }
     it { should have_button('Buscar') }
     it { should have_css('a.btn-delegacion',
@@ -87,6 +87,7 @@ describe 'answers views' do
         @verificentros_count = @delegacion.verificentros.count
         click_link(@delegacion.name)
       end
+
       it { should have_css('h5.verificentro', count: @verificentros_count) }
     end
   end
