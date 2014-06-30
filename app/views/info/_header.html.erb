@@ -8,7 +8,7 @@
             Cambiar placa &raquo;</a></p>
       </div>
       <div class="col-lg-8 col-md-7">
-        <% if @vehicle.verificacion_current? %>
+        <% if @vehicle.verificacion_current? && !@vehicle.registration_date? %>
         <!-- si hay verificacion actual -->
         <div class="row">
           <div class="col-sm-4 col-xs-8 box-info">
