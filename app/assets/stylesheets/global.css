@@ -52,6 +52,23 @@ a:hover, a:active {
     border-color: #fee550;
 }
 
+.btn-secondary {
+    /* background-color: #f2f5f6; */
+    /* border-color: #f2f5f6; */
+    /* text-decoration: none; */
+    background-color: #268f8d;
+    border-color: #268f8d;
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-secondary:hover, .btn-secondary:active, .btn-seconday:focus {
+    color: #6c6e77;
+    background-color: #fee550;
+    border-color: #fee550;
+}
+
+
 .btn-wide {
     width: 100%;
 }
