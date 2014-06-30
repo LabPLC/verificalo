@@ -6,10 +6,11 @@
    map += '/394x222.png' %>
 
 <div class="col-md-6">
-  <h5 class="verificentro">Verificentro <%= verificentro.number %></h5>
+  <h4 class="verificentro">Verificentro 
+    <strong><%= verificentro.number %></strong></h5>
   <p><a href="<%= gmap(verificentro) %>" target="_blank">
       <img class="img-responsive" src="<%= map %>" /></a></p>
-  <p><%= verificentro.address %></p>
+  <p class="verificentro-address"><%= verificentro.address %></p>
   <p><a href="<%= gmap(verificentro) %>"
         target="_blank">Cómo llegar &raquo;</a></p>
 </div>

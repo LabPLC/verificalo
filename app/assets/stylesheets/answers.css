@@ -6,11 +6,11 @@ h2.title a {
     text-decoration: none;
 }
 
-.back-answers-top {
+p.back-answers-top {
     margin-bottom: 20px;
 }
 
-.back-answers-bottom {
+p.back-answers-bottom {
     margin-top: 10px;
     margin-bottom: 0;
 }
@@ -98,12 +98,12 @@ h1.question {
     .answer { padding-right: 0; }
 }
 
-.answer h2 {
+div.answer h2 {
     font-size: 22px;
     margin: 20px 0 10px 0;
 }
 
-.answer p.lead {
+div.answer p.lead {
     font-size: 17px;
     margin: 25px 0;
     padding: 10px;
@@ -128,12 +128,19 @@ h1.question {
     #form-verificentros button { margin-top: 15px; }
 }
 
-.verificentro {
+/* answers#_verificentro */
+
+h4.verificentro {
     color: #494b57;
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 18px;
+    margin: 15px 0 10px 0;
     text-transform: uppercase;
-    font-weight: bold;    
+    font-weight: normal;
+}
+
+p.verificentro-address {
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
 /* answers#verificentros_search */
