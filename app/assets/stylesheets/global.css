@@ -79,7 +79,7 @@ a:hover, a:active {
     border-color: #fee550;
     border-width: 1px;
     border-style: solid;
-    padding: 10px;
+    padding: 10px 10px 15px 10px;
     color: #268f8d;
 }
 
@@ -89,6 +89,10 @@ a:hover, a:active {
 
 .cta-msg {
     color: #6c6e77;
+}
+
+.cta-box a {
+    text-decoration: none;
 }
 
 /* colors */
