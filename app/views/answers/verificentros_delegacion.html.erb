@@ -1,8 +1,9 @@
 <%= render 'search' %>
 
 <% content_for :parent do %>
-<p><a href="<%= url_for({ controller: 'answers',
-            action: 'verificentros' })%>">
+<p class="back-answers-top">
+  <a href="<%= url_for({ controller: 'answers',
+           action: 'verificentros' })%>">
     Regresar &raquo;</a></p>    
 <% end %>
 

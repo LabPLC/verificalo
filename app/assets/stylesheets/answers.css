@@ -130,10 +130,14 @@ div.answer p.lead {
 
 /* answers#_verificentro */
 
-h4.verificentro {
+div.verificentro {
+    margin-bottom: 20px;
+}
+
+h4.verificentro-title {
     color: #494b57;
     font-size: 18px;
-    margin: 15px 0 10px 0;
+    margin: 0 0 10px 0;
     text-transform: uppercase;
     font-weight: normal;
 }

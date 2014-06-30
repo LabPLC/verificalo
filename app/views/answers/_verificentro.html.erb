@@ -5,8 +5,8 @@
    map += verificentro.lon.to_s + ',' + verificentro.lat.to_s + ',15'
    map += '/394x222.png' %>
 
-<div class="col-md-6">
-  <h4 class="verificentro">Verificentro 
+<div class="col-sm-6 verificentro">
+  <h4 class="verificentro-title">Verificentro 
     <strong><%= verificentro.number %></strong></h5>
   <p><a href="<%= gmap(verificentro) %>" target="_blank">
       <img class="img-responsive" src="<%= map %>" /></a></p>
