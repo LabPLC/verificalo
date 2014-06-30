@@ -65,6 +65,18 @@ h1.question {
     margin: 20px 0 10px 0;
 }
 
+@media(min-width: 1210px) {  
+    .answer { padding-right: 50px; }
+}
+
+@media(min-width: 992px) and (max-width: 1209px) {
+    .answer { padding-right: 25px; }
+}
+
+@media(max-width: 991px) {
+    .answer { padding-right: 0; }
+}
+
 .answer h2 {
     font-size: 22px;
     margin: 20px 0 10px 0;
