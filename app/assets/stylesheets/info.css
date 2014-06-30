@@ -45,6 +45,7 @@
 h2.section a {
     color: #268f8d;
     font-size: 26px;
+    text-decoration: none;
 }
 
 h2.section a:hover {

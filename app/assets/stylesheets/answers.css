@@ -2,6 +2,10 @@ h2.title-back {
     margin-bottom: 10px;
 }
 
+h2.title a {
+    text-decoration: none;
+}
+
 .back-answers-top {
     margin-bottom: 20px;
 }
@@ -19,6 +23,7 @@ h4.title {
 
 h3.category a {
     color: #333333;
+    text-decoration: none;
 }
 
 .error-answers span {
@@ -37,6 +42,10 @@ h3.category a {
 
 #sidebar-answer .cta-box {
     margin-bottom: 10px;
+}
+
+#sidebar-answer a.more-info {
+    text-decoration: none;
 }
 
 #sidebar-answer h4 {
