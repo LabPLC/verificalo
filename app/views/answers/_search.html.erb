@@ -1,38 +1,40 @@
 <!-- answers#_search -->
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h1 class="title">Preguntas y respuestas</h1>
+<div id="search-answers">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Preguntas y respuestas</h1>
+      </div>
     </div>
+    <div class="row">
+      <%= form_tag({ controller: 'answers', action: 'home' },
+          { method: 'get', id: 'form-answers' }) do %>
+      <div class="col-md-6 col-sm-10">
+        <input name="q" type="text" 
+               placeholder="Intenta con hoy no circula, verificación, etc"
+               <% if params[:q].present? %>
+               value="<%= params[:q] %>"
+               <% end %>
+               class="form-control">
+      </div>
+      <div class="col-md-2 col-sm-2">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div id="search-error" class="col-md-8 col-sm-12">
+        <% if @results && @results.count < 1 %>
+           <%= icon(:error) %>
+           <p class="msg"><strong>No hay resultados.</strong></p>
+           <p class="msg">Intenta con otros térmios de busqueda.</p>
+           <% elsif params[:q].present? && !@results %>
+           <%= icon(:error) %>
+           <p class="msg"><strong>Vuelve a intentar.</strong></p>
+           <p class="msg">Tuvimos problemas técnicos en la busqueda de
+             respuestas.</p>      
+           <% end %>
+      </div>
+    </div>  
   </div>
-  <div class="row">
-    <%= form_tag({ controller: 'answers', action: 'home' },
-        { method: 'get', id: 'form-answers' }) do %>
-    <div class="col-md-6 col-sm-10">
-      <input name="q" type="text" 
-             placeholder="Intenta con hoy no circula, verificación, etc"
-             <% if params[:q].present? %>
-             value="<%= params[:q] %>"
-             <% end %>
-             class="form-control">
-    </div>
-    <div class="col-md-2 col-sm-2">
-      <button type="submit" class="btn btn-primary">Buscar</button>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 col-sm-12 error-answers">
-      <% if @results && @results.count < 1 %>
-      <%= icon(:error) %>
-      <p class="msg"><strong>No hay resultados.</strong></p>
-      <p class="msg">Intenta con otros térmios de busqueda.</p>
-      <% elsif params[:q].present? && !@results %>
-      <%= icon(:error) %>
-      <p class="msg"><strong>Vuelve a intentar.</strong></p>
-      <p class="msg">Tuvimos problemas técnicos en la busqueda de
-        respuestas.</p>      
-      <% end %>
-    </div>
-  </div>  
 </div>

@@ -26,14 +26,6 @@ h3.category a {
     text-decoration: none;
 }
 
-.error-answers span {
-    margin: 10px 0 0 0;
-}
-
-.error-answers p {
-    margin: 10px 0 0 30px;
-}
-
 /* answers#_sidebar */
 
 @media(min-width: 992px) {
@@ -58,9 +50,34 @@ h3.category a {
 
 /* answers#_search */
 
+#search-answers {
+    background-color: #f2f5f6;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+#search-answers h1 {
+    color: #494b57;
+    font-size: 23px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 @media(max-width: 767px) {
     #form-answers button { margin-top: 15px; }
 }
+
+#search-error {
+    margin: 10px 0;
+}
+
+#search-error span {
+    margin: 5px 0;
+}
+
+#search-error p {
+    margin: 5px 0 5px 30px;
+}
+
 
 /* answers#answer */
 
