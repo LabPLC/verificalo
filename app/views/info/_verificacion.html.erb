@@ -13,7 +13,7 @@
   <!-- en periodo para verificar -->
   <%= icon(:warning) %>
   <p class="msg"><strong>Tu auto debe aprobar
-      la verificación antes del 
+      la verificación a más tardar el 
       <%= @vehicle.verificacion_current_vigency_str %>.</strong></p>
   <% end %>
   
@@ -21,27 +21,39 @@
   <!-- verificacion vencida -->
   <%= icon(:error) %>
   <p class="msg"><strong>La verificación de tu auto vencio el 
-      <%= @vehicle.verificacion_current_vigency_str %>.</strong>
+      <%= @vehicle.verificacion_current_expired_str %>.</strong>
   </p>
   <p class="msg">Debes pagar una multa por verificación extemporanea antes de
     llevar tu auto a verificar.</p>
   <% end %>
+
+  <% if @vehicle.verificacion_unknown? %>
+  <!-- verificacion desconocida -->
+  <%= icon(:warning) %>
+  <p class="msg"><strong>No tenemos disponible la vigencia de tu última
+      verificación.</strong>
+  </p>
+  <p class="msg">Para verificaciónes con resultado <strong>doble
+      cero</strong> previas al segundo semestre de 2012 debes
+    determinar su vigencía a partir de la fecha de compra de tu
+    auto.</p>
+  <% end %>
   
-  <% if @vehicle.verificacion_first_period_ok? %>
+  <% if @vehicle.verificacion_first_ok? %>
   <!-- en periodo para 1a verificacion -->
   <%= icon(:warning) %>
-  <p class="msg"><strong>Tu auto debe aprobar la verificación antes
-      del <%= @vehicle.verificacion_first_period_end_str %>.</strong></p>
+  <p class="msg"><strong>Tu auto debe aprobar la verificación a más
+      tardar el <%= @vehicle.verificacion_first_end_str %>.</strong></p>
   <p class="msg">Tienes 180 días naturales a partir de la fecha de
     alta para que apruebe la verificación por primera vez.</p>
   <% end %>
   
-  <% if @vehicle.verificacion_first_period_expired? %>
+  <% if @vehicle.verificacion_first_expired? %>
   <!-- fuera de periodo para 1a verificacion -->
   <%= icon(:error) %>
   <p class="msg"><strong>El periodo para verificar tu auto por
       primera vez termino el 
-      <%= @vehicle.verificacion_first_period_end_str %>.</strong>
+      <%= @vehicle.verificacion_first_end_str %></strong>
   </p>
   <p class="msg">Debes pagar una multa por verificación extemporanea
     antes de llevar a verificar tu auto por primera vez.</p>
@@ -50,11 +62,19 @@
 
 <div class="col-md-4 col-sm-6">
   <!-- links sobre verificacion -->
+  <% if @vehicle.verificacion_unknown? %>
+  <p><a href="<%= url_for({ controller: 'answers',
+              action:'answer', category_url: 'verificacion',
+              answer_url: 'vigencia-doble-cero' })%>"
+        class="btn btn-primary btn-sm btn-wide">¿Vigencia del holograma
+      doble cero?</a></p>
+  <% else %>
   <p><a href="<%= url_for({ controller: 'answers',
               action:'answer', category_url: 'verificacion',
               answer_url: 'que-necesito-para-verificar' })%>"
         class="btn btn-primary btn-sm btn-wide">¿Qué necesito para
       verificar mi auto?</a></p>
+  <% end %>
   <p><a href="<%= url_for({ controller: 'answers',
               action:'verificentros' })%>"
         class="btn btn-primary btn-sm btn-wide">¿Donde puedo verificar
