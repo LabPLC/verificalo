@@ -1,45 +1,43 @@
-<% if @vehicle.verificacion_valid? %>
-<!-- verificados -->
-<% if @vehicle.verificacion_result == 'dos' %>
-<!-- calcomania 2 -->
-<%= icon(:warning) %>
-<p class="msg">Tu auto obtuvo el
-  holograma <strong><%= @vehicle.verificacion_result %></strong> en
-  su última verificación y como su placa termina en
-  <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
-  circular:</p>
-<ul>
-  <li>Todos los <%= @vehicle.no_circula_weekday %> del año.</li>
-  <li>El <%= @vehicle.no_circula_weekend %> de cada mes.</li>
-</ul>
-<% else %>
+<% if @vehicle.no_circula_cero? %>
 <!-- calcomania 0 o 00 -->
 <%= icon(:ok) %>
 <p class="msg">Tu auto obtuvo el
-  holograma <strong><%= @vehicle.verificacion_result %></strong> en
-  su última verificación y <strong>puede circular todos los
+  holograma 
+  <strong><%= @vehicle.verificacion_last_approved_result %></strong> 
+  en su última verificación y <strong>puede circular todos los
     días.</strong></p> 
 <% end %>
+
+<% if @vehicle.no_circula_dos? %>
+<!-- calcomania 2 -->
+<%= icon(:warning) %>
+<p class="msg">Tu auto obtuvo el
+  holograma 
+  <strong><%= @vehicle.verificacion_last_approved_result %></strong> 
+  en su última verificación y como su placa termina en
+  <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
+  circular:</p>
+<ul>
+  <li>Todos los <%= @vehicle.no_circula_weekday_str %> del año.</li>
+  <li>El <%= @vehicle.no_circula_weekend_str %> de cada mes.</li>
+</ul>
 <% end %>
 
-<% if @vehicle.verificacion_first_period_ok? %>
-<!-- en periodo para la 1a verificacion -->
+<% if @vehicle.no_circula_never? %>
+<!-- en periodo para 1a verificacion -->
 <%= icon(:warning) %>
 <p class="msg">Nunca has verificado tu auto y como su placa termina
   en <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
   circular:</p>
 <ul>
-  <li>Todos los <%= @vehicle.no_circula_weekday %> del año.</li>
-  <li>El <%= @vehicle.no_circula_weekend %> de cada mes.</li>
+  <li>Todos los <%= @vehicle.no_circula_weekday_str %> del año.</li>
+  <li>El <%= @vehicle.no_circula_weekend_str %> de cada mes.</li>
 </ul>
 <% end %>
 
-<% if @vehicle.verificacion_expired? || 
-   @vehicle.verificacion_first_period_expired? %>
-<!-- sin verificacion o fuera de periodo para la 1a verificacion -->
+<% if @vehicle.no_circula_expired? %>
+<!-- verificacion vencida o fuera de periodo para 1a verificacion -->
 <%= icon(:error) %>
 <p class="msg"><strong>Tu auto no puede circular.</strong></p>
 <p class="msg">Debes llevar a verificar tu auto.</p>
-<% else %>
-<!-- con verificacion o en periodo para la 1a verificacion -->
-<% end %>    
+<% end %>
