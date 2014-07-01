@@ -4,7 +4,7 @@
   <div class="col-md-9 col-sm-10">
     <input name="verificentros_query" type="text" 
            placeholder="Colonia o código postal"
-           <% if request.post? and params[:verificentros_query].present? %>
+           <% if request.post? && params[:verificentros_query].present? %>
            value="<%= params[:verificentros_query] %>"
            <% end %>
            class="form-control input">
@@ -12,6 +12,25 @@
   <div class="col-md-2 col-sm-2">
     <button id="btn-verificentros-search" type="submit"
             class="btn btn-primary btn">Buscar</button>
+  </div>
+</div>
+<% end %>
+
+<% if request.post? %>
+<div class="row">
+  <div id="search-error" class="col-xs-12">
+    <% if @verificentros && @verificentros.count < 1 %>
+    <%= icon(:error) %>
+    <p class="msg"><strong>No hay resultados.</strong></p>
+    <p class="msg">Verifique la colonia o código postal que
+      ingreso.</p>
+    <% end %>
+    <% if !@verificentros %>
+    <%= icon(:error) %>
+    <p class="msg"><strong>Vuelve a intentar.</strong></p>
+    <p class="msg">Tuvimos problemas técnicos en la busqueda de
+      verificentros.</p>
+    <% end %>
   </div>
 </div>
 <% end %>

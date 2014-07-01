@@ -15,35 +15,15 @@
       <%= render 'back' %>
       <%= render 'verificentros_search' %>
       <div class="answer">
-        <% if @verificentros %>
-        <% if @verificentros.count < 1 %>
-           <div class="row">
-             <div class="col-xs-12 error-answers">
-               <%= icon(:error) %>
-               <p class="msg"><strong>No hay resultados.</strong></p>
-               <p class="msg">Verifique la colonia o código postal que
-                 ingreso.</p>  
-             </div>
-           </div>
-           <% else %>
-           <div id="verificentros">
-             <% @verificentros.each_slice(2) do |r| %>
-             <div class="row">
-               <%= render partial: 'verificentro', collection: r %>
-             </div>
-             <% end %>
-           </div>
-           <% end %>
-           <% else %>
-           <div class="row">
-             <div class="col-xs-12 error-answers">
-               <%= icon(:error) %>
-               <p class="msg"><strong>Vuelve a intentar.</strong></p>
-               <p class="msg">Tuvimos problemas técnicos en la busqueda
-                 de verificentros.</p>
-             </div>
-           </div>
-           <% end %>
+        <% if @verificentros && @verificentros.count > 0 %>
+        <div id="verificentros">
+          <% @verificentros.each_slice(2) do |r| %>
+          <div class="row">
+            <%= render partial: 'verificentro', collection: r %>
+          </div>
+          <% end %>
+        </div>
+        <% end %>
       </div>
     </div>
     <%= render 'sidebar' %>
