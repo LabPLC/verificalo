@@ -42,7 +42,7 @@ describe Notifier do
     end
     
     it 'have confirmation url' do
-      expect(@mail.body.encoded).to match(aviso_path(@user.id))
+      expect(@mail.body.encoded).to match(user_path(@user.id))
     end
   end
 end

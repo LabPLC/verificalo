@@ -26,11 +26,11 @@
   <strong><%= @user.plate %></strong>.</p>
 
 <p style="margin: 40px 0;">
-  <span style="padding: 19px 30px;
+  <span style="padding: 10px 18px;
                background-color: #268f8d">
-    <a style="font-size: 20px; color: #fff;"
+    <a style="font-size: 15px; color: #fff;"
        href="<%= url_for(controller: 'notices', 
-             action: 'confirm', user: @user.id,
+             action: 'user', uuid: @user.id,
              only_path: false) %>">Confirmar</a>
   </span>
 </p>
@@ -39,9 +39,9 @@
 
 <p style="margin: 20px 0;">
   <a href="<%= url_for(controller: 'notices', 
-           action: 'confirm', user: @user.id, 
+           action: 'user', uuid: @user.id, 
            only_path: false) %>">
     <%= url_for(controller: 'notices', 
-        action: 'confirm', 
-        user: @user.id, 
+        action: 'user', 
+        uuid: @user.id, 
         only_path: false) %></a></p>

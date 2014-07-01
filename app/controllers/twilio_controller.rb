@@ -22,7 +22,7 @@ class TwilioController < ApplicationController
       2.times do
         r.Gather(numDigits: '1', timeout: '10', method: 'POST',
                  action: url_for_tw({ action: 'accept',
-                                      user: @user.id })) do |g|
+                                      uuid: @user.id })) do |g|
           g.Say(msg, voice: 'alice', language: 'es-MX')
         end
       end
@@ -67,8 +67,8 @@ class TwilioController < ApplicationController
   private
 
   def user_id_param
-    params.require(:user)
-    params[:user]
+    params.require(:uuid)
+    params[:uuid]
   end
 
 end

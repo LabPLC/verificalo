@@ -62,7 +62,7 @@ describe 'notices views' do
     before do
       @email = FactoryGirl.create(:email)
       @user = @email.user
-      visit aviso_path(@user.id)
+      visit user_path(@user.id)
     end
     it { should have_content(/tu suscripción esta confirmada/i) }
   end

@@ -155,23 +155,23 @@ describe NoticesController do
     end
   end
 
-  describe 'GET confirm' do
+  describe 'GET user' do
     describe 'invalid user' do
       it 'should return USER_NOT_FOUND error' do
-        get :confirm, user: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+        get :user, uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
         response.should be_success
-        should render_template('confirm')
+        should render_template('user')
         expect(assigns(:error)).to eq('USER_NOT_FOUND')
       end
     end
 
-    describe 'valid user' do
+    describe 'confirm user' do
       before do
         @email = FactoryGirl.create(:email)
         @user = @email.user
       end
       it 'should confirm user' do
-        get :confirm, user: @user.id
+        get :user, uuid: @user.id
         @user.reload
         response.should be_success
         should render_template('confirm')
