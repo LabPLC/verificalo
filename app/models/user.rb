@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   
   validate :notices_present?
   
-  has_one :email
-  has_one :phone
+  has_one :email, :dependent => :destroy
+  has_one :phone, :dependent => :destroy
   
   before_validation {
     self.plate = self.plate.gsub(/[^0-9a-z ]/i, '').strip if self.plate
@@ -24,6 +24,22 @@ class User < ActiveRecord::Base
     if adeudos.blank? and verificacion.blank? and 
         no_circula_weekday.blank? and no_circula_weekend.blank?
       errors.add(:notices, "You must fill in at least one notice")
+    end
+  end
+
+  def destroy_outdated
+    if self.email
+      User.joins(:email)
+        .where.not(users: { id: self.id })
+        .where(users: { plate: self.plate })
+        .where(emails: { address: self.email.address })
+        .destroy_all
+    elsif self.phone
+      User.joins(:phone)
+        .where.not(users: { id: self.id })
+        .where(users: { plate: self.plate })
+        .where(phones: { number: self.phone.number, cellphone: self.phone.cellphone })
+        .destroy_all
     end
   end
 

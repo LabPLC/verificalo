@@ -36,6 +36,7 @@ class TwilioController < ApplicationController
       @user = User.find(user_id_param)
       @user.confirmed_at = Time.now
       @user.save
+      @user.destroy_outdated
     rescue
       error
       return

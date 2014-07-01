@@ -43,6 +43,7 @@ class NoticesController < ApplicationController
     unless @user.confirmed_at
       @user.confirmed_at = Time.now
       @user.save
+      @user.destroy_outdated
       render 'confirm'
     else
       render 'modify'
@@ -81,7 +82,9 @@ class NoticesController < ApplicationController
       @user.no_circula_weekend = false
     end
 
-    unless @user.save
+    if @user.save
+      @user.destroy_outdated
+    else
       if @user.errors[:plate].count > 0
         @errors[:INVALID_USER_PLATE] = true
       end
