@@ -29,7 +29,7 @@ h3.category a {
 /* answers#_sidebar */
 
 @media(min-width: 992px) {
-    #sidebar-answer { padding-top: 100px; }
+    #sidebar-answer { padding-top: 75px; }
 }
 
 @media(max-width: 991px) {
