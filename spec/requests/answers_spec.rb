@@ -88,7 +88,8 @@ describe 'answers views' do
         click_link(@delegacion.name)
       end
 
-      it { should have_css('h5.verificentro', count: @verificentros_count) }
+      it { should have_css('h4.verificentro-title', 
+                           count: @verificentros_count) }
     end
   end
 
