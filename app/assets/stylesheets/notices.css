@@ -4,7 +4,11 @@
     text-align: left;
 }
 
-#btn-notices-error {
+#form-notices button {
+    margin-bottom: 5px;
+}
+
+.btn-notices-error {
     margin-top: 5px;
 }
 
@@ -14,4 +18,5 @@
     .error-notices { margin-top: 10px; }
     .error-notices p { margin-bottom: 0; }
     #form-notices button { margin-top: 10px; }
+    #user-cancel { margin-top: 10px; }
 }

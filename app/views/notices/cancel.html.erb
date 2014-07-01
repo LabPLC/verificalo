@@ -1,0 +1,71 @@
+<!-- notices#cancel -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title">Cancelar suscripción</h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <% if request.post? %>
+    <div class="col-md-8 col-sm-12">
+      <%= icon(:warning) %>
+      <p class="msg"><strong>Tu suscripción esta cancelada.</strong></p> 
+      <p class="msg">No recibiras más recordatorios sobre tu auto con
+        placa <strong><%= @user.plate %></strong> en tu correo
+        electrónico.</p>
+    </div>
+    <% else %>
+    <div class="col-md-8 col-sm-12">
+      <%= icon(:question) %>
+      <p class="msg"><strong>¿Desea cancelar tu suscripción a los
+          recordatorios de tu auto?</strong></p> 
+      <p class="msg">Confirma si no deseas recibiras más recordatorios
+        sobre tu auto con placa <strong><%= @user.plate %></strong> en
+        tu correo electrónico.</p>
+    </div>
+    <% end %>
+  </div>
+  
+  <div class="row">
+    <% if request.post? %>
+    <div class="col-md-4 col-sm-6">
+      <p class="msg"><a href="<%= url_for({ controller: 'notices',
+                              action: 'home' })%>"
+                        class="btn btn-primary
+                               btn-notices-error">Regresar</a></p>
+    </div>
+    <% else %>
+    <div class="col-md-4 col-sm-6">
+      <%= form_tag({ controller: 'notices', action: 'cancel', uuid: @user.id },
+          { method: 'post' }) do %>
+      <p class="msg">
+        <button class="btn btn-primary btn-cancel
+                       btn-notices-error">Cancelar suscripción</button>
+      </p>
+      <% end %>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <p class="msg"><a href="<%= url_for({ controller: 'notices',
+                              action: 'modify', uuid: @user.id })%>"
+                        class="btn btn-primary
+                               btn-notices-error">Regresar</a></p>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- analytics -->
+<% if request.get? %>
+<script>
+  ga('set', 'page', '/recordatorios/cancelar');
+  ga('set', 'title', 'Cancelar recordatorios');
+  ga('send', 'pageview');
+</script>
+<% else %>
+<script>
+  ga('set', 'page', '/recordatorios/cancelado');
+  ga('set', 'title', 'Suscripción cancelada');
+  ga('send', 'pageview');
+</script>
+<% end %>

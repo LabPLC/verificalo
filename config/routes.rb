@@ -13,9 +13,11 @@ Verificalo::Application.routes.draw do
   match '/recordatorios/email', to: 'notices#email', via: 'get'
   match '/recordatorios/telefono', to: 'notices#phone', via: 'get'
   match '/recordatorios/twitter', to: 'notices#twitter', via: 'get'
-  match '/recordatorios/:user', to: 'notices#confirm', via: 'get', as: :aviso
-  match '/twilio/confirm/:user', to: 'notices#twilio_confirm', via: 'get'
-  match '/twilio/accept/:user', to: 'notices#twilio_accept', via: 'get'
+  match '/recordatorios/:uuid', to: 'notices#user', via: 'get', as: :user
+  match '/recordatorios/:uuid', to: 'notices#modify', via: 'post', as: :modify
+  match '/recordatorios/:uuid/cancelar', to: 'notices#cancel', via: [ 'get', 'post' ], as: :cancel
+  match '/twilio/confirm/:uuid', to: 'notices#twilio_confirm', via: 'get'
+  match '/twilio/accept/:uuid', to: 'notices#twilio_accept', via: 'get'
 
   # twilio
   match '/twilio/confirm', to: 'twilio#confirm', via: 'post'

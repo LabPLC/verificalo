@@ -28,15 +28,86 @@ class NoticesController < ApplicationController
     new_user_confirm
   end
 
-  def confirm
+  def user
     begin
       @user = User.find(user_id_param)
     rescue
       @error = 'USER_NOT_FOUND'
       return
     end
-    @user.confirmed_at = Time.now
-    @user.save
+    if @user.declined_at
+      @error = 'USER_DECLINED'
+      render 'user'
+      return
+    end
+    unless @user.confirmed_at
+      @user.confirmed_at = Time.now
+      @user.save
+      render 'confirm'
+    else
+      render 'modify'
+    end
+  end
+
+  def modify
+    @errors = Hash.new
+    @params = params
+
+    begin
+      @user = User.find(user_id_param)
+    rescue
+      @error = 'USER_NOT_FOUND'
+      render 'user'
+      return
+    end
+
+    if @user.declined_at
+      @error = 'USER_DECLINED'
+      render 'user'
+      return
+    end
+
+    @user.attributes = user_params
+    unless params[:user][:verificacion].present?
+      @user.verificacion = false 
+    end
+    unless params[:user][:adeudos].present?
+      @user.adeudos = false
+    end
+    unless params[:user][:no_circula_weekday].present?
+      @user.no_circula_weekday = false
+    end
+    unless params[:user][:no_circula_weekend].present?
+      @user.no_circula_weekend = false
+    end
+
+    unless @user.save
+      if @user.errors[:plate].count > 0
+        @errors[:INVALID_USER_PLATE] = true
+      end
+      if @user.errors[:notices].count > 0
+        @errors[:MISSING_USER_NOTICES] = true
+      end
+    end
+  end
+
+  def cancel 
+    begin
+      @user = User.find(user_id_param)
+    rescue
+      @error = 'USER_NOT_FOUND'
+      render 'user'
+      return
+    end
+    if @user.declined_at
+      @error = 'USER_DECLINED'
+      render 'user'
+      return
+    end
+    if request.post?
+      @user.declined_at = Time.now
+      @user.save      
+    end
   end
 
   private
@@ -60,8 +131,8 @@ class NoticesController < ApplicationController
   end
 
   def user_id_param
-    params.require(:user)
-    params[:user]
+    params.require(:uuid)
+    params[:uuid]
   end
 
   def new_user
@@ -151,7 +222,7 @@ class NoticesController < ApplicationController
     elsif type_param == 'PHONE'
       @tw_req = { To: @user.phone.number.dup,
         Url: url_for_tw({ controller: 'twilio', action: 'confirm',
-                          user: @user.id }),
+                          uuid: @user.id }),
         Method: 'POST'
       }
       if @user.phone.cellphone

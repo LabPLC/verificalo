@@ -1,0 +1,36 @@
+<!-- notices#user -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title">Recordatorios</h1>
+    </div>
+  </div>
+  
+  <!-- error -->
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <%= icon(:error) %>
+      <% if @error == 'USER_DECLINED' %>
+      <p class="msg"><strong>La suscripción esta cancelada.</strong></p> 
+      <p class="msg">La suscripcion que deseas confirmar o modificar
+        fue cancelada el 
+        <%= I18n.localize(@user.declined_at.to_date, :format => :long) %>.
+      </p>
+      <% else %>
+      <p class="msg"><strong>Ocurrio un error.</strong></p> 
+      <p class="msg">La dirección no es valida.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- analytics -->
+<script>
+  ga('set', 'page', '/recordatorios/error');
+  <% if @error == 'USER_DECLINED' %>
+  ga('set', 'title', 'Suscripción previamente cancelada');
+  <% else %>
+  ga('set', 'title', 'Error en usuario de recordatorios');
+  <% end %>  
+  ga('send', 'pageview');
+</script>

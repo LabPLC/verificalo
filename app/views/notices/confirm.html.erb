@@ -9,17 +9,11 @@
   <!-- confirmacion -->
   <div class="row">
     <div class="col-md-8 col-sm-12">
-      <% if @error %>
-      <%= icon(:error) %>
-      <p class="msg"><strong>Ocurrio un error.</strong></p> 
-      <p class="msg">La dirección no es valida.</p>
-      <% else %>
       <%= icon(:ok) %>
-      <p class="msg"><strong>Tu suscripción esta confirmada.</strong></p> 
+      <p class="msg"><strong>Tu suscripción esta confirmada.</strong></p>
       <p class="msg">Recibiras los recordatorios de tu
         auto con placa <strong><%= @user.plate %></strong> en tu correo
         electrónico.</p>
-      <% end %>
     </div>
   </div>
 </div>

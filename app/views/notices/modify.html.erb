@@ -1,0 +1,117 @@
+<!-- notices#modify -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title">Modificar suscripción</h1>
+    </div>
+  </div>
+
+  <% if request.post? && @errors.length < 1 %>
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <%= icon(:ok) %>
+      <p class="msg"><strong>Tus modificaciones fueron
+          guardadas.</strong></p>
+    </div>
+  </div>
+  <% end %>
+
+  <%= form_tag({ controller: 'notices', action: 'modify' },
+      { method: 'post', id: 'form-notices', class: 'form-horizontal' }) do %>
+  
+  <div class="form-group">
+    <label for="input-notcies-email"
+           class="col-md-4 control-label">Tu correo electrónico</label>
+    <div class="col-md-8">
+      <p class="form-control-static"><%= @user.email.address %></p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="input-notcies-plate"
+           class="col-md-4 control-label">¿Cuál es la placa de tu
+      auto?</label>
+    <div class="col-md-4">
+      <input id="input-notices-plate" type="text"
+             class="form-control input-notices" 
+             <% if params[:user].present? && params[:user][:plate].present? %>
+             value="<%= params[:user][:plate] %>"
+             <% else %>
+             value="<%= @user.plate %>"
+             <% end %>
+             placeholder="Placa" name="user[plate]">
+    </div>
+    <div class="col-md-4 error-notices">
+      <% if request.post? && @errors[:INVALID_USER_PLATE] %>
+      <%= icon(:error) %>
+      <p class="msg"><strong>La placa no es de un auto particular de la
+          Ciudad de México.</strong></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label">¿Qué recordatorios deseas
+      recibir?</label>
+    <div class="col-md-4">
+      <div class="checkbox">
+        <label><input type="checkbox"
+                      <%= setting_checked('verificacion', @user.verificacion) %>
+                      name="user[verificacion]">Verificación</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox"
+                      <%= setting_checked('adeudos', @user.adeudos) %>
+                      name="user[adeudos]">Adeudos de tenencias e
+          infracciones</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" 
+                      <%= setting_checked('no_circula_weekday', @user.no_circula_weekday) %>
+                      name="user[no_circula_weekday]">
+          Hoy no circula de lunes a viernes</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox"
+                      <%= setting_checked('no_circula_weekend', @user.no_circula_weekend) %>
+                      name="user[no_circula_weekend]">Hoy no circula
+          sabatino</label>
+      </div>
+    </div>
+    <div class="col-md-4 error-notices">
+      <% if request.post? && @errors[:MISSING_USER_NOTICES] %>
+      <%= icon(:error) %>
+      <p class="msg"><strong>Debes seleccionar por lo menos un tipo de
+        recordatorio.</strong></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4 col-md-offset-4 col-sm-6">
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <a href="<%= url_for({ controller: 'notices', action: 'cancel',
+               uuid: @user.id })%>"
+         class="btn btn-primary btn-cancel">Cancelar suscripción</a>
+    </div>
+  </div>
+
+  <% end %>
+</div>
+
+<!-- btn_subforms & btn_active -->
+<script>
+  var radio_subforms = { 
+  'radio-notices-email' : '<%= url_for({ controller: 'notices', action: 'email' }) %>',
+  'radio-notices-phone' : '<%= url_for({ controller: 'notices', action: 'phone' }) %>'
+  };
+</script>
+
+<!-- analytics -->
+<script>
+  ga('set', 'page', '/recordatorios');
+  ga('set', 'title', 'Recordatorios');
+  ga('send', 'pageview');
+</script>
