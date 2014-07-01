@@ -66,7 +66,9 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
                 title: '¿Qué es la verificación vehícular?', url: 'que-es-la-verificacion',
                 body: '<p class="lead">Los vehículos son una de las fuentes más importantes de contaminantes del aire en la Ciudad de México, por eso la Secretaría del Medio Ambiente cuenta con un programa para asegurar que los vehículos que circulan en el Distrito Federal tienen la menor emisión posible de contaminantes, este programa se conoce como Programa de Verificación Vehicular. Además de asegurar una menor contaminación, fomenta también el mantenimiento preventivo y correctivo del vehículo. El programa es de carácter obligatorio para todos los autos matriculados en el Distrito Federal.</p>
 
-<p>Los vehículos automotores registrados en el D.F. deberán realizar y aprobar una verificación de emisiones vehiculares cada semestre, salvo aquellos que obtengan un holograma doble cero (00), en cuyo caso la unidad estará exenta de verificar sus emisiones hasta por tres semestres posteriores al semestre en que obtuvo un holograma 00.</p><p class="lead">Los vehículos nuevos o usados que se registren por primera vez en el Distrito Federal deberán ser verificados dentro de los 180 días naturales contados a partir de la fecha de la tarjeta de circulación.</p>
+<p>Los vehículos automotores registrados en el D.F. deberán realizar y aprobar una verificación de emisiones vehiculares cada semestre, salvo aquellos que obtengan un holograma doble cero (00), en cuyo caso la unidad estará exenta de verificar sus emisiones hasta por tres semestres posteriores al semestre en que obtuvo un holograma 00.</p>
+
+<p>Los vehículos nuevos o usados que se registren por primera vez en el Distrito Federal deberán ser verificados dentro de los 180 días naturales contados a partir de la fecha de la tarjeta de circulación.</p>
 
 <p>Los vehículos matriculados en el Distrito Federal que ya han sido verificados en sus emisiones vehiculares deberán continuar verificando conforme al color del engomado o al último dígito numérico de sus placas de circulación en los siguientes términos:</p>
 
@@ -86,22 +88,75 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
 # 2
 Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 4, related_3_id: 5,
                 title: '¿Qué necesito para verificar mi auto?', url: 'que-necesito-para-verificar',
-                body: '<p class="lead">Los documentos que deberá llevar y mostrar el propietario, poseedor o conductor del vehículo que se presenta a verificar, en original y copia simple (salvo la factura del auto, en cuyo caso y por seguridad sólo debe llevar copia simple), dejando copia simple en el Verificentro de cada documento requerido, de acuerdo a la siguiente tabla:</p>
+                body: '<p>Los documentos que deberá llevar y mostrar el propietario, poseedor o conductor del vehículo que se presenta a verificar, en original y copia simple (salvo la factura del auto, en cuyo caso y por seguridad sólo debe llevar copia simple), dejando copia simple en el Verificentro de cada documento requerido, de acuerdo a su situación:</p>
 
-<table class="table table-bordered">
-<thead><tr><th>Requisitos</th><th>Verificación por 1a Vez en el DF</th><th>Verificación regular</th><th>Verificación con cambio de placa (baja y alta)</th><th>Verificación extemporánea</th><th>Verificación de vehículos a gas</th><th>Verificación con cambio convertidor catalítico</th><th>Verificaciones voluntarias</th></tr></thead>
-<tbody>
-<tr><td>Tarjeta de circulación</td><td>Si (indicando trámite 1 ó 2)</td><td>Si</td><td>Si</td><td>Si</td><td>Si</td><td>Si</td><td>Si</td></tr>
-<tr><td>Copia Factura y/o contrato de arrendamiento</td><td>Sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión</td><td>-</td><td>Sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión</td><td>Sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión</td><td>Sólo usa gas de origen (agencia)</td><td>-</td><td>Sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión</td></tr>
-<tr><td>Constancia de verificación próxima anterior</td><td>-</td><td>Si</td><td>Sólo si tiene registro previo en el DF</td><td>-</td><td>Si</td><td>Si (rechazo)</td><td>-</td></tr>
-<tr><td>Multa por verificación extemporánea</td><td colspan="7">Sólo si venció periodo de verificación y/o 180 días naturales<br /> (Obtener Formato Universal para pagar la multa por verificación extemporánea, Clave 50, en <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php" target="_blank">http://www.finanzas.df.gob.mx/formato_lc/conceptos.php</a>)</td>
-</tr>
-<tr><td>Baja por cambio de placa</td><td>Sólo si proviene de otra entidad</td><td>-</td><td>Si</td><td>-</td><td>Sólo si realizó cambio de placa</td><td>Sólo si realizó cambio de placa</td><td>-</td></tr>
-<tr><td>Sustitución</td><td>Sólo si es taxi</td><td>-</td><td>Sólo si es taxi</td><td>-</td><td>Sólo si es taxi</td><td>-</td><td>-</td></tr>
-<tr><td>Autorización DGGCA uso Gas LP</td><td>Sólo si usa gas y requiere holograma 0</td><td>Sólo si usa gas y requiere holograma 0</td><td>Sólo si usa gas y requiere holograma 0</td><td>Solo si usa gas y requiere holograma 0</td><td>Sólo si requiere holograma 0</td><td>-</td><td>-</td></tr>
-<tr><td>Garantía cambio convertidor</td><td>-</td><td>Sólo si presenta rechazo PIREC</td><td>Sólo si presenta rechazo PIREC</td><td>Sólo si deriva de rechazo PIREC</td><td>-</td><td>Si</td><td>Sólo si deriva de rechazo PIREC</td></tr>
-</tbody>
-</table>
+<h4 class="title">Verificación por 1a Vez en el DF</h4>
+<ul>
+<li>Tarjeta de circulación (indicando trámite 1 ó 2)</li>
+<li>Copia Factura y/o contrato de arrendamiento (sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión)</li>
+<li>Baja por cambio de placa (sólo si proviene de otra entidad)</li>
+<li>Sustitución (sólo si es taxi)</li>
+<li>Autorización DGGCA uso Gas LP (sólo si usa gas y requiere holograma 0)</li>
+<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
+</ul>
+
+<h4 class="title">Verificación regular</h4>
+<ul>
+<li>Tarjeta de circulación</li>
+<li>Constancia de verificación anterior</li>
+<li>Autorización DGGCA uso Gas LP (sólo si usa gas y requiere holograma 0)</li>
+<li>Garantía cambio convertidor (sólo si presenta rechazo PIREC)</li>
+<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
+</ul>
+
+<h4 class="title">Verificación con cambio de placa (baja y alta)</h4>
+<ul>
+<li>Tarjeta de circulación</li>
+<li>Copia Factura y/o contrato de arrendamiento (sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión)</li>
+<li>Constancia de verificación anterior (sólo si tiene registro previo en el DF)</li>
+<li>Baja por cambio de placa</li>
+<li>Sustitución (sólo si es taxi)</li>
+<li>Autorización DGGCA uso Gas LP (sólo si usa gas y requiere holograma 0)</li>
+<li>Garantía cambio convertidor (sólo si presenta rechazo PIREC)</li>
+<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
+</ul>
+
+<h4 class="title">Verificación extemporánea</h4>
+<ul>
+<li>Tarjeta de circulación</li>
+<li>Copia Factura y/o contrato de arrendamiento (sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión)</li>
+<li>Autorización DGGCA uso Gas LP (sólo si usa gas y requiere holograma 0)</li>
+<li>Garantía cambio convertidor (sólo si deriva de rechazo PIREC)</li>
+<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
+</ul>
+
+<h4 class="title">Verificación de vehículos a gas</h4>
+<ul>
+<li>Tarjeta de circulación</li>
+<li>Copia Factura y/o contrato de arrendamiento (sólo si es de gas desde agencia)</li>
+<li>Constancia de verificación anterior</li>
+<li>Baja por cambio de placa (sólo si realizó cambio de placa)</li>
+<li>Sustitución (solo si es taxi)</li>
+<li>Autorización DGGCA uso Gas LP (sólo si requiere holograma 0)</li>
+<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
+</ul>
+
+<h4 class="title">Verificación con cambio convertidor catalítico</h4>
+<ul>
+<li>Tarjeta de circulación</li>
+<li>Constancia de verificación anterior (rechazo)</li>
+<li>Baja por cambio de placa (sólo si realizó cambio de placa)</li>
+<li>Garantía cambio convertidor</li>
+<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
+</ul>
+
+<h4 class="title">Verificaciones voluntarias</h4>
+<ul>
+<li>Tarjeta de circulación</li>
+<li>Copia Factura y/o contrato de arrendamiento (sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión)</li>
+<li>Garantía cambio convertidor (sólo si deriva de rechazo PIREC)</li>
+<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
+</ul>
 
 <p>Todos los casos requieren el no adeudo de infracciones y tenencias para lo cual se podrá realizar la consulta correspondiente en: <a href="http://www.finanzas.df.gob.mx/sma/consulta_ciudadana.php" target="_blank">http://www.finanzas.df.gob.mx/sma/consulta_ciudadana.php</a> para infracciones y <a href="http://www.finanzas.df.gob.mx/consultas_pagos/consulta_adeudosten.php" target="_blank">http://www.finanzas.df.gob.mx/consultas_pagos/consulta_adeudosten.php</a> para tenencias. Consultas que serán validadas por el Verificentro cuando el vehículo se presente a verificar.</p>
 
@@ -121,7 +176,7 @@ Answer.create({ category_id: 1, contact_id: 1,  related_1_id: 2, related_3_id: 4
 # 4
 Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2, related_3_id: 3,
                 title: '¿Cuál es el costo de la verificación?', url: 'cuanto-cuesta-verificacion',
-                body: '<p class="lead">Para el segundo semestre de 2013, el costo por los servicios de verificación vehicular es de $383.00 para todo tipo de Constancia de Verificación (00, 0, 2, Rechazo y Evaluación Técnica) que se entregue al usuario.</p>
+                body: '<p class="lead">Para el primer semestre de 2014, el costo por los servicios de verificación vehicular es de $383.00 para todo tipo de Constancia de Verificación (00, 0, 2, Rechazo y Evaluación Técnica) que se entregue al usuario.</p>
 
 <p>Las verificaciones pares serán gratuitas cuando la verificación non que les antecede sea un rechazo vehicular, siempre y cuando la verificación par se realice en el mismo Verificentro en que se obtuvo el rechazo vehicular. La gratuidad excluye el pago por verificación extemporánea.</p>
 
@@ -138,7 +193,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2,
 # 5
 Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
                 title: 'Mi pago de adeudos NO aparece', url: 'mi-pago-no-aparece',
-                body: '<p class="lead">Los propietarios o poseedores de los vehículos que no hayan sido verificados en su periodo de verificación debido a falta de actualización oportuna de pagos de tenencias o infracciones al Reglamento de Tránsito Metropolitano, en el sistema de consulta de la Secretaría de Finanzas, se les permitirá verificar sus emisiones sin el pago de multa por verificación extemporánea, siempre y cuando tramiten y les sea autorizada la condonación del pago por parte de la Secretaría de Finanzas del Gobierno del Distrito Federal, de acuerdo a lo siguiente:</p>
+                body: '<p>Los propietarios o poseedores de los vehículos que no hayan sido verificados en su periodo de verificación debido a falta de actualización oportuna de pagos de tenencias o infracciones al Reglamento de Tránsito Metropolitano, en el sistema de consulta de la Secretaría de Finanzas, se les permitirá verificar sus emisiones sin el pago de multa por verificación extemporánea, siempre y cuando tramiten y les sea autorizada la condonación del pago por parte de la Secretaría de Finanzas del Gobierno del Distrito Federal, de acuerdo a lo siguiente:</p>
 
 <ol>
 <li>Cuando el propietario o poseedor del automotor haya acudido a realizar su trámite de corrección o aclaración de pagos ante alguna Administración Tributaria o Administración Auxiliar dentro del período de verificación correspondiente, y no hubiese podido realizar la verificación de emisiones por falta de actualización del sistema de consulta de adeudos que opera la Secretaría de Finanzas, se deberá acudir a cualquier Administración Tributaria o Administración Auxiliar y expresar en el formato denominado “volante de aclaraciones” o en escrito libre, el motivo del trámite de corrección o aclaración de pagos, debiendo presentar en original y copia:<ol>
@@ -175,7 +230,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2,
 # 7
 Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2,
                 title: 'Autos exentos de la verificación', url: 'vehiculos-exentos-verificacion',
-                body: '<p class="lead">Vehículos exentos del Programa de Verificación Vehicular y del Acuerdo que Establece las Medidas para Limitar la Circulación de Vehículos Automotores en las en las Vialidades del Distrito Federal, para Controlar y Reducir la Contaminación Atmosférica y Contingencias Ambientales conocido como “Programa Hoy No Circula”:</td>
+                body: '<p>Vehículos exentos del Programa de Verificación Vehicular y del Acuerdo que Establece las Medidas para Limitar la Circulación de Vehículos Automotores en las en las Vialidades del Distrito Federal, para Controlar y Reducir la Contaminación Atmosférica y Contingencias Ambientales conocido como “Programa Hoy No Circula”:</td>
 <table class="table table-bordered">
 <thead><tr><th>Marca</th><th>Submarca</th></tr></thead>
 <tbody>
@@ -257,7 +312,9 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 10, related_2_id: 1
 # 10
 Answer.create({ category_id: 2, contact_id: 1, related_1_id: 12, related_2_id: 9,
                 title: 'El Hoy No Circula y autos de otros estados', url: 'autos-otros-estados',
-                body: '<p class="lead">Los vehículos de combustión interna con placas del extranjero o de un estado que no sea el Distrito Federal o el Estado de México deben dejar de circular de lunes a sábado de las 5:00 a las 22:00 horas, con base en el último dígito numérico de la placa de matrícula y/o del color de la calcomanía de circulación permanente (engomado). La restricción aplica de acuerdo a lo establecido en la siguiente tabla:</p>
+                body: '<p class="lead">Los vehículos de combustión interna con placas del extranjero o de un estado que no sea el Distrito Federal o el Estado de México deben dejar de circular de lunes a sábado de las 5:00 a las 22:00 horas, con base en el último dígito numérico de la placa de matrícula y/o del color de la calcomanía de circulación permanente (engomado).</p>
+
+<p>La restricción aplica de acuerdo a lo establecido en la siguiente tabla:</p>
 
 <table class="table table-bordered">
 <thead><tr><th>Día</th><th>Limitación de la circulación</th></tr></thead>
@@ -281,7 +338,7 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 12, related_2_id: 9
 # 11
 Answer.create({ category_id: 2, contact_id: 1, related_1_id: 9, related_2_id: 10, related_3_id: 12,
                 title: 'Autos exentos del Hoy No Circula', url: 'vehiculos-extenos-hoy-no-circula',
-                body: '<p class="lead">Están exentos del Programa Hoy No Circula:</p>
+                body: '<p>Están exentos del Programa Hoy No Circula:</p>
 <ol>
 <li>Los vehículos que obtengan un holograma vigente “00” ó “0” como resultado de la realización de una prueba de verificación vehicular en el Distrito Federal o en los Centros de Verificación de entidades reconocidas por la Secretaría del Medio Ambiente del Gobierno del Distrito Federal (estas entidades son: Estado de México, Guanajuato, Hidalgo, Querétaro, Puebla, Morelos, Michoacán y Tlaxcala).</li>
 <li>Las motocicletas de cualquier tipo en tanto existan Normas Oficiales Mexicanas aplicables a estos automotores.</li>
