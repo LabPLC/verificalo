@@ -411,7 +411,7 @@ class VehicleCDMX
     }
   end
 
-  # hoy no circula
+  # estado hoy no circula
 
   def no_circula_cero?
     return false unless self.verificacion_last_approved?
