@@ -7,10 +7,11 @@
 }
 
 .thanks {
-    background-color: #268f8d;
+    background-color: #f2f5f6;
+    border: 1px solid #d8d8d8;
     margin-top: 40px;
 }
 
 .thanks img {
-    margin: 30px auto;
+    margin: 0 auto;
 }
