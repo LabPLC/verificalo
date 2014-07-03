@@ -9,6 +9,9 @@
       <div class="answer">
         <%= @answer.body.html_safe %>
       </div>
+      <% if @answer.source %>
+      <p class="answer-source"><a href="<%= @answer.source %>">Fuente</a></p>
+      <% end %>
     </div>
     <%= render 'sidebar' %>
   </div>

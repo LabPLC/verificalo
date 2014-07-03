@@ -84,7 +84,7 @@ a:hover, a:active {
     border-color: #fee550;
     border-width: 1px;
     border-style: solid;
-    padding: 10px 10px 15px 10px;
+    padding: 10px 10px 0px 10px;
     color: #268f8d;
 }
 

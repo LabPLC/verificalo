@@ -13,7 +13,7 @@
            href="tel:<%= @answer.contact.phone %>">
           <%= @answer.contact.phone %></a>
         <% if @answer.contact.phone_schedule %>
-        (<%= @answer.contact.phone_schedule %>)
+        <%= @answer.contact.phone_schedule.html_safe %>
         <% end %>
       </p>
       <% end %>
@@ -33,13 +33,13 @@
         <a onclick="trackClick('<%= gmap(@answer.contact) %>', 
                     'Dirección <%= @answer.contact.name %>');"
            href="<%= gmap(@answer.contact) %>">
-          <%= @answer.contact.address %>
+          <%= @answer.contact.address.html_safe %>
         </a>
         <% else %>
-        <%= @answer.contact.address %>
+        <%= @answer.contact.address.html_safe %>
         <% end %>
         <% if @answer.contact.address_schedule %>
-        (<%= @answer.contact.address_schedule %>)
+        de <%= @answer.contact.address_schedule.html_safe %>
         <% end %>
       </p>
       <% end %>

@@ -122,6 +122,10 @@ div.answer p.lead {
     font-size: 22px;
 }
 
+.answer-source {
+    margin-top: 25px;
+}
+
 /* answers#verificientros */
 
 @media(max-width: 767px) {
