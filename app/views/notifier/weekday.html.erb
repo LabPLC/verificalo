@@ -1,11 +1,22 @@
 <!-- notifier#weekday -->
-
 <h1 style="color: #494b57;
            font-size: 30px; 
            font-weight: normal; 
-           margin: 20px 0 30px 0;
+           margin: 20px 0 20px 0;
            text-transform: uppercase;">Auto 
   <strong><%= @user.plate %></strong></h1>
+
+<% if @vehicle.verificacion_current? %>
+<p stlye="margin: 20px 0;">Marca y modelo:
+  <strong><%= @vehicle.verificacion_current_brand_str %> 
+  <%= @vehicle.verificacion_current_model_str %> 
+  <%= @vehicle.verificacion_current_year_str %></strong>
+</p>
+<% end %>
+
+<% if @user.no_circula_weekday || @user.verificacion %>
+<%= render 'no_circula_verificacion' %>
+<% end %>
 
 <% if @user.no_circula_weekday %>
 <%= render 'no_circula_weekday' %>

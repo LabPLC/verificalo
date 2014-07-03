@@ -13,13 +13,3 @@
   <strong><%= @vehicle.no_circula_weekday_str %></strong>.
 </p>
 <% end %>
-
-<% if @vehicle.no_circula_expired? %>
-<h2 style="color: #494b57;
-           font-size: 20px;
-           font-weight: bold; 
-           margin: 30px 0 20px;
-           text-transform: uppercase;">No puede circular</h2>
-<p style="margin: 20px 0;">Tu auto no tiene una verificación vigente y
-  por lo tanto no puede circular.</p>
-<% end %>

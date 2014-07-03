@@ -9,15 +9,3 @@
   la verificación a más tardar el
   <strong><%= @vehicle.verificacion_current_vigency_str %></strong>.</p>
 <% end %>
-
-<% if @vehicle.verificacion_expired? %>
-<h2 style="color: #494b57;
-           font-size: 20px;
-           font-weight: bold; 
-           margin: 30px 0 20px;
-           text-transform: uppercase;">Vencio su verificación</h2>
-<p style="margin: 20px 0;">La verificación de tu auto vencio el 
-  <strong><%= @vehicle.verificacion_current_expired_str %></strong>, 
-  recuerda que debes pagar una multa por verificación extemporanea
-  antes de llevar tu auto a verificar.</p>
-<% end %>
