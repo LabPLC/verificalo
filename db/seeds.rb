@@ -3,12 +3,12 @@ require 'csv'
 require 'i18n'
 require 'database_cleaner'
 
-DatabaseCleaner.clean_with :truncation, { only: ['admin_users',
-                                                 'delegaciones',
-                                                 'verificentros',
-                                                 'categories',
-                                                 'contacts',
-                                                 'answers' ] }
+DatabaseCleaner.clean_with :truncation, { only: [ 'admin_users',
+                                                  'delegaciones',
+                                                  'verificentros',
+                                                  'categories',
+                                                  'contacts',
+                                                  'answers' ] }
 
 AdminUser.create(email: 'admin@verificalo.mx', 
                  password: 'verificalo',
@@ -56,229 +56,132 @@ Category.create([{ url: 'verificacion', name: 'Verificación', priority: 1 },
                  #{ url: 'tenencia', name: 'Tenencia', priority: 4 }])
 
 Contact.create({ name: 'Secretaría del Medio Ambiente', 
-                 phone: '5134 2380', phone_schedule: 'extensión 1690, 9 am a 5 pm',
-                 email: 'contacto@sedema.df.gob.mx',
+                 phone: '5134 2380',
                  address: 'Av. Tlaxcoaque No. 8, Col. Centro Histórico, Distrito Federal',
-                 address_schedule: '9 am a 4 pm', lat: '19.423219', lon: '-99.134159' })
+                 address_schedule: '9 am a 6 pm', lat: '19.423219', lon: '-99.134159' })
+
+Contact.create({ name: 'Dirección Ejecutiva de Vigilancia Ambiental', 
+                 phone: '5278 9931', phone_schedule: 'extensión 4550 de 8&nbsp;am a 8:30&nbsp;pm',
+                 address: 'Av. Tlaxcoaque No. 8, Col. Centro Histórico, Distrito Federal',
+                 address_schedule: '9&nbsp;am a 1:30&nbsp;pm', lat: '19.423219', lon: '-99.134159' })
+
+Contact.create({ name: 'Dirección General de Inspección Policiaca', 
+                 phone: '5242 5000', phone_schedule: 'extensiones 1120, 1121, 1122 y 1171' })
+
+# verificacion
 
 # 1
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3, related_3_id: 4, related_4_id: 7,
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3, related_3_id: 5, related_4_id: 6, related_5_id: 15,
                 title: '¿Qué es la verificación vehícular?', url: 'que-es-la-verificacion',
-                body: '<p class="lead">Los vehículos son una de las fuentes más importantes de contaminantes del aire en la Ciudad de México, por eso la Secretaría del Medio Ambiente cuenta con un programa para asegurar que los vehículos que circulan en el Distrito Federal tienen la menor emisión posible de contaminantes, este programa se conoce como Programa de Verificación Vehicular. Además de asegurar una menor contaminación, fomenta también el mantenimiento preventivo y correctivo del vehículo. El programa es de carácter obligatorio para todos los autos matriculados en el Distrito Federal.</p>
-
-<p>Los vehículos automotores registrados en el D.F. deberán realizar y aprobar una verificación de emisiones vehiculares cada semestre, salvo aquellos que obtengan un holograma doble cero (00), en cuyo caso la unidad estará exenta de verificar sus emisiones hasta por tres semestres posteriores al semestre en que obtuvo un holograma 00.</p>
-
-<p>Los vehículos nuevos o usados que se registren por primera vez en el Distrito Federal deberán ser verificados dentro de los 180 días naturales contados a partir de la fecha de la tarjeta de circulación.</p>
-
-<p>Los vehículos matriculados en el Distrito Federal que ya han sido verificados en sus emisiones vehiculares deberán continuar verificando conforme al color del engomado o al último dígito numérico de sus placas de circulación en los siguientes términos:</p>
-
-<table class="table table-bordered">
-<thead><tr><th colspan="2">&nbsp;</th><th colspan="2">Período para verificar</th></tr>
-<tr><th>Color del engomado</th><th>Último dígito de la placa</th><th>1er semestre</th><th>2º semestre</th></tr></thead>
-<tbody>
-<tr><td bgcolor="#ffff66">Amarillo</td><td>5 ó 6</td><td>enero y febrero</td><td>julio y agosto</td></tr>
-<tr><td bgcolor="#ff99cc">Rosa</td><td>7 ó 8</td><td>febrero y marzo</td><td>agosto y septiembre</td></tr>
-<tr><td bgcolor="#ff3333">Rojo</td><td>3 ó 4</td><td>marzo y abril</td><td>septiembre y octubre</td></tr>
-<tr><td bgcolor="#339900">Verde</td><td>1 ó 2</td><td>abril y mayo</td><td>octubre y noviembre</td></tr>
-<tr><td bgcolor="#66ccff">Azul</td><td>9 ó 0</td><td>mayo y junio</td><td>noviembre y diciembre</td></tr>
-</tbody></table>
-
-<p>El proceso de verificación de emisiones vehiculares aplica a todos los automotores matriculados en el Distrito Federal y los que portan placas metropolitanas, con excepción de los tractores agrícolas, la maquinaria dedicada a las industrias de la construcción y minera, las motocicletas, los vehículos eléctricos, los vehículos con matrícula de auto antiguo, automotores con matrícula demostradora y aquellos cuya tecnología impida la aplicación de la Norma Oficial Mexicana correspondiente (algunos vehículos híbridos y unidades a gas natural con sistema de combustión empobrecida).</p>' })
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/objetivo-aplicacion-programa-verificacion-vehicular',
+                body: '<p class="lead">Los autos son una de las fuentes más importantes de contaminantes del aire en la Ciudad de México, por eso la Secretaría del Medio Ambiente cuenta con un programa para asegurar que los vehículos que circulan en la Ciudad de México emitan la menor cantidad posible de contaminantes, este programa se conoce como Programa de Verificación Vehicular. Además de asegurar una menor contaminación, fomenta también el mantenimiento preventivo y correctivo del auto. El programa es de carácter obligatorio para todos los autos matriculados en la Ciudad de México.</p>'})
 
 # 2
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 4, related_3_id: 5,
-                title: '¿Qué necesito para verificar mi auto?', url: 'que-necesito-para-verificar',
-                body: '<p>Los documentos que deberá llevar y mostrar el propietario, poseedor o conductor del vehículo que se presenta a verificar, en original y copia simple (salvo la factura del auto, en cuyo caso y por seguridad sólo debe llevar copia simple), dejando copia simple en el Verificentro de cada documento requerido, de acuerdo a su situación:</p>
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 6, related_3_id: 4, related_4_id: 7, related_5_id: 9,
+                title: '¿Cuando debo verificar mi auto?', url: 'cuando-verificar',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/calendario-verificacion',
+                body: '<p class="lead">Los autos deberán realizar y aprobar la verificación de emisiones vehiculares cada semestre, salvo para el caso de los que obtengan un holograma <strong>doble cero</strong>, en cuyo caso el auto estará exento de verificar sus emisiones hasta por tres semestres posteriores al semestre en que se obtuvo.</p>
 
-<h4 class="title">Verificación por 1a Vez en el DF</h4>
-<ul>
-<li>Tarjeta de circulación (indicando trámite 1 ó 2)</li>
-<li>Copia Factura y/o contrato de arrendamiento (sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión)</li>
-<li>Baja por cambio de placa (sólo si proviene de otra entidad)</li>
-<li>Sustitución (sólo si es taxi)</li>
-<li>Autorización DGGCA uso Gas LP (sólo si usa gas y requiere holograma 0)</li>
-<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
-</ul>
+<p>Los vehículos matriculados en el Distrito Federal y que ya han sido verificados en sus emisiones vehiculares en su período anterior, deberán continuar verificando conforme al color del engomado o al último dígito numérico de las placas de circulación del vehículo en los siguientes términos.</p>
 
-<h4 class="title">Verificación regular</h4>
-<ul>
-<li>Tarjeta de circulación</li>
-<li>Constancia de verificación anterior</li>
-<li>Autorización DGGCA uso Gas LP (sólo si usa gas y requiere holograma 0)</li>
-<li>Garantía cambio convertidor (sólo si presenta rechazo PIREC)</li>
-<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
-</ul>
-
-<h4 class="title">Verificación con cambio de placa (baja y alta)</h4>
-<ul>
-<li>Tarjeta de circulación</li>
-<li>Copia Factura y/o contrato de arrendamiento (sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión)</li>
-<li>Constancia de verificación anterior (sólo si tiene registro previo en el DF)</li>
-<li>Baja por cambio de placa</li>
-<li>Sustitución (sólo si es taxi)</li>
-<li>Autorización DGGCA uso Gas LP (sólo si usa gas y requiere holograma 0)</li>
-<li>Garantía cambio convertidor (sólo si presenta rechazo PIREC)</li>
-<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
-</ul>
-
-<h4 class="title">Verificación extemporánea</h4>
-<ul>
-<li>Tarjeta de circulación</li>
-<li>Copia Factura y/o contrato de arrendamiento (sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión)</li>
-<li>Autorización DGGCA uso Gas LP (sólo si usa gas y requiere holograma 0)</li>
-<li>Garantía cambio convertidor (sólo si deriva de rechazo PIREC)</li>
-<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
-</ul>
-
-<h4 class="title">Verificación de vehículos a gas</h4>
-<ul>
-<li>Tarjeta de circulación</li>
-<li>Copia Factura y/o contrato de arrendamiento (sólo si es de gas desde agencia)</li>
-<li>Constancia de verificación anterior</li>
-<li>Baja por cambio de placa (sólo si realizó cambio de placa)</li>
-<li>Sustitución (solo si es taxi)</li>
-<li>Autorización DGGCA uso Gas LP (sólo si requiere holograma 0)</li>
-<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
-</ul>
-
-<h4 class="title">Verificación con cambio convertidor catalítico</h4>
-<ul>
-<li>Tarjeta de circulación</li>
-<li>Constancia de verificación anterior (rechazo)</li>
-<li>Baja por cambio de placa (sólo si realizó cambio de placa)</li>
-<li>Garantía cambio convertidor</li>
-<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
-</ul>
-
-<h4 class="title">Verificaciones voluntarias</h4>
-<ul>
-<li>Tarjeta de circulación</li>
-<li>Copia Factura y/o contrato de arrendamiento (sólo si es nuevo y requiere 00 por 1ª, 2ª o 3ª ocasión)</li>
-<li>Garantía cambio convertidor (sólo si deriva de rechazo PIREC)</li>
-<li>Multa por verificación extemporánea (sólo si venció periodo de verificación o 180 días naturales, <a href="http://www.finanzas.df.gob.mx/formato_lc/conceptos.php">Formato universal</a>, clave 50 para pagar multa por verificación extemporanea)</li>
-</ul>
-
-<p>Todos los casos requieren el no adeudo de infracciones y tenencias para lo cual se podrá realizar la consulta correspondiente en: <a href="http://www.finanzas.df.gob.mx/sma/consulta_ciudadana.php" target="_blank">http://www.finanzas.df.gob.mx/sma/consulta_ciudadana.php</a> para infracciones y <a href="http://www.finanzas.df.gob.mx/consultas_pagos/consulta_adeudosten.php" target="_blank">http://www.finanzas.df.gob.mx/consultas_pagos/consulta_adeudosten.php</a> para tenencias. Consultas que serán validadas por el Verificentro cuando el vehículo se presente a verificar.</p>
-
-<p>En caso de no presentar la constancia de verificación vehicular, la unidad podrá ser verificada siempre y cuando el equipo GDF09 presente en pantalla la verificación vehicular de su período inmediato anterior).</p>
-
-<p>En caso de que no exista el registro de la verificación vehicular anterior en la base de datos, el vehículo no podrá verificar hasta que no se pague una multa por verificación extemporánea.</p>
-
-<p>Si el ciudadano tiene el certificado de su verificación vehicular anterior, deberá presentarse en el Módulo de Atención Ciudadana de la Dirección General de Gestión de la Calidad del Aire de la Secretaría del Medio Ambiente del Gobierno del Distrito Federal “DGGCA”, ubicada en Tlaxcoaque número 8, Planta Baja, Colonia Centro, Delegación Cuauhtémoc, C.P. 06090, México, Distrito Federal, en el horario comprendido entre las 9:00 y las 14:00 horas de lunes a viernes, en donde se corroborará la realización de la verificación de emisiones vehiculares y, de ser el caso, se realizarán las acciones correspondientes para que el vehículo sea verificado.</p>
-
-<p>En el caso de los vehículos sancionados dentro del Programa de Vehículos Contaminantes, se deberán presentar los documentos definidos a lo largo del numeral 13 del Programa de Verificación Vehicular vigente.<br /><br /><a href="http://www.consejeria.df.gob.mx/portal_old/uploads/gacetas/52bf9eb19f707.pdf" target="_blank" title="Gaceta Oficial del Distrito Federal">Consulta aquí el Programa de Verificación Vehicular Obligatorio del Primer Semestre 2014</a></p>' })
+<table class="table table-bordered text-center">
+<thead><tr><th colspan="2">&nbsp;</th><th colspan="2" class="text-center">Período para verificar</th></tr>
+<tr><th class="text-center">Color del engomado</th><th class="text-center">Último dígito de la placa</th><th class="text-center">1er semestre</th><th class="text-center">2do semestre</th></tr></thead>
+<tbody>
+<tr><td bgcolor="#ffff66"><strong>Amarillo</strong></td><td>5 ó 6</td><td>enero y febrero</td><td>julio y agosto</td></tr>
+<tr><td bgcolor="#ff99cc"><strong>Rosa</strong></td><td>7 ó 8</td><td>febrero y marzo</td><td>agosto y septiembre</td></tr>
+<tr><td bgcolor="#ff3333"><strong>Rojo</strong></td><td>3 ó 4</td><td>marzo y abril</td><td>septiembre y octubre</td></tr>
+<tr><td bgcolor="#339900"><strong>Verde</strong></td><td>1 ó 2</td><td>abril y mayo</td><td>octubre y noviembre</td></tr>
+<tr><td bgcolor="#66ccff"><strong>Azul</strong></td><td>9 ó 0</td><td>mayo y junio</td><td>noviembre y diciembre</td></tr>
+</tbody></table>' })
 
 # 3
-Answer.create({ category_id: 1, contact_id: 1,  related_1_id: 2, related_3_id: 4, related_4_id: 8,
+Answer.create({ category_id: 1, contact_id: 1,  related_1_id: 6, related_2_id: 4, related_3_id: 2, related_4_id: 7, related_5_id: 9,
                 title: '¿Donde puedo verificar mi auto?', url: 'verificentros',
                 body: 'Verificentros de la Ciudad de México por delegación o cercanos donde puede verificar su auto' })
 
 # 4
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2, related_3_id: 3,
-                title: '¿Cuál es el costo de la verificación?', url: 'cuanto-cuesta-verificacion',
-                body: '<p class="lead">Para el primer semestre de 2014, el costo por los servicios de verificación vehicular es de $383.00 para todo tipo de Constancia de Verificación (00, 0, 2, Rechazo y Evaluación Técnica) que se entregue al usuario.</p>
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 6, related_2_id: 3, related_3_id: 2, related_4_id: 9,
+                title: '¿Cuál es el costo de la verificación?', url: 'cuanto-cuesta-la-verificacion',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/tarifas-verificacion',
+                body: '<p class="lead">El costo por los servicios de verificación vehicular que presten los Verificentros, es de $398.00 (Trescientos noventa y ocho pesos 00/100 M.N.) para todo tipo de Constancia de Verificación (Holograma doble cero, cero, uno, dos, rechazo y evaluación técnica) que se entregue al usuario.</p>
 
-<p>Las verificaciones pares serán gratuitas cuando la verificación non que les antecede sea un rechazo vehicular, siempre y cuando la verificación par se realice en el mismo Verificentro en que se obtuvo el rechazo vehicular. La gratuidad excluye el pago por verificación extemporánea.</p>
-
-<p>La oportunidad de una siguiente verificación gratuita no será aplicable en el caso de verificaciones practicadas en los últimos siete días naturales del período de verificación del automotor.</p>
+<p>La verificación podrá ser gratuita cuando la verificación non que le anteceda sea un rechazo vehicular, siempre y cuando la verificación par se realice en el mismo Verificentro en que se obtuvo el rechazo vehicular. La gratuidad excluye el pago por verificación extemporánea. La oportunidad de una siguiente verificación gratuita no será aplicable en el caso de verificaciones practicadas en los últimos siete días naturales del período de verificación del auto.</p>
 
 <p>La tarifa por la expedición de las reposiciones de Constancias de Verificación (holograma y/o certificado), será la que establezca el Código Fiscal del Distrito Federal.</p>
 
-<p>La multa por verificación extemporánea tiene un costo de 20 Días de Salario Mínimo General Vigente. Para el segundo semestre de 2013 es de: $1295.00.</p>
+<p>Las copias de documentos necesarios para realizar la verificación vehicular de cada unidad, que el propietario o poseedor del automotor a verificar llegase a solicitar a los Verificentros, deberá ser cobrada en un máximo de un peso por cada copia fotostática solicitada, no estando obligado el Verificentro a prestar dicho servicio.</p>
 
-<p><strong>La vigencia del pago de la multa es de 30 días naturales a partir del pago de la misma, siendo el tiempo que se tiene para poder realizar y aprobar la verificación vehicular del automotor.</strong></p>
-
-<p>Antes de pagar su multa por verificación extemporánea, asegúrese de no tener adeudos de tenencia y/o infracciones de tránsito, con el objeto de evitar que se venza la vigencia del pago de su multa y que tenga la obligación de volver a pagarla.</p>'})
+<p>La Constancia del tipo exento se expedirá sin costo alguno.</p>'})
 
 # 5
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
-                title: 'Mi pago de adeudos NO aparece', url: 'mi-pago-no-aparece',
-                body: '<p>Los propietarios o poseedores de los vehículos que no hayan sido verificados en su periodo de verificación debido a falta de actualización oportuna de pagos de tenencias o infracciones al Reglamento de Tránsito Metropolitano, en el sistema de consulta de la Secretaría de Finanzas, se les permitirá verificar sus emisiones sin el pago de multa por verificación extemporánea, siempre y cuando tramiten y les sea autorizada la condonación del pago por parte de la Secretaría de Finanzas del Gobierno del Distrito Federal, de acuerdo a lo siguiente:</p>
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 15, related_2_id: 2, related_3_id: 3, related_4_id: 6, related_5_id: 9,
+                title: '¿Qué holograma puede obtener mi auto?', url: 'que-holograma-puede-obtener-mi-auto',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/hologramas-que-se-pueden-obtener',
+                body: '<p>Los hologramas que puede obtener tu auto conforme al nuevo Programa de Verificación Vehicular son los siguientes:</p>
+<table class="table table-bordered text-center">
+<thead><tr><th class="text-center">Holograma</th><th class="text-center">Auto</th><th class="text-center">Vigencia de holograma</th></tr></thead>
+<tbody>
+<tr bgcolor="#29aae3"><td><strong>Exento</strong></td><td>Híbridos y eléctricos</td><td>8 años</td></tr>
+<tr bgcolor="#8cc63e"><td><strong>Doble cero</strong></td><td>Modelo 2014 y posteriores</td><td>2 años a partir de la fecha de factura</td></tr>
+<tr bgcolor="#ffc40c"><td><strong>Cero</strong></td><td>Modelo 2006 y posteriores</td><td>Semestral</td></tr>
+<tr bgcolor="#f7933d"><td><strong>Uno</strong></td><td>Modelo 1999 y posteriores</td><td>Semestral</td></tr>
+<tr bgcolor="#ed1b24"><td><strong>Dos</strong></td><td>Cualquier modelo</td><td>Semestral</td></tr>
+</tbody></table>
 
+<h4 class="title">Exento</h4>
+<p>La constancia denominada <strong>exento</strong> para auto eléctricos e híbridos, la cual los exenta de la verificación vehicular y de las limitaciones del Programa Hoy No Circula podrá ser tramitada en el Módulo de Atención Ciudadana (Av. Tlaxcoaque No. 8, PB, Col. Centro Histórico, Del. Cuauhtémoc, C.P. 06090, México, Distrito Federal) sin costo, en un horario de 9:00 a 18:00 horas.</p>
+<p>El Trámite podrá ser realizarlo por los propietarios o poseedores de autos eléctricos e híbridos matriculados en el Distrito Federal o que se encuentren en posesión de los fabricantes o distribuidores de autos nuevos y sin matrícula asignada.</p>
+<p>Consulta el trámite y descarga el formato correspondiente en el apartado <em>Constancia denominada Exento para autoss eléctricos e híbridos</em> de la sección <a href="http://www.sedema.df.gob.mx/sedema/index.php/tramites/tramites-verificacion-vehicular-hoy-no-circula">Trámites / Verificación vehicular y Hoy No Circula</a> de la página de la Secretaría de Medio Ambiente.</p>
+<p>Consulta el <a href="http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/hologramas-que-se-pueden-obtener">listado de autos candidatos al holograma exento</a> en la página de la Secretaría del Medio Ambiente.</p>
+
+<h4 class="title">Doble cero</h4>
+<p>Podrán obtener este holograma:</p>
 <ol>
-<li>Cuando el propietario o poseedor del automotor haya acudido a realizar su trámite de corrección o aclaración de pagos ante alguna Administración Tributaria o Administración Auxiliar dentro del período de verificación correspondiente, y no hubiese podido realizar la verificación de emisiones por falta de actualización del sistema de consulta de adeudos que opera la Secretaría de Finanzas, se deberá acudir a cualquier Administración Tributaria o Administración Auxiliar y expresar en el formato denominado “volante de aclaraciones” o en escrito libre, el motivo del trámite de corrección o aclaración de pagos, debiendo presentar en original y copia:<ol>
-<li>El pago sujeto a aclaración o corrección</li>
-<li>Tarjeta de circulación</li>
-<li>Identificación del contribuyente (en caso de representación, el documento con el que se acredite personalidad)</li>
-</ol></li>
-<li>Cuando el propietario o poseedor del automotor haya realizado algún pago de infracciones y/o tenencia en el último día del período correspondiente de verificación vehicular, deberá acudir a cualquier Administración Tributaria o Administración auxiliar y expresar en el formato denominado “volante de aclaraciones” o en escrito libre, el motivo del trámite de corrección o aclaración de pagos, debiendo presentar en original y copia los mismos documentos establecidos en los incisos 1), 2) y 3).</li>
+<li>Unidades nuevas a gasolina año modelo 2014 y posteriores podrán obtener el holograma <strong>doble cero</strong> en su primera verificación o intentos posteriores para obtener el mismo, siempre y cuando sea dentro de los 365 días posteriores a la fecha de facturación, y cumplan con lo establecido en la norma NOM-163-SEMARNAT-ENER-SCFI-2013.</li>
+<li>Unidades nuevas año modelo 2014 y posteriores a <em>diesel</em> con tecnología EURO V, EPA 2010 o posteriores con sistemas de control de emisiones del tipo filtros de partículas. Datos que deberán ser reportados por los fabricantes o importadores de autos a la Dirección General de Gestión de la Calidad del Aire.</li>
+<li>Unidades nuevas año modelo 2014 y posteriores a Gas Natural Comprimido, que desde su fabricación utilicen este combustible como carburante.</li>
 </ol>
 
-<p>Posterior a la realización de este trámite, el propietario o poseedor de la unidad deberá acudir al Módulo de Atención Ciudadana de la “DGGCA”, ubicada en Tlaxcoaque número 8, Planta Baja, Colonia Centro, Delegación Cuauhtémoc, C.P. 06090, México, Distrito Federal, para obtener un oficio que le permita circular para poder llevar su unidad a verificar y para que se libere del adeudo al vehículo registrado en los equipos de verificación de emisiones vehiculares. Este oficio se entregará sólo si en el sistema de consulta de la Secretaría de Finanzas se muestra la leyenda “Permitir Verificar”, con lo cual el vehículo podrá ser verificado sin el pago de multa por verificación vehicular extemporánea.</p>'})
+<h4 class="title">Proceso de transición para obtener el holograma uno</h4>
+<p>Los autos de uso particular a gasolina que cuenten o estén sujetos a un holograma <strong>dos</strong>, podrán acceder al holograma <strong>uno</strong>, siempre y cuando en el proceso de verificación vehicular acrediten el nivel de emisiones que les corresponde. El propietario podrá verificar su auto antes de su periodo de verificación debiendo pagar la verificación respectiva. El hecho de obtener el holograma <strong>uno</strong> no exime al propietario del auto de cumplir con su verificación en el periodo que le corresponda.</p>
+
+<h4 class="title">Rechazo</h4>
+<p>Esta constancia la obtendrán aquellos autos cuyas emisiones rebasen los valores máximos establecidos en los numerales 7.6.1 a 7.6.3 del Programa de Verificación Vehicular Obligatoria vigente y/o que no aprueben la revisión visual de humo y/o que carezcan de alguno de los componentes de control de emisiones del auto (tapón del tanque de almacenamiento de combustible, bayoneta de aceite, tapón de aceite, portafiltro de aire y tubo de escape para motores ciclo Otto, y se adiciona gobernador en el caso de unidades a diesel). Así mismo, se les entregará a los propietarios de las unidades que presenten falla en la operación del convertidor catalítico o que no presenten las condiciones operativas para realizar la prueba de verificación de emisiones vehiculares.</p>
+<p>Este mismo documento se entregará al parque vehicular al que se practique una prueba de evaluación técnica.</p>'})
 
 # 6
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2, related_3_id: 3,
-                title: '¿Vigencia del holograma doble cero?', url: 'vigencia-doble-cero',
-                body: '<p>La constancia de verificación en su tipo doble cero podrá otorgarse a:</p>
-<ol>
-<li>Unidades híbridas (gasolina – electricidad) de cualquier modelo y renovarlo hasta en dos ocasiones.</li>
-<li>Unidades a gasolina modelos 2007 a 2010 y renovarlo hasta en dos ocasiones, siempre y cuando cumplan con los requisitos establecidos al respecto.</li>
-<li>Unidades nuevas a gasolina modelo 2011 y posteriores, por una sola ocasión,</li>
-</ol>
-
-<p>La vigencia de cada holograma 00 que se otorgue se calculará a partir de la fecha de adquisición de la unidad, misma que se obtendrá de la factura, carta factura de la unidad o contrato de arrendamiento.</p>
-
-<p>Los vehículos que porten holograma 00 cuya vigencia llegue a su término durante el Programa de Verificación en curso, mantendrán el beneficio de exención a las restricciones a la circulación establecidas en el Programa “Hoy No Circula”, en tanto realizan su próxima verificación (haya ocurrido o no un cambio de matrícula) de conformidad con lo siguiente:</p>
-
-<ol>
-<li>Si la vigencia del holograma 00 culmina en el periodo de verificación correspondiente a la terminación de la placa del vehículo, deberá verificar en dicho periodo, pudiendo hacerlo desde el primero hasta el último día de su periodo, aún si la vigencia del holograma no ha concluido.</li>
-<li>Si el período de verificación al que corresponden las placas ha concluido o no ha iniciado, deberán verificar desde el día siguiente de vencimiento de su holograma y hasta el último día de su período próximo inmediato de verificación vehicular de acuerdo a la terminación de su placa.</li>
-</ol>
-
-<p><a href="/sedema/images/archivos/verificacion-hoy-no-circula/verificacion-vehicular/listado-vehiculos-holograma-00.pdf" target="_blank">Listado de vehículos que pueden obtener el holograma “00” por más de una ocasión</a></p>'})
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
+                title: '¿Qué necesito para verificar mi auto?', url: 'que-necesito-para-verificar',
+                body: '<p class="lead">Consulte la tabla de <a href="http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/requisitos-para-verificar">requisitos para verificar</a> en la página de la Secretaría del Medio Ambiente</p>' })
 
 # 7
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 1, related_2_id: 2,
-                title: 'Autos exentos de la verificación', url: 'vehiculos-exentos-verificacion',
-                body: '<p>Vehículos exentos del Programa de Verificación Vehicular y del Acuerdo que Establece las Medidas para Limitar la Circulación de Vehículos Automotores en las en las Vialidades del Distrito Federal, para Controlar y Reducir la Contaminación Atmosférica y Contingencias Ambientales conocido como “Programa Hoy No Circula”:</td>
-<table class="table table-bordered">
-<thead><tr><th>Marca</th><th>Submarca</th></tr></thead>
-<tbody>
-<tr><td>Hyundai</td><td>Blue City Hibrido (CNG-eléctrico)</td></tr>
-<tr><td>Hyundai</td><td>HD 120 (GNC)</td></tr>
-<tr><td>Hyundai</td><td>Super Aero City (GNC)</td></tr>
-<tr><td>Toyota</td><td>Prius (eléctrico-gasolina)</td></tr>
-<tr><td>Vehizero</td><td>Ecco C (eléctrico-gasolina)</td></tr>
-<tr><td>Nissan</td><td>Leaf (eléctrico)</td></tr>
-<tr class="alt"><td>BMW</td><td>ActiveHybrid 5 (eléctrico-gasolina)</td></tr>
-<tr><td>BMW</td><td>X6 ActiveHybrid (eléctrico-gasolina)</td></tr>
-<tr class="alt"><td>BMW</td><td>Serie 3 active hibrid</td></tr>
-<tr><td>BMW</td><td>Mini E</td></tr>
-<tr class="alt"><td>Porsche</td><td>Cayene hibrido V6 3.0</td></tr>
-<tr><td>Porsche</td><td>Touareg hibrido V6 3.0</td></tr>
-</tbody>
-</table>'})
+Answer.create({ category_id: 1, contact_id: 1,  related_1_id: 2, related_2_id: 3, related_3_id: 6, related_4_id: 9,
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/vehiculos-con-multas',
+                title: 'Verificación con multa', url: 'multa-verificacion',
+                body: '<p>Los autos que sean llevados a verificar y que no hayan realizado este trámite en el semestre anterior o en el período de tiempo correspondiente, deberán pagar una multa por verificación vehicular extemporánea, de acuerdo a lo siguiente:</p>
+<ul>
+<li>Pagar una multa por verificación vehicular extemporánea por 20 DSMGV. La vigencia del pago de la multa es de 30 días naturales a partir del pago de la misma, siendo el tiempo que se tiene para poder realizar y aprobar la verificación vehicular del automotor.</li>
+<li>En caso de no obtener una constancia de verificación aprobatoria en los 30 días establecidos, se deberá pagar otra multa por verificación vehicular extemporánea pero por un monto de 40 DSMGV, con lo cual se adquiere otro nuevo plazo de 30 días naturales para aprobar la verificación de emisiones.</li>
+<li>En caso de no obtener una constancia de verificación aprobatoria en los 30 días establecidos en el numeral 9.1.2 del PVVO, se deberá pagar otra multa por verificación vehicular extemporánea pero por un monto de 80 DSMGV, con lo cual se adquiere otro nuevo plazo de 30 días naturales para aprobar la verificación de emisiones. Si el plazo para verificar se vence nuevamente sin que la unidad hubiese aprobado la verificación, se deberá pagar otra multa por verificación extemporánea por 80 DSMGV para obtener otros 30 días para poder verificar su unidad; este mecanismo se repetirá tantas veces sea necesario hasta que la unidad apruebe la verificación de emisiones vehiculares.</li>
+</ul>
+<p>Durante la vigencia del pago de la multa por verificación extemporánea, el auto sólo podrá circular para dirigirlo a un taller mecánico y/o a un Verificentro.</p>
+<p>Los autos que no hayan sido verificados debido a robo de la unidad, siniestro, reparación mayor o alguna otra causa de fuerza mayor, se les ampliará el período para verificar las emisiones de su automóvil (a través de un permiso de ampliación del período de verificación de emisiones vehiculares), por lo que no se harán acreedores al pago por verificación extemporánea, siempre y cuando les sea autorizada la ampliación de período por la Dirección General de Gestión de la Calidad del Aire de la Secretaria del Medio Ambiente del Distrito Federal “DGGCA”, en cuyo caso deberán verificar la unidad durante el período de tiempo que se les indique en la ampliación del mismo.</p>
+
+<p>Consulta los requisitos para tramitar la <em>Autorización de ampliación al periodo de verificación por robo, siniestro o reparación mayor</em> en la sección <a href="http://www.sedema.df.gob.mx/sedema/index.php/tramites/tramites-verificacion-vehicular-hoy-no-circula">Trámites / Verificación vehicular y Hoy No Circula</a> de la página de la Secretaría del Medio Ambiente.</p>
+
+Los autos que no hayan sido verificados en su periodo de verificación debido a falta de actualización oportuna de pagos de tenencias o infracciones al Reglamento de Tránsito Metropolitano o al que le sustituya, en el sistema de consulta de la Secretaría de Finanzas, se les permitirá verificar sus emisiones sin el pago de multa por verificación extemporánea, siempre y cuando tramiten y les sea autorizada la condonación del pago por parte de la Secretaría de Finanzas del Gobierno del Distrito Federal.' })
 
 # 8
-Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
-                title: 'Convertidor catalítico en mal estado', url: 'rechazo-convertidor-catalitico',
-                body: '<p class="lead">Durante la prueba de verificación se evalúa la eficiencia del convertidor catalítico mediante la lectura de los gases de escape, generándose un rechazo en aquellas unidades de pasajeros de uso particular modelos 1991 a 2003 o de transporte público, mercantil y privado de carga, y transporte público de pasajeros modelos 1991 a 2006, cuyos convertidores catalíticos hayan perdido eficiencia en la conversión.</p>
+Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3, related_3_id: 6, related_4_id: 9,
+                title: 'Rechazo por convertidor catalítico', url: 'rechazo-convertidor-catalitico',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/vehiculos-con-rechazo-por-convertidor-catalitico',
+                body: '<p class="lead">Durante la prueba de verificación se evaluará la eficiencia del convertidor catalítico mediante la lectura de los gases de escape, generándose un rechazo en aquellos vehículos cuyos convertidores catalíticos hayan perdido eficiencia en la conversión.</p>
+<p>Debes acudir a un Taller PIREC autorizado y ubicado en el Distrito Federal o a una agencia automotriz a cambiar este dispositivo anticontaminante, así como a realizar el diagnóstico y las reparaciones necesarias al motor de su vehículo.</p>
+<p>El vehículo no podrá ser verificado nuevamente hasta haber realizado el cambio de convertidor catalítico en un Taller PIREC autorizado o en las agencias concesionadas por los fabricantes de vehículos.</p>
+<p><a href="http://www.sma.df.gob.mx/sistemas/pirec_talleres/consulta.php">Consulta la ubicación de los Talleres PIREC autorizados por la Dirección General de Gestión de la Calidad del Aire.</a></p>
 
-<p>La constancia de verificación no aprobatoria que se entregue deberá contener la leyenda: “Falla en la eficiencia del convertidor catalítico, debe acudir a un Taller PIREC autorizado y ubicado en el Distrito Federal o a una agencia automotriz a cambiar este dispositivo anticontaminante, así como a realizar el diagnóstico y las reparaciones necesarias al motor de su vehículo”.</p>
-
-<p>El usuario NO podrá verificar nuevamente, hasta haber realizado el cambio del convertidor catalítico y, en su caso, reparación o afinación de su unidad, toda vez que un convertidor catalítico puede fallar por que se haya cumplido su vida útil o debido a problemas eléctricos y/o mecánicos del vehículo que lo hayan afectado.</p>
-
-<p>Posterior a la reparación, el Taller o Agencia debe entregar al usuario la garantía del convertidor catalítico y de las reparaciones realizadas. Con estos elementos se podrá acudir nuevamente al Verificentro y realizar la verificación correspondiente cuyo resultado definirá el tipo de holograma que obtendrá.</p>
-
-<p>El PIREC se ha creado para propiciar la sustitución del convertidor catalítico inoperante y el mantenimiento del motor de tu vehículo. De esta forma se reduce la contaminación protegiendo tu salud y la de tus hijos.</p>
-
-<ul>
-<li>Amigo automovilista, si has recibido un certificado de rechazo PIREC, tu convertidor catalítico ha dejado de operar, con lo que tu unidad por lo menos ha duplicado sus emisiones contaminantes.</li>
-<li>Por lo anterior, en caso de haber recibido un certificado de rechazo PIREC:<ol type="a">
-<li>No atiendas recomendaciones de coyotes o pre verificadores, toda vez que los documentos resultantes que obtengas, pueden ser falsos o robados, en cuyo caso quedarás involucrado en un problema legal.</li>
-<li>Evita obtener de forma fraudulenta tu certificado de verificación ya que los datos de tu vehículo quedan grabados en una base de datos, por lo que cualquier alteración en el procedimiento quedará registrada, y tu vehículo podrá ser detenido en la calle, o bien durante el próximo semestre no podrá ser verificado hasta atender el trámite correspondiente.</li>
-<li>Asiste sólo a los Talleres Autorizados PIREC, mismos que se encuentran distribuidos en la Ciudad de México.</li>
-</ol></li>
-</ul>
-
-<p>Si en la prueba de verificación correspondiente obtuviste un rechazo por falla en la eficiencia del convertidor catalítico, el Taller Autorizado PIREC deberá:</p>
-<ul>
-<li>Realizar un diagnóstico del estado mecánico del vehículo, con el fin de detectar las causas que motivaron que el convertidor catalítico dejara de operar eficientemente.</li>
-<li>Llevar a cabo las reparaciones del motor que sean necesarias, para asegurar el buen funcionamiento del mismo, así como cambiar el convertidor catalítico.</li>
-<li>Otorgar, por escrito el diagnóstico y las reparaciones realizadas al motor de tu vehículo, así como entregar la póliza de garantía del convertidor catalítico.</li>
-</ul>
-
-<p><strong>Recuerda:</strong></p>
+<h4 class="title"p>Importante</h4>
 <ul>
 <li>Una buena reparación y mantenimiento periódico garantiza el buen estado del vehículo.</li>
 <li>Un convertidor catalítico nunca debe fallar; si esto ocurre, entonces existe un problema.</li>
@@ -287,92 +190,116 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 2, related_2_id: 3,
 </ul>'})
 
 # 9
-Answer.create({ category_id: 2, contact_id: 1, related_1_id: 10, related_2_id: 11, related_3_id: 12,
-                title: '¿En qué consiste el Hoy No Circula?', url: 'que-es-hoy-no-circula',
-                body: '<p class="lead">Dentro del parque vehicular que circula en la ciudad existen vehículos cuya tecnología o estado mecánico ya no permite garantizar un mínimo de emisiones contaminantes. El porcentaje de este tipo de vehículos disminuye año con año, sin embargo, para evitar que estos vehículos tengan un impacto significativo en la calidad del aire, se limita su circulación una vez a la semana de lunes a viernes y un sábado de cada mes, este programa se conoce como Hoy No Circula. En el caso de los vehículos que provienen de otros estados o del extranjero, no es posible conocer con certidumbre los niveles de emisión por lo tanto, se incluyen dentro del programa Hoy No Circula.</p>
-<p>Los vehículos de combustión interna matriculados en el Distrito Federal o Estado de México que porten holograma 2 deben dejar de circular de lunes a sábado de las 5:00 a las 22:00 horas, con base en el último dígito numérico de la placa de matrícula y/o del color de la calcomanía de circulación permanente (engomado), con excepción del transporte local público de pasajeros cuya restricción será de las 10:00 a las 22:00 horas.</p>
+Answer.create({ category_id: 1, contact_id: 2,  related_1_id: 6, related_2_id: 7, related_3_id: 8,
+                title: 'Denuncia de abuso en los verificentros', url: 'denuncias-verificentros',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/denuncia',
+                body: '<p class="lead">En caso de algún abuso en Verificentros del Distrito Federal podrá llamar desde el Verificentro ya que todos cuentan con línea directa al Centro de Inspección y Vigilancia Remota (CIVAR), el teléfono es gratuito y se encuentra en una caseta identificada con el nombre de <strong>VERIFICATEL</strong>. La llamada podrá ser atendida y vigilada a través del CIVAR.</p>
 
-<p>La restricción aplica de acuerdo a lo establecido en la siguiente tabla:</p>
+<p>También puede llamar al teléfono 52789931 ext 4550 desde cualquier lugar, en un horario de 8:00 a 20:30 horas y/o levantar una denuncia ante la Dirección Ejecutiva de Vigilancia Ambiental de la Secretaría del Medio Ambiente, de forma personal por Oficialía de Partes en el Edificio Juana de Arco ubicado en Tlaxcoaque No.8, Col. Centro Histórico, Delegación Cuauhtémoc, en planta baja, de lunes a viernes, en un horario de 9:00am a 1:30pm.</p>
 
-<table class="table table-bordered">
-<thead><tr><th>Día</th><th>Limitación de la circulación</th></tr></thead>
-<tbody>
-<tr><td>Lunes</td><td>Amarillo* (5 y 6)**</td></tr>
-<tr><td>Martes</td><td>Rosa* (7 y 8)**</td></tr>
-<tr><td>Miércoles</td><td>Rojo* (3 y 4)**</td></tr>
-<tr><td>Jueves</td><td>Verde* (1 y 2)**</td></tr>
-<tr><td>Viernes</td><td>Azul* (9, 0, matrículas que carecen de números o automotores con permisos de circulación)</td></tr>
-<tr><td>Sábado</td><td>El segundo sábado de cada mes los vehículos con engomado color rosa y terminación de placas 7 y 8;<br /> El tercer sábado de cada mes los vehículos con engomado color rojo y terminación de placas 3 y 4;<br /> El cuarto sábado de cada mes los vehículos con engomado color verde terminación de placas 1 y 2; y<br /> El quinto sábado, en aquellos meses que lo contengan, los vehículos con engomado color azul y terminación de placas 9 y 0, así como matrículas que carecen de números o automotores con permisos de circulación.</td></tr>
-</tbody>
-</table>
+<p>Los datos necesarios para dar seguimiento a una denuncia son:</p>
 
-<p>* Último dígito numérico de la placa de matrícula.</p>
-<p>** Color del engomado que contiene el número de la matrícula.</p>' })
+<ol>
+<li>Nombre completo y datos de ubicación del denunciante. (Indicar dirección, teléfono y/o dirección de correo electrónico del denunciante para poder contactarlo de ser necesario).</li>
+<li>Lugar de los hechos. (Señalar calle, número, colonia, Delegación, Código Postal o datos que permitan ubicar el predio).</li>
+<li>Hechos denunciados. (Describir las obras o actividades que se denuncian y las afectaciones al medio ambiente en su caso).</li>
+<li>Momento en que se suscitan los hechos. (Indicar cuando ocurrieron los hechos, o en su caso cuando iniciaron en caso de que sean continuos o permanentes).</li>
+<li>Personas presuntas responsables. (Señalar el nombre de las personas responsables de los hechos).</li>
+<li>Información complementaria. (referir si se tienen información respecto de permisos, licencias o autorizaciones que en su caso se hayan expedido por las autoridades).</li>
+<li>Elementos probatorios. (Referir y anexar todas las pruebas que se tengan para acreditar los hechos, como son: documentos, fotografías y videos, entre otros).</li>'})
+
+# hoy no circula
 
 # 10
-Answer.create({ category_id: 2, contact_id: 1, related_1_id: 12, related_2_id: 9,
-                title: 'El Hoy No Circula y autos de otros estados', url: 'autos-otros-estados',
-                body: '<p class="lead">Los vehículos de combustión interna con placas del extranjero o de un estado que no sea el Distrito Federal o el Estado de México deben dejar de circular de lunes a sábado de las 5:00 a las 22:00 horas, con base en el último dígito numérico de la placa de matrícula y/o del color de la calcomanía de circulación permanente (engomado).</p>
+Answer.create({ category_id: 2, contact_id: 1, related_1_id: 15, related_2_id: 11, related_3_id: 14, related_4_id: 13, related_5_id: 12,
+                title: '¿En qué consiste el Hoy No Circula?', url: 'que-es-hoy-no-circula',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/hoy-no-circula/por-que-se-modernizo-el-programa-hoy-no-circula',
+                body: '<p class="lead">Dentro del parque vehicular que circula en la ciudad existen vehículos cuya tecnología o estado mecánico ya no permite garantizar un mínimo de emisiones contaminantes. El porcentaje de este tipo de vehículos disminuye año con año, sin embargo, para evitar que estos vehículos tengan un impacto significativo en la calidad del aire se limita su circulación y este programa se conoce como Hoy No Circula.</p>' })
 
-<p>La restricción aplica de acuerdo a lo establecido en la siguiente tabla:</p>
+# 11
+Answer.create({ category_id: 2, contact_id: 1, related_1_id: 15, related_2_id: 12,
+                title: 'Autos exentos del Hoy No Circula', url: 'vehiculos-extenos-hoy-no-circula',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/hoy-no-circula/exenciones',
+                body: '<p>Están exentos del Programa Hoy No Circula los autos:</p>
+<ol>
+<li>Con holograma <strong>exento</strong>, <strong>doble cero</strong> o <strong>cero</strong>, obtenido como parte del proceso de verificación vehicular.</li>
+<li>Que utilicen fuentes de energías no contaminantes o que no emitan contaminantes derivados de la combustión.</li>
+<li>Servicios de emergencia, médicos, seguridad pública, bomberos, rescate, protección civil y servicios urbanos.</li>
+<li>Cortejos fúnebres en servicio.</li>
+<li>Transporte escolar con el permiso o autorización.</li>
+<li>Conducidos por personas con discapacidad, con las placas de matrícula de identificación, distintivo o autorización.</li>
+<li>De emergencia médica y cuenten con la autorización.</li>
+<li>Servicio público federal de transporte de pasajeros con la autorización.</li>
+<li>Cuando portan un distintivo o permiso especial otorgado por la Secretaría porque participan en alguno de los Programas especiales de Fuentes Móviles.</li>
+<li>Cuando eres foráneo, vienes de vacaciones y portas un <a href="www.paseturistico.df.gob.mx">Pase Turístico</a> vigente otorgado por la Secretaría del Medio Ambiente.</li>
+<li>Los tractores agrícolas, la maquinaria dedicada a las industrias de la construcción y minera, las motocicletas, los vehículos eléctricos, los vehículos con matrícula de auto antiguo y/o clásico, automotores con matrícula de demostración y/o traslado.</li>
+</ol>' })
 
-<table class="table table-bordered">
-<thead><tr><th>Día</th><th>Limitación de la circulación</th></tr></thead>
+# 12
+Answer.create({ category_id: 2, contact_id: 3, related_1_id: 15, related_2_id: 14, related_3_id: 10,
+                title: 'Denuncia de abuso por policías de tránsito', url: 'denuncias-policias-transito',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/denuncia',
+                body: '<p class="lead">En caso de algún abuso por personal de tránsito del Distrito Federal puede llamar a la Secretaría de Seguridad Pública, Dirección General de Inspección Policiaca, teléfono 01 (55) 5242 5000 extensiones 1120, 1121, 1122 y 1171.</p>'})
+
+# 13
+Answer.create({ category_id: 2, contact_id: 1, related_1_id: 15, related_2_id: 14, related_3_id: 12,
+                title: 'Sanciones', url: 'sanciones-hoy-no-circula',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/hoy-no-circula/sanciones',
+                body: '<p class="lead">Los vehículos y conductores de fuentes móviles o vehículos que circulen en las vialidades y calles de la Ciudad de México que infrinjan las medidas previstas en este Programa, se harán acreedores a las sanciones establecidas en el Reglamento de la Ley Ambiental del Distrito Federal en Materia de Verificación Vehicular; así como, en el Reglamento de Tránsito Metropolitano o el que le sustituya y demás disposiciones aplicables, sin perjuicio de que sean retirados de circulación y remitidos al depósito vehicular, en el que deberán permanecer hasta que se pague la multa correspondiente, y en el caso de los vehículos detenidos durante Contingencia Ambiental, también habrá que esperar a que la misma concluya.</p>
+<p>El Reglamento de la Ley Ambiental del Distrito Federal en Materia de Verificación Vehicular establece:</p>
+<p><em>... Artículo 45. -La multa por circular con vehículos automotores en un día que tengan restringida la circulación conforme a lo dispuesto en la Ley, en este Reglamento, en acuerdos, programas o cualquier otra disposición jurídica aplicable, será de 24 días de Salario Mínimo vigente en el Distrito Federal. ...</em></p>
+
+<p>Reglamento de Tránsito Metropolitano del Distrito Federal, que a la letra dice:</p>
+
+<p><em>... Artículo 7. - Los conductores deberán acatar los programas ambientales y no circular en vehículos que tengan restricciones, los días y horas correspondientes. ...</em></p>
+<p><em>.. a). Sanción con multa equivalente en días del salario mínimo general vigente en el Distrito Federal 20 días y remisión del vehículo al depósito ...</em></p>'})
+
+# 14
+Answer.create({ category_id: 2, contact_id: 1, related_1_id: 15, related_2_id: 13, related_3_id: 12,
+                title: 'Calendario', url: 'calendario-hoy-no-circula',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/hoy-no-circula/calendario-del-programa-hoy-no-circula',
+                body: '<p><img class="img-responsive" src="http://www.sedema.df.gob.mx/sedema/images/verificacion-hoy-no-circula/hoy-no-circula/calendario-hoy-nocircula_.jpg"></p>'})
+
+# 15
+Answer.create({ category_id: 2, contact_id: 1, related_1_id: 11, related_2_id: 13, related_3_id: 10, related_4_id: 12,
+                title: 'Hologramas y limitaciones a la circulación', url: 'hologramas-hoy-no-circula',
+                source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/hoy-no-circula/en-que-consiste-el-programa-hoy-no-circula',
+                body: '<p class="lead">Los hologramas a los que hace referencia el Programa Hoy no Circula, son los que se obtienen bajo los criterios del Programa de Verificación Vehicular Obligatorio Vigente en el Distrito Federal.</p>
+<h4 class="title">Holograma exento, doble cero y cero</h4>
+<p>La circulación de los autos que porten holograma <strong>exento</strong> o que hayan obtenido en el proceso de verificación vehicular el holograma <strong>doble cero</strong> o <strong>cero</strong>, quedarán exentos de todas las limitaciones establecidas en el Programa Hoy No Circula.</p>
+
+<h4 class="title">Holograma uno</h4>
+<p>La circulación de los autos que hayan obtenido en el proceso de verificación vehicular el holograma <strong>uno</strong>, se limita un día entre semana y dos sábados por cada mes, en un horario de las 05:00 a las 22:00 horas, con base en el último dígito numérico de su placa de acuerdo con la siguiente tabla:</p>
+<table class="table table-bordered text-center">
+<thead><tr><th class="text-center">Color del engomado</th><th class="text-center">Último dígito de la placa</th><th class="text-center" colspan="2">No pueden circular de las 5 a las 22 horas</th></tr>
+</thead>
 <tbody>
-<tr><td>Lunes</td><td>Amarillo* (5 y 6)**</td></tr>
-<tr><td>Martes</td><td>Rosa* (7 y 8)**</td></tr>
-<tr><td>Miércoles</td><td>Rojo* (3 y 4)**</td></tr>
-<tr><td>Jueves</td><td>Verde* (1 y 2)**</td></tr>
-<tr><td>Viernes</td><td>Azul* (9, 0, matrículas que carecen de números o automotores con permisos de circulación)</td></tr>
-<tr><td>Sábado</td><td>El primer sábado de cada mes los vehículos con engomado color amarillo y terminación de placas 5 y 6;<br /> El segundo sábado de cada mes los vehículos con engomado color rosa y terminación de placas 7 y 8;<br /> El tercer sábado de cada mes los vehículos con engomado color rojo y terminación de placas 3 y 4;<br /> El cuarto sábado de cada mes los vehículos con engomado color verde terminación de placas 1 y 2; y<br /> El quinto sábado, en aquellos meses que lo contengan, los vehículos con engomado color azul y terminación de placas 9 y 0, así como matrículas que carecen de números o automotores con permisos de circulación.</td></tr>
+<tr><td bgcolor="#ffff66"><strong>Amarillo</strong></td><td>5 ó 6</td><td>lunes</td>
+<td class="text-left" rowspan="5" style="vertical-align: middle;">
+<p>Conforme al último dígito de la placa:</p>
+<ul>
+<li><p>Primer y tercer sábado de cada mes descansan números impares.</p></li>
+<li><p>Segundo y cuarto sábado de cada mes descansan números pares.</p></li>
+</ul>
+</td>
+</tr>
+<tr><td bgcolor="#ff99cc"><strong>Rosa</strong></td><td>7 u 8</td><td>martes</td></tr>
+<tr><td bgcolor="#ff3333"><strong>Rojo</strong></td><td>3 ó 4</td><td>miércoles</td></tr>
+<tr><td bgcolor="#339900"><strong>Verde</strong></td><td>1 ó 2</td><td>jueves</td></tr>
+<tr><td bgcolor="#66ccff"><strong>Azul</strong></td><td>9 ó 0</td><td>viernes</td></tr>
 </tbody>
 </table>
 
-<p>* Color del engomado que contiene el número de la matrícula.</p>
-<p>** Último dígito numérico de la placa de matrícula.</p>
-
-<p>Además, las unidades de servicio particular y unidades ligeras de carga (automóviles, camionetas tipo van y pick up), deben dejar de circular de lunes a viernes en el horario comprendido entre las 05:00 a las 11:00 horas. (Están exentas de esta restricción las unidades conocidas como 350 o tres y media toneladas).</p>
-
-<p>Por ejemplo: un vehículo de uso particular proveniente de Aguascalientes cuyo último dígito numérico sea “6”, deberá dejar de circular los lunes de cada semana y el primer sábado de cada mes de las 05:00 a las 22:00 horas; asimismo deberá dejar de circular de martes a viernes de cada semana de las 05:00 a las 11:00 horas.</p>'})
-
-# 11
-Answer.create({ category_id: 2, contact_id: 1, related_1_id: 9, related_2_id: 10, related_3_id: 12,
-                title: 'Autos exentos del Hoy No Circula', url: 'vehiculos-extenos-hoy-no-circula',
-                body: '<p>Están exentos del Programa Hoy No Circula:</p>
-<ol>
-<li>Los vehículos que obtengan un holograma vigente “00” ó “0” como resultado de la realización de una prueba de verificación vehicular en el Distrito Federal o en los Centros de Verificación de entidades reconocidas por la Secretaría del Medio Ambiente del Gobierno del Distrito Federal (estas entidades son: Estado de México, Guanajuato, Hidalgo, Querétaro, Puebla, Morelos, Michoacán y Tlaxcala).</li>
-<li>Las motocicletas de cualquier tipo en tanto existan Normas Oficiales Mexicanas aplicables a estos automotores.</li>
-<li>Los vehículos que porten la matrícula de vehículo antiguo emitida por alguna autoridad competente.</li>
-<li>Los vehículos que transporten o sean conducidos por personas con discapacidad y que además cuenten con las placas para vehículos de personas con discapacidad, o porten el documento o autorización que para tal efecto expida la autoridad correspondiente.</li>
-<li>Los vehículos destinados a servicios médicos, seguridad pública, bomberos, rescate y protección civil, servicios urbanos, servicio público federal de transporte de pasajeros, unidades de cualquier tipo que atiendan alguna emergencia médica, así como los vehículos que la Secretaría del Medio Ambiente del Gobierno del Distrito Federal determine a través del establecimiento de programas o convenios, mediante los cuales se reduzcan sus niveles de emisión, y los vehículos que por su peso y dimensiones estén imposibilitados de verificar (tractores agrícolas, la maquinaria dedicada a las industrias de la construcción y minera).</li>
-<li>Los vehículos que porten placas de demostración.</li>
-<li>Los vehículos destinados a prestar el servicio de transporte escolar que cuenten con la autorización de la autoridad correspondiente, o bien aquellos autobuses propiedad de instituciones académicas que presten el servicio de transporte de alumnos o personal.</li>
-<li>Los vehículos de procedencia extranjera o los matriculados en entidades federativas distintas al Distrito Federal y Estado de México que circulen portando un Pase Turístico vigente otorgado por la Secretaría del Medio Ambiente del Gobierno del Distrito Federal (<a href="http://www.paseturistico.df.gob.mx/" target="_blank">www.paseturistico.df.gob.mx</a>).</li>
-<li>Los vehículos cuya tecnología impida la aplicación de la Norma Oficial Mexicana correspondiente (algunos vehículos híbridos y unidades a gas natural que operan con mezclas aire – combustible empobrecidas, revisar las submarcas exentas en la sección <a href="http://www.sedema.df.gob.mx/index.php/verificacion-hoy-no-circula/verificacion-vehicular" target="_blank"><em>Verificación vehicular</em></a>), no importando la entidad federativa en donde fue registrado el automotor.</li>
-<li>Automotores que no emitan contaminantes derivados de la combustión, tales como los que utilizan energía solar, eléctrica, entre otros.</li>
-<li>Los automotores registrados en el Distrito Federal que hayan realizado un cambio de matrícula y porten algún holograma vigente de los tipos “00” ó “0” obtenido con la matrícula anterior.</li>
-</ol>
-<p>Los vehículos de procedencia extranjera o los matriculados en entidades federativas distintas al Distrito Federal y Estado de México que obtengan un holograma “2” como resultado de la realización de una prueba de verificación vehicular en Centros de Verificación del Distrito Federal, del Estado de México o de Centros de Verificación de entidades reconocidas por la Secretaría del Medio Ambiente del Gobierno del Distrito Federal, de conformidad con los criterios establecidos en el presente Programa, quedarán exentos de la restricción a la circulación, solamente, en los días en que les aplica la restricción de las 5:00 a las 11:00 horas (siempre y cuando no esté declarada una Precontingencia o Contingencia Ambiental).</p>' })
-
-# 12
-Answer.create({ category_id: 2, contact_id: 1, related_1_id: 9, related_2_id: 10,
-                title: '¿Qué es el Pase Turístico?', url: 'pase-turistico',
-                body: '<p class="lead">Para los vehículos con placas de algún Estado (sin incluir a los matriculados en el D.F. y el Estado de México) o del extranjero existe la posibilidad de obtener un “Pase Turístico Metropolitano” que les permite circular todos los días a cualquier hora durante la vigencia del documento, en vialidades del Distrito Federal y del Estado de México.</p>
-
-<p>El Pase se otorga de manera gratuita, pudiendo obtenerse un Pase Turístico Metropolitano por 7 días continuos (2 veces al semestre) o por 14 días continuos (una vez al semestre).</p>
-
-<p>Para obtenerlo deberá entrar a la página de Pase Turístico a través del portal electrónico de la Secretaría del Medio Ambiente del DF http://www.paseturistico.df.gob.mx/pasetur/. Es necesario que cuente con una dirección de correo electrónico personal, evitando utilizar cuentas de Hotmail o Live ya que este tipo de cuentas no permite que se reciban correos del Sistema de Pase Turístico; asimismo deberá tener a la mano la tarjeta de circulación de su vehículo.</p>
-
-<p>El procedimiento para tramitar un Pase Turístico es el siguiente:</p>
-
-<ul>
-<li>Entrar a la página de Pase Turístico - <a href="http://www.paseturistico.df.gob.mx/" target="_blank">www.paseturistico.df.gob.mx</a></li>
-<li>Iniciar su registro al capturar su correo electrónico</li>
-<li>El Sistema de Pase Turístico le enviará un correo con una dirección electrónica a su correo registrado</li>
-<li>Ingresar a la liga electrónica y llenar el registro con sus datos generales. Cuando envíe esta información, el Sistema le enviará a su vez otro correo (a su correo registrado) con una clave de acceso</li>
-<li>Con su correo electrónico y su clave de acceso podrá ingresar al Sistema</li>
-<li>En la pestaña de Registro de Automóviles deberá registrar los datos de su vehículo que se encuentran en la tarjeta de circulación. Al capturar la placa solo utilizar números y letras, sin dejar espacios en blanco.</li>
-<li>Cuando haya registrado los datos de su vehículo podrá generar su Pase, indicando si lo requiere por 7 ó 14 días. Es necesario considerar la fecha en que el vehículo circulará en algún municipio de la Zona Metropolitana del Valle de México, para que el periodo del pase contemple esta fecha.</li>
-<li>Con los datos ingresados al sistema se generarán dos pases turísticos, uno emitido por el Distrito Federal y otro por el Estado de México.</li>
-<li>Una vez tramitado el Pase, lo deberá imprimir (los dos oficios generados) y pegarlos en un lugar visible en el vehículo durante el periodo de vigencia de los mismos.</li>
-</ul>' })
+<h4 class="title">Holograma dos</h4>
+<p>La circulación de los autos  que hayan obtenido en el proceso de verificación vehicular el holograma <strong>dos</strong>, se limita un día entre semana, en un horario de las 05:00 a las 22:00 horas, con base en el último dígito de la placa, y todos los sábados sin importar su último dígito numérico, de acuerdo a la siguiente tabla:</p>
+<table class="table table-bordered text-center">
+<thead><tr><th class="text-center">Color del engomado</th><th class="text-center">Último dígito de la placa</th><th class="text-center" colspan="2">No pueden circular de las 5 a las 22 horas</th></tr>
+</thead>
+<tbody>
+<tr><td bgcolor="#ffff66"><strong>Amarillo</strong></td><td>5 ó 6</td><td>lunes</td><td rowspan="5" style="vertical-align: middle;"><p>Todos los sábados</p></td></tr>
+<tr><td bgcolor="#ff99cc"><strong>Rosa</strong></td><td>7 u 8</td><td>martes</td></tr>
+<tr><td bgcolor="#ff3333"><strong>Rojo</strong></td><td>3 ó 4</td><td>miércoles</td></tr>
+<tr><td bgcolor="#339900"><strong>Verde</strong></td><td>1 ó 2</td><td>jueves</td></tr>
+<tr><td bgcolor="#66ccff"><strong>Azul</strong></td><td>9 ó 0</td><td>viernes</td></tr>
+</tbody>
+</table>'})
