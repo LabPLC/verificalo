@@ -8,6 +8,21 @@
     días.</strong></p> 
 <% end %>
 
+<% if @vehicle.no_circula_uno? %>
+<!-- calcomania 1 -->
+<%= icon(:warning) %>
+<p class="msg">Tu auto obtuvo el
+  holograma 
+  <strong><%= @vehicle.verificacion_last_approved_result %></strong> 
+  en su última verificación y como su placa termina en
+  <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
+  circular de las 5 a las 22 horas:</p>
+<ul>
+  <li>Todos los <%= @vehicle.no_circula_weekday_str %> del año.</li>
+  <li>El <%= @vehicle.no_circula_weekend_str %> de cada mes.</li>
+</ul>
+<% end %>
+
 <% if @vehicle.no_circula_dos? %>
 <!-- calcomania 2 -->
 <%= icon(:warning) %>
@@ -16,10 +31,10 @@
   <strong><%= @vehicle.verificacion_last_approved_result %></strong> 
   en su última verificación y como su placa termina en
   <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
-  circular:</p>
+  circular de las 5 a las 22 horas:</p>
 <ul>
   <li>Todos los <%= @vehicle.no_circula_weekday_str %> del año.</li>
-  <li>El <%= @vehicle.no_circula_weekend_str %> de cada mes.</li>
+  <li>Todos los sábados del año.</li>
 </ul>
 <% end %>
 

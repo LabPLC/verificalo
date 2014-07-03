@@ -62,19 +62,11 @@
 
 <div class="col-md-4 col-sm-6">
   <!-- links sobre verificacion -->
-  <% if @vehicle.verificacion_unknown? %>
   <p><a href="<%= url_for({ controller: 'answers',
               action:'answer', category_url: 'verificacion',
-              answer_url: 'vigencia-doble-cero' })%>"
-        class="btn btn-primary btn-sm btn-wide">¿Vigencia del holograma
-      doble cero?</a></p>
-  <% else %>
-  <p><a href="<%= url_for({ controller: 'answers',
-              action:'answer', category_url: 'verificacion',
-              answer_url: 'que-necesito-para-verificar' })%>"
-        class="btn btn-primary btn-sm btn-wide">¿Qué necesito para
-      verificar mi auto?</a></p>
-  <% end %>
+              answer_url: 'que-holograma-puede-obtener-mi-auto' })%>"
+        class="btn btn-primary btn-sm btn-wide">¿Qué holograma puede
+      obtener mi auto?</a></p>
   <p><a href="<%= url_for({ controller: 'answers',
               action:'verificentros' })%>"
         class="btn btn-primary btn-sm btn-wide">¿Donde puedo verificar
