@@ -1,0 +1,22 @@
+<!-- notifier#weekday -->
+
+<h1 style="color: #494b57;
+           font-size: 30px; 
+           font-weight: normal; 
+           margin: 20px 0 30px 0;
+           text-transform: uppercase;">Auto 
+  <strong><%= @user.plate %></strong></h1>
+
+<% if @user.no_circula_weekday %>
+<%= render 'no_circula_weekday' %>
+<% end %>
+
+<% if @user.verificacion %>
+<%= render 'verificacion' %>
+<% end %>
+
+<% if @user.adeudos %>
+<%= render 'adeudos' %>
+<% end %>
+
+<%= render 'end' %>

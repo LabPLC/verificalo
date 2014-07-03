@@ -1,0 +1,32 @@
+<!-- notifier#_adeudos -->
+<% if @vehicle.adeudos? %>
+<h2 style="color: #494b57;
+           font-size: 20px;
+           font-weight: bold; 
+           margin: 30px 0 20px;
+           text-transform: uppercase;">Tiene adeudos</h2>
+
+<% if @vehicle.infracciones_unpaid > 0 %>
+<p style="margin: 20px 0;">
+  <% if @vehicle.infracciones_unpaid > 1 %>
+  Tu auto tiene <%= @vehicle.infracciones_unpaid %>
+  infracciones sin pagar.
+  <% else %>
+  Tu auto tiene una infracción sin pagar.
+  <% end %>
+</p>
+<% end %>
+
+<% if @vehicle.tenencias_unpaid > 0 %>
+<p style="margin: 20px 0;">
+  <% if @vehicle.tenencias_unpaid > 1 %>
+  Tu auto tiene adeudos de tenencia por los años
+  <%= @vehicle.tenencias_unpaid_str %>.
+  <% else %>
+  Tu auto tiene un adeudo de tenencia por el año
+  <%= @vehicle.tenencias_unpaid_str %>.
+  <% end %>
+</p>
+<% end %>
+
+<% end%>
