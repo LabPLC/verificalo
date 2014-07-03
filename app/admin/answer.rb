@@ -2,7 +2,7 @@
 ActiveAdmin.register Answer, as: 'Respuestas' do
   menu(priority: 2)
 
-  permit_params(:category_id, :contact_id, :url, :title, :body, 
+  permit_params(:category_id, :contact_id, :url, :title, :body, :source,
                 :related_1_id, :related_2_id, :related_3_id, 
                 :related_4_id, :related_5_id)
 
@@ -29,6 +29,7 @@ ActiveAdmin.register Answer, as: 'Respuestas' do
       f.input :category, label: 'Categoría'
       f.input :contact, label: 'Contacto'
       f.input :body, label: 'Texto'
+      f.input :source, as: :string, label: 'Fuente'
       f.input :related_1, label: 'Respuesta relacionada 1'
       f.input :related_2, label: 'Respuesta relacionada 2'
       f.input :related_3, label: 'Respuesta relacionada 3'
