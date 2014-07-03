@@ -90,5 +90,6 @@ FactoryGirl.define do
     sequence(:url) { |n| "answer-#{n}" }
     sequence(:title) { |n| "Question #{n}" }
     sequence(:body) { |n| "Answer #{n}" }
-  end  
+    sequence(:source) { |n| "source-#{n}" }
+  end
 end
