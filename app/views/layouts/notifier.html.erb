@@ -16,7 +16,7 @@
                    background-color: #268f8d;
                    border: 1px solid #268f8d;">
           <a href="<%= url_for(controller: 'info', action: 'home', only_path: false) %>"
-             style="color: #f2f5f6; font-size: 20px;  font-weight: bold;
+             style="color: #f2f5f6; font-size: 23px;  font-weight: bold;
                     margin: 30px 0 20px 0;  line-height: 50px;
                     text-decoration: none;">VERIFÍCALO</a>
         </td>
@@ -26,9 +26,6 @@
         <td style="width: 100%; 
                    padding: 0 15px; 
                    border: 1px solid #fee550;">
-          <h1 style="color: #494b57; font-size: 18px; font-weight: bold; 
-                     margin: 20px 0 25px 0;
-                     text-transform: uppercase;"><%= yield :title %></h1>
           <%= yield %>
         </td>
       </tr>
