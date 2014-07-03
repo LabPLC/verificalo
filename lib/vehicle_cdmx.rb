@@ -532,4 +532,14 @@ class VehicleCDMX
     end
   end
 
+  # adeudos
+
+  def adeudos?
+    return false unless self.tenencias? || self.infracciones?
+    if self.tenencias_unpaid > 0 || self.infracciones_unpaid > 0
+      return true
+    end
+    false
+  end
+
 end
