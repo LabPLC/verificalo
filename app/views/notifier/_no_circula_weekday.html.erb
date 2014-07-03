@@ -1,5 +1,5 @@
 <!-- notifier#_no_circula_weekday -->
-<% if @vehicle.no_circula_dos? %>
+<% if @vehicle.no_circula_dos? || @vehicle.no_circula_uno? %>
 <h2 style="color: #494b57;
            font-size: 20px;
            font-weight: bold; 
@@ -9,7 +9,7 @@
   <strong><%= @vehicle.verificacion_last_approved_result %></strong>
   en su última verificación y como su placa termina en
   <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
-  circular todos los 
+  circular de las 5 a las 22 horas todos los 
   <strong><%= @vehicle.no_circula_weekday_str %></strong>.
 </p>
 <% end %>
