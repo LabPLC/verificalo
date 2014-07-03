@@ -76,6 +76,17 @@ end
 shared_examples 'no circula cero' do
   it 'no_circula_cero? should return true' do
     expect(subject.no_circula_cero?).to eq(true)
+    expect(subject.no_circula_uno?).to eq(false)
+    expect(subject.no_circula_dos?).to eq(false)
+    expect(subject.no_circula_never?).to eq(false)
+    expect(subject.no_circula_expired?).to eq(false)
+  end
+end
+
+shared_examples 'no circula uno' do
+  it 'no_circula_uno? should return true' do
+    expect(subject.no_circula_cero?).to eq(false)
+    expect(subject.no_circula_uno?).to eq(true)
     expect(subject.no_circula_dos?).to eq(false)
     expect(subject.no_circula_never?).to eq(false)
     expect(subject.no_circula_expired?).to eq(false)
@@ -85,6 +96,7 @@ end
 shared_examples 'no circula dos' do
   it 'no_circula_dos? should return true' do
     expect(subject.no_circula_cero?).to eq(false)
+    expect(subject.no_circula_uno?).to eq(false)
     expect(subject.no_circula_dos?).to eq(true)
     expect(subject.no_circula_never?).to eq(false)
     expect(subject.no_circula_expired?).to eq(false)
@@ -94,6 +106,7 @@ end
 shared_examples 'no circula never' do
   it 'no_circula_never? should return true' do
     expect(subject.no_circula_cero?).to eq(false)
+    expect(subject.no_circula_uno?).to eq(false)
     expect(subject.no_circula_dos?).to eq(false)
     expect(subject.no_circula_never?).to eq(true)
     expect(subject.no_circula_expired?).to eq(false)
@@ -103,6 +116,7 @@ end
 shared_examples 'no circula expired' do
   it 'no_circula_expired? should return true' do
     expect(subject.no_circula_cero?).to eq(false)
+    expect(subject.no_circula_uno?).to eq(false)
     expect(subject.no_circula_dos?).to eq(false)
     expect(subject.no_circula_never?).to eq(false)
     expect(subject.no_circula_expired?).to eq(true)
@@ -118,6 +132,7 @@ shared_examples 'no info' do
     expect(subject.verificacion_first_ok?).to eq(false)
     expect(subject.verificacion_first_expired?).to eq(false)
     expect(subject.no_circula_cero?).to eq(false)
+    expect(subject.no_circula_uno?).to eq(false)
     expect(subject.no_circula_dos?).to eq(false)
     expect(subject.no_circula_never?).to eq(false)
     expect(subject.no_circula_expired?).to eq(false)
@@ -125,9 +140,8 @@ shared_examples 'no info' do
 end
 
 shared_examples 'no adeudos' do
-  it 'infracciones_unpaid and tenencias_unpaid should return 0' do
-    expect(subject.infracciones_unpaid).to eq(0)
-    expect(subject.tenencias_unpaid).to eq(0)
+  it 'adeudos? should return false' do
+    expect(subject.adeudos?).to eq(false)
   end
 end
 
@@ -156,6 +170,17 @@ describe VehicleCDMX do
     it_should_behave_like 'no adeudos'
   end
 
+  context 'verificacion ok holograma uno' do
+    before do
+      stub_datalab('verificacion_ok_uno')
+      @vehicle = VehicleCDMX.new({ plate: '123ABC' })
+    end
+    it_should_behave_like 'vehicle cdmx ok'
+    it_should_behave_like 'verificacion ok'
+    it_should_behave_like 'no circula uno'
+    it_should_behave_like 'no adeudos'
+  end
+
   context 'verificacion ok holograma dos' do
     before do
       stub_datalab('verificacion_ok_dos')
@@ -175,6 +200,17 @@ describe VehicleCDMX do
     it_should_behave_like 'vehicle cdmx ok'
     it_should_behave_like 'verificacion period'
     it_should_behave_like 'no circula cero'
+    it_should_behave_like 'no adeudos'
+  end
+
+  context 'verificacion period holograma uno' do
+    before do
+      stub_datalab('verificacion_period_uno')
+      @vehicle = VehicleCDMX.new({ plate: '123ABC' })
+    end
+    it_should_behave_like 'vehicle cdmx ok'
+    it_should_behave_like 'verificacion period'
+    it_should_behave_like 'no circula uno'
     it_should_behave_like 'no adeudos'
   end
 
@@ -304,6 +340,9 @@ describe VehicleCDMX do
     it_should_behave_like 'vehicle cdmx ok'
     it_should_behave_like 'verificacion ok'
     it_should_behave_like 'no circula dos'
+    it 'adeudos should return true' do
+      expect(subject.adeudos?).to eq(true)      
+    end
     it 'infracciones_unpaid should return 0' do
       expect(subject.infracciones_unpaid).to eq(0)
     end
@@ -320,6 +359,9 @@ describe VehicleCDMX do
     it_should_behave_like 'vehicle cdmx ok'
     it_should_behave_like 'verificacion ok'
     it_should_behave_like 'no circula dos'
+    it 'adeudos should return true' do
+      expect(subject.adeudos?).to eq(true)      
+    end
     it 'infracciones_unpaid should return 2' do
       expect(subject.infracciones_unpaid).to eq(2)
     end

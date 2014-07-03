@@ -420,6 +420,13 @@ class VehicleCDMX
     false
   end
 
+  def no_circula_uno?
+    return false unless self.verificacion_last_approved?
+    return false if self.verificacion_expired?
+    return true if self.verificacion_last_approved['resultado'] =~ /uno/i
+    false
+  end
+
   def no_circula_dos?
     return false unless self.verificacion_last_approved?
     return false if self.verificacion_expired?
@@ -455,11 +462,16 @@ class VehicleCDMX
   def no_circula_weekend_str
     return false if self.error
     plate_no_circula_weekend = { 
-      '1' => 'cuarto', '2' => 'cuarto',
-      '3' => 'tercer', '4' => 'tercer',
-      '5' => 'primer', '6' => 'primer',
-      '7' => 'segundo', '8' => 'segundo',
-      '9' => 'quinto', '0' => 'quinto' }
+      '1' => 'primer y tercer', 
+      '2' => 'segundo y cuarto',
+      '3' => 'primer y tercer', 
+      '4' => 'segundo y cuarto', 
+      '5' => 'primer y tercer',
+      '6' => 'segundo y cuarto', 
+      '7' => 'primer y tercer',
+      '8' => 'segundo y cuarto', 
+      '9' => 'primer y tercer',
+      '0' => 'segundo y cuarto' }
     return plate_no_circula_weekend[self.plate_last_digit] + ' sábado'
   end
 
