@@ -446,6 +446,29 @@ class VehicleCDMX
     false
   end
 
+  # no circula el proximo sabado?
+
+  def no_circula_weekend?(date)
+    return false if self.error
+    plate_no_circula_weekend = {
+      '1' => { '1' => 1, '3' => 1 },
+      '2' => { '2' => 1, '4' => 1 },
+      '3' => { '1' => 1, '3' => 1 },
+      '4' => { '2' => 1, '4' => 1 },
+      '5' => { '1' => 1, '3' => 1 },
+      '6' => { '2' => 1, '4' => 1 },
+      '7' => { '1' => 1, '3' => 1 },
+      '8' => { '2' => 1, '4' => 1 },
+      '9' => { '1' => 1, '3' => 1 },
+      '0' => { '2' => 1, '4' => 1 },
+    }
+    if plate_no_circula_weekend[self.plate_last_digit][date.week_of_month]
+      return true
+    else
+      return false
+    end
+  end
+
   # strings hoy no circula
   
   def no_circula_weekday_str
