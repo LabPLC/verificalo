@@ -30,8 +30,7 @@ class Notifier < ActionMailer::Base
     mail(to: user.email.address, subject: subject)
   end
 
-  def weekend (user, vehicle)
-    saturday = Date.today.tomorrow
+  def weekend (user, vehicle, saturday)
     return unless 
       # nunca ha verificado
       (user.no_circula_weekend && !vehicle.verificaciones_approved?) ||
