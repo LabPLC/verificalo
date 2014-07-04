@@ -1,0 +1,29 @@
+<!-- notifier#_no_circula_weekend -->
+<% if @vehicle.no_circula_uno? && @vehicle.no_circula_weekend?(@saturday) %>
+<h2 style="color: #494b57;
+           font-size: 20px;
+           font-weight: bold; 
+           margin: 30px 0 20px;
+           text-transform: uppercase;">No circula mañana</h2>
+<p style="margin: 20px 0;">Tu auto obtuvo el holograma
+  <strong><%= @vehicle.verificacion_last_approved_result %></strong>
+  en su última verificación y como su placa termina en
+  <strong><%= @vehicle.plate_last_digit_str %></strong> no puede
+  circular de las 5 a las 22 horas el 
+  <strong><%= @vehicle.no_circula_weekend_str %></strong> de cada
+  mes.</li>
+</p>
+<% end %>
+
+<% if @vehicle.no_circula_dos? %>
+<h2 style="color: #494b57;
+           font-size: 20px;
+           font-weight: bold; 
+           margin: 30px 0 20px;
+           text-transform: uppercase;">No circula mañana</h2>
+<p style="margin: 20px 0;">Tu auto obtuvo el holograma
+  <strong><%= @vehicle.verificacion_last_approved_result %></strong>
+  en su última verificación y no puede
+  circular de las 5 a las 22 horas todos los <strong>sábados</strong>.
+</p>
+<% end %>

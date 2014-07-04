@@ -451,18 +451,18 @@ class VehicleCDMX
   def no_circula_weekend?(date)
     return false if self.error
     plate_no_circula_weekend = {
-      '1' => { '1' => 1, '3' => 1 },
-      '2' => { '2' => 1, '4' => 1 },
-      '3' => { '1' => 1, '3' => 1 },
-      '4' => { '2' => 1, '4' => 1 },
-      '5' => { '1' => 1, '3' => 1 },
-      '6' => { '2' => 1, '4' => 1 },
-      '7' => { '1' => 1, '3' => 1 },
-      '8' => { '2' => 1, '4' => 1 },
-      '9' => { '1' => 1, '3' => 1 },
-      '0' => { '2' => 1, '4' => 1 },
+      '1' => { '1' => true, '3' => true },
+      '2' => { '2' => true, '4' => true },
+      '3' => { '1' => true, '3' => true },
+      '4' => { '2' => true, '4' => true },
+      '5' => { '1' => true, '3' => true },
+      '6' => { '2' => true, '4' => true },
+      '7' => { '1' => true, '3' => true },
+      '8' => { '2' => true, '4' => true },
+      '9' => { '1' => true, '3' => true },
+      '0' => { '2' => true, '4' => true },
     }
-    if plate_no_circula_weekend[self.plate_last_digit][date.week_of_month]
+    if plate_no_circula_weekend[self.plate_last_digit.to_s][date.week_of_month.to_s]
       return true
     else
       return false

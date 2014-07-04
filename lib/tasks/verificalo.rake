@@ -30,5 +30,21 @@ namespace :verificalo do
       end
     end
 
+    desc "Send email notifications *before* weekends (friday)"
+    task weekend: :environment do
+      User.are_active.joins(:email).each do |user|
+        3.times do
+          vehicle = VehicleCDMX.new({ plate: user.plate })
+          if vehicle.error
+            puts '! ' + user.plate + ': ' + vehicle.error
+          else
+            puts '- ' + user.plate
+            Notifier.weekend(user, vehicle).deliver
+            break
+          end
+        end
+      end
+    end
+
   end
 end
