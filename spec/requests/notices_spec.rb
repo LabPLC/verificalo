@@ -19,7 +19,7 @@ describe 'notices views' do
     it { should have_field('user[plate]') }
     it { should have_field('user[verificacion]', :checked) }
     it { should have_field('user[adeudos]', :checked) }
-    it { should have_field('user[no_circula_weekday]', :unchecked) }
+    it { should have_field('user[no_circula_weekday]', :checked) }
     it { should have_field('user[no_circula_weekend]', :checked) }
     # it { should have_field('Correo electrónico') }
     # it { should have_field('Llamada telefónica') }
