@@ -1,4 +1,7 @@
 require 'vehicle_cdmx'
+require 'csv'
+require 'i18n'
+require 'database_cleaner'
 
 namespace :verificalo do
   
@@ -47,5 +50,48 @@ namespace :verificalo do
       end
     end
 
+  end
+
+  namespace :db do
+
+    desc "Load answers from db/seeds/answers.rb"
+    task answers: :environment do
+      raitings = { }
+      Answer.find_each do |a|
+        raitings[a.url] = { views: a.views, positive: a.positive, negative: a.negative }
+      end
+      DatabaseCleaner.clean_with :truncation, { only: [ 'categories',
+                                                        'contacts',
+                                                        'answers' ] }
+      load File.join(Rails.root, 'db/seeds/answers.rb')
+      raitings.each do |url, r|
+        a = Answer.find_by_url(url)
+        next unless a
+        a.update(views: r[:views], positive: r[:positive], negative: r[:negative])
+      end
+    end
+
+    desc "Load verificentros from db/seeds/verificentros.csv"
+    task verificentros: :environment do
+      DatabaseCleaner.clean_with :truncation, { only: [ 'verificentros' ] }
+      CSV.foreach(File.join(Rails.root, 'db/seeds/verificentros.csv'), :headers => true) do |r|
+        next unless r['DIRECCION']
+        d = Delegacion.find_by(url: r['DELEGACION'].downcase.gsub(/\s+/, '-'))
+        unless d
+          d = Delegacion.where("unaccent(lower(name)) = ?", r['DELEGACION'].downcase).first
+        end
+        unless d
+          puts '! delegacion not found: ' + r['DELEGACION']
+          next
+        end
+        Verificentro.create(number: r['VERIFICENTRO'], 
+                            name: r['RAZON SOCIAL'], 
+                            address: r['DIRECCION'], 
+                            delegacion_id: d.id, 
+                            phone: r['TELEFONOS'],
+                            lat: r['LATITUD'],
+                            lon: r['LONGITUD'])
+      end
+    end
   end
 end
