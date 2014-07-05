@@ -148,6 +148,16 @@ end
 describe VehicleCDMX do
 
   subject { @vehicle }
+
+  context 'json error' do
+    before do
+      stub_datalab('json_error')
+      @vehicle = VehicleCDMX.new({ plate: '123ABC' })
+    end
+    it 'error should return API_JSON_ERROR' do
+      expect(@vehicle.error).to eq('API_JSON_ERROR')
+    end
+  end
   
   context 'intente mas tarde' do
     before do

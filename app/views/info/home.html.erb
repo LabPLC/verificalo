@@ -48,13 +48,23 @@
             <p class="error"><strong>La placa no es de un auto
                 particular de la Ciudad de México.</strong></p>
           </div>
+          <% elsif @error.match(/API_(VERIFICACIONES|INFRACCIONES|TENENCIAS)_ERROR/i) %>
+          <div class="col-lg-10 col-lg-offset-1
+                      col-xs-12">
+            <%= icon(:error) %>
+            <p class="error"><strong>Vuelve a intentar.</strong></p>
+            <p class="msg">Hay demasiados usuarios consultando
+              información en este momento, por favor intenta de
+              nuevo.</p>
+          </div>
           <% else %>
           <div class="col-lg-10 col-lg-offset-1
                       col-xs-12">
             <%= icon(:error) %>
             <p class="error"><strong>Vuelve a intentar.</strong></p>
             <p class="msg">Tuvimos problemas técnicos en la consulta de
-              información.</p>
+              información, por favor intenta de nuevo y si el error
+              contnua vuelve más tarde.</p>
           </div>
           <% end %>
           <% end %>

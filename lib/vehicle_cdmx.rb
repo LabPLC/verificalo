@@ -50,16 +50,14 @@ class VehicleCDMX
     begin
       url = 'http://datos.labplc.mx/movilidad/vehiculos/' + @plate + '.json'
       res = HTTParty.get(url)
+      raise unless res.code == 200
     rescue
       @status = 'API_GET_ERROR'
       return false
     end
-    if res.code != 200
-      @status = 'API_HTTP_ERROR'
-      return false
-    end
     begin
       res = JSON.parse(res.body)
+      raise unless res['consulta']
       @api = res['consulta']
     rescue
       @status = 'API_JSON_ERROR'
