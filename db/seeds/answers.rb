@@ -341,7 +341,7 @@ Answer.create({ category_id: 4, contact_id: 7, related_1_id: 23, related_2_id: 2
 Answer.create({ category_id: 4, contact_id: 7, related_1_id: 22, related_2_id: 24, related_3_id: 20,
                 title: 'Mapa de ciclovias en la Ciudad de México', url: 'mapa-ciclovias-ciudad-de-mexico',
                 source: 'http://www.sedema.df.gob.mx/sedema/images/archivos/movilidad-sustentable/movilidad-en-bicicleta/infraestructura-ciclista-existente.pdf',
-                body: '<p><a href="http://www.sedema.df.gob.mx/sedema/images/archivos/movilidad-sustentable/movilidad-en-bicicleta/infraestructura-ciclista-existente.pdf"><img class="img-responsive" src="../../assets/ciclovias.png"></a></p>
+                body: '<p><a href="http://www.sedema.df.gob.mx/sedema/images/archivos/movilidad-sustentable/movilidad-en-bicicleta/infraestructura-ciclista-existente.pdf"><img class="img-responsive" src="<%= asset_path("ciclovias.png") %>"></a></p>
 <p><a href="http://www.sedema.df.gob.mx/sedema/images/archivos/movilidad-sustentable/movilidad-en-bicicleta/infraestructura-ciclista-existente.pdf">Descarga en formato PDF</a></p>'})
 
 # 24

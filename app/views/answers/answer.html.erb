@@ -7,7 +7,7 @@
       <h2 class="title title-back"><%= @answer.title %></h2>
       <%= render 'back' %>
       <div class="answer">
-        <%= @answer.body.html_safe %>
+        <%= render inline: @answer.body.html_safe %>
       </div>
     </div>
     <%= render 'sidebar' %>
