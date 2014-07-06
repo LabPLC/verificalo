@@ -33,7 +33,7 @@ h3.category a {
 }
 
 @media(max-width: 991px) {
-    #sidebar-answer { padding-top: 30px; }
+    #sidebar-answer { padding-top: 20px; }
 }
 
 #sidebar-answer .cta-box { 
@@ -120,10 +120,6 @@ div.answer p.lead {
 #answer-sidebar h2 {
     margin: 15px 0;
     font-size: 22px;
-}
-
-.answer-source {
-    margin-top: 25px;
 }
 
 /* answers#verificientros */

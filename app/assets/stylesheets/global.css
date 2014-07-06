@@ -25,6 +25,10 @@ body {
     text-decoration: none;
 }
 
+@media(max-width: 767px) {
+    ul, ol { padding-left: 25px; }
+}
+
 /* links */
 
 a {
