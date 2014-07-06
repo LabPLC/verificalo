@@ -38,6 +38,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 6,
 
 <p>Los vehículos matriculados en el Distrito Federal y que ya han sido verificados en sus emisiones vehiculares en su período anterior, deberán continuar verificando conforme al color del engomado o al último dígito numérico de las placas de circulación del vehículo en los siguientes términos.</p>
 
+<div class="table-responsive">
 <table class="table table-bordered text-center">
 <thead><tr><th colspan="2">&nbsp;</th><th colspan="2" class="text-center">Período para verificar</th></tr>
 <tr><th class="text-center">Color del engomado</th><th class="text-center">Último dígito de la placa</th><th class="text-center">1er semestre</th><th class="text-center">2do semestre</th></tr></thead>
@@ -47,7 +48,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 6,
 <tr><td bgcolor="#ff3333"><strong>Rojo</strong></td><td>3 ó 4</td><td>marzo y abril</td><td>septiembre y octubre</td></tr>
 <tr><td bgcolor="#339900"><strong>Verde</strong></td><td>1 ó 2</td><td>abril y mayo</td><td>octubre y noviembre</td></tr>
 <tr><td bgcolor="#66ccff"><strong>Azul</strong></td><td>9 ó 0</td><td>mayo y junio</td><td>noviembre y diciembre</td></tr>
-</tbody></table>' })
+</tbody></table></div>' })
 
 # 3
 Answer.create({ category_id: 1, contact_id: 1,  related_1_id: 6, related_2_id: 4, related_3_id: 2, related_4_id: 7, related_5_id: 9,
@@ -73,6 +74,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 15, related_2_id: 2
                 title: '¿Qué holograma puede obtener mi auto?', url: 'que-holograma-puede-obtener-mi-auto',
                 source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/hologramas-que-se-pueden-obtener',
                 body: '<p>Los hologramas que puede obtener tu auto conforme al nuevo Programa de Verificación Vehicular son los siguientes:</p>
+<div class="table-responsive">
 <table class="table table-bordered text-center">
 <thead><tr><th class="text-center">Holograma</th><th class="text-center">Auto</th><th class="text-center">Vigencia de holograma</th></tr></thead>
 <tbody>
@@ -81,7 +83,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 15, related_2_id: 2
 <tr bgcolor="#ffc40c"><td><strong>Cero</strong></td><td>Modelo 2006 y posteriores</td><td>Semestral</td></tr>
 <tr bgcolor="#f7933d"><td><strong>Uno</strong></td><td>Modelo 1999 y posteriores</td><td>Semestral</td></tr>
 <tr bgcolor="#ed1b24"><td><strong>Dos</strong></td><td>Cualquier modelo</td><td>Semestral</td></tr>
-</tbody></table>
+</tbody></table></div>
 
 <h4 class="title">Exento</h4>
 <p>La constancia denominada <strong>exento</strong> para autos eléctricos e híbridos matriculados en el Distrito Federal los exenta de la verificación vehicular y de las limitaciones del Programa Hoy No Circula.</p>
@@ -224,6 +226,7 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 11, related_2_id: 1
 
 <h4 class="title">Holograma uno</h4>
 <p>La circulación de los autos que hayan obtenido en el proceso de verificación vehicular el holograma <strong>uno</strong>, se limita un día entre semana y dos sábados por cada mes, en un horario de las 05:00 a las 22:00 horas, con base en el último dígito numérico de su placa de acuerdo con la siguiente tabla:</p>
+<div class="table-responsive">
 <table class="table table-bordered text-center">
 <thead><tr><th class="text-center">Color del engomado</th><th class="text-center">Último dígito de la placa</th><th class="text-center" colspan="2">No pueden circular de las 5 a las 22 horas</th></tr>
 </thead>
@@ -241,11 +244,11 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 11, related_2_id: 1
 <tr><td bgcolor="#ff3333"><strong>Rojo</strong></td><td>3 ó 4</td><td>miércoles</td></tr>
 <tr><td bgcolor="#339900"><strong>Verde</strong></td><td>1 ó 2</td><td>jueves</td></tr>
 <tr><td bgcolor="#66ccff"><strong>Azul</strong></td><td>9 ó 0</td><td>viernes</td></tr>
-</tbody>
-</table>
+</tbody></table></div>
 
 <h4 class="title">Holograma dos</h4>
 <p>La circulación de los autos  que hayan obtenido en el proceso de verificación vehicular el holograma <strong>dos</strong>, se limita un día entre semana, en un horario de las 05:00 a las 22:00 horas, con base en el último dígito de la placa, y todos los sábados sin importar su último dígito numérico, de acuerdo a la siguiente tabla:</p>
+<div class="table-responsive">
 <table class="table table-bordered text-center">
 <thead><tr><th class="text-center">Color del engomado</th><th class="text-center">Último dígito de la placa</th><th class="text-center" colspan="2">No pueden circular de las 5 a las 22 horas</th></tr>
 </thead>
@@ -256,4 +259,4 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 11, related_2_id: 1
 <tr><td bgcolor="#339900"><strong>Verde</strong></td><td>1 ó 2</td><td>jueves</td></tr>
 <tr><td bgcolor="#66ccff"><strong>Azul</strong></td><td>9 ó 0</td><td>viernes</td></tr>
 </tbody>
-</table>'})
+</table></div>'})
