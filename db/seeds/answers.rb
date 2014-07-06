@@ -4,8 +4,8 @@
 
 Category.create([{ url: 'verificacion', name: 'Verificación', priority: 1 },
                  { url: 'hoy-no-circula', name: 'Hoy No Circula', priority: 2 },
-                 { url: 'adeudos', name: 'Adeudos', priority: 3 }])
-                 #{ url: 'tenencia', name: 'Tenencia', priority: 4 }])
+                 { url: 'adeudos', name: 'Adeudos', priority: 3 },
+                 { url: 'movilidad', name: 'Movilidad', priority: 4 }])
 
 # contactos
 
@@ -30,6 +30,8 @@ Contact.create({ name: 'Contributel', phone: '5588 3388' })
 Contact.create({ name: 'Secretaría de Finanzas',
                  phone: '5134 2500',
                  address: 'Dr. Lavista 56, Col. Doctores, Distrito Federal' })
+
+Contact.create({ name: 'ECOBICI', phone: '5005 2424' })
 
 # verificacion
 
@@ -307,3 +309,43 @@ Answer.create({ category_id: 3, contact_id: 6, related_1_id: 17,
                 title: '¿Cómo realizo el pago de la tenencia?', url: 'como-pagar-tenencia',
                 source: 'http://www.finanzas.df.gob.mx/formato_lc/lc/tenencia/calculo/',
                 body: '<p class="lead">Genera tu linea de captura en la <a href="http://www.finanzas.df.gob.mx/formato_lc/lc/tenencia/calculo/">página para realizar pagos de tenencia</a> de la Secretaría de Finanzas y sigue sus instrucciones.</p>'})
+
+# movilidad
+
+# 20
+Answer.create({ category_id: 4, contact_id: 7, related_1_id: 21, related_2_id: 22, related_3_id: 23, related_4_id: 24,
+                title: '¿Qué es ECOBICI?', url: 'que-es-ecobici',
+                source: 'https://www.ecobici.df.gob.mx/informacion-del-servicio/que-es-ecobici',
+                body: '<p class="lead">ECOBICI es el sistema de bicicletas públicas compartidas de la Ciudad de México que surge tras la necesidad de asumir los grandes retos que enfrenta sobre competitividad económica, movilidad y medio ambiente, convirtiéndose en poco tiempo en la opción ideal para desplazarse en trayectos cortos, aumentando su capacidad para construir un futuro sustentable y convertirse en referente y modelo a escala nacional e internacional</p>'})
+
+# 21
+Answer.create({ category_id: 4, contact_id: 7, related_1_id: 22, related_2_id: 23, related_3_id: 24, related_4_id: 20,
+                title: 'Requisitos, planes y tarifas de ECOBICI', url: 'requisitos-plantes-tarifas-ecobici',
+                source: 'https://www.ecobici.df.gob.mx/informacion-del-servicio/requisitos-planes-y-tarifas',
+                body: '<p class="lead">Consulta los <a href="https://www.ecobici.df.gob.mx/informacion-del-servicio/requisitos-planes-y-tarifas">requisitos, planes y tarifas de ECOBICI</a> en su página oficial.</p>'})
+
+# 22
+Answer.create({ category_id: 4, contact_id: 7, related_1_id: 23, related_2_id: 21, related_3_id: 24, related_4_id: 20,
+                title: 'Cobertura de ECOBICI', url: 'estaciones-ecobici',
+                source: 'https://www.ecobici.df.gob.mx/mapa-de-cicloestaciones',
+                body: '<ul>
+<li>Consulta el <a href="https://www.ecobici.df.gob.mx/mapa-de-cicloestaciones">mapa interactivo de estaciones ECOBICI y su disponiblidad</a> en su página oficial.</li>
+<li>Descarga el <a href="https://www.ecobici.df.gob.mx/sites/default/files/pdf/mapa.pdf">mapa de estaciones ECOBICI</a> en formato PDF.</li>
+<li>Instala en tu teléfono inteligente la aplicación de ECOBICI de acuerdo a su sistema:
+<ul><li><a href="https://itunes.apple.com/mx/app/ecobici/id502290191?mt=8">iOS</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=gob.df.ecobici&hl=es_419">Android</a></li>
+<li><a href="http://appworld.blackberry.com/webstore/content/47782892/?lang=en&countrycode=MX">BlackBerry</a></li>
+</ul></li></ul>'})
+
+# 23
+Answer.create({ category_id: 4, contact_id: 7, related_1_id: 22, related_2_id: 24, related_3_id: 20,
+                title: 'Mapa de ciclovias en la Ciudad de México', url: 'mapa-ciclovias-ciudad-de-mexico',
+                source: 'http://www.sedema.df.gob.mx/sedema/images/archivos/movilidad-sustentable/movilidad-en-bicicleta/infraestructura-ciclista-existente.pdf',
+                body: '<p><a href="http://www.sedema.df.gob.mx/sedema/images/archivos/movilidad-sustentable/movilidad-en-bicicleta/infraestructura-ciclista-existente.pdf"><img class="img-responsive" src="../../assets/ciclovias.png"></a></p>
+<p><a href="http://www.sedema.df.gob.mx/sedema/images/archivos/movilidad-sustentable/movilidad-en-bicicleta/infraestructura-ciclista-existente.pdf">Descarga en formato PDF</a></p>'})
+
+# 24
+Answer.create({ category_id: 4, related_1_id: 23, related_2_id: 20, related_3_id: 22,
+                title: 'Manual del ciclista urbano', url: 'manual-ciclista-urbano-ciudad-de-mexico',
+                source: 'https://www.ecobici.df.gob.mx/sites/default/files/pdf/manual-del-ciclista.pdf',
+                body: '<p class="lead">Descarga en formato PDF el <a href="https://www.ecobici.df.gob.mx/sites/default/files/pdf/manual-del-ciclista.pdf">Manual del ciclista urbano de la Ciudad de México</a>.</p>'})
