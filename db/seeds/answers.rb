@@ -113,7 +113,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 2,
 # 7
 Answer.create({ category_id: 1, contact_id: 1,  related_1_id: 2, related_2_id: 3, related_3_id: 6, related_4_id: 9,
                 source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/vehiculos-con-multas',
-                title: 'Verificación con multa', url: 'multa-verificacion',
+                title: 'Multa por verificación extemporánea', url: 'multa-verificacion',
                 body: '<p>Los autos que sean llevados a verificar y que no hayan realizado este trámite en el semestre anterior o en el período de tiempo correspondiente, deberán pagar una multa por verificación vehicular extemporánea, de acuerdo a lo siguiente:</p>
 <ul>
 <li>Pagar una multa por verificación vehicular extemporánea por 20 DSMGV. La vigencia del pago de la multa es de 30 días naturales a partir del pago de la misma, siendo el tiempo que se tiene para poder realizar y aprobar la verificación vehicular del automotor.</li>
@@ -198,7 +198,7 @@ Answer.create({ category_id: 2, contact_id: 3, related_1_id: 15, related_2_id: 1
 
 # 13
 Answer.create({ category_id: 2, contact_id: 1, related_1_id: 15, related_2_id: 14, related_3_id: 12,
-                title: 'Sanciones', url: 'sanciones-hoy-no-circula',
+                title: 'Sanciones por no respetar el Hoy No Circula', url: 'sanciones-hoy-no-circula',
                 source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/hoy-no-circula/sanciones',
                 body: '<p class="lead">Los vehículos y conductores de fuentes móviles o vehículos que circulen en las vialidades y calles de la Ciudad de México que infrinjan las medidas previstas en este Programa, se harán acreedores a las sanciones establecidas en el Reglamento de la Ley Ambiental del Distrito Federal en Materia de Verificación Vehicular; así como, en el Reglamento de Tránsito Metropolitano o el que le sustituya y demás disposiciones aplicables, sin perjuicio de que sean retirados de circulación y remitidos al depósito vehicular, en el que deberán permanecer hasta que se pague la multa correspondiente, y en el caso de los vehículos detenidos durante Contingencia Ambiental, también habrá que esperar a que la misma concluya.</p>
 <p>El Reglamento de la Ley Ambiental del Distrito Federal en Materia de Verificación Vehicular establece:</p>
@@ -211,7 +211,7 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 15, related_2_id: 1
 
 # 14
 Answer.create({ category_id: 2, contact_id: 1, related_1_id: 15, related_2_id: 13, related_3_id: 12,
-                title: 'Calendario', url: 'calendario-hoy-no-circula',
+                title: 'Calendario Hoy No Circula', url: 'calendario-hoy-no-circula',
                 source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/hoy-no-circula/calendario-del-programa-hoy-no-circula',
                 body: '<p><img class="img-responsive" src="http://www.sedema.df.gob.mx/sedema/images/verificacion-hoy-no-circula/hoy-no-circula/calendario-hoy-nocircula_.jpg"></p>'})
 
