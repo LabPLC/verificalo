@@ -1,9 +1,10 @@
 <div class="col-md-4">
   <div id="sidebar-answer">
-    <% if @answer.contact %>
+    <% if @answer.contact || @answer.source %>
     <div class="cta-box">
       <h3>¿Más información?</h3>
-      <p class="cta-msg">Contacte a 
+      <% if @answer.contact %>
+      <p class="cta-msg">
         <strong><%= @answer.contact.name %></strong></p>
       <% if @answer.contact.phone %>
       <%= icon(:phone) %>
@@ -11,11 +12,7 @@
         <a onclick="trackClick('tel:<%= @answer.contact.phone %>', 
                     'Teléfono <%= @answer.contact.name %>');"
            href="tel:<%= @answer.contact.phone %>">
-          <%= @answer.contact.phone %></a>
-        <% if @answer.contact.phone_schedule %>
-        <%= @answer.contact.phone_schedule.html_safe %>
-        <% end %>
-      </p>
+          <%= @answer.contact.phone %></a></p>
       <% end %>
       <% if @answer.contact.email %>
       <%= icon(:mail) %>
@@ -38,9 +35,16 @@
         <% else %>
         <%= @answer.contact.address.html_safe %>
         <% end %>
-        <% if @answer.contact.address_schedule %>
-        de <%= @answer.contact.address_schedule.html_safe %>
-        <% end %>
+      </p>
+      <% end %>
+      <% end %>
+      <% if @answer.source %>
+      <%= icon(:web) %>
+      <p class="cta-msg item">
+        <a onclick="trackClick('<%= @answer.source %>',
+                    'Web <%= @answer.title %>');"
+           href="<%= @answer.source %>">
+          <%= URI.parse(@answer.source).host %></a>
       </p>
       <% end %>
     </div>
