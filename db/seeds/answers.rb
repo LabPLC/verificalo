@@ -3,8 +3,8 @@
 # categorias
 
 Category.create([{ url: 'verificacion', name: 'Verificación', priority: 1 },
-                 { url: 'hoy-no-circula', name: 'Hoy No Circula', priority: 2 }])
-                 #{ url: 'infracciones', name: 'Infracciones', priority: 3 },
+                 { url: 'hoy-no-circula', name: 'Hoy No Circula', priority: 2 },
+                 { url: 'adeudos', name: 'Adeudos', priority: 3 }])
                  #{ url: 'tenencia', name: 'Tenencia', priority: 4 }])
 
 # contactos
@@ -20,6 +20,16 @@ Contact.create({ name: 'Dirección Ejecutiva de Vigilancia Ambiental',
                  lat: '19.423219', lon: '-99.134159' })
 
 Contact.create({ name: 'Dirección General de Inspección Policiaca', phone: '5242 5000' })
+
+Contact.create({ name: 'Atención Ciudadana de Infracciones', 
+                 phone: '5242 5100',
+                 address: 'Liverpool 136 Planta Baja, Col. Juárez, Distrito Federal' })
+
+Contact.create({ name: 'Contributel', phone: '5588 3388' })
+
+Contact.create({ name: 'Secretaría de Finanzas',
+                 phone: '5134 2500',
+                 address: 'Dr. Lavista 56, Col. Doctores, Distrito Federal' })
 
 # verificacion
 
@@ -114,7 +124,9 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 2,
 Answer.create({ category_id: 1, contact_id: 1,  related_1_id: 2, related_2_id: 3, related_3_id: 6, related_4_id: 9,
                 source: 'http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/vehiculos-con-multas',
                 title: 'Multa por verificación extemporánea', url: 'multa-verificacion',
-                body: '<p>Los autos que sean llevados a verificar y que no hayan realizado este trámite en el semestre anterior o en el período de tiempo correspondiente, deberán pagar una multa por verificación vehicular extemporánea, de acuerdo a lo siguiente:</p>
+                body: '<p class="lead">Genera tu linea de captura en la <a href="http://www.finanzas.df.gob.mx/formato_lc/vehicular/medioambiente/medio_vehiculo.php">página para realizar pagos de multa por verificación extemporanea</a> de la Secretaría de Finanzas y sigue sus instrucciones.</p>
+
+<p>Los autos que sean llevados a verificar y que no hayan realizado este trámite en el semestre anterior o en el período de tiempo correspondiente, deberán pagar una multa por verificación vehicular extemporánea, de acuerdo a lo siguiente:</p>
 <ul>
 <li>Pagar una multa por verificación vehicular extemporánea por 20 DSMGV. La vigencia del pago de la multa es de 30 días naturales a partir del pago de la misma, siendo el tiempo que se tiene para poder realizar y aprobar la verificación vehicular del automotor.</li>
 <li>En caso de no obtener una constancia de verificación aprobatoria en los 30 días establecidos, se deberá pagar otra multa por verificación vehicular extemporánea pero por un monto de 40 DSMGV, con lo cual se adquiere otro nuevo plazo de 30 días naturales para aprobar la verificación de emisiones.</li>
@@ -259,3 +271,39 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 11, related_2_id: 1
 <tr><td bgcolor="#66ccff"><strong>Azul</strong></td><td>9 ó 0</td><td>viernes</td></tr>
 </tbody>
 </table></div>'})
+
+# adeudos
+
+# 16
+Answer.create({ category_id: 3, contact_id: 4, related_1_id: 17, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
+                title: 'Aclaración de infracciones', url: 'aclaracion-infracciones',
+                source: 'http://www.finanzas.df.gob.mx/sma/consulta_ciudadana.php',
+                body: '<p>Si deseas:</p>
+<ol>
+<li>Conseguir mayor información acerca de las infracciones al reglamento de tránsito mostradas.</li>
+<li>Aclarar alguna duda sobre la imposición de la sanción.</li>
+</ol>
+<p>Puedes acudir a los siguientes domicilios o teléfonos:</p>
+<ul>
+<li>Oficina de Información de Atención Ciudadana de Infracciones, ubicada en Liverpool 136-PB, colonia Juárez, delegación Cuauhtémoc, entrada por la Glorieta de Insurgentes. Teléfono 5242 5100 extensiones 4996, 4997 y 4998. Horario de Atención: de 08:00 a 19:00 horas.</li>
+<li>Centro de Atención del Secretario de Seguridad Pública del D.F., ubicado en Londres 107-PB, colonia Juárez, delegación Cuauhtémoc. Correo electrónico: <a href="mailto:cassp@ssp.df.gob.mx">cassp@ssp.df.gob.mx</a>. Teléfono: 5208 9898.</li>
+</ul>' })
+
+# 17
+Answer.create({ category_id: 3, contact_id: 5, related_1_id: 16, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
+                title: 'Corregir o aclarar un pago ya realizado', url: 'corregir-pago',
+                source: 'http://www.finanzas.df.gob.mx/sma/consulta_ciudadana.php',
+                body: '<p class="lead">Puedes comunicarte a <strong>Contributel</strong> al teléfono 5588 3388, opción 3, o acudir a la Administración Tributaria (AT) más cercana a tu domicilio.</p>
+<p><a href="http://www.finanzas.df.gob.mx/oficinas/directorioTesorerias.html">Localizar una Administración Tributaria</a></p>' })
+
+# 18
+Answer.create({ category_id: 3, contact_id: 6, related_1_id: 16, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
+                title: '¿Cómo realizo el pago de infracciones?', url: 'como-pagar-infracciones',
+                source: 'http://www.finanzas.df.gob.mx/formato_lc/infracciones/index.php',
+                body: '<p class="lead">Con el folio de la infracción que deseas pagar genera tu linea de captura en la <a href="http://www.finanzas.df.gob.mx/formato_lc/infracciones/index.php">página para realizar pagos de infracciones de tránsito</a> de la Secretaría de Finanzas y sigue sus instrucciones.</p>'})
+
+# 19
+Answer.create({ category_id: 3, contact_id: 6, related_1_id: 16, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
+                title: '¿Cómo realizo el pago de la tenencia?', url: 'como-pagar-tenencia',
+                source: 'http://www.finanzas.df.gob.mx/formato_lc/lc/tenencia/calculo/',
+                body: '<p class="lead">Genera tu linea de captura en la <a href="http://www.finanzas.df.gob.mx/formato_lc/lc/tenencia/calculo/">página para realizar pagos de tenencia</a> de la Secretaría de Finanzas y sigue sus instrucciones.</p>'})

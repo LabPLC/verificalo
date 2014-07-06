@@ -22,9 +22,13 @@
   
   <div class="col-md-12 col-sm-6 col-xs-12">
     <!-- links sobre infracciones -->    
-    <p><a href="<%= url_for({ controller: 'info', 
-                action: 'infracciones',
-                plate: @vehicle.plate })%>"
+    <p><a href="<%= url_for({ controller: 'answers', 
+                action: 'answer', category_url: 'adeudos',
+                answer_url: 'como-pagar-infracciones' }) %>"
+          class="btn btn-primary btn-sm btn-wide">¿Cómo realizo el pago
+        de infracciones?</a></p>
+    <p><a href="<%= url_for({ controller: 'info',
+                action: 'infracciones', plate: @vehicle.plate })%>"
           class="btn btn-primary btn-sm btn-wide">Mi historial de
         infracciones</a>
     </p>

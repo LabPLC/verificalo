@@ -1,19 +1,35 @@
-<% if @vehicle.tenencias_unpaid > 0 %>
-<!-- con adeudos de tenencia -->
-<%= icon(:error) %>
-<p class="msg">
-  <% if @vehicle.tenencias_unpaid > 1 %>
-  <strong>Tu auto tiene adeudos por los años
-    <%= @vehicle.tenencias_unpaid_str %>.</strong>  
-  <% else %>
-  <strong>Tu auto tiene un adeudo por el año
-    <%= @vehicle.tenencias_unpaid_str %>.</strong>
-  <% end %>
-</p>
-<p class="msg">Recuerda que debes pagar tus adeudos de tenencia antes
-  de llevar tu auto a verificar.</p>
-<% else %>
-<!-- sin adeudos de tenencia -->
-<%= icon(:ok) %>
-<p class="msg">Tu auto no tiene adeudos de tenencia.</p>
-<% end %>
+<div class="row">
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <% if @vehicle.tenencias_unpaid > 0 %>
+    <!-- con adeudos de tenencia -->
+    <%= icon(:error) %>
+    <p class="msg">
+      <% if @vehicle.tenencias_unpaid > 1 %>
+      <strong>Tu auto tiene adeudos por los años
+        <%= @vehicle.tenencias_unpaid_str %>.</strong>  
+      <% else %>
+      <strong>Tu auto tiene un adeudo por el año
+        <%= @vehicle.tenencias_unpaid_str %>.</strong>
+      <% end %>
+    </p>
+    <p class="msg">Recuerda que debes pagar tus adeudos de tenencia antes
+      de llevar tu auto a verificar.</p>
+    <% else %>
+    <!-- sin adeudos de tenencia -->
+    <%= icon(:ok) %>
+    <p class="msg">Tu auto no tiene adeudos de tenencia.</p>
+    <% end %>
+  </div>
+
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <!-- links sobre tenencia -->    
+    <p><a href="<%= url_for({ controller: 'answers', 
+                action: 'answer', category_url: 'adeudos',
+                answer_url: 'como-pagar-tenencia' }) %>"
+          class="btn btn-primary btn-sm btn-wide">¿Cómo realizo el pago
+        de la tenencia?</a></p>
+  <p><a href="<%= url_for({ controller: 'answers',
+              action: 'category', category_url: 'adeudos' })%>"
+        class="btn btn-primary btn-sm btn-wide">Ver más sobre Adeudos</a></p>
+  </div>
+</div>
