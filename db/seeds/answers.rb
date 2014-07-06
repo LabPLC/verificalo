@@ -84,8 +84,8 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 15, related_2_id: 2
 </tbody></table>
 
 <h4 class="title">Exento</h4>
-<p>La constancia denominada <strong>exento</strong> para autos eléctricos e híbridos los exenta de la verificación vehicular y de las limitaciones del Programa Hoy No Circula.</p>
-<p>El Trámite podrá ser realizarlo por los propietarios o poseedores de autos eléctricos e híbridos matriculados en el Distrito Federal en el Módulo de Atención Ciudadana (Av. Tlaxcoaque No. 8, PB, Col. Centro Histórico, Del. Cuauhtémoc, C.P. 06090, México, Distrito Federal) sin costo en un horario de 9:00 a 18:00 horas.</p>
+<p>La constancia denominada <strong>exento</strong> para autos eléctricos e híbridos matriculados en el Distrito Federal los exenta de la verificación vehicular y de las limitaciones del Programa Hoy No Circula.</p>
+<p>El Trámite podrá ser realizarlo por los propietarios o poseedores de autos eléctricos e híbridos en el Módulo de Atención Ciudadana (Av. Tlaxcoaque No. 8, PB, Col. Centro Histórico, Del. Cuauhtémoc, C.P. 06090, México, Distrito Federal) sin costo en un horario de 9:00 a 18:00 horas.</p>
 <p>Consulta el trámite y descarga el formato correspondiente en el apartado <em>Constancia denominada Exento para autos eléctricos e híbridos</em> de la sección <a href="http://www.sedema.df.gob.mx/sedema/index.php/tramites/tramites-verificacion-vehicular-hoy-no-circula">Trámites / Verificación vehicular y Hoy No Circula</a> de la página de la Secretaría de Medio Ambiente.</p>
 <p>Consulta el <a href="http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/hologramas-que-se-pueden-obtener">listado de autos candidatos al holograma exento</a> en la página de la Secretaría del Medio Ambiente.</p>
 
@@ -107,7 +107,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 15, related_2_id: 2
 # 6
 Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
                 title: '¿Qué necesito para verificar mi auto?', url: 'que-necesito-para-verificar',
-                body: '<p class="lead">Consulte la tabla de <a href="http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/requisitos-para-verificar">requisitos para verificar</a> en la página de la Secretaría del Medio Ambiente</p>' })
+                body: '<p class="lead">Consulta la tabla de <a href="http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/requisitos-para-verificar">requisitos para verificar</a> en la página de la Secretaría del Medio Ambiente</p>' })
 
 # 7
 Answer.create({ category_id: 1, contact_id: 1,  related_1_id: 2, related_2_id: 3, related_3_id: 6, related_4_id: 9,
