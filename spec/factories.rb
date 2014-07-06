@@ -76,10 +76,8 @@ FactoryGirl.define do
   factory :contact do
     sequence(:name) { |n| "Contact #{n}" }
     phone '1234 5678'
-    phone_schedule 'Lun a Vie de 10 a 5'
     email 'info@example.com'
     address 'Fake street 123'
-    address_schedule 'Lun a Vie de 9 a 6'
     lat 19.43
     lon -99.14
   end

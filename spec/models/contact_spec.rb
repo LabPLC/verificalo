@@ -11,10 +11,8 @@ describe Contact do
   
   it { should respond_to(:name) }
   it { should respond_to(:phone) }
-  it { should respond_to(:phone_schedule) }
   it { should respond_to(:email) }
   it { should respond_to(:address) }
-  it { should respond_to(:address_schedule) }
   it { should respond_to(:lat) }
   it { should respond_to(:lon) }
 

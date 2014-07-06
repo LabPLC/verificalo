@@ -12,15 +12,14 @@ Category.create([{ url: 'verificacion', name: 'Verificación', priority: 1 },
 Contact.create({ name: 'Secretaría del Medio Ambiente', 
                  phone: '5134 2380',
                  address: 'Av. Tlaxcoaque No. 8, Col. Centro Histórico, Distrito Federal',
-                 address_schedule: '9 am a 6 pm', lat: '19.423219', lon: '-99.134159' })
+                 lat: '19.423219', lon: '-99.134159' })
 
 Contact.create({ name: 'Dirección Ejecutiva de Vigilancia Ambiental', 
-                 phone: '5278 9931', phone_schedule: 'extensión 4550 de 8&nbsp;am a 8:30&nbsp;pm',
+                 phone: '5278 9931',
                  address: 'Av. Tlaxcoaque No. 8, Col. Centro Histórico, Distrito Federal',
-                 address_schedule: '9&nbsp;am a 1:30&nbsp;pm', lat: '19.423219', lon: '-99.134159' })
+                 lat: '19.423219', lon: '-99.134159' })
 
-Contact.create({ name: 'Dirección General de Inspección Policiaca', 
-                 phone: '5242 5000', phone_schedule: 'extensiones 1120, 1121, 1122 y 1171' })
+Contact.create({ name: 'Dirección General de Inspección Policiaca', phone: '5242 5000' })
 
 # verificacion
 
