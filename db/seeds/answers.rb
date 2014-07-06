@@ -275,7 +275,7 @@ Answer.create({ category_id: 2, contact_id: 1, related_1_id: 11, related_2_id: 1
 # adeudos
 
 # 16
-Answer.create({ category_id: 3, contact_id: 4, related_1_id: 17, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
+Answer.create({ category_id: 3, contact_id: 4, related_1_id: 18, related_2_id: 17,
                 title: 'Aclaración de infracciones', url: 'aclaracion-infracciones',
                 source: 'http://www.finanzas.df.gob.mx/sma/consulta_ciudadana.php',
                 body: '<p>Si deseas:</p>
@@ -290,20 +290,20 @@ Answer.create({ category_id: 3, contact_id: 4, related_1_id: 17, related_2_id: 2
 </ul>' })
 
 # 17
-Answer.create({ category_id: 3, contact_id: 5, related_1_id: 16, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
+Answer.create({ category_id: 3, contact_id: 5, related_1_id: 18, related_2_id: 19, related_3_id: 16,
                 title: 'Corregir o aclarar un pago ya realizado', url: 'corregir-pago',
                 source: 'http://www.finanzas.df.gob.mx/sma/consulta_ciudadana.php',
                 body: '<p class="lead">Puedes comunicarte a <strong>Contributel</strong> al teléfono 5588 3388, opción 3, o acudir a la Administración Tributaria (AT) más cercana a tu domicilio.</p>
 <p><a href="http://www.finanzas.df.gob.mx/oficinas/directorioTesorerias.html">Localizar una Administración Tributaria</a></p>' })
 
 # 18
-Answer.create({ category_id: 3, contact_id: 6, related_1_id: 16, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
+Answer.create({ category_id: 3, contact_id: 6, related_1_id: 16, related_2_id: 17,
                 title: '¿Cómo realizo el pago de infracciones?', url: 'como-pagar-infracciones',
                 source: 'http://www.finanzas.df.gob.mx/formato_lc/infracciones/index.php',
                 body: '<p class="lead">Con el folio de la infracción que deseas pagar genera tu linea de captura en la <a href="http://www.finanzas.df.gob.mx/formato_lc/infracciones/index.php">página para realizar pagos de infracciones de tránsito</a> de la Secretaría de Finanzas y sigue sus instrucciones.</p>'})
 
 # 19
-Answer.create({ category_id: 3, contact_id: 6, related_1_id: 16, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
+Answer.create({ category_id: 3, contact_id: 6, related_1_id: 17,
                 title: '¿Cómo realizo el pago de la tenencia?', url: 'como-pagar-tenencia',
                 source: 'http://www.finanzas.df.gob.mx/formato_lc/lc/tenencia/calculo/',
                 body: '<p class="lead">Genera tu linea de captura en la <a href="http://www.finanzas.df.gob.mx/formato_lc/lc/tenencia/calculo/">página para realizar pagos de tenencia</a> de la Secretaría de Finanzas y sigue sus instrucciones.</p>'})
