@@ -3,6 +3,12 @@ require 'csv'
 require 'i18n'
 require 'database_cleaner'
 
+logger = Logger.new(STDOUT)
+logger.level = Logger::INFO
+ActiveRecord::Base.logger = logger
+ActionMailer::Base.logger = logger
+ActionController::Base.logger = logger
+
 namespace :verificalo do
   
   weekday_plates = { 
@@ -18,14 +24,15 @@ namespace :verificalo do
     
     desc "Send email notifications *before* weekdays (sunday to thursday)"
     task weekday: :environment do
+      logger.warn '-' * 50
       users = User.are_active.joins(:email)
       users.where('users.plate similar to ?', weekday_plates[Date.today.wday.to_s]).each do |user|
         3.times do
           vehicle = VehicleCDMX.new({ plate: user.plate })
           if vehicle.error
-            puts '! ' + user.plate + ': ' + vehicle.error
+            logger.error user.plate ' error: ' + vehicle.error
           else
-            puts '- ' + user.plate
+            logger.warn user.plate
             Notifier.weekday(user, vehicle).deliver
             break
           end
@@ -35,14 +42,15 @@ namespace :verificalo do
 
     desc "Send email notifications *before* weekends (friday)"
     task weekend: :environment do
+      logger.warn '-' * 50
       saturday = Date.today.tomorrow
       User.are_active.joins(:email).each do |user|
         3.times do
           vehicle = VehicleCDMX.new({ plate: user.plate })
           if vehicle.error
-            puts '! ' + user.plate + ': ' + vehicle.error
+            logger.error user.plate ' error: ' + vehicle.error
           else
-            puts '- ' + user.plate
+            logger.warn user.plate
             Notifier.weekend(user, vehicle, saturday).deliver
             break
           end
@@ -81,7 +89,7 @@ namespace :verificalo do
           d = Delegacion.where("unaccent(lower(name)) = ?", r['DELEGACION'].downcase).first
         end
         unless d
-          puts '! delegacion not found: ' + r['DELEGACION']
+          puts 'delegacion not found: ' + r['DELEGACION']
           next
         end
         Verificentro.create(number: r['VERIFICENTRO'], 
