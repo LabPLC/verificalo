@@ -120,7 +120,7 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 15, related_2_id: 2
 # 6
 Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 2, related_3_id: 7, related_4_id: 4, related_5_id: 9,
                 title: '¿Qué necesito para verificar mi auto?', url: 'que-necesito-para-verificar',
-                body: '<p class="lead">Consulta la tabla de <a href="http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/requisitos-para-verificar">requisitos para verificar</a> en la página de la Secretaría del Medio Ambiente si es la primera vez que vas a verificar, tienes un cambio de placa, tu auto funciona con gas, o tienes placas de otro estado.</p>
+                body: '<p class="lead">Si es la primera vez que vas a verificar, tienes un cambio de placa, tu auto funciona con gas, o tienes placas de otro estado consulta la tabla de <a href="http://www.sedema.df.gob.mx/sedema/index.php/verificacion-hoy-no-circula/verificacion-vehicular/requisitos-para-verificar">requisitos para verificar</a> en la página de la Secretaría del Medio Ambiente.</p>
 <p>Para renovar la verificación se debe presentar en original y copia:</p>
 <ul>
 <li>Tarjeta de circulación</li>
@@ -128,12 +128,12 @@ Answer.create({ category_id: 1, contact_id: 1, related_1_id: 3, related_2_id: 2,
 <li>Garantía cambio convertidor (sólo si presenta rechazo PIREC)</li>
 <li>Multa por verificación extemporánea (sólo si venció periodo de verificación o los 180 días naturales para primera verificación)</li>
 </ul>
-<p>No se prestará el servicio de verificación de emisiones vehiculares a autos que presenten adeudos por infracciones al Reglamento de Tránsito Metropolitano o al Impuesto Sobre Tenencia y Uso Vehicular.</p>
-<p>En caso de no presentar la constancia de verificación vehicular, tu auto podrá ser verificado siempre y cuando el equipo GDF09 presente en pantalla la verificación vehicular de su período inmediato anterior. En caso de que no exista el registro de la verificación vehicular anterior en la base de datos, el vehículo no podrá verificar hasta que no se pague una multa por verificación extemporánea.</p>
-<p>Antes de pagar su multa por verificación extemporánea, asegúrese de no tener adeudos de tenencia y/o infracciones de tránsito, con el objeto de evitar que se venza la vigencia del pago de su multa y que tenga la obligación de volver a pagarla.</p>
-</p>Si el ciudadano tiene el certificado de su verificación vehicular anterior, pero no existe registro en la base de datos, puede:</p>
+<p>No se prestará el servicio de verificación a autos que presenten adeudos por infracciones al Reglamento de Tránsito Metropolitano o al Impuesto Sobre Tenencia y Uso Vehicular.</p>
+<p>En caso de no presentar la constancia de verificación vehicular, tu auto podrá ser verificado siempre y cuando el equipo GDF09 presente en pantalla la verificación vehicular de su período inmediato anterior. En caso de que no exista el registro de la verificación vehicular anterior en la base de datos, el auto no podrá verificar hasta que no se pague una multa por verificación extemporánea.</p>
+<p>Antes de pagar tu multa por verificación extemporánea, asegurate de no tener adeudos de tenencia o infracciones de tránsito, con el objeto de evitar que se venza la vigencia del pago de su multa y que tenga la obligación de volver a pagarla.</p>
+</p>Si tienes el certificado de su verificación vehicular anterior, pero no existe registro en la base de datos, puedes:</p>
 <ol>
-<li>Pedirle al gerente o supervisor del verificentro que mande escaneados los documentos a la Secretaría, para que sea validado el certificado, la tarjeta de circulación y la identificación oficial y pueda verificar.</li>
+<li>Pedirle al gerente o supervisor del verificentro que mande escaneados los documentos a la Secretaría, para que sea validado el certificado, la tarjeta de circulación, la identificación oficial y pueda verificar.</li>
 <li>Presentarse en el Módulo de Atención Ciudadana de la Dirección General de Gestión de la Calidad del Aire (DGGCA) de la Secretaría del Medio Ambiente del Gobierno del Distrito Federal, ubicado en Tlaxcoaque 8, Planta Baja, Colonia Centro, Distrito Federal, entre las 9:00 y las 18:00 horas de lunes a viernes, en donde se corroborará la realización de la verificación de emisiones vehiculares y, de ser el caso, se realizarán las acciones correspondientes para que el vehículo sea verificado.</li>
 </ol>
 <p>En el caso de los vehículos sancionados dentro del Programa de Vehículos Contaminantes, se deberán presentar los documentos definidos a lo largo del numeral 13 del Programa de Verificación Vehicular vigente.</p>' })
