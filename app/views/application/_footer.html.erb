@@ -1,16 +1,21 @@
 <footer>
   <div class="container">
     <div class="row">
-      <div class="col-sm-4 col-xs-12">
+      <div class="col-md-4 col-sm-6 col-xs-12">
         <p><a href="<%= url_for({ controller: 'static_pages', 
                     action: 'about' })%>">Acerca de Verifícalo</a></p>
       </div>
-      <div class="col-sm-4 text-center hidden-xs">
+      <div class="col-md-4 text-center hidden-sm hidden-xs">
         <p><a onclick="trackClick('mailto:contacto@verificalo.mx',
                        'Pie de página - Contactanos');"
          href="mailto:contacto@verificalo.mx">Contactanos</a></p>
       </div>
-      <div class="col-sm-4 text-right hidden-xs">
+      <div class="col-sm-5 text-right visible-sm">
+        <p><a onclick="trackClick('mailto:contacto@verificalo.mx',
+                       'Pie de página - Contactanos');"
+         href="mailto:contacto@verificalo.mx">Contactanos</a></p>
+      </div>
+      <div class="col-md-4 text-right hidden-sm hidden-xs">
         <p><a onclick="trackClick('http://codigo.labplc.mx', 
                        'Pie de página - Codigo CDMX');"
               href="http://codigo.labplc.mx">Código para la Ciudad de
