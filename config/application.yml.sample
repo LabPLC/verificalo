@@ -20,3 +20,6 @@ mapbox_id: codigocdmx.example
 
 # elasticsearch
 elasticsearch_url: http://localhost:9200
+
+# mailgun
+mailgun_campaign: id

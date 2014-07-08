@@ -26,6 +26,9 @@ class Notifier < ActionMailer::Base
       (user.adeudos && vehicle.adeudos?)
     @user = user
     @vehicle = vehicle
+    if ENV['VERIFICALO_MAILGUN_CAMPAIGN']
+      headers['X-Mailgun-Campaign-Id'] = ENV['VERIFICALO_MAILGUN_CAMPAIGN']
+    end
     subject = 'Recordatorios de tu auto ' + user.plate
     mail(to: user.email.address, subject: subject)
   end
@@ -41,6 +44,9 @@ class Notifier < ActionMailer::Base
     @user = user
     @vehicle = vehicle
     @saturday = saturday
+    if ENV['VERIFICALO_MAILGUN_CAMPAIGN']
+      headers['X-Mailgun-Campaign-Id'] = ENV['VERIFICALO_MAILGUN_CAMPAIGN']
+    end
     subject = 'Recordatorios de tu auto ' + user.plate
     mail(to: user.email.address, subject: subject)
   end
