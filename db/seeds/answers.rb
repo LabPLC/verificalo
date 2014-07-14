@@ -9,7 +9,7 @@ Category.create([{ url: 'verificacion', name: 'Verificación', priority: 1 },
 
 # contactos
 
-Contact.create({ name: 'Secretaría del Medio Ambiente', 
+Contact.create({ name: 'Dirección General de Gestión de la Calidad del Aire',
                  phone: '5134 2380',
                  address: 'Av. Tlaxcoaque No. 8, Col. Centro Histórico, Distrito Federal',
                  lat: '19.423219', lon: '-99.134159' })
