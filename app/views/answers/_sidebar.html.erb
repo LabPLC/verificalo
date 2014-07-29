@@ -50,11 +50,9 @@
     </div>
     <% end %>
 
-    <h4 class="title">Preguntas y respuestas relacionadas</h4>
+    <h4 class="title">Respuestas relacionadas</h4>
     <%= render partial: 'answer', collection: related(@answer) %>
-    <p><a href="<%= url_for({ controller: 'answers',
-                action: 'category',
-                category_url: @answer.category.url })%>">
-        Ver más sobre <%= @answer.category.name %></a></p>
+
+    <%= render 'categories' %>
   </div>
 </div>

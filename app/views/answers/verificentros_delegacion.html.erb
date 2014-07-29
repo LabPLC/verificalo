@@ -14,7 +14,7 @@
       <h2 class="title title-back">Verificentros en
         <%= @delegacion.name %></h2>
       <%= render 'back' %>
-      <div class="answer">
+      <div class="answer left-answers">
         <% @verificentros.each_slice(2) do |r| %>
         <div class="row">
           <%= render partial: 'verificentro', collection: r %>

@@ -37,14 +37,14 @@ describe 'answers views' do
     it { should have_field('q') }
     it { should have_button('Buscar') }      
     # content
-    it { should have_css('h2.title', count: @categories_count) }
+    it { should have_css('h3.title', count: @categories_count) }
     it { should have_css('a.btn-answer', count: @answers_count) }
     
     describe 'category' do
       before do
         @category = Category.first
         @answers_count = @category.answers.count
-        click_link(@category.name)
+        first('.left-answers').click_link(@category.name)
       end
 
       it { should have_css('h2.title', text: @category.name) }

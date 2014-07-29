@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="title top-title">Respuestas más populares</h2>
+  </div>
+</div>
+
+<% @categories.each_slice(2) do |r| %>
+<div class="row">
+  <% r.each do |c| %>
+  <div class="col-sm-6">
+    <h3 class="title">
+      <a href="<%= url_for({ controller: 'answers',
+               action: 'category',
+               category_url: c.url })%>"><%= c.name %></a>
+    </h3>
+    <%= render partial: 'answer', collection: c.top_answers %>
+  </div>
+  <% end %>
+</div>
+<% end %>

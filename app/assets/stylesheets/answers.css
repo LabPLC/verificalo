@@ -1,8 +1,12 @@
+.top-title {
+    margin-bottom: 10px !important;
+}
+
 h2.title-back {
     margin-bottom: 10px;
 }
 
-h2.title a {
+.title a {
     text-decoration: none;
 }
 
@@ -15,8 +19,24 @@ p.back-answers-bottom {
     margin-bottom: 0;
 }
 
+h3.title {
+    font-size: 18px;
+}
+
 h4.title {
     font-size: 16px;
+}
+
+@media(min-width: 1210px) {  
+    .left-answers { padding-right: 50px; }
+}
+
+@media(min-width: 992px) and (max-width: 1209px) {
+    .left-answers { padding-right: 25px; }
+}
+
+@media(max-width: 991px) {
+    .left-answers { padding-right: 0; }
 }
 
 /* answers#home */
@@ -84,18 +104,6 @@ h3.category a {
 h1.question {
     font-size: 30px;
     margin: 20px 0 10px 0;
-}
-
-@media(min-width: 1210px) {  
-    .answer { padding-right: 50px; }
-}
-
-@media(min-width: 992px) and (max-width: 1209px) {
-    .answer { padding-right: 25px; }
-}
-
-@media(max-width: 991px) {
-    .answer { padding-right: 0; }
 }
 
 div.answer h2 {

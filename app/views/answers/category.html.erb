@@ -3,7 +3,7 @@
 <!-- answers#category -->
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 left-answers">
       <h2 class="title title-back"><%= @category.name %></h2>
       <p class="back-answers-top">
         <a href="<%= url_for({ controller: 'answers',
@@ -23,6 +23,7 @@
     </div>
     <div id="sidebar-answer" class="col-md-4">
       <%= render 'cta' %>
+      <%= render 'categories' %>
     </div>
   </div>
 </div>
