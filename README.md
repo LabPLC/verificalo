@@ -6,31 +6,26 @@ Verifícalo
 [![Coverage Status](https://coveralls.io/repos/LabPLC/verificalo/badge.png?branch=master)](https://coveralls.io/r/LabPLC/verificalo?branch=master)
 [![Code Climate](https://codeclimate.com/github/LabPLC/verificalo.png)](https://codeclimate.com/github/LabPLC/verificalo)
 
-Sitio web para responsabilizar a los automovilistas particulares de la
-CDMX sobre sus obligaciones y el impacto del auto buscando fomentar el
-uso inteligente de este medio de transporte.
+Para que un automovilista de la Ciudad de México tenga toda la
+información necesaria para cumplir con sus obligaciones debe consultar
+diferentes recursos desconectados: el último certificado de
+verificación —el cual es un papel impreso— y dos páginas de internet
+diferentes.
 
-Las obligaciones de los automovilistas particulares son aprobar la
-prueba de emisiones contaminantes (verificación), respetar el hoy no
-circula y pagar sus tenencias e infracciones. Buscamos responsabilizar
-a los ciudadanos sobre sus obligaciones con un punto de contacto único
-para informarse y recordarles vía correo electrónico, celular o
-teléfono sobre estas obligaciones.
+Este es un problema que aborda Verifícalo, ya que funciona como un
+centro de información que se alimenta de datos de diferentes
+secretarías para que los automovilistas encuentren toda la información
+que necesitan para cumplir sus obligaciones.
 
-La principal fuente de contaminantes en la CDMX es el transporte y el
-impacto del auto particular es que de todos los medios de transporte es
-el mas contaminante ya que traslada un número limitado de pasajeros y
-sus emisiones por km-pasajero son 5 veces mayores que un Microbus y
-15 veces mayores que un Metrobus. Buscamos responsabilizar a los
-ciudadanos sobre su impacto con una calculadora de emisiones
-contaminantes.
+Además, mediante un simple registro los automovilistas pueden recibir
+en su correo electrónico recordatorios sobre:
 
-El uso inteligente del auto significa utilizar transporte público en
-nuestros trayectos rutinarios a hora pico (casa-trabajo) y solo
-utilizar el auto para viajes en los se vaya a una velocidad regular
-para consumir menos combustible. Buscamos fomentar el uso inteligente
-del auto presentando al usuario las posibles alternativas al auto en un
-solo lugar.
+- El próximo periodo para verificar su auto.
+- Los días de la semana en que no pueden circular.
+- Nuevos adeudos de infracciones e impuestos.
+
+El objetivo de Verifícalo es contribuir a mejorar la cultura cívica
+alrededor del uso del automóvil privado.
 
 Características
 ---------------
@@ -38,19 +33,20 @@ Características
 - Consulta por placa de auto:
   - Vigencia de verificación
   - Próximo periodo para verificar
+  - Hoy no circula
   - Adeudos de infracciones
   - Adeudos de tenencias
-  - Hoy no circula
 
-- Notificaciones por correo electrónico o llamada telefónica:
-  - Recordatorio antes y durante el periodo para verificar
+- Notificaciones por correo electrónico:
+  - Recordatorios durante el periodo para verificar
   - Aviso de nuevos adeudos por infracciones o tenencias
-  - Recordatorio mensual de adeudos pendientes
   - Recordatorio del hoy no circula semanal o sabatino
 
 - Respuestas:
-  - Verificentros por delegación
-  - Verificentros mas cercanos por colonia o código postal
+  - Verificación
+  - Hoy no circula
+  - Adeudos
+  - Movilidad
 
 ### Capturas de pantalla
 
@@ -138,6 +134,25 @@ Se necesita un ambiente de desarrollo funcional y después:
 
     $ rspec -fd
 
+### Tareas
+
+**verificalo:db:answers**
+
+Carga las preguntas y respuestas desde `db/seeds/answers.rb`.
+
+**verificalo:db:verificentros**
+
+Carga los verificentros desde `db/seeds/verificentros.csv`.
+
+**verificalo:emails:weekday**
+
+Envía los recordatorios de lunes a viernes (se ejecuta de domingo a
+jueves).
+
+**verificalo:emails:weekend**
+
+Envía los recordatorios sabatinos (se ejecuta el viernes).
+
 Contibuye
 ---------
 
@@ -165,15 +180,16 @@ contactarnos.
 Acerca
 ------
 
-Verificalo fue escrito durante el programa de [Codigo Ciudad de
-México](http://codigo.labplc.mx) del [Laboratorio para la
+Verifícalo fue desarrollado por [Manuel
+Rábade](http://twitter.com/manuelrabade) con ayuda de [Alberto
+Barquin](http://twitter.com/_betoman) durante el programa [Codigo para
+la Ciudad de México](http://codigo.labplc.mx) del [Laboratorio para la
 Ciudad](http://labplc.mx) en asociación con [Code for
 America](http://codeforamerica.org/).
 
-Contacto
---------
-
-Para dudas, comentarios o cualquier asunto relacionado con Verificalo
-puedes contactar a Manuel Rábade del equipo de Codigo Ciudad de México en
-[manuel.rabade@codigo.labplc.mx](mailto:manuel.rabade@codigo.labplc.mx)
-o [manuel@rabade.net](mailto:manuel@rabade.net).
+Agradecemos a [Paola Villareal](http://twitter.com/paw), [Clorinda
+Romo](http://twitter.com/clora), [Daniela
+Correa](http://twitter.com/dc_field), [Oscar
+Montiel](http://twitter.com/tlacoyodefrijol), [Jorge
+Matalí](http://twitter.com/elmatali) y a todo el equipo del Laboratorio
+para la Ciudad por su colaboración en el proyecto.
