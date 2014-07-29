@@ -7,10 +7,10 @@
   <strong><%= @user.plate %></strong></h1>
 
 <% if @vehicle.verificacion_current? %>
-<p stlye="margin: 20px 0;">Marca y modelo:
-  <strong><%= @vehicle.verificacion_current_brand_str %> 
+<p stlye="margin: 20px 0;">
+  <%= @vehicle.verificacion_current_brand_str %> 
   <%= @vehicle.verificacion_current_model_str %> 
-  <%= @vehicle.verificacion_current_year_str %></strong>
+  <%= @vehicle.verificacion_current_year_str %>
 </p>
 <% end %>
 
