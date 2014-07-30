@@ -76,7 +76,7 @@ Rails](http://rubyonrails.org/) y utiliza la base de datos
 - Ruby 2.0.0
 - Servidor de correo SMTP (por ejemplo [mailgun](http://www.mailgun.com/))
 - Cuenta de [Mapbox](http://www.mapbox.com/)
-- Servor de [elasticsearch](http://www.elasticsearch.org/)
+- Servidor de busquedas (por ejemplo [elasticsearch](http://www.elasticsearch.org/))
 
 ### Instalación del ambiente de desarrollo
 
