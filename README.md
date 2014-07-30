@@ -53,17 +53,17 @@ Características
 #### Vista desktop
 
 #### Página de inicio
-![Página de inicio](/doc/img/desktop-1.jpg?raw=true "Página de inicio")
+![Página de inicio](/doc/img/desktop-1.png?raw=true "Página de inicio")
 #### Consulta por placa
-![Consulta por placa](/doc/img/desktop-2.jpg?raw=true "Consulta por placa")
+![Consulta por placa](/doc/img/desktop-2.png?raw=true "Consulta por placa")
 #### Suscripción a notificaciones
-![Suscripción a notificaciones](/doc/img/desktop-3.jpg?raw=true "Suscripción a notificaciones")
+![Suscripción a notificaciones](/doc/img/desktop-3.png?raw=true "Suscripción a notificaciones")
 #### Preguntas y Respuestas
-![Donde llevar su auto a verificar](/doc/img/desktop-4.jpg?raw=true "Preguntas y Respuestas")
+![Donde llevar su auto a verificar](/doc/img/desktop-4.png?raw=true "Preguntas y Respuestas")
 #### Respuesta
-![Donde llevar su auto a verificar](/doc/img/desktop-5.jpg?raw=true "Donde llevar su auto a verificar")
+![Donde llevar su auto a verificar](/doc/img/desktop-5.png?raw=true "Donde llevar su auto a verificar")
 #### Busqueda de verificentros
-![Verificentros más cercanos](/doc/img/desktop-6.jpg?raw=true "Verificentros más cercanos")
+![Verificentros más cercanos](/doc/img/desktop-6.png?raw=true "Verificentros más cercanos")
 
 #### Vista mobile
 
