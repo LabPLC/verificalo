@@ -28,15 +28,11 @@ h4.title {
 }
 
 @media(min-width: 1210px) {  
-    .left-answers { padding-right: 50px; }
+    .main-answers { padding-right: 50px; }
 }
 
 @media(min-width: 992px) and (max-width: 1209px) {
-    .left-answers { padding-right: 25px; }
-}
-
-@media(max-width: 991px) {
-    .left-answers { padding-right: 0; }
+    .main-answers { padding-right: 25px; }
 }
 
 /* answers#home */

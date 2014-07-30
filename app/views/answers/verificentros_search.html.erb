@@ -14,7 +14,7 @@
       <h2 class="title title-back">Verificentros más cercanos</h2>
       <%= render 'back' %>
       <%= render 'verificentros_search' %>
-      <div class="answer left-answers">
+      <div class="answer main-answers">
         <% if @verificentros && @verificentros.count > 0 %>
         <div id="verificentros">
           <% @verificentros.each_slice(2) do |r| %>
