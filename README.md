@@ -100,7 +100,7 @@ Características
 
 **Busqueda de verificentros**
 
-![Verificentros más cercanos](/doc/img/mobile-6.png?raw=true "Verificentros más cercanos")
+[![Verificentros más cercanos](/doc/img/mobile-6-thumbnail.png?raw=true "Verificentros más cercanos")](/doc/img/mobile-6.png?raw=true)
 
 Datos Abiertos
 --------------
