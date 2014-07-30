@@ -50,57 +50,33 @@ Características
 
 ### Capturas de pantalla
 
-#### Vista desktop
-
-**Página de inicio**
+#### Versión estandar
 
 ![Página de inicio](/doc/img/desktop-1.png?raw=true "Página de inicio")
 
-**Consulta por placa**
-
 ![Consulta por placa](/doc/img/desktop-2.png?raw=true "Consulta por placa")
-
-**Suscripción a notificaciones**
 
 ![Suscripción a notificaciones](/doc/img/desktop-3.png?raw=true "Suscripción a notificaciones")
 
-**Preguntas y Respuestas**
-
 ![Donde llevar su auto a verificar](/doc/img/desktop-4.png?raw=true "Preguntas y Respuestas")
-
-**Respuesta**
 
 ![Donde llevar su auto a verificar](/doc/img/desktop-5.png?raw=true "Donde llevar su auto a verificar")
 
-**Busqueda de verificentros**
-
 ![Verificentros más cercanos](/doc/img/desktop-6.png?raw=true "Verificentros más cercanos")
 
-#### Vista mobile
+#### Versión móviles
 
-**Página de inicio**
+[![Página de inicio](/doc/img/mobile-1-t.png?raw=true "Página de inicio")](/doc/img/mobile-1.png?raw=true)
 
-![Página de inicio](/doc/img/mobile-1.png?raw=true "Página de inicio")
+[![Consulta por placa](/doc/img/mobile-2-t.png?raw=true "Consulta por placa")](/doc/img/mobile-2.png?raw=true)
 
-**Consulta por placa**
+[![Suscripción a notificaciones](/doc/img/mobile-3-t.png?raw=true "Suscripción a notificaciones")](/doc/img/mobile-3.png?raw=true)
 
-![Consulta por placa](/doc/img/mobile-2.png?raw=true "Consulta por placa")
+[![Donde llevar su auto a verificar](/doc/img/mobile-4-t.png?raw=true "Preguntas y Respuestas")](/doc/img/mobile-4.png?raw=true)
 
-**Suscripción a notificaciones**
+[![Donde llevar su auto a verificar](/doc/img/mobile-5-t.png?raw=true "Donde llevar su auto a verificar")](/doc/img/mobile-5.png?raw=true)
 
-![Suscripción a notificaciones](/doc/img/mobile-3.png?raw=true "Suscripción a notificaciones")
-
-**Preguntas y Respuestas**
-
-![Donde llevar su auto a verificar](/doc/img/mobile-4.png?raw=true "Preguntas y Respuestas")
-
-**Respuesta**
-
-![Donde llevar su auto a verificar](/doc/img/mobile-5.png?raw=true "Donde llevar su auto a verificar")
-
-**Busqueda de verificentros**
-
-[![Verificentros más cercanos](/doc/img/mobile-6-thumbnail.png?raw=true "Verificentros más cercanos")](/doc/img/mobile-6.png?raw=true)
+[![Verificentros más cercanos](/doc/img/mobile-6-t.png?raw=true "Verificentros más cercanos")](/doc/img/mobile-6.png?raw=true)
 
 Datos Abiertos
 --------------
