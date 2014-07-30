@@ -42,7 +42,7 @@ Características
   - Aviso de nuevos adeudos por infracciones o tenencias
   - Recordatorio del hoy no circula semanal o sabatino
 
-- Respuestas:
+- Preguntas y Respuestas:
   - Verificación
   - Hoy no circula
   - Adeudos
@@ -50,16 +50,22 @@ Características
 
 ### Capturas de pantalla
 
+#### Vista desktop
+
 #### Página de inicio
-![Página de inicio](/doc/img/screenshoot-1.jpg?raw=true "Página de inicio")
+![Página de inicio](/doc/img/desktop-1.jpg?raw=true "Página de inicio")
 #### Consulta por placa
-![Consulta por placa](/doc/img/screenshoot-2.jpg?raw=true "Consulta por placa")
+![Consulta por placa](/doc/img/desktop-2.jpg?raw=true "Consulta por placa")
 #### Suscripción a notificaciones
-![Suscripción a notificaciones](/doc/img/screenshoot-3.jpg?raw=true "Suscripción a notificaciones")
-#### Respuestas
-![Donde llevar su auto a verificar](/doc/img/screenshoot-4.jpg?raw=true "Donde llevar su auto a verificar")
+![Suscripción a notificaciones](/doc/img/desktop-3.jpg?raw=true "Suscripción a notificaciones")
+#### Preguntas y Respuestas
+![Donde llevar su auto a verificar](/doc/img/desktop-4.jpg?raw=true "Preguntas y Respuestas")
+#### Respuesta
+![Donde llevar su auto a verificar](/doc/img/desktop-5.jpg?raw=true "Donde llevar su auto a verificar")
 #### Busqueda de verificentros
-![Verificentros más cercanos](/doc/img/screenshoot-5.jpg?raw=true "Verificentros más cercanos")
+![Verificentros más cercanos](/doc/img/desktop-6.jpg?raw=true "Verificentros más cercanos")
+
+#### Vista mobile
 
 Datos Abiertos
 --------------
