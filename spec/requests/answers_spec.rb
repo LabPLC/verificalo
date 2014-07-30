@@ -44,7 +44,7 @@ describe 'answers views' do
       before do
         @category = Category.first
         @answers_count = @category.answers.count
-        first('.left-answers').click_link(@category.name)
+        first('.main-answers').click_link(@category.name)
       end
 
       it { should have_css('h2.title', text: @category.name) }
