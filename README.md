@@ -42,11 +42,20 @@ Características
   - Aviso de nuevos adeudos por infracciones o tenencias
   - Recordatorio del hoy no circula semanal o sabatino
 
-- Preguntas y Respuestas:
+- Preguntas y respuestas:
   - Verificación
   - Hoy no circula
   - Adeudos
   - Movilidad
+
+- Administrador:
+  - Estadisticas de usuarios y notificaciones
+  - CRUD de verificentros
+  - CRUD de preguntas y respuestas
+  - CRUD de administradores
+
+*CRUD es el acrónimo de Crear, Obtener, Actualizar y Borrar (del
+ original en inglés: Create, Read, Update and Delete)*
 
 Datos Abiertos
 --------------
@@ -200,13 +209,13 @@ Capturas de pantalla
 
 #### Preguntas y respuestas
 
-![Preguntas y respuestas](/doc/img/desktop-4.png?raw=true "Preguntas y Respuestas")
+![Preguntas y respuestas](/doc/img/desktop-4.png?raw=true "Preguntas y respuestas")
 
-#### ¿Donde llevar tu auto a verificar?
+#### ¿Donde puedo verificar mi auto?
 
-![Donde llevar tu auto a verificar](/doc/img/desktop-5.png?raw=true "Donde llevar tu auto a verificar")
+![Donde puedo verificar mi auto](/doc/img/desktop-5.png?raw=true "Donde puedo verificar mi auto")
 
-#### Busqueda de verificentros
+#### Verificentros más cercanos
 
 ![Verificentros más cercanos](/doc/img/desktop-6.png?raw=true "Verificentros más cercanos")
 
@@ -226,12 +235,38 @@ Capturas de pantalla
 
 #### Preguntas y respuestas
 
-[![Preguntas y respuestas](/doc/img/mobile-4-t.png?raw=true "Preguntas y Respuestas")](/doc/img/mobile-4.png?raw=true)
+[![Preguntas y respuestas](/doc/img/mobile-4-t.png?raw=true "Preguntas y respuestas")](/doc/img/mobile-4.png?raw=true)
 
 #### ¿Donde llevar tu auto a verificar?
 
 [![Donde llevar tu auto a verificar](/doc/img/mobile-5-t.png?raw=true "Donde llevar tu auto a verificar")](/doc/img/mobile-5.png?raw=true)
 
-#### Busqueda de verificentros
+#### Verificentros más cercanos
 
 [![Verificentros más cercanos](/doc/img/mobile-6-t.png?raw=true "Verificentros más cercanos")](/doc/img/mobile-6.png?raw=true)
+
+### Administrador
+
+### Estadisticas
+
+![Estadisticas](/doc/img/admin-1.png?raw=true "Estadisticas")
+
+### CRUD de verificentrros
+
+![CRUD de verificentros](/doc/img/admin-1.png?raw=true "CRUD de verificentros")
+
+### CRUD de respuestas
+
+![CRUD de respuestas](/doc/img/admin-1.png?raw=true "CRUD de respuestas")
+
+### CRUD de contactos
+
+![CRUD de contactos](/doc/img/admin-1.png?raw=true "CRUD de contactos")
+
+### CRUD de categorias
+
+![CRUD de categorias](/doc/img/admin-1.png?raw=true "CRUD de categorias")
+
+### CRUD de administradores
+
+![CRUD de administradores](/doc/img/admin-1.png?raw=true "CRUD de administradores")
