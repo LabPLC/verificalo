@@ -253,20 +253,20 @@ Capturas de pantalla
 
 ### CRUD de verificentrros
 
-![CRUD de verificentros](/doc/img/admin-1.png?raw=true "CRUD de verificentros")
+![CRUD de verificentros](/doc/img/admin-2.png?raw=true "CRUD de verificentros")
 
 ### CRUD de respuestas
 
-![CRUD de respuestas](/doc/img/admin-1.png?raw=true "CRUD de respuestas")
+![CRUD de respuestas](/doc/img/admin-3.png?raw=true "CRUD de respuestas")
 
 ### CRUD de contactos
 
-![CRUD de contactos](/doc/img/admin-1.png?raw=true "CRUD de contactos")
+![CRUD de contactos](/doc/img/admin-4.png?raw=true "CRUD de contactos")
 
 ### CRUD de categorias
 
-![CRUD de categorias](/doc/img/admin-1.png?raw=true "CRUD de categorias")
+![CRUD de categorias](/doc/img/admin-5.png?raw=true "CRUD de categorias")
 
 ### CRUD de administradores
 
-![CRUD de administradores](/doc/img/admin-1.png?raw=true "CRUD de administradores")
+![CRUD de administradores](/doc/img/admin-6.png?raw=true "CRUD de administradores")
