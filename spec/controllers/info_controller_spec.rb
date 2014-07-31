@@ -38,12 +38,22 @@ describe InfoController do
       end
     end
 
-    describe 'try again later' do
-      before { stub_datalab('intente_mas_tarde') }
-      it 'should return API_VERIFICACIONES_ERROR error' do
+    describe 'api error' do
+      before { stub_datalab('json_error') }
+      it 'should return API_JSON_ERROR error' do
         post :home, plate: '123ABC'
         response.should be_success
-        expect(assigns(:error)).to eq('API_VERIFICACIONES_ERROR')
+        expect(assigns(:error)).to eq('API_JSON_ERROR')
+        should render_template('home')
+      end
+    end
+
+    describe 'try again later' do
+      before { stub_datalab('intente_mas_tarde') }
+      it 'should return API_TRY_LATER error' do
+        post :home, plate: '123ABC'
+        response.should be_success
+        expect(assigns(:error)).to eq('API_TRY_LATER')
         should render_template('home')
       end
     end

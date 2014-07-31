@@ -164,8 +164,8 @@ describe VehicleCDMX do
       stub_datalab('intente_mas_tarde')
       @vehicle = VehicleCDMX.new({ plate: '123ABC' })
     end
-    it 'error should return API_VERIFICACIONES_ERROR' do
-      expect(@vehicle.error).to eq('API_VERIFICACIONES_ERROR')
+    it 'error should return API_TRY_LATER' do
+      expect(@vehicle.error).to eq('API_TRY_LATER')
     end
   end
   
