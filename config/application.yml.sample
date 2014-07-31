@@ -23,3 +23,6 @@ elasticsearch_url: http://localhost:9200
 
 # mailgun
 mailgun_campaign: id
+
+# maintenance
+disable_info: false

@@ -44,7 +44,7 @@ a:hover, a:active {
 
 /* buttons */
 
-.btn-primary, .btn-default {
+.btn-primary, .btn-default, .btn[disabled] {
     background-color: #268f8d;
     border-color: #268f8d;
     text-decoration: none;

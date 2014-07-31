@@ -25,6 +25,9 @@
                    <% if params[:plate].present? %>
                    value="<%= params[:plate] %>"
                    <% end %>
+                   <% if ENV['VERIFICALO_DISABLE_INFO'] == 'true' %>
+                   disabled="true"
+                   <% end %>
                    class="form-control input-lg text-center
                    input-home">
           </div>
@@ -34,12 +37,24 @@
                       col-xs-12">
             <button type="submit" class="btn btn-primary btn-lg
                                          btn-wide input-home"
-                    id="btn-home">Consulta</button>
+                   <% if ENV['VERIFICALO_DISABLE_INFO'] == 'true' %>
+                   disabled="true"
+                   <% end %>
+                   id="btn-home">Consulta</button>
           </div>
         </div>
         <% end %>
         <div class="row">
-          <% if @error %>
+          <% if ENV['VERIFICALO_DISABLE_INFO'] == 'true' %>
+          <div class="col-lg-10 col-lg-offset-1
+                      col-xs-12">
+            <%= icon(:warning) %>
+            <p class="error"><strong>Vuelve más tarde.</strong></p>
+            <p class="msg">Dado el éxito de Verifícalo estamos
+              creciendo la capacidad para ofrecer una respuesta más
+              rápida a todos nuestros usuarios.</p>
+          </div>          
+          <% elsif @error %>
           <!-- si hay error -->      
           <% if @error == 'INVALID_PLATE' %>
           <div class="col-lg-10 col-lg-offset-1
@@ -48,7 +63,7 @@
             <p class="error"><strong>La placa no es de un auto
                 particular de la Ciudad de México.</strong></p>
           </div>
-          <% elsif @error.match(/API_(VERIFICACIONES|INFRACCIONES|TENENCIAS)_ERROR/i) %>
+          <% elsif @error == 'API_TRY_LATER' %>
           <div class="col-lg-10 col-lg-offset-1
                       col-xs-12">
             <%= icon(:error) %>

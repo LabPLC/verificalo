@@ -64,7 +64,11 @@ class VehicleCDMX
       return false
     end
     unless @api['verificaciones'].is_a?(Array)
-      @status = 'API_VERIFICACIONES_ERROR'
+      if @api['verificaciones'] == 'intente_mas_tarde'
+        @status = 'API_TRY_LATER'
+      else
+        @status = 'API_VERIFICACIONES_ERROR'
+      end
       return false
     end
     unless @api['infracciones'].is_a?(Array)
