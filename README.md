@@ -187,8 +187,9 @@ Agradecemos a [Paola Villareal](http://twitter.com/paw), [Clorinda
 Romo](http://twitter.com/clora), [Daniela
 Correa](http://twitter.com/dc_field), [Oscar
 Montiel](http://twitter.com/tlacoyodefrijol), [Jorge
-Matalí](http://twitter.com/elmatali) y a todo el equipo del Laboratorio
-para la Ciudad por su colaboración en el proyecto.
+Matalí](http://twitter.com/elmatali) y a todo el equipo del
+[Laboratorio para la Ciudad](http://twitter.com/labplc) por su
+colaboración en el proyecto.
 
 Capturas de pantalla
 --------------------
