@@ -30,7 +30,7 @@ namespace :verificalo do
         3.times do
           vehicle = VehicleCDMX.new({ plate: user.plate })
           if vehicle.error
-            logger.error user.plate ' error: ' + vehicle.error
+            logger.error user.plate + ' error: ' + vehicle.error
           else
             logger.warn user.plate
             Notifier.weekday(user, vehicle).deliver
@@ -48,7 +48,7 @@ namespace :verificalo do
         3.times do
           vehicle = VehicleCDMX.new({ plate: user.plate })
           if vehicle.error
-            logger.error user.plate ' error: ' + vehicle.error
+            logger.error user.plate + ' error: ' + vehicle.error
           else
             logger.warn user.plate
             Notifier.weekend(user, vehicle, saturday).deliver
