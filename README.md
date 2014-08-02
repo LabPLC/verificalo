@@ -238,9 +238,9 @@ Capturas de pantalla
 
 [![Preguntas y respuestas](/doc/img/mobile-4-t.png?raw=true "Preguntas y respuestas")](/doc/img/mobile-4.png?raw=true)
 
-#### ¿Donde llevar tu auto a verificar?
+#### ¿Donde puedo verificar mi auto?
 
-[![Donde llevar tu auto a verificar](/doc/img/mobile-5-t.png?raw=true "Donde llevar tu auto a verificar")](/doc/img/mobile-5.png?raw=true)
+[![Donde puedo verificar mi auto](/doc/img/mobile-5-t.png?raw=true "Donde puedo verificar mi auto")](/doc/img/mobile-5.png?raw=true)
 
 #### Verificentros más cercanos
 
