@@ -336,7 +336,7 @@ Answer.create({ category_id: 4, contact_id: 7, related_1_id: 21, related_2_id: 2
 
 # 21
 Answer.create({ category_id: 4, contact_id: 7, related_1_id: 22, related_2_id: 23, related_3_id: 24, related_4_id: 20,
-                title: 'Requisitos, planes y tarifas de ECOBICI', url: 'requisitos-plantes-tarifas-ecobici',
+                title: 'Requisitos, planes y tarifas de ECOBICI', url: 'requisitos-planes-tarifas-ecobici',
                 source: 'https://www.ecobici.df.gob.mx/informacion-del-servicio/requisitos-planes-y-tarifas',
                 body: '<p class="lead">Consulta los <a href="https://www.ecobici.df.gob.mx/informacion-del-servicio/requisitos-planes-y-tarifas">requisitos, planes y tarifas de ECOBICI</a> en su página oficial.</p>'})
 
