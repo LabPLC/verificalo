@@ -11,7 +11,7 @@ describe 'info views' do
     it { should_not have_link('Información', href: root_path) }
     # footer
     it { should have_link('Acerca de Verifícalo', href: acerca_path) }
-    # it { should have_link('Contáctanos', href: 'mailto:contacto@verificalo.mx') }
+    it { should have_link('Contáctanos', href: 'mailto:contacto@verificalo.mx') }
     it { should have_link('Código para la Ciudad de México', href: 'http://codigo.labplc.mx') }
     # jumbotron
     it { should have_css('div.jumbotron', text: /ingresa la placa/i) }

@@ -13,7 +13,7 @@ describe 'notices views' do
     it { should have_link('Preguntas y respuestas', href: respuestas_path) }
     # footer
     it { should have_link('Acerca de Verifícalo', href: acerca_path) }
-    # it { should have_link('Contáctanos', href: 'mailto:contacto@verificalo.mx') }
+    it { should have_link('Contáctanos', href: 'mailto:contacto@verificalo.mx') }
     it { should have_link('Código para la Ciudad de México', href: 'http://codigo.labplc.mx') }
     # content
     it { should have_field('user[plate]') }
