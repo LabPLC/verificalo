@@ -12,7 +12,6 @@ shared_examples 'verificacion ok' do
     expect(subject.verificacion_ok?).to eq(true)
     expect(subject.verificacion_period?).to eq(false)
     expect(subject.verificacion_expired?).to eq(false)
-    expect(subject.verificacion_unknown?).to eq(false)
     expect(subject.verificacion_first_ok?).to eq(false)
     expect(subject.verificacion_first_expired?).to eq(false)
   end
@@ -23,7 +22,6 @@ shared_examples 'verificacion period' do
     expect(subject.verificacion_ok?).to eq(false)
     expect(subject.verificacion_period?).to eq(true)
     expect(subject.verificacion_expired?).to eq(false)
-    expect(subject.verificacion_unknown?).to eq(false)
     expect(subject.verificacion_first_ok?).to eq(false)
     expect(subject.verificacion_first_expired?).to eq(false)
   end
@@ -34,18 +32,6 @@ shared_examples 'verificacion expired' do
     expect(subject.verificacion_ok?).to eq(false)
     expect(subject.verificacion_period?).to eq(false)
     expect(subject.verificacion_expired?).to eq(true)
-    expect(subject.verificacion_unknown?).to eq(false)
-    expect(subject.verificacion_first_ok?).to eq(false)
-    expect(subject.verificacion_first_expired?).to eq(false)
-  end
-end
-
-shared_examples 'verificacion unknown' do
-  it 'verificacion_unknown? should return true' do
-    expect(subject.verificacion_ok?).to eq(false)
-    expect(subject.verificacion_period?).to eq(false)
-    expect(subject.verificacion_expired?).to eq(false)
-    expect(subject.verificacion_unknown?).to eq(true)
     expect(subject.verificacion_first_ok?).to eq(false)
     expect(subject.verificacion_first_expired?).to eq(false)
   end
@@ -56,7 +42,6 @@ shared_examples 'verificacion first ok' do
     expect(subject.verificacion_ok?).to eq(false)
     expect(subject.verificacion_period?).to eq(false)
     expect(subject.verificacion_expired?).to eq(false)
-    expect(subject.verificacion_unknown?).to eq(false)
     expect(subject.verificacion_first_ok?).to eq(true)
     expect(subject.verificacion_first_expired?).to eq(false)
   end
@@ -67,7 +52,6 @@ shared_examples 'verificacion first expired' do
     expect(subject.verificacion_ok?).to eq(false)
     expect(subject.verificacion_period?).to eq(false)
     expect(subject.verificacion_expired?).to eq(false)
-    expect(subject.verificacion_unknown?).to eq(false)
     expect(subject.verificacion_first_ok?).to eq(false)
     expect(subject.verificacion_first_expired?).to eq(true)
   end
@@ -128,7 +112,6 @@ shared_examples 'no info' do
     expect(subject.verificacion_ok?).to eq(false)
     expect(subject.verificacion_period?).to eq(false)
     expect(subject.verificacion_expired?).to eq(false)
-    expect(subject.verificacion_unknown?).to eq(false)
     expect(subject.verificacion_first_ok?).to eq(false)
     expect(subject.verificacion_first_expired?).to eq(false)
     expect(subject.no_circula_cero?).to eq(false)
@@ -243,17 +226,6 @@ describe VehicleCDMX do
     it_should_behave_like 'vehicle cdmx ok'
     it_should_behave_like 'verificacion expired'
     it_should_behave_like 'no circula expired'
-    it_should_behave_like 'no adeudos'
-  end
-
-  context 'verificacion unknown' do
-    before do
-      stub_datalab('verificacion_unknown')
-      @vehicle = VehicleCDMX.new({ plate: '123ABC' })
-    end
-    it_should_behave_like 'vehicle cdmx ok'
-    it_should_behave_like 'verificacion unknown'
-    it_should_behave_like 'no circula cero'
     it_should_behave_like 'no adeudos'
   end
 

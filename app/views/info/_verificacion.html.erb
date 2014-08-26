@@ -27,18 +27,6 @@
     llevar tu auto a verificar.</p>
   <% end %>
 
-  <% if @vehicle.verificacion_unknown? %>
-  <!-- verificacion desconocida -->
-  <%= icon(:warning) %>
-  <p class="msg"><strong>No tenemos disponible la vigencia de tu última
-      verificación.</strong>
-  </p>
-  <p class="msg">Para verificaciónes con resultado <strong>doble
-      cero</strong> previas al segundo semestre de 2012 debes
-    determinar su vigencía a partir de la fecha de compra de tu
-    auto.</p>
-  <% end %>
-  
   <% if @vehicle.verificacion_first_ok? %>
   <!-- en periodo para 1a verificacion -->
   <%= icon(:warning) %>

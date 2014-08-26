@@ -300,7 +300,6 @@ class VehicleCDMX
   
   def verificacion_ok?
     return false unless self.verificaciones_approved?
-    return false if self.verificacion_unknown?
     return false if self.verificacion_expired?
     return false if self.verificacion_period?
     true
@@ -308,7 +307,6 @@ class VehicleCDMX
   
   def verificacion_period?
     return false unless self.verificaciones_approved?
-    return false if self.verificacion_unknown?
     return false if self.verificacion_expired?
     return true if self.verificacion_current_period <= Date.today
     false
@@ -316,17 +314,7 @@ class VehicleCDMX
   
   def verificacion_expired?
     return false unless self.verificaciones_approved?
-    return false if self.verificacion_unknown?
     return true if self.verificacion_current_vigency <= Date.today
-    false
-  end
-  
-  def verificacion_unknown?
-    return false unless self.verificacion_last_approved?
-    if self.verificacion_last_approved['equipo_gdf'] == '0' && 
-        self.verificacion_last_approved['resultado'] =~ /doble cero/i
-      return true
-    end
     false
   end
   
@@ -346,7 +334,11 @@ class VehicleCDMX
   
   def verificacion_current_expired_str
     return false unless self.verificacion_current?
-    I18n.localize(self.verificacion_current_vigency + 1, :format => :long)
+    if self.verificacion_current['equipo_gdf'] == '1'
+      I18n.localize(self.verificacion_current_vigency + 1, :format => :long)
+    else 
+      I18n.localize(self.verificacion_current_vigency, :format => :long)
+    end
   end
 
   def verificacion_current_vigency_str
@@ -402,11 +394,7 @@ class VehicleCDMX
       r.fuel = v['combustible'].capitalize
       r.cert = v['certificado']
       r.cancel = v['cancelado'] == 'SI' ? true : false
-      if v['equipo_gdf'] == '0' && v['resultado'] =~ /doble cero/i
-        r.vigency = 'No disponible'
-      else
-        r.vigency = I18n.localize(Date.parse(v['vigencia']), :format => :default)
-      end
+      r.vigency = I18n.localize(Date.parse(v['vigencia']), :format => :default)
       r.result = v['resultado']
       r.reject = v['casua_rechazo']
       r
