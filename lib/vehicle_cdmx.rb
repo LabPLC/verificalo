@@ -335,9 +335,9 @@ class VehicleCDMX
   def verificacion_current_expired_str
     return false unless self.verificacion_current?
     if self.verificacion_current['equipo_gdf'] == '1'
-      I18n.localize(self.verificacion_current_vigency + 1, :format => :long)
-    else 
       I18n.localize(self.verificacion_current_vigency, :format => :long)
+    else
+      I18n.localize(self.verificacion_current_vigency - 1, :format => :long)
     end
   end
 
@@ -394,7 +394,11 @@ class VehicleCDMX
       r.fuel = v['combustible'].capitalize
       r.cert = v['certificado']
       r.cancel = v['cancelado'] == 'SI' ? true : false
-      r.vigency = I18n.localize(Date.parse(v['vigencia']), :format => :default)
+      if v['equipo_gdf'] == '1'
+        r.vigency = I18n.localize(Date.parse(v['vigencia']), :format => :default)
+      else
+        r.vigency = I18n.localize(Date.parse(v['vigencia']) - 1, :format => :default)
+      end
       r.result = v['resultado']
       r.reject = v['casua_rechazo']
       r
