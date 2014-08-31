@@ -16,6 +16,7 @@ describe Verificentro do
   it { should respond_to(:phone) }
   it { should respond_to(:lat) }
   it { should respond_to(:lon) }
+  it { should respond_to(:suspended) }
 
   it { should be_valid }
 

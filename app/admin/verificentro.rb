@@ -2,7 +2,7 @@
 ActiveAdmin.register Verificentro do
   menu(priority: 1)
 
-  permit_params(:number, :name, :address, :delegacion_id, :phone, :lat, :lon)
+  permit_params(:number, :name, :address, :delegacion_id, :phone, :lat, :lon, :suspended)
 
   index do
     selectable_column
@@ -12,12 +12,14 @@ ActiveAdmin.register Verificentro do
     column 'Delegación', :delegacion
     column 'Latitud', :lat
     column 'Longitud', :lon
+    column 'Suspendido', :suspended
     actions
   end
   
   filter :number, label: 'Número'
   filter :delegacion, label: 'Delegación'
   filter :name, label: 'Razón Social'
+  filter :suspended, label: 'Suspendido'
 
   form do |f|
     f.inputs do
@@ -28,6 +30,7 @@ ActiveAdmin.register Verificentro do
       f.input :phone, label: 'Teléfono', hint: 'Para varios teléfonos separarlos con un espacio'
       f.input :lat, label: 'Latitud', hint: 'En grados decimales'
       f.input :lon, label: 'Longitud', hint: 'En grados decimales'
+      f.input :suspended, label: 'Suspendido'
     end
     f.actions
   end

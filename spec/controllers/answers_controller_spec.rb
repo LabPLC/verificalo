@@ -92,10 +92,10 @@ describe AnswersController do
 
   describe 'GET verificentros' do
     before do
-      @verificentros_count = Verificentro.count
+      @verificentros_count = Verificentro.not_suspended.count
       @delegaciones_count = Delegacion.count
     end
-    it 'should return verificentros count and delegaciones' do
+    it 'should return verificentros not suspended count and delegaciones' do
       get :verificentros
       response.should be_success
       should render_template('verificentros')
@@ -135,7 +135,7 @@ describe AnswersController do
     describe 'with valid delegacion' do
       before do 
         @delegacion = Delegacion.order('RANDOM()').first
-        @verificentros_count = @delegacion.verificentros.count
+        @verificentros_count = @delegacion.verificentros.not_suspended.count
       end
       it 'should return verificentros' do
         get :verificentros_delegacion, { delegacion_url: @delegacion.url }

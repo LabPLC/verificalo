@@ -36,7 +36,7 @@ class AnswersController < ApplicationController
   def verificentros
     @answer = Answer.find(3)
     answer_view(@answer.id)
-    @verificentros_count = Verificentro.count
+    @verificentros_count = Verificentro.not_suspended.count
     @delegaciones = Delegacion.order('name')
   end
 
@@ -50,7 +50,7 @@ class AnswersController < ApplicationController
       return
     end
     begin
-      res = Verificentro.near(query, 60, {:order => "distance"})
+      res = Verificentro.not_suspended.near(query, 60, {:order => "distance"})
     rescue
       return
     end
@@ -62,7 +62,7 @@ class AnswersController < ApplicationController
     url = verificentros_delegacion_param[:delegacion_url]
     begin
       @delegacion = Delegacion.find_by_url!(url)
-      @verificentros = @delegacion.verificentros
+      @verificentros = @delegacion.verificentros.not_suspended
     rescue 
       redirect_to({ action: 'verificentros' })
     end

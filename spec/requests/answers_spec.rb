@@ -84,7 +84,7 @@ describe 'answers views' do
     describe 'verificentros delegacion' do
       before do
         @delegacion = Delegacion.order('RANDOM()').first
-        @verificentros_count = @delegacion.verificentros.count
+        @verificentros_count = @delegacion.verificentros.not_suspended.count
         click_link(@delegacion.name)
       end
 

@@ -19,14 +19,14 @@
             <% g.each do |d| %>
             <% next unless d %>
             <p>
-              <% if d.verificentros.count > 0 %>
+              <% if d.verificentros.not_suspended.count > 0 %>
               <a class="btn-delegacion"
                  href="<%= url_for({ controller: 'answers', 
                        action: 'verificentros_delegacion',
                        delegacion_url: d.url })%>">
                 <%= d.name %></a><br/>
-              <% if d.verificentros.count > 1 %>        
-              <small><%= d.verificentros.count %> verificentros</small>
+              <% if d.verificentros.not_suspended.count > 1 %>
+              <small><%= d.verificentros.not_suspended.count %> verificentros</small>
               <% else %>
               <small>1 verificentro</small>
               <% end %>
