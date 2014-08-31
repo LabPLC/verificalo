@@ -269,7 +269,11 @@ class VehicleCDMX
   
   def verificacion_current_vigency
     return false unless self.verificacion_current?
-    Date.parse(self.verificacion_current['vigencia'])
+    if self.verificacion_current['equipo_gdf'] == '1'
+      Date.parse(self.verificacion_current['vigencia'])
+    else
+      Date.parse(self.verificacion_current['vigencia']) - 1
+    end
   end
   
   def verificacion_current_period
@@ -334,11 +338,7 @@ class VehicleCDMX
   
   def verificacion_current_expired_str
     return false unless self.verificacion_current?
-    if self.verificacion_current['equipo_gdf'] == '1'
-      I18n.localize(self.verificacion_current_vigency, :format => :long)
-    else
-      I18n.localize(self.verificacion_current_vigency - 1, :format => :long)
-    end
+    I18n.localize(self.verificacion_current_vigency, :format => :long)
   end
 
   def verificacion_current_vigency_str
