@@ -145,9 +145,21 @@ h4.verificentro-title {
     font-weight: normal;
 }
 
-p.verificentro-address {
+div.verificentro img {
+    margin-bottom: 10px;
+}
+
+div.verificentro p {
     font-size: 14px;
     margin-bottom: 5px;
+}
+
+div.verificentro a {
+    text-decoration: none;
+}
+
+div.verificentro .bullet {
+    color: #268f8d;
 }
 
 /* answers#verificentros_search */

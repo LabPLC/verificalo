@@ -7,10 +7,15 @@
 
 <div class="col-sm-6 verificentro">
   <h4 class="verificentro-title">Verificentro 
-    <strong><%= verificentro.number %></strong></h5>
-  <p><a href="<%= gmap(verificentro) %>" target="_blank">
+    <strong><%= verificentro.number %></strong></h4>
+  <p class="verificentro-map">
+    <a href="<%= gmap(verificentro) %>" target="_blank">
       <img class="img-responsive" src="<%= map %>" /></a></p>
-  <p class="verificentro-address"><%= verificentro.address %></p>
-  <p><a href="<%= gmap(verificentro) %>"
-        target="_blank">Cómo llegar &raquo;</a></p>
+  <%= icon(:address) %>
+  <p class="item">
+    <a href="<%= gmap(verificentro) %>"
+       target="_blank"><%= verificentro.address %></a>
+  </p>
+  <%= icon(:phone) %>
+  <p class="item"><%= pretty_phones(verificentro.phone) %></p>
 </div>

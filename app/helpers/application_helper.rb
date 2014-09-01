@@ -44,4 +44,10 @@ module ApplicationHelper
       '<span class="glyphicon glyphicon-wrench bullet"></span>'.html_safe
     end
   end
+
+  def pretty_phones(str)
+    str.split(' ').collect { |p|
+      '<a href="tel:' + p + '">' + p.scan(/.{4}/).join(' ') + '</a>'
+    }.join('<br/>').html_safe
+  end
 end
