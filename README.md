@@ -72,6 +72,91 @@ Ambiente](http://www.sedema.df.gob.mx) y a la [Secretaria de
 Finanzas](http://www.finanzas.df.gob.mx/) por su colaboración en la
 apertura de datos que hacen posible a este proyecto.
 
+Capturas de pantalla
+--------------------
+
+### Versión estándar
+
+#### Página de inicio
+
+![Página de inicio](/doc/img/desktop-1.png?raw=true "Página de inicio")
+
+#### Consulta de información
+
+![Consulta por placa](/doc/img/desktop-2.png?raw=true "Consulta por placa")
+
+#### Suscripción a notificaciones
+
+![Suscripción a notificaciones](/doc/img/desktop-3.png?raw=true "Suscripción a notificaciones")
+
+#### Preguntas y respuestas
+
+![Preguntas y respuestas](/doc/img/desktop-4.png?raw=true "Preguntas y respuestas")
+
+#### ¿Donde puedo verificar mi auto?
+
+![Donde puedo verificar mi auto](/doc/img/desktop-5.png?raw=true "Donde puedo verificar mi auto")
+
+#### Verificentros más cercanos
+
+![Verificentros más cercanos](/doc/img/desktop-6.png?raw=true "Verificentros más cercanos")
+
+### Versión móvil
+
+#### Página de inicio
+
+[![Página de inicio](/doc/img/mobile-1-t.png?raw=true "Página de inicio")](/doc/img/mobile-1.png?raw=true)
+
+#### Consulta de información
+
+[![Consulta por placa](/doc/img/mobile-2-t.png?raw=true "Consulta por placa")](/doc/img/mobile-2.png?raw=true)
+
+#### Suscripción a notificaciones
+
+[![Suscripción a notificaciones](/doc/img/mobile-3-t.png?raw=true "Suscripción a notificaciones")](/doc/img/mobile-3.png?raw=true)
+
+#### Preguntas y respuestas
+
+[![Preguntas y respuestas](/doc/img/mobile-4-t.png?raw=true "Preguntas y respuestas")](/doc/img/mobile-4.png?raw=true)
+
+#### ¿Donde puedo verificar mi auto?
+
+[![Donde puedo verificar mi auto](/doc/img/mobile-5-t.png?raw=true "Donde puedo verificar mi auto")](/doc/img/mobile-5.png?raw=true)
+
+#### Verificentros más cercanos
+
+[![Verificentros más cercanos](/doc/img/mobile-6-t.png?raw=true "Verificentros más cercanos")](/doc/img/mobile-6.png?raw=true)
+
+### Recordatorios
+
+![Recordatorio](/doc/img/mail.png?raw=true "Recordatorio")
+
+### Administrador
+
+#### Estadisticas
+
+![Estadisticas](/doc/img/admin-1.png?raw=true "Estadisticas")
+
+#### CRUD de verificentrros
+
+![CRUD de verificentros](/doc/img/admin-2.png?raw=true "CRUD de verificentros")
+
+#### CRUD de respuestas
+
+![CRUD de respuestas](/doc/img/admin-3.png?raw=true "CRUD de respuestas")
+
+#### CRUD de contactos
+
+![CRUD de contactos](/doc/img/admin-4.png?raw=true "CRUD de contactos")
+
+#### CRUD de categorias
+
+![CRUD de categorias](/doc/img/admin-5.png?raw=true "CRUD de categorias")
+
+#### CRUD de administradores
+
+![CRUD de administradores](/doc/img/admin-6.png?raw=true "CRUD de administradores")
+
 Desarrollo
 ----------
 
@@ -190,84 +275,3 @@ Montiel](http://twitter.com/tlacoyodefrijol), [Jorge
 Matalí](http://twitter.com/elmatali) y a todo el equipo del
 [Laboratorio para la Ciudad](http://twitter.com/labplc) por su
 colaboración en el proyecto.
-
-Capturas de pantalla
---------------------
-
-### Versión estándar
-
-#### Página de inicio
-
-![Página de inicio](/doc/img/desktop-1.png?raw=true "Página de inicio")
-
-#### Consulta de información
-
-![Consulta por placa](/doc/img/desktop-2.png?raw=true "Consulta por placa")
-
-#### Suscripción a notificaciones
-
-![Suscripción a notificaciones](/doc/img/desktop-3.png?raw=true "Suscripción a notificaciones")
-
-#### Preguntas y respuestas
-
-![Preguntas y respuestas](/doc/img/desktop-4.png?raw=true "Preguntas y respuestas")
-
-#### ¿Donde puedo verificar mi auto?
-
-![Donde puedo verificar mi auto](/doc/img/desktop-5.png?raw=true "Donde puedo verificar mi auto")
-
-#### Verificentros más cercanos
-
-![Verificentros más cercanos](/doc/img/desktop-6.png?raw=true "Verificentros más cercanos")
-
-### Versión móvil
-
-#### Página de inicio
-
-[![Página de inicio](/doc/img/mobile-1-t.png?raw=true "Página de inicio")](/doc/img/mobile-1.png?raw=true)
-
-#### Consulta de información
-
-[![Consulta por placa](/doc/img/mobile-2-t.png?raw=true "Consulta por placa")](/doc/img/mobile-2.png?raw=true)
-
-#### Suscripción a notificaciones
-
-[![Suscripción a notificaciones](/doc/img/mobile-3-t.png?raw=true "Suscripción a notificaciones")](/doc/img/mobile-3.png?raw=true)
-
-#### Preguntas y respuestas
-
-[![Preguntas y respuestas](/doc/img/mobile-4-t.png?raw=true "Preguntas y respuestas")](/doc/img/mobile-4.png?raw=true)
-
-#### ¿Donde puedo verificar mi auto?
-
-[![Donde puedo verificar mi auto](/doc/img/mobile-5-t.png?raw=true "Donde puedo verificar mi auto")](/doc/img/mobile-5.png?raw=true)
-
-#### Verificentros más cercanos
-
-[![Verificentros más cercanos](/doc/img/mobile-6-t.png?raw=true "Verificentros más cercanos")](/doc/img/mobile-6.png?raw=true)
-
-### Administrador
-
-### Estadisticas
-
-![Estadisticas](/doc/img/admin-1.png?raw=true "Estadisticas")
-
-### CRUD de verificentrros
-
-![CRUD de verificentros](/doc/img/admin-2.png?raw=true "CRUD de verificentros")
-
-### CRUD de respuestas
-
-![CRUD de respuestas](/doc/img/admin-3.png?raw=true "CRUD de respuestas")
-
-### CRUD de contactos
-
-![CRUD de contactos](/doc/img/admin-4.png?raw=true "CRUD de contactos")
-
-### CRUD de categorias
-
-![CRUD de categorias](/doc/img/admin-5.png?raw=true "CRUD de categorias")
-
-### CRUD de administradores
-
-![CRUD de administradores](/doc/img/admin-6.png?raw=true "CRUD de administradores")
