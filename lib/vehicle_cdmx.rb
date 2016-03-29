@@ -21,7 +21,7 @@ class VehicleCDMX
       return false
     end
     params[:plate].gsub!(/[^0-9a-z ]/i, '')
-    if params[:plate] !~ /\A[1-9][0-9][0-9][a-z][a-z][a-z]\z/i
+    if params[:plate] !~ /\A[1-9a-z][0-9][0-9][a-z][a-z][a-z]\z/i
       @status = 'INVALID_PLATE'
       return false
     end
